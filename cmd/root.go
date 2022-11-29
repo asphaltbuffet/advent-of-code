@@ -3,22 +3,24 @@ package cmd
 
 import (
 	"github.com/spf13/cobra"
+
+	y2021 "github.com/asphaltbuffet/advent-of-code/y2021/commands"
 )
 
 // Execute adds all child commands to the root command and sets flags appropriately.
 // This is called by main.main(). It only needs to happen once to the rootCmd.
 func Execute() {
 	rootCmd := &cobra.Command{
-		Use:   "advent-of-code [sub-commands] [flags]",
-		Short: "advent-of-code is a collection of AoC solutions",
-		Long:  `advent-of-code is a collection of AoC solutions`,
-		// Args:  cobra.MinimumNArgs(1),
-		Run: RunRootCmd,
+		Use:     "advent-of-code",
+		Version: "0.0.1",
+		Short:   "advent-of-code is a collection of AoC solutions",
+		Long:    `advent-of-code is a collection of AoC solutions`,
+		Run:     RunRootCmd,
 	}
 
 	rootCmd.Flags().Bool("svg", false, "output SVG")
 
-	rootCmd.AddCommand(new2021Command())
+	rootCmd.AddCommand(y2021.New2021Command())
 
 	cobra.CheckErr(rootCmd.Execute())
 }
