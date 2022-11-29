@@ -16,8 +16,8 @@ help:
 .PHONY: clean
 clean: ## remove files created during build pipeline
 	$(call print-target)
-	rm -rf dist
-	rm -f coverage.*
+	rm -rf dist || true
+	rm -rf bin || true
 	rm -f '"$(shell go env GOCACHE)/../golangci-lint"'
 	go clean -i -cache -testcache -modcache -fuzzcache -x
 
@@ -56,8 +56,9 @@ lint: ## golangci-lint
 .PHONY: test
 test: ## go test
 	$(call print-target)
-	go test -race -covermode=atomic -coverprofile=coverage.out -coverpkg=./... ./...
-	go tool cover -html=coverage.out -o coverage.html
+	mkdir -p bin
+	go test -race -covermode=atomic -coverprofile=bin/coverage.out -coverpkg=./... ./...
+	go tool cover -html=bin/coverage.out -o bin/coverage.html
 
 .PHONY: diff
 diff: ## git diff
