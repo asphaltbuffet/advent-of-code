@@ -7,57 +7,100 @@ import (
 	"os"
 	"path/filepath"
 	"strconv"
+
+	"go.uber.org/multierr"
 )
 
 // TestData contains the test data for a given day.
-type TestData struct {
-	Input  []int
-	Output int
+type Data struct {
+	Input    []int
+	Solution int
 }
 
 // Exercise contains the exercise for a given day.
 type Exercise struct {
-	Test  TestData
-	Input []int
+	Year    string
+	Day     string
+	Test    Data
+	PartOne Data
+	PartTwo Data
 }
 
-// ReadTestData reads the test data for the given day.
-func ReadTestData(year, day string) (*Exercise, error) {
-	testInput, err := readInput(filepath.Join("examples", year, fmt.Sprintf("day-%s-input.txt", day)))
+var (
+	testInputFile    string = "day-%s-test.txt"
+	testSolutionFile string = "day-%s-test-solution.txt"
+	partOneInputFile string = "day-%s-part1.txt"
+	partTwoInputFile string = "day-%s-part2.txt"
+)
+
+// NewExercise creates a new exercise for a given date.
+func NewExercise(year, day string) (*Exercise, error) {
+	err := checkForInputs(year, day)
+	if err != nil {
+		return nil, fmt.Errorf("checking for input files: %w", err)
+	}
+
+	testInput, err := readInput(filepath.Join("examples", year, fmt.Sprintf(testInputFile, day)))
 	if err != nil {
 		return nil, fmt.Errorf("reading test input: %w", err)
 	}
 
-	testOutput, err := readInput(filepath.Clean(filepath.Join("examples", year, fmt.Sprintf("day-%s-solution.txt", day))))
+	testOutput, err := readInput(filepath.Clean(filepath.Join("examples", year, fmt.Sprintf(testSolutionFile, day))))
 	if err != nil {
 		return nil, fmt.Errorf("reading test output: %w", err)
 	}
 
-	problemInput, err := readInput(filepath.Clean(filepath.Join("inputs", year, fmt.Sprintf("day-%s.txt", day))))
+	partOneInput, err := readInput(filepath.Clean(filepath.Join("inputs", year, fmt.Sprintf(partOneInputFile, day))))
+	if err != nil {
+		return nil, fmt.Errorf("reading problem input: %w", err)
+	}
+
+	partTwoInput, err := readInput(filepath.Clean(filepath.Join("inputs", year, fmt.Sprintf(partTwoInputFile, day))))
 	if err != nil {
 		return nil, fmt.Errorf("reading problem input: %w", err)
 	}
 
 	return &Exercise{
-		Test: TestData{
-			Input:  testInput,
-			Output: testOutput[0],
+		Year: year,
+		Day:  day,
+		Test: Data{
+			Input:    testInput,
+			Solution: testOutput[0],
 		},
-		Input: problemInput,
+		PartOne: Data{
+			Input:    partOneInput,
+			Solution: 0,
+		},
+		PartTwo: Data{
+			Input:    partTwoInput,
+			Solution: 0,
+		},
 	}, nil
 }
 
-func readInput(f string) ([]int, error) {
+func checkForInputs(year, day string) error {
+	_, testInputErr := os.Stat(filepath.Clean(filepath.Join("inputs", year, fmt.Sprintf(testInputFile, day))))
+	_, testSolutionErr := os.Stat(filepath.Clean(filepath.Join("inputs", year, fmt.Sprintf(testSolutionFile, day))))
+	_, partOneInputErr := os.Stat(filepath.Clean(filepath.Join("inputs", year, fmt.Sprintf(partOneInputFile, day))))
+	_, partTwoInputErr := os.Stat(filepath.Clean(filepath.Join("inputs", year, fmt.Sprintf("day-%s-part2.txt", day))))
+
+	return multierr.Combine(testInputErr, testSolutionErr, partOneInputErr, partTwoInputErr)
+}
+
+func readInput(f string) (i []int, err error) {
 	file, err := os.Open(filepath.Clean(f))
 	if err != nil {
 		return nil, fmt.Errorf("opening input file: %w", err)
 	}
-	defer file.Close() //nolint: errcheck, gosec // not important right now
+	defer func() {
+		// ref: https://pkg.go.dev/github.com/uber-go/multierr#Append
+		err = multierr.Append(err, file.Close())
+	}()
 
 	lines := []int{}
 
 	scanner := bufio.NewScanner(file)
-	// optionally, resize scanner's capacity for lines over 64K, see next example
+
 	for scanner.Scan() {
 		n, scanErr := strconv.Atoi(scanner.Text())
 		if scanErr != nil {
