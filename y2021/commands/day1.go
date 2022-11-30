@@ -25,7 +25,7 @@ func runDay1Cmd(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	got := part1(d.Test.Input) // TODO: use unit testing for this validation
+	got := part1(d.Test.Input)
 
 	cmd.Printf("Day %s, Part 1 Test: %t\n", cmd.Name(), reflect.DeepEqual(got, d.Test.Output))
 
@@ -33,9 +33,9 @@ func runDay1Cmd(cmd *cobra.Command, args []string) {
 	// fmt.Printf("inputs(%d): %+v\n", len(d.Input), d.Input)
 	cmd.Printf("Day %s Part 1: %d\n", cmd.Name(), got)
 
-	got = part2(d.Test.Input) // TODO: use unit testing for this validation
+	got = part2(d.Test.Input)
 
-	cmd.Printf("Day %s, Part 2 Test: %t\n", cmd.Name(), got == 5) // TODO: example structure should have both parts stored in it
+	cmd.Printf("Day %s, Part 2 Test: %t\n", cmd.Name(), got == 5)
 
 	got = part2(d.Input)
 	// fmt.Printf("inputs(%d): %+v\n", len(d.Input), d.Input)
