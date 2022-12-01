@@ -3,26 +3,32 @@ package cmd
 
 import (
 	"github.com/spf13/cobra"
-
-	y2021 "github.com/asphaltbuffet/advent-of-code/y2021/commands"
 )
+
+var rootCmd *cobra.Command
 
 // Execute adds all child commands to the root command and sets flags appropriately.
 // This is called by main.main(). It only needs to happen once to the rootCmd.
 func Execute() {
-	rootCmd := &cobra.Command{
-		Use:     "advent-of-code",
-		Version: "0.0.1",
-		Short:   "advent-of-code is a collection of AoC solutions",
-		Long:    `advent-of-code is a collection of AoC solutions`,
-		Run:     RunRootCmd,
+	cobra.CheckErr(GetRootCommand().Execute())
+}
+
+// GetRootCommand returns the root command for the CLI.
+func GetRootCommand() *cobra.Command {
+	if rootCmd == nil {
+		rootCmd = &cobra.Command{
+			Use:     "aoc",
+			Aliases: []string{"advent-of-code", "advent"},
+			Version: "0.0.1",
+			Short:   "aoc is a collection of AoC solutions",
+			Long:    `aoc is a collection of AoC solutions`,
+			Run:     RunRootCmd,
+		}
+
+		rootCmd.Flags().Bool("all", false, "run all solutions")
 	}
 
-	rootCmd.Flags().Bool("svg", false, "output SVG")
-
-	rootCmd.AddCommand(y2021.New2021Command())
-
-	cobra.CheckErr(rootCmd.Execute())
+	return rootCmd
 }
 
 // RunRootCmd is the entry point for the CLI.
