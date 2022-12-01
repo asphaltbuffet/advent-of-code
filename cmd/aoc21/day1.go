@@ -12,7 +12,7 @@ func init() { //nolint:gochecknoinits // init needed to register command
 	NewDay1Command()
 }
 
-// NewDay1Command creates a new command for the 2021 day 1 exercise
+// NewDay1Command creates a new command for the 2021 day 1 exercise.
 func NewDay1Command() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "1",
