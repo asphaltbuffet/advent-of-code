@@ -113,3 +113,15 @@ func ConvertStringSliceToIntSlice(s []string) ([]int, error) {
 
 	return out, nil
 }
+
+// Map applies a function to each element of a slice.
+// ref: https://github.com/sa-/slicefunk/blob/66981647c9612b24c7030d60edcb1215e43c4467/main.go#L3
+func Map[T, U any](s []T, f func(T) U) []U {
+	modified := make([]U, len(s))
+
+	for i, v := range s {
+		modified[i] = f(v)
+	}
+
+	return modified
+}
