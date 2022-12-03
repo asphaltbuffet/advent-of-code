@@ -3,6 +3,7 @@ package aoc22
 import (
 	"fmt"
 	"strconv"
+	"strings"
 
 	"github.com/spf13/cobra"
 
@@ -57,7 +58,7 @@ func D3P1(data []string) string {
 	score := 0
 
 	for _, line := range data {
-		score += calcScore(line)
+		score += scoreMispacked(line)
 	}
 
 	return strconv.Itoa(score)
@@ -66,10 +67,16 @@ func D3P1(data []string) string {
 // D3P2 returns the solution for 2022 day 3 part 2
 // answer:
 func D3P2(data []string) string {
-	return "not implemented"
+	score := 0
+
+	for i := 0; i < len(data); i += 3 {
+		score += scoreBadges(data[i], data[i+1], data[i+2])
+	}
+
+	return strconv.Itoa(score)
 }
 
-func calcScore(line string) int {
+func scoreMispacked(line string) int {
 	compartmentOne := map[byte]bool{}
 
 	for i := 0; i < len(line)/2; i++ {
@@ -92,4 +99,16 @@ func calcScore(line string) int {
 	}
 
 	return priority
+}
+
+func scoreBadges(a, b, c string) int {
+	sharedItems := aoc.Unique([]byte(a))
+
+	sharedItems = aoc.Filter(sharedItems, func(item byte) bool {
+		return strings.Contains(b, string(item)) && strings.Contains(c, string(item))
+	})
+
+	// fmt.Printf("DEBUG: shared items: %s\n", sharedItems)
+
+	return priorityValue[sharedItems[0]]
 }

@@ -24,7 +24,14 @@ func Test_Day3(t *testing.T) {
 			"ttgJtRGJQctTZtZT",
 			"CrZsJsPPZsGzwwsLwLmpwMDw",
 		}, "157"},
-		// {"Part 2 Example", aoc22.D3P2, []string{"A Y", "B X", "C Z"}, "12"},
+		{"Part 2 Example", aoc22.D3P2, []string{
+			"vJrwpWtwJgWrhcsFMMfFFhFp",
+			"jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL",
+			"PmmdzqPrVvPwwTWBwg",
+			"wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn",
+			"ttgJtRGJQctTZtZT",
+			"CrZsJsPPZsGzwwsLwLmpwMDw",
+		}, "70"},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
