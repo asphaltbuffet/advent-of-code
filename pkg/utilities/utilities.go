@@ -44,10 +44,10 @@ func NewExercise(year, day string) (*Exercise, error) {
 		return nil, fmt.Errorf("reading problem input: %w", err)
 	}
 
-	partTwoInput, err := readInput(filepath.Clean(filepath.Join("inputs", year, fmt.Sprintf(partTwoInputFile, day))))
-	if err != nil {
-		return nil, fmt.Errorf("reading problem input: %w", err)
-	}
+	// partTwoInput, err := readInput(filepath.Clean(filepath.Join("inputs", year, fmt.Sprintf(partTwoInputFile, day))))
+	// if err != nil {
+	// 	return nil, fmt.Errorf("reading problem input: %w", err)
+	// }
 
 	return &Exercise{
 		Year: year,
@@ -57,16 +57,15 @@ func NewExercise(year, day string) (*Exercise, error) {
 			Input: partOneInput,
 		},
 		PartTwo: Data{
-			Input: partTwoInput,
+			Input: partOneInput,
 		},
 	}, nil
 }
 
 func checkForInputs(year, day string) error {
 	_, partOneInputErr := os.Stat(filepath.Clean(filepath.Join("inputs", year, fmt.Sprintf(partOneInputFile, day))))
-	_, partTwoInputErr := os.Stat(filepath.Clean(filepath.Join("inputs", year, fmt.Sprintf(partTwoInputFile, day))))
 
-	return multierr.Combine(partOneInputErr, partTwoInputErr)
+	return partOneInputErr
 }
 
 func readInput(f string) (s []string, err error) {
