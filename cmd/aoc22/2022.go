@@ -8,8 +8,8 @@ import (
 
 var yearCmd *cobra.Command
 
-// Get2021Command creates a new command for the 2021 year.
-func Get2021Command() *cobra.Command {
+// Get2022Command creates a new command for the 2021 year.
+func Get2022Command() *cobra.Command {
 	if yearCmd == nil {
 		yearCmd = &cobra.Command{
 			Use:   "2022",

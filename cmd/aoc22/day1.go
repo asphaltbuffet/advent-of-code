@@ -33,7 +33,7 @@ func NewDay1Command() *cobra.Command {
 		},
 	}
 
-	Get2021Command().AddCommand(cmd)
+	Get2022Command().AddCommand(cmd)
 
 	return cmd
 }
