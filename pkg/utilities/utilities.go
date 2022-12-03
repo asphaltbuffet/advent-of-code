@@ -28,8 +28,7 @@ type Exercise struct {
 }
 
 const (
-	partOneInputFile = "day-%s-part1.txt"
-	partTwoInputFile = "day-%s-part2.txt"
+	partOneInputFile = "day-%s.txt"
 )
 
 // NewExercise creates a new exercise for a given date.
@@ -43,11 +42,6 @@ func NewExercise(year, day string) (*Exercise, error) {
 	if err != nil {
 		return nil, fmt.Errorf("reading problem input: %w", err)
 	}
-
-	// partTwoInput, err := readInput(filepath.Clean(filepath.Join("inputs", year, fmt.Sprintf(partTwoInputFile, day))))
-	// if err != nil {
-	// 	return nil, fmt.Errorf("reading problem input: %w", err)
-	// }
 
 	return &Exercise{
 		Year: year,

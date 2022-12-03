@@ -56,14 +56,6 @@ var scores = map[string]int{
 	"C Z": 6, // SS: Draw (3 + 3)
 }
 
-type shape string
-
-const (
-	rock     shape = "X"
-	paper    shape = "Y"
-	scissors shape = "Z"
-)
-
 // X = Loss, Y = Draw, Z = Win
 var plays = map[string]string{
 	"A X": "A Z",
@@ -80,7 +72,7 @@ var plays = map[string]string{
 }
 
 // D2P1 returns the solution for 2021 day 2 part 1
-// answer:
+// answer: 11906
 func D2P1(data []string) string {
 	score := 0
 	for _, line := range data {
@@ -91,7 +83,7 @@ func D2P1(data []string) string {
 }
 
 // D2P2 returns the solution for 2021 day 2 part 2
-// answer: 1281977850
+// answer: 11186
 func D2P2(data []string) string {
 	score := 0
 
