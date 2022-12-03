@@ -38,7 +38,7 @@ linters:
     - gofumpt
     - goimports
     - revive
-    - gomnd
+    # - gomnd
     - goprintffuncname
     - gosec
     - gosimple
