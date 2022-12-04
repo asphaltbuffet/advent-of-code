@@ -41,7 +41,7 @@ func newDay2Command() *cobra.Command {
 }
 
 // X = 1, Y = 2, Z = 3
-// Loss = 0, Draw = 3, Win = 6
+// Loss = 0, Draw = 3, Win = 6.
 var scores = map[string]int{
 	"A X": 4, // RR: Draw (1 + 3)
 	"A Y": 8, // RP: Win (2 + 6)
@@ -56,7 +56,7 @@ var scores = map[string]int{
 	"C Z": 6, // SS: Draw (3 + 3)
 }
 
-// X = Loss, Y = Draw, Z = Win
+// X = Loss, Y = Draw, Z = Win.
 var plays = map[string]string{
 	"A X": "A Z",
 	"A Y": "A X",
