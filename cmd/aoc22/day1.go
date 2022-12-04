@@ -25,11 +25,15 @@ func NewDay1Command() *cobra.Command {
 				return
 			}
 
+			cmd.Printf("┌──────────────────┒\n")
+			cmd.Printf("│      Day %-2s      ┃\n", cmd.Name())
+			cmd.Printf("┕━━━━━━━━━━━━━━━━━━┛\n")
+
 			got := D1P1(d.PartOne.Input)
-			cmd.Printf("Day %s Part 1: %s\n", cmd.Name(), got)
+			cmd.Printf("Part 1: %s\n", got)
 
 			got = D1P2(d.PartTwo.Input)
-			cmd.Printf("Day %s Part 2: %s\n", cmd.Name(), got)
+			cmd.Printf("Part 2: %s\n", got)
 		},
 	}
 
