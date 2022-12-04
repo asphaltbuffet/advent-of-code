@@ -21,6 +21,7 @@ func Get2021Command() *cobra.Command {
 		}
 
 		cmd.GetRootCommand().AddCommand(yearCmd)
+		yearCmd.GroupID = "Years"
 	}
 
 	return yearCmd
