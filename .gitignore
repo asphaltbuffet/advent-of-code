@@ -23,6 +23,7 @@ dist/
 
 # Visual Studio Code files
 .vscode/*
+!.vscode/day-code.code-snippets
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
