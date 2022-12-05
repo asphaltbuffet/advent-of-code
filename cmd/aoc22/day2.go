@@ -3,6 +3,7 @@ package aoc22
 import (
 	"strconv"
 
+	"github.com/fatih/color"
 	"github.com/spf13/cobra"
 
 	aoc "github.com/asphaltbuffet/advent-of-code/pkg/utilities"
@@ -23,10 +24,13 @@ func newDay2Command() *cobra.Command {
 				return
 			}
 
+			color.Set(color.FgYellow)
+
 			cmd.Printf("┌──────────────────┒\n")
 			cmd.Printf("│      Day %-2s      ┃\n", cmd.Name())
 			cmd.Printf("┕━━━━━━━━━━━━━━━━━━┛\n")
 
+			color.Unset()
 			got := D2P1(d.PartOne.Input)
 			cmd.Printf("Part 1: %s\n", got)
 
@@ -36,6 +40,7 @@ func newDay2Command() *cobra.Command {
 	}
 
 	Get2022Command().AddCommand(cmd)
+	cmd.GroupID = "days"
 
 	return cmd
 }
