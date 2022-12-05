@@ -4,46 +4,11 @@ import (
 	"fmt"
 	"strconv"
 
-	"github.com/fatih/color"
-	"github.com/spf13/cobra"
-
-	aoc "github.com/asphaltbuffet/advent-of-code/pkg/utilities"
+	"github.com/asphaltbuffet/advent-of-code/internal/common"
 )
 
 func init() { //nolint:gochecknoinits // init needed to register command
-	newDay4Command()
-}
-
-func newDay4Command() *cobra.Command {
-	cmd := &cobra.Command{
-		Use:   "4",
-		Short: "day 4 exercise for 2022 AoC",
-		Run: func(cmd *cobra.Command, args []string) {
-			d, err := aoc.NewExercise(cmd.Parent().Name(), cmd.Name())
-			if err != nil {
-				return
-			}
-
-			color.Set(color.FgYellow)
-
-			cmd.Printf("┌──────────────────┒\n")
-			cmd.Printf("│      Day %-2s      ┃\n", cmd.Name())
-			cmd.Printf("┕━━━━━━━━━━━━━━━━━━┛\n")
-
-			color.Unset()
-
-			got := D4P1(d.PartOne.Input)
-			cmd.Printf("Part 1: %s\n", got)
-
-			got = D4P2(d.PartTwo.Input)
-			cmd.Printf("Part 2: %s\n", got)
-		},
-	}
-
-	Get2022Command().AddCommand(cmd)
-	cmd.GroupID = "days"
-
-	return cmd
+	common.NewDayCommand(2022, 4, D4P1, D4P2, Get2022Command())
 }
 
 // D4P1 returns the solution for 2022 day 4 part 1
