@@ -4,48 +4,11 @@ import (
 	"sort"
 	"strconv"
 
-	"github.com/fatih/color"
-	"github.com/spf13/cobra"
-
-	aoc "github.com/asphaltbuffet/advent-of-code/pkg/utilities"
+	"github.com/asphaltbuffet/advent-of-code/internal/common"
 )
 
 func init() { //nolint:gochecknoinits // init needed to register command
-	NewDay1Command()
-}
-
-// NewDay1Command creates a new command for the 2021 day 1 exercise.
-func NewDay1Command() *cobra.Command {
-	cmd := &cobra.Command{
-		Use:   "1",
-		Short: "day 1 exercises for 2022 AoC",
-		Run: func(cmd *cobra.Command, args []string) {
-			d, err := aoc.NewExercise(cmd.Parent().Name(), cmd.Name())
-			if err != nil {
-				cmd.PrintErrln(err)
-				return
-			}
-
-			color.Set(color.FgYellow)
-
-			cmd.Printf("┌──────────────────┒\n")
-			cmd.Printf("│      Day %-2s      ┃\n", cmd.Name())
-			cmd.Printf("┕━━━━━━━━━━━━━━━━━━┛\n")
-
-			color.Unset()
-
-			got := D1P1(d.PartOne.Input)
-			cmd.Printf("Part 1: %s\n", got)
-
-			got = D1P2(d.PartTwo.Input)
-			cmd.Printf("Part 2: %s\n", got)
-		},
-	}
-
-	Get2022Command().AddCommand(cmd)
-	cmd.GroupID = "days"
-
-	return cmd
+	common.NewDayCommand(2022, 1, D1P1, D1P2, Get2022Command())
 }
 
 // D1P1 returns the solution for 2022 day 1 part 1
@@ -72,7 +35,7 @@ func D1P1(data []string) string {
 }
 
 // D1P2 returns the solution for 2022 day 1 part 2
-// answer:
+// answer: 207148
 func D1P2(data []string) string {
 	sum := 0
 	calories := sort.IntSlice{}
