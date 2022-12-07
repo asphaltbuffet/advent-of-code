@@ -1,51 +1,15 @@
 package aoc22
 
 import (
-	"fmt"
 	"strconv"
 	"strings"
 
-	"github.com/fatih/color"
-	"github.com/spf13/cobra"
-
+	"github.com/asphaltbuffet/advent-of-code/internal/common"
 	aoc "github.com/asphaltbuffet/advent-of-code/pkg/utilities"
 )
 
 func init() { //nolint:gochecknoinits // init needed to register command
-	newDay3Command()
-}
-
-func newDay3Command() *cobra.Command {
-	cmd := &cobra.Command{
-		Use:   "3",
-		Short: "day 3 exercise for 2022 AoC",
-		Run: func(cmd *cobra.Command, args []string) {
-			d, err := aoc.NewExercise(cmd.Parent().Name(), cmd.Name())
-			if err != nil {
-				fmt.Printf("creating new exercise: %v\n", err)
-				return
-			}
-
-			color.Set(color.FgYellow)
-
-			cmd.Printf("┌──────────────────┒\n")
-			cmd.Printf("│      Day %-2s      ┃\n", cmd.Name())
-			cmd.Printf("┕━━━━━━━━━━━━━━━━━━┛\n")
-
-			color.Unset()
-
-			got := D3P1(d.PartOne.Input)
-			cmd.Printf("Part 1: %s\n", got)
-
-			got = D3P2(d.PartTwo.Input)
-			cmd.Printf("Part 2: %s\n", got)
-		},
-	}
-
-	Get2022Command().AddCommand(cmd)
-	cmd.GroupID = "days"
-
-	return cmd
+	common.NewDayCommand(2022, 3, D3P1, D3P2, Get2022Command())
 }
 
 var priorityValue = map[byte]int{
