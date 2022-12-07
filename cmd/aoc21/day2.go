@@ -5,47 +5,12 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/fatih/color"
-	"github.com/spf13/cobra"
-
+	"github.com/asphaltbuffet/advent-of-code/internal/common"
 	aoc "github.com/asphaltbuffet/advent-of-code/pkg/utilities"
 )
 
 func init() { //nolint:gochecknoinits // init needed to register command
-	newD2P1Command()
-}
-
-func newD2P1Command() *cobra.Command {
-	cmd := &cobra.Command{
-		Use:   "2",
-		Short: "day 2 exercise for 2021 AoC",
-		Run: func(cmd *cobra.Command, args []string) {
-			d, err := aoc.NewExercise(cmd.Parent().Name(), cmd.Name())
-			if err != nil {
-				cmd.PrintErrln(err)
-				return
-			}
-
-			color.Set(color.FgYellow)
-
-			cmd.Printf("┌──────────────────┒\n")
-			cmd.Printf("│      Day %-2s      ┃\n", cmd.Name())
-			cmd.Printf("┕━━━━━━━━━━━━━━━━━━┛\n")
-
-			color.Unset()
-
-			got := D2P1(d.PartOne.Input)
-			cmd.Printf("Part 1: %s\n", got)
-
-			got = D2P2(d.PartTwo.Input)
-			cmd.Printf("Part 2: %s\n", got)
-		},
-	}
-
-	Get2021Command().AddCommand(cmd)
-	cmd.GroupID = "days"
-
-	return cmd
+	common.NewDayCommand(2022, 5, D2P1, D2P1, Get2021Command())
 }
 
 type command struct {

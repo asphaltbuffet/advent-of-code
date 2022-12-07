@@ -3,48 +3,12 @@ package aoc21
 import (
 	"strconv"
 
-	"github.com/fatih/color"
-	"github.com/spf13/cobra"
-
+	"github.com/asphaltbuffet/advent-of-code/internal/common"
 	aoc "github.com/asphaltbuffet/advent-of-code/pkg/utilities"
 )
 
 func init() { //nolint:gochecknoinits // init needed to register command
-	NewDay1Command()
-}
-
-// NewDay1Command creates a new command for the 2021 day 1 exercise.
-func NewDay1Command() *cobra.Command {
-	cmd := &cobra.Command{
-		Use:   "1",
-		Short: "day 1 exercise for 2021 AoC",
-		Run: func(cmd *cobra.Command, args []string) {
-			d, err := aoc.NewExercise(cmd.Parent().Name(), cmd.Name())
-			if err != nil {
-				cmd.PrintErrln(err)
-				return
-			}
-
-			color.Set(color.FgYellow)
-
-			cmd.Printf("┌──────────────────┒\n")
-			cmd.Printf("│      Day %-2s      ┃\n", cmd.Name())
-			cmd.Printf("┕━━━━━━━━━━━━━━━━━━┛\n")
-
-			color.Unset()
-
-			got := Day1part1(d.PartOne.Input)
-			cmd.Printf("Part 1: %s\n", got)
-
-			got = Day1part2(d.PartTwo.Input)
-			cmd.Printf("Part 2: %s\n", got)
-		},
-	}
-
-	Get2021Command().AddCommand(cmd)
-	cmd.GroupID = "days"
-
-	return cmd
+	common.NewDayCommand(2021, 1, Day1part1, Day1part2, Get2021Command())
 }
 
 // Day1part1 returns the solution for 2021 day 1 part 1
