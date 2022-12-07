@@ -33,7 +33,7 @@ jobs:
       - name: Archive code coverage results
         uses: actions/upload-artifact@v3
         with:
-          name: code-coveraqe-report-${{ matrix.os }}
+          name: code-coverage-report-${{ matrix.os }}
           path: bin
 
       - name: Upload coverage to Codecov
