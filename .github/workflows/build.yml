@@ -33,7 +33,7 @@ jobs:
       - name: Archive code coverage results
         uses: actions/upload-artifact@v3
         with:
-          name: code-coveraqe-report
+          name: code-coverage-report-${{ matrix.os }}
           path: bin
 
       - name: Upload coverage to Codecov
@@ -55,7 +55,7 @@ jobs:
       - name: Download code coverage results
         uses: actions/download-artifact@v3
         with:
-          name: code-coverage-report
+          name: code-coverage-report-ubuntu-latest
           path: bin
 
       - name: Analyze with SonarCloud
