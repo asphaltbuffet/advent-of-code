@@ -20,6 +20,8 @@ require (
 require (
 	github.com/fatih/color v1.13.0
 	github.com/inconshreveable/mousetrap v1.0.1 // indirect
+	github.com/kylelemons/godebug v1.1.0
+	github.com/leanovate/gopter v0.2.9
 	github.com/spf13/pflag v1.0.5 // indirect
 	go.uber.org/multierr v1.8.0
 )
