@@ -42,8 +42,7 @@ func init() { //nolint:gochecknoinits // init needed to register command
 }
 
 // D8P1 returns the solution for 2022 day 8 part 1.
-// incorrect:
-// answer:
+// answer: 1805
 func D8P1(data []string) string {
 	dimX = len(data[0])
 	dimY = len(data)
@@ -249,7 +248,7 @@ func GetTreeMap(data []string) [][]int {
 }
 
 // D8P2 returns the solution for 2022 day 8 part 2.
-// answer:
+// answer: 444528
 func D8P2(data []string) string {
 	dimX = len(data[0])
 	dimY = len(data)
