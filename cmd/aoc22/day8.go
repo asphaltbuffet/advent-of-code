@@ -277,6 +277,7 @@ func D8P2(data []string) string {
 	return strconv.Itoa(maxScenicScore)
 }
 
+// CalculateScoreUp calculates the score for the tree at the given location.
 func CalculateScoreUp(h, r, c int, m [][]int) int {
 	switch {
 	case r == 0:
@@ -288,6 +289,7 @@ func CalculateScoreUp(h, r, c int, m [][]int) int {
 	}
 }
 
+// CalculateScoreDown calculates the score for the tree at the given location.
 func CalculateScoreDown(h, r, c int, m [][]int) int {
 	switch {
 	case r == dimY-1:
@@ -299,6 +301,7 @@ func CalculateScoreDown(h, r, c int, m [][]int) int {
 	}
 }
 
+// CalculateScoreLeft calculates the score for the tree at the given location.
 func CalculateScoreLeft(h, r, c int, m [][]int) int {
 	switch {
 	case c == 0:
@@ -310,6 +313,7 @@ func CalculateScoreLeft(h, r, c int, m [][]int) int {
 	}
 }
 
+// CalculateScoreRight calculates the score for the tree at the given location.
 func CalculateScoreRight(h, r, c int, m [][]int) int {
 	switch {
 	case c == dimX-1:

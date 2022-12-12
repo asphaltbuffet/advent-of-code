@@ -8,6 +8,8 @@ import (
 	"github.com/asphaltbuffet/advent-of-code/internal/common"
 )
 
+const debug bool = false
+
 func init() { //nolint:gochecknoinits // init needed to register command
 	common.NewDayCommand(2022, 9, D9P1, D9P2, Get2022Command())
 }
@@ -123,7 +125,9 @@ func D9P2(data []string) string {
 
 	// iterate over the data
 	for _, line := range data {
-		// fmt.Printf("\n== %s ==\n\n", line)
+		if debug {
+			fmt.Printf("\n== %s ==\n\n", line)
+		}
 
 		// get the direction and distance
 		direction, right, _ := strings.Cut(line, " ")
@@ -134,20 +138,7 @@ func D9P2(data []string) string {
 		}
 
 		// calculate the headMovement
-		var headMovement Point
-
-		switch direction {
-		case "U":
-			headMovement = Point{0, 1}
-		case "D":
-			headMovement = Point{0, -1}
-		case "L":
-			headMovement = Point{-1, 0}
-		case "R":
-			headMovement = Point{1, 0}
-		default:
-			panic("invalid direction")
-		}
+		headMovement := getMovement(direction)
 
 		// move the head
 		for i := 0; i < distance; i++ {
@@ -165,32 +156,61 @@ func D9P2(data []string) string {
 					visited[tailLocation[j]] = true
 				}
 
-				for _, t := range tailLocation {
-					if t.X < minX {
-						minX = t.X
-					}
-
-					if t.X > maxX {
-						maxX = t.X
-					}
-
-					if t.Y < minY {
-						minY = t.Y
-					}
-
-					if t.Y > maxY {
-						maxY = t.Y
-					}
+				if debug {
+					setDebugMinMax(tailLocation)
 				}
 			}
 
-			// fmt.Printf("head: %v, tail: %v\n", headLocation, tailLocation)
+			if debug {
+				fmt.Printf("head: %v, tail: %v\n", headLocation, tailLocation)
+			}
 		}
 
-		// PrintState(tailLocation)
+		if debug {
+			PrintState(tailLocation)
+		}
 	}
 
 	return strconv.Itoa(len(visited))
+}
+
+func setDebugMinMax(tailLocation []Point) {
+	for _, t := range tailLocation {
+		if t.X < minX {
+			minX = t.X
+		}
+
+		if t.X > maxX {
+			maxX = t.X
+		}
+
+		if t.Y < minY {
+			minY = t.Y
+		}
+
+		if t.Y > maxY {
+			maxY = t.Y
+		}
+	}
+}
+
+func getMovement(direction string) Point {
+	var headMovement Point
+
+	switch direction {
+	case "U":
+		headMovement = Point{0, 1}
+	case "D":
+		headMovement = Point{0, -1}
+	case "L":
+		headMovement = Point{-1, 0}
+	case "R":
+		headMovement = Point{1, 0}
+	default:
+		panic("invalid direction")
+	}
+
+	return headMovement
 }
 
 // PrintState prints the state of the grid.
