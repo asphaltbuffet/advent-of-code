@@ -18,7 +18,7 @@ func Test_Day1Part1(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got := aoc21.D2P1(tt.input)
+			got := aoc21.D1P1(tt.input)
 			assert.Equal(t, tt.want, got)
 		})
 	}
@@ -34,7 +34,7 @@ func Test_Day1Part2(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got := aoc21.D2P1(tt.input)
+			got := aoc21.D1P2(tt.input)
 			assert.Equal(t, tt.want, got)
 		})
 	}
