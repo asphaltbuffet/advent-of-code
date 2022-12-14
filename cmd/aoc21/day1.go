@@ -8,12 +8,12 @@ import (
 )
 
 func init() { //nolint:gochecknoinits // init needed to register command
-	common.NewDayCommand(2021, 1, Day1part1, Day1part2, Get2021Command())
+	common.NewDayCommand(2021, 1, D1P1, D1P2, Get2021Command())
 }
 
-// Day1part1 returns the solution for 2021 day 1 part 1
+// D1P1 returns the solution for 2021 day 1 part 1
 // answer: 1711
-func Day1part1(data []string) string {
+func D1P1(data []string) string {
 	formattedData, _ := aoc.ConvertStringSliceToIntSlice(data)
 	return strconv.Itoa(increasingCount(formattedData))
 }
@@ -34,9 +34,9 @@ func increasingCount(data []int) int {
 	return count
 }
 
-// Day1part2 returns the solution for 2021 day 1 part 2
+// D1P2 returns the solution for 2021 day 1 part 2
 // answer: 1743
-func Day1part2(data []string) string {
+func D1P2(data []string) string {
 	formattedData, _ := aoc.ConvertStringSliceToIntSlice(data)
 
 	w := []int{}
