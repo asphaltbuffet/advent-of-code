@@ -35,7 +35,15 @@ func Test_Day12Part2(t *testing.T) {
 		name  string
 		input []string
 		want  string
-	}{}
+	}{
+		{"Part 2 Example", []string{
+			"Sabqponm",
+			"abcryxxl",
+			"accszExk",
+			"acctuvwj",
+			"abdefghi",
+		}, "29"},
+	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			got := aoc22.D12P2(tt.input)
