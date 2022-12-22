@@ -3,6 +3,7 @@ package aoc22_14 //nolint:revive,stylecheck // I don't care about the package na
 import (
 	"errors"
 	"fmt"
+	"os"
 )
 
 var (
@@ -14,9 +15,9 @@ var (
 
 // AddRocks adds the rocks to the graph between the given points on each row.
 func (d *Day14) AddRocks(points [][]Point) error {
-	// d.MinX = points[0][0].X
-	// d.MaxX = points[0][0].X
-	// d.MaxY = points[0][0].Y
+	d.MinX = points[0][0].X
+	d.MaxX = points[0][0].X
+	d.MaxY = points[0][0].Y
 
 	for _, p := range points {
 		for i := 1; i < len(p); i++ {
@@ -55,7 +56,6 @@ func (d *Day14) BuildGraph(src Point) error {
 	}
 
 	if src.Y > d.MaxY { // may want to optimize by checking X as well
-		fmt.Printf("found bottom at %+v\n", src)
 		return ErrVoidPath
 	}
 
@@ -102,28 +102,61 @@ func (d *Day14) BuildGraph(src Point) error {
 
 // RenderGraph renders the graph in Graphviz format to a file.
 func (d *Day14) RenderGraph() {
-	fmt.Printf("environment size: %d x %d, min X: %d\n", d.MaxX, d.MaxY, d.MinX)
-	fmt.Printf("tiles: %+v\n", d.Tiles)
+	f, err := os.Create("graph.txt")
+	if err != nil {
+		panic(err)
+	}
+
+	defer func() {
+		if defErr := f.Close(); defErr != nil {
+			panic(defErr)
+		}
+	}()
 
 	for j := 0; j <= d.MaxY; j++ {
 		for i := d.MinX; i <= d.MaxX; i++ {
 			t := d.Tiles[Point{i, j}]
 			switch t.Type {
 			case Unknown:
-				fmt.Print(Air)
+				_, err = f.WriteString(string(Air) + " ")
+				if err != nil {
+					panic(err)
+				}
 			default:
-				fmt.Print(t.Type)
+				_, err = f.WriteString(string(t.Type) + " ")
+				if err != nil {
+					panic(err)
+				}
 			}
 		}
 
-		fmt.Println()
+		// fmt.Println()
+		_, err = f.WriteString("\n")
+		if err != nil {
+			panic(err)
+		}
 	}
 }
 
 // BuildGraphWithFloor generates the possible paths of sand falling through environment with a floor.
 func (d *Day14) BuildGraphWithFloor(src Point) error {
-	if _, found := d.Tiles[src]; found || src.Y > d.MaxY {
+	if _, found := d.Tiles[src]; found {
 		// we've already been here, go back.
+		return nil
+	}
+
+	if src.Y == d.MaxY {
+		// we've reached the bottom, add this tile to the graph.
+		d.Tiles[src] = Tile{Coord: src, Type: Rock}
+
+		if src.X > d.MaxX {
+			d.MaxX = src.X
+		}
+
+		if src.X < d.MinX {
+			d.MinX = src.X
+		}
+
 		return nil
 	}
 

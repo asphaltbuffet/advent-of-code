@@ -18,7 +18,7 @@ type Content string
 const (
 	Unknown Content = ""
 	Air     Content = "·"
-	Rock    Content = "#"
+	Rock    Content = "*"
 	Source  Content = "+"
 	Sand    Content = "o"
 )
