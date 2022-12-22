@@ -13,7 +13,7 @@ var (
 	dayGroup *cobra.Group
 )
 
-// Get2022Command creates a new command for the 2021 year.
+// Get2022Command creates a new command for the 2022 year.
 func Get2022Command() *cobra.Command {
 	if yearCmd == nil {
 		yearCmd = &cobra.Command{
