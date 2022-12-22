@@ -81,9 +81,9 @@ func ProcessInput(data []string) ([][]Point, error) {
 func D14P2(data []string) string {
 	day14 := Day14{
 		Tiles: make(map[Point]Tile, 0),
-		MinX:  450,
-		MaxX:  550,
-		MaxY:  167, // this is
+		MinX:  0,
+		MaxX:  0,
+		MaxY:  0,
 	}
 
 	rocks, err := InputToPoints(data)
@@ -97,12 +97,14 @@ func D14P2(data []string) string {
 		fmt.Printf("ERROR: adding rocks: %v", err)
 	}
 
+	// increase max Y to account for the floor
+	day14.MaxY += 2
+
 	err = day14.BuildGraphWithFloor(root.Coord)
 	if err != nil {
 		switch err {
-		case ErrVoidPath:
-			// we've reached the bottom, that's fine
-			fmt.Println("simulation complete")
+		case ErrVoidPath: // we've reached the bottom, that's fine
+
 		default:
 			fmt.Printf("ERROR: building graph: %v\n", err)
 		}
