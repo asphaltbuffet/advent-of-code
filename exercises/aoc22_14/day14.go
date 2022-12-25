@@ -52,7 +52,7 @@ func D14P1(data []string) string {
 		}
 	}
 
-	day14.RenderGraph()
+	// day14.RenderGraph()
 
 	count := 0
 
@@ -110,7 +110,7 @@ func D14P2(data []string) string {
 		}
 	}
 
-	day14.RenderGraph()
+	// day14.RenderGraph()
 
 	count := 0
 
