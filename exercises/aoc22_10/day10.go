@@ -203,7 +203,7 @@ func D10P2(data []string) string {
 func (d *Day10) Draw() string {
 	const (
 		Lit  string = "#"
-		Dark string = " "
+		Dark string = "."
 	)
 
 	sb := strings.Builder{}
@@ -211,7 +211,7 @@ func (d *Day10) Draw() string {
 
 	x := 1
 
-	for c := 1; c < 240; c++ {
+	for c := 1; c <= 240; c++ {
 		hpos := c % 40
 		x += d.X[c]
 
