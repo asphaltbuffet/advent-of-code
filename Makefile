@@ -1,9 +1,13 @@
 SHELL := /bin/bash
 
-.DEFAULT_GOAL := all
+.DEFAULT_GOAL := dev
 .PHONY: all
 all: ## build pipeline
 all: mod inst gen build spell lint test
+
+.PHONY: dev
+dev: ## dev build - no tools adjustments
+dev: gen build spell lint test
 
 .PHONY: ci
 ci: ## CI build pipeline
@@ -65,7 +69,6 @@ diff: ## git diff
 	$(call print-target)
 	git diff --exit-code
 	RES=$$(git status --porcelain) ; if [ -n "$$RES" ]; then echo $$RES && exit 1 ; fi
-
 
 define print-target
     @printf "Executing target: \033[36m$@\033[0m\n"
