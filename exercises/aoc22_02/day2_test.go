@@ -1,11 +1,11 @@
-package aoc22_test
+package aoc22_02_test
 
 import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
 
-	"github.com/asphaltbuffet/advent-of-code/cmd/aoc22"
+	"github.com/asphaltbuffet/advent-of-code/exercises/aoc22_02"
 	aoc "github.com/asphaltbuffet/advent-of-code/pkg/utilities"
 )
 
@@ -16,8 +16,8 @@ func Test_Day2(t *testing.T) {
 		input []string
 		want  string
 	}{
-		{"2022-2a Example", aoc22.D2P1, []string{"A Y", "B X", "C Z"}, "15"},
-		{"2022-2a Example", aoc22.D2P2, []string{"A Y", "B X", "C Z"}, "12"},
+		{"2022-2a Example", aoc22_02.D2P1, []string{"A Y", "B X", "C Z"}, "15"},
+		{"2022-2a Example", aoc22_02.D2P2, []string{"A Y", "B X", "C Z"}, "12"},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
