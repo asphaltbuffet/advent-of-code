@@ -1,11 +1,11 @@
-package aoc22_test
+package aoc22_09_test
 
 import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
 
-	"github.com/asphaltbuffet/advent-of-code/cmd/aoc22"
+	"github.com/asphaltbuffet/advent-of-code/exercises/aoc22_09"
 )
 
 func Test_Day9Part1(t *testing.T) {
@@ -27,7 +27,7 @@ func Test_Day9Part1(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got := aoc22.D9P1(tt.input)
+			got := aoc22_09.D9P1(tt.input)
 			assert.Equal(t, tt.want, got)
 		})
 	}
@@ -62,7 +62,7 @@ func Test_Day9Part2(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got := aoc22.D9P2(tt.input)
+			got := aoc22_09.D9P2(tt.input)
 			assert.Equal(t, tt.want, got)
 		})
 	}
@@ -70,26 +70,26 @@ func Test_Day9Part2(t *testing.T) {
 
 func Test_CalculateMovement(t *testing.T) {
 	type args struct {
-		h, t aoc22.Point
+		h, t aoc22_09.Point
 	}
 
 	tests := []struct {
 		name string
 		args args
-		want aoc22.Point
+		want aoc22_09.Point
 	}{
-		{"Same points", args{aoc22.Point{X: 1, Y: 1}, aoc22.Point{X: 1, Y: 1}}, aoc22.Point{X: 0, Y: 0}},
-		{"Diagonal", args{aoc22.Point{X: 4, Y: 1}, aoc22.Point{X: 3, Y: 0}}, aoc22.Point{X: 0, Y: 0}},
-		{"Right", args{aoc22.Point{X: 2, Y: 2}, aoc22.Point{X: 0, Y: 2}}, aoc22.Point{X: 1, Y: 0}},
-		{"Left", args{aoc22.Point{X: 2, Y: 2}, aoc22.Point{X: 4, Y: 2}}, aoc22.Point{X: -1, Y: 0}},
-		{"Up", args{aoc22.Point{X: 4, Y: 3}, aoc22.Point{X: 4, Y: 1}}, aoc22.Point{X: 0, Y: 1}},
-		{"Down", args{aoc22.Point{X: 4, Y: 3}, aoc22.Point{X: 4, Y: 5}}, aoc22.Point{X: 0, Y: -1}},
-		{"Up and Right", args{aoc22.Point{X: 4, Y: 2}, aoc22.Point{X: 3, Y: 0}}, aoc22.Point{X: 1, Y: 1}},
-		{"Down and Right", args{aoc22.Point{X: 4, Y: 0}, aoc22.Point{X: 2, Y: 1}}, aoc22.Point{X: 1, Y: -1}},
+		{"Same points", args{aoc22_09.Point{X: 1, Y: 1}, aoc22_09.Point{X: 1, Y: 1}}, aoc22_09.Point{X: 0, Y: 0}},
+		{"Diagonal", args{aoc22_09.Point{X: 4, Y: 1}, aoc22_09.Point{X: 3, Y: 0}}, aoc22_09.Point{X: 0, Y: 0}},
+		{"Right", args{aoc22_09.Point{X: 2, Y: 2}, aoc22_09.Point{X: 0, Y: 2}}, aoc22_09.Point{X: 1, Y: 0}},
+		{"Left", args{aoc22_09.Point{X: 2, Y: 2}, aoc22_09.Point{X: 4, Y: 2}}, aoc22_09.Point{X: -1, Y: 0}},
+		{"Up", args{aoc22_09.Point{X: 4, Y: 3}, aoc22_09.Point{X: 4, Y: 1}}, aoc22_09.Point{X: 0, Y: 1}},
+		{"Down", args{aoc22_09.Point{X: 4, Y: 3}, aoc22_09.Point{X: 4, Y: 5}}, aoc22_09.Point{X: 0, Y: -1}},
+		{"Up and Right", args{aoc22_09.Point{X: 4, Y: 2}, aoc22_09.Point{X: 3, Y: 0}}, aoc22_09.Point{X: 1, Y: 1}},
+		{"Down and Right", args{aoc22_09.Point{X: 4, Y: 0}, aoc22_09.Point{X: 2, Y: 1}}, aoc22_09.Point{X: 1, Y: -1}},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got := aoc22.CalculateMovement(tt.args.h, tt.args.t)
+			got := aoc22_09.CalculateMovement(tt.args.h, tt.args.t)
 			assert.Equal(t, tt.want, got)
 		})
 	}
