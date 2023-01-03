@@ -1,11 +1,11 @@
-package aoc22_test
+package aoc22_08_test
 
 import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
 
-	"github.com/asphaltbuffet/advent-of-code/cmd/aoc22"
+	"github.com/asphaltbuffet/advent-of-code/exercises/aoc22_08"
 )
 
 func Test_Day8Part1(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_Day8Part1(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got := aoc22.D8P1(tt.input)
+			got := aoc22_08.D8P1(tt.input)
 			assert.Equal(t, tt.want, got)
 		})
 	}
@@ -46,7 +46,7 @@ func Test_Day8Part2(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got := aoc22.D8P2(tt.input)
+			got := aoc22_08.D8P2(tt.input)
 			assert.Equal(t, tt.want, got)
 		})
 	}
