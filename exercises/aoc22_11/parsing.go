@@ -1,4 +1,4 @@
-package aoc22_11
+package aoc22_11 //nolint:revive,stylecheck // I don't care about the package name
 
 import (
 	"fmt"
@@ -11,11 +11,12 @@ import (
 // Read monkeys into structs
 // - starting items
 // - operation
-// - test + monkey targets
+// - test + monkey targets.
 func (d *Day11) ParseInput(data []string) error {
 	return nil
 }
 
+// ParseMonkey parses a single monkey.
 func ParseMonkey(m []string) error {
 	if len(m) != 6 {
 		return fmt.Errorf("invalid number of input lines: %d", len(m))
