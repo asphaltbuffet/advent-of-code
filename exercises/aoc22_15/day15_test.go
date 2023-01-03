@@ -1,14 +1,14 @@
-package aoc22_13_test
+package aoc22_15_test
 
 import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
 
-	"github.com/asphaltbuffet/advent-of-code/exercises/aoc22_13"
+	"github.com/asphaltbuffet/advent-of-code/exercises/aoc22_15"
 )
 
-func Test_Day13Part1(t *testing.T) {
+func Test_Day15Part1(t *testing.T) {
 	tests := []struct {
 		name  string
 		input []string
@@ -21,13 +21,13 @@ func Test_Day13Part1(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got := aoc22_13.D13P1(tt.input)
+			got := aoc22_15.D15P1(tt.input)
 			assert.Equal(t, tt.want, got)
 		})
 	}
 }
 
-func Test_Day13Part2(t *testing.T) {
+func Test_Day15Part2(t *testing.T) {
 	tests := []struct {
 		name  string
 		input []string
@@ -40,7 +40,7 @@ func Test_Day13Part2(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got := aoc22_13.D13P2(tt.input)
+			got := aoc22_15.D15P2(tt.input)
 			assert.Equal(t, tt.want, got)
 		})
 	}
