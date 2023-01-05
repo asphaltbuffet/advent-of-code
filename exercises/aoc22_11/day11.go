@@ -83,7 +83,6 @@ func D11P2(data []string) string {
 	// Process 10,000 rounds
 	for i := 0; i < 10000; i++ {
 		// log.Printf("Round %d", i)
-
 		err = d.ProcessRoundPart2()
 		if err != nil {
 			return fmt.Sprintf("ERROR: processing round %d: %v", i+1, err)
