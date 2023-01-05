@@ -31,7 +31,7 @@ type Day11 struct {
 //
 // https://adventofcode.com/2022/day/11
 //
-// answer:
+// answer: 151312
 func D11P1(data []string) string {
 	d := Day11{
 		Monkeys: []*Monkey{},
@@ -67,7 +67,7 @@ func D11P1(data []string) string {
 }
 
 // D11P2 returns the solution for 2022 day 11 part 2.
-// answer:
+// answer: 51382025916
 func D11P2(data []string) string {
 	d := Day11{
 		Monkeys: []*Monkey{},
