@@ -1,11 +1,11 @@
-package aoc22_test
+package aoc22_05_test
 
 import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
 
-	"github.com/asphaltbuffet/advent-of-code/cmd/aoc22"
+	"github.com/asphaltbuffet/advent-of-code/exercises/aoc22_05"
 	"github.com/asphaltbuffet/advent-of-code/internal/common"
 )
 
@@ -16,7 +16,7 @@ func Test_Day5(t *testing.T) {
 		input []string
 		want  string
 	}{
-		{"No Change - Single", aoc22.D5P1, []string{
+		{"No Change - Single", aoc22_05.D5P1, []string{
 			"    [D]    ",
 			"[N] [C]    ",
 			"[Z] [M] [P]",
@@ -25,7 +25,7 @@ func Test_Day5(t *testing.T) {
 			"move 1 from 2 to 1",
 			"move 1 from 1 to 2",
 		}, "NDP"},
-		{"No Change - Bulk", aoc22.D5P2, []string{
+		{"No Change - Bulk", aoc22_05.D5P2, []string{
 			"    [D]    ",
 			"[N] [C]    ",
 			"[Z] [M] [P]",
@@ -34,7 +34,7 @@ func Test_Day5(t *testing.T) {
 			"move 2 from 2 to 1",
 			"move 2 from 1 to 2",
 		}, "NDP"},
-		{"One Change - Single", aoc22.D5P1, []string{
+		{"One Change - Single", aoc22_05.D5P1, []string{
 			"    [D]    ",
 			"[N] [C]    ",
 			"[Z] [M] [P]",
@@ -42,7 +42,7 @@ func Test_Day5(t *testing.T) {
 			"",
 			"move 1 from 2 to 1",
 		}, "DCP"},
-		{"One Change - Bulk", aoc22.D5P2, []string{
+		{"One Change - Bulk", aoc22_05.D5P2, []string{
 			"    [D]    ",
 			"[N] [C]    ",
 			"[Z] [M] [P]",
@@ -50,7 +50,7 @@ func Test_Day5(t *testing.T) {
 			"",
 			"move 2 from 2 to 1",
 		}, "DMP"},
-		{"Part 1 Example", aoc22.D5P1, []string{
+		{"Part 1 Example", aoc22_05.D5P1, []string{
 			//                                    Z |     Z |     Z
 			"    [D]    ", //   D   | D     |     N |     N |     N
 			"[N] [C]    ", // N C   | N C   |   C D | M   D |     D
@@ -62,7 +62,7 @@ func Test_Day5(t *testing.T) {
 			"move 2 from 2 to 1",
 			"move 1 from 1 to 2",
 		}, "CMZ"},
-		{"Part 2 Example", aoc22.D5P2, []string{
+		{"Part 2 Example", aoc22_05.D5P2, []string{
 			//                                    D |     D |     D
 			"    [D]    ", //   D   | D     |     N |     N |     N
 			"[N] [C]    ", // N C   | N C   |   C Z | C   Z |     Z
@@ -110,7 +110,7 @@ func Test_GetMovementSectionLine(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got := aoc22.GetMovementSectionLine(tt.input)
+			got := aoc22_05.GetMovementSectionLine(tt.input)
 			assert.Equal(t, tt.want, got)
 		})
 	}
@@ -129,7 +129,7 @@ func Test_GetNumberOfStacks(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got := aoc22.GetNumberOfStacks(tt.input)
+			got := aoc22_05.GetNumberOfStacks(tt.input)
 			assert.Equal(t, tt.want, got)
 		})
 	}
@@ -165,7 +165,7 @@ func Test_ParseStack(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got := aoc22.ParseStack(tt.args.input, tt.args.stacks)
+			got := aoc22_05.ParseStack(tt.args.input, tt.args.stacks)
 			assert.Equal(t, tt.want, got)
 		})
 	}

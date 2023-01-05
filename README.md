@@ -1,4 +1,5 @@
 # advent-of-code
+
 Collecting solutions to Advent-of-Code exercises.
 
 [![Go Reference](https://pkg.go.dev/badge/github.com/asphaltbuffet/advent-of-code.svg)](https://pkg.go.dev/github.com/asphaltbuffet/advent-of-code)

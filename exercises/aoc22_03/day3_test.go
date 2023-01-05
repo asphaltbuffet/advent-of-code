@@ -1,11 +1,11 @@
-package aoc22_test
+package aoc22_03_test
 
 import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
 
-	"github.com/asphaltbuffet/advent-of-code/cmd/aoc22"
+	"github.com/asphaltbuffet/advent-of-code/exercises/aoc22_03"
 	aoc "github.com/asphaltbuffet/advent-of-code/pkg/utilities"
 )
 
@@ -16,7 +16,7 @@ func Test_Day3(t *testing.T) {
 		input []string
 		want  string
 	}{
-		{"Part 1 Example", aoc22.D3P1, []string{
+		{"Part 1 Example", aoc22_03.D3P1, []string{
 			"vJrwpWtwJgWrhcsFMMfFFhFp",
 			"jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL",
 			"PmmdzqPrVvPwwTWBwg",
@@ -24,7 +24,7 @@ func Test_Day3(t *testing.T) {
 			"ttgJtRGJQctTZtZT",
 			"CrZsJsPPZsGzwwsLwLmpwMDw",
 		}, "157"},
-		{"Part 2 Example", aoc22.D3P2, []string{
+		{"Part 2 Example", aoc22_03.D3P2, []string{
 			"vJrwpWtwJgWrhcsFMMfFFhFp",
 			"jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL",
 			"PmmdzqPrVvPwwTWBwg",

@@ -1,11 +1,11 @@
-package aoc22_test
+package aoc22_07_test
 
 import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
 
-	"github.com/asphaltbuffet/advent-of-code/cmd/aoc22"
+	"github.com/asphaltbuffet/advent-of-code/exercises/aoc22_07"
 )
 
 func Test_Day7Part1(t *testing.T) {
@@ -67,7 +67,7 @@ func Test_Day7Part1(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got := aoc22.D7P1(tt.input)
+			got := aoc22_07.D7P1(tt.input)
 			assert.Equal(t, tt.want, got)
 		})
 	}
@@ -107,7 +107,7 @@ func Test_Day7Part2(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got := aoc22.D7P2(tt.input)
+			got := aoc22_07.D7P2(tt.input)
 			assert.Equal(t, tt.want, got)
 		})
 	}
@@ -145,7 +145,7 @@ func Test_SumSizes(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got := aoc22.SumSizes(tt.input)
+			got := aoc22_07.SumSizes(tt.input)
 			assert.Equal(t, tt.want, got)
 		})
 	}
