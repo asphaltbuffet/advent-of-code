@@ -14,10 +14,10 @@ func Test_Day23Part1(t *testing.T) {
 		input []string
 		want  string
 	}{
-		{"Part 1 Example", []string{
-			"input",
-			"strings",
-		}, "answer"},
+		// {"Part 1 Example", []string{
+		// 	"input",
+		// 	"strings",
+		// }, "answer"},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -33,10 +33,10 @@ func Test_Day23Part2(t *testing.T) {
 		input []string
 		want  string
 	}{
-		{"Part 2 Example", []string{
-			"input",
-			"strings",
-		}, "answer"},
+		// {"Part 2 Example", []string{
+		// 	"input",
+		// 	"strings",
+		// }, "answer"},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
