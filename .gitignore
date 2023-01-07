@@ -11,6 +11,9 @@
 # Test binary, built with `go test -c`
 *.test
 
+# Testing data, especially any fuzzing corpus
+testdata/
+
 # Output of the go coverage tool, specifically when used with LiteIDE
 *.out
 coverage.html
