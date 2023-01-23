@@ -18,7 +18,7 @@ require (
 )
 
 require (
-	github.com/dominikbraun/graph v0.15.0
+	github.com/dominikbraun/graph v0.15.1
 	github.com/fatih/color v1.13.0
 	github.com/inconshreveable/mousetrap v1.0.1 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
