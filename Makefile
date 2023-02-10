@@ -61,7 +61,7 @@ lint: ## golangci-lint
 test: ## go test
 	$(call print-target)
 	mkdir -p bin || true
-	go-acc -o bin/coverage.out ./...
+	go test -race -covermode=atomic -coverprofile=bin/coverage.out ./...
 	go tool cover -html=bin/coverage.out -o bin/coverage.html
 
 .PHONY: diff
