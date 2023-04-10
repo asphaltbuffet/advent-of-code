@@ -3,7 +3,7 @@ module github.com/asphaltbuffet/advent-of-code
 go 1.19
 
 require (
-	github.com/spf13/cobra v1.6.1
+	github.com/spf13/cobra v1.7.0
 	github.com/stretchr/testify v1.8.2
 )
 
@@ -19,7 +19,7 @@ require (
 require (
 	github.com/dominikbraun/graph v0.16.1
 	github.com/fatih/color v1.15.0
-	github.com/inconshreveable/mousetrap v1.0.1 // indirect
+	github.com/inconshreveable/mousetrap v1.1.0 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
 	go.uber.org/multierr v1.10.0
 )
