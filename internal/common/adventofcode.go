@@ -1,9 +1,24 @@
 package common
 
 import (
+	"errors"
 	"fmt"
 	"path/filepath"
 )
+
+type BaseExercise struct{}
+
+func (c BaseExercise) One(instr string) (interface{}, error) {
+	return nil, errors.New("not implemented")
+}
+
+func (c BaseExercise) Two(instr string) (interface{}, error) {
+	return nil, errors.New("not implemented")
+}
+
+func (c BaseExercise) Vis(instr string, outdir string) error {
+	return errors.New("not implemented")
+}
 
 // ExerciseFunc is a function that solves an exercise.
 type ExerciseFunc func([]string) string
@@ -32,7 +47,7 @@ func NewExercise(year, day string) (*Exercise, error) {
 		return nil, fmt.Errorf("checking for input files: %w", err)
 	}
 
-	partOneInput, err := readInput(filepath.Clean(filepath.Join("inputs", year, fmt.Sprintf(partOneInputFile, day))))
+	partOneInput, err := ReadInput(filepath.Clean(filepath.Join("inputs", year, fmt.Sprintf(partOneInputFile, day))))
 	if err != nil {
 		return nil, fmt.Errorf("reading problem input: %w", err)
 	}
