@@ -1,0 +1,15 @@
+{
+  "day": 5,
+  "dir": "exercises/2022/05-supplyStacks",
+  "implementations": {
+    "Golang": {
+      "part.1.avg": 0.0010302330000000008,
+      "part.1.max": 0.0036043,
+      "part.1.min": 0.0005507,
+      "part.2.avg": 0.0010198472999999996,
+      "part.2.max": 0.0036738,
+      "part.2.min": 0.0005485
+    }
+  },
+  "numRuns": 1000
+}
