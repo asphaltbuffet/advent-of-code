@@ -1,0 +1,15 @@
+{
+  "day": 2,
+  "dir": "exercises/2021/02-dive",
+  "implementations": {
+    "Golang": {
+      "part.1.avg": 0.00009102880000000015,
+      "part.1.max": 0.0016185,
+      "part.1.min": 0.0000349,
+      "part.2.avg": 0.0000888562999999999,
+      "part.2.max": 0.0014228,
+      "part.2.min": 0.0000342
+    }
+  },
+  "numRuns": 1000
+}
