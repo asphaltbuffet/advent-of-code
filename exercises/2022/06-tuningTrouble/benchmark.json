@@ -1,0 +1,15 @@
+{
+  "day": 6,
+  "dir": "exercises/2022/06-tuningTrouble",
+  "implementations": {
+    "Golang": {
+      "part.1.avg": 0.0003755202000000003,
+      "part.1.max": 0.0015367,
+      "part.1.min": 0.0002206,
+      "part.2.avg": 0.003402244000000002,
+      "part.2.max": 0.0163829,
+      "part.2.min": 0.0020118
+    }
+  },
+  "numRuns": 1000
+}
