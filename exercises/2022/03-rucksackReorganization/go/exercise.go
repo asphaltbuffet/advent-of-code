@@ -1,10 +1,9 @@
-// Package aoc22_03 contains the solution for day 3 of Advent of Code 2022.
-package aoc22_03 //nolint:revive,stylecheck // I don't care about the package name
+package exercises
 
 import (
-	"strconv"
 	"strings"
 
+	"github.com/asphaltbuffet/advent-of-code/internal/common"
 	aoc "github.com/asphaltbuffet/advent-of-code/pkg/utilities"
 )
 
@@ -18,28 +17,35 @@ var priorityValue = map[byte]int{
 	'U': 47, 'V': 48, 'W': 49, 'X': 50, 'Y': 51, 'Z': 52,
 }
 
-// D3P1 returns the solution for 2022 day 3 part 1
-// answer:
-func D3P1(data []string) string {
+// Exercise for Advent of Code 2022 day 3
+type Exercise struct {
+	common.BaseExercise
+}
+
+// One returns the answer to the first part of the exercise.
+func (c Exercise) One(instr string) (any, error) {
 	score := 0
 
-	for _, line := range data {
+	for _, line := range strings.Split(instr, "\n") {
 		score += scoreMispacked(line)
 	}
 
-	return strconv.Itoa(score)
+	return score, nil
 }
 
-// D3P2 returns the solution for 2022 day 3 part 2
-// answer:
-func D3P2(data []string) string {
+// Two returns the answer to the second part of the exercise.
+func (c Exercise) Two(instr string) (any, error) {
+	var data []string
+
+	data = append(data, strings.Split(instr, "\n")...)
+
 	score := 0
 
 	for i := 0; i < len(data); i += 3 {
 		score += scoreBadges(data[i], data[i+1], data[i+2])
 	}
 
-	return strconv.Itoa(score)
+	return score, nil
 }
 
 func scoreMispacked(line string) int {
@@ -48,9 +54,6 @@ func scoreMispacked(line string) int {
 	for i := 0; i < len(line)/2; i++ {
 		compartmentOne[line[i]] = true
 	}
-
-	// fmt.Printf("compartmentOne: %s\n", line[:len(line)/2])
-	// fmt.Printf("compartmentTwo: %s\n", line[len(line)/2:])
 
 	priority := 0
 
