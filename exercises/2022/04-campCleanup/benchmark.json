@@ -1,0 +1,15 @@
+{
+  "day": 4,
+  "dir": "exercises/2022/04-campCleanup",
+  "implementations": {
+    "Golang": {
+      "part.1.avg": 0.0016657775999999987,
+      "part.1.max": 0.0105486,
+      "part.1.min": 0.0009368,
+      "part.2.avg": 0.0016699939999999984,
+      "part.2.max": 0.0078449,
+      "part.2.min": 0.0009315
+    }
+  },
+  "numRuns": 1000
+}
