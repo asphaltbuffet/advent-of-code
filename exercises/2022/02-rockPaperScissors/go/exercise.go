@@ -1,8 +1,9 @@
-// Package aoc22_02 contains the solution for day 2 of Advent of Code 2022.
-package aoc22_02 //nolint:revive,stylecheck // I don't care about the package name
+package exercises
 
 import (
-	"strconv"
+	"strings"
+
+	"github.com/asphaltbuffet/advent-of-code/internal/common"
 )
 
 // X = 1, Y = 2, Z = 3
@@ -36,25 +37,29 @@ var plays = map[string]string{
 	"C Z": "C X",
 }
 
-// D2P1 returns the solution for 2021 day 2 part 1
-// answer: 11906
-func D2P1(data []string) string {
+// Exercise for Advent of Code 2022 day 2
+type Exercise struct {
+	common.BaseExercise
+}
+
+// One returns the answer to the first part of the exercise. // answer: 11906
+func (c Exercise) One(instr string) (any, error) {
 	score := 0
-	for _, line := range data {
+
+	for _, line := range strings.Split(instr, "\n") {
 		score += scores[line]
 	}
 
-	return strconv.Itoa(score)
+	return score, nil
 }
 
-// D2P2 returns the solution for 2021 day 2 part 2
-// answer: 11186
-func D2P2(data []string) string {
+// Two returns the answer to the second part of the exercise. // answer: 11186
+func (c Exercise) Two(instr string) (any, error) {
 	score := 0
 
-	for _, line := range data {
+	for _, line := range strings.Split(instr, "\n") {
 		score += scores[plays[line]]
 	}
 
-	return strconv.Itoa(score)
+	return score, nil
 }

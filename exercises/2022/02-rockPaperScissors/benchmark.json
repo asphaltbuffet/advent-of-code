@@ -1,0 +1,15 @@
+{
+  "day": 2,
+  "dir": "exercises/2022/02-rockPaperScissors",
+  "implementations": {
+    "Golang": {
+      "part.1.avg": 0.00015031709999999984,
+      "part.1.max": 0.001033,
+      "part.1.min": 0.0000694,
+      "part.2.avg": 0.00021273219999999991,
+      "part.2.max": 0.0019896,
+      "part.2.min": 0.0000979
+    }
+  },
+  "numRuns": 1000
+}
