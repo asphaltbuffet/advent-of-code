@@ -1,21 +1,15 @@
 SHELL := /bin/bash
 
-.DEFAULT_GOAL := dev
-.PHONY: all
-all: ## build pipeline
-all: mod inst gen build spell lint test
-
-.PHONY: dev
-dev: ## dev build - no tools adjustments
-dev: gen build spell lint test
-
-.PHONY: ci
-ci: ## CI build pipeline
-ci: all diff
+.DEFAULT_GOAL := run
 
 .PHONY: help
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
+
+.PHONY: run
+run: ## run the application
+	$(call print-target)
+	go run .
 
 .PHONY: clean
 clean: ## remove files created during build pipeline
@@ -29,40 +23,11 @@ clean: ## remove files created during build pipeline
 mod: ## go mod tidy
 	$(call print-target)
 	go mod tidy
-	cd tools && go mod tidy
-
-.PHONY: inst
-inst: ## go install tools
-	$(call print-target)
-	cd tools && go install $(shell cd tools && go list -f '{{ join .Imports " " }}' -tags=tools)
-
-.PHONY: gen
-gen: ## go generate
-	$(call print-target)
-	go generate ./...
-
-.PHONY: build
-build: ## goreleaser build
-build:
-	$(call print-target)
-	goreleaser build --rm-dist --single-target --snapshot
 
 .PHONY: spell
 spell: ## misspell
 	$(call print-target)
 	misspell -error -locale=US -w **.md
-
-.PHONY: lint
-lint: ## golangci-lint
-	$(call print-target)
-	golangci-lint run --fix
-
-.PHONY: test
-test: ## go test
-	$(call print-target)
-	mkdir -p bin || true
-	go test -race -covermode=atomic -coverprofile=bin/coverage.out ./...
-	go tool cover -html=bin/coverage.out -o bin/coverage.html
 
 .PHONY: diff
 diff: ## git diff
