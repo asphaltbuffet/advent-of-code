@@ -1,10 +1,11 @@
-// Package aoc22_07 contains the solution for day 7 of Advent of Code 2022.
-package aoc22_07 //nolint:revive,stylecheck // I don't care about the package name
+package exercises
 
 import (
 	"fmt"
 	"strconv"
 	"strings"
+
+	"github.com/asphaltbuffet/advent-of-code/internal/common"
 )
 
 // Directory represents a directory in the file system.
@@ -21,24 +22,27 @@ type File struct {
 	Size int
 }
 
-// D7P1 returns the solution for 2022 day 7 part 1.
-// incorrect: 1434712
-// answer: 1243729
-func D7P1(data []string) string {
-	files := MapFilesystem(data[1:]) // skip the first line
-
-	// pretty.Print(files)
-
-	// Sum the sizes of all directories <= 100k
-	return strconv.Itoa(SumSizes(files))
+// Exercise for Advent of Code 2022 day 7.
+type Exercise struct {
+	common.BaseExercise
 }
 
-// D7P2 returns the solution for 2022 day 7 part 2.
-// answer: 4443914
-func D7P2(data []string) string {
-	files := MapFilesystem(data[1:]) // skip the first line
+// One returns the answer to the first part of the exercise.
+// incorrect: 1434712
+// answer: 1243729
+func (c Exercise) One(instr string) (any, error) {
+	data := strings.Split(instr, "\n")
+	files := mapFilesystem(data[1:]) // skip the first line
 
-	// pretty.Print(files)
+	// Sum the sizes of all directories <= 100k
+	return sumSizes(files), nil
+}
+
+// Two returns the answer to the second part of the exercise.
+// answer: 4443914
+func (c Exercise) Two(instr string) (any, error) {
+	data := strings.Split(instr, "\n")
+	files := mapFilesystem(data[1:]) // skip the first line
 
 	unused := 70000000 - files["root"]
 	needed := 30000000 - unused
@@ -50,11 +54,11 @@ func D7P2(data []string) string {
 		}
 	}
 	// Sum the sizes of all directories <= 100k
-	return strconv.Itoa(minFound)
+	return minFound, nil
 }
 
-// MapFilesystem maps the filesystem from the input data.
-func MapFilesystem(data []string) map[string]int {
+// mapFilesystem maps the filesystem from the input data.
+func mapFilesystem(data []string) map[string]int {
 	f := make(map[string]int)
 
 	path := []string{"root"}
@@ -101,8 +105,8 @@ func MapFilesystem(data []string) map[string]int {
 	return f
 }
 
-// SumSizes sums the sizes of all directories <= 100k.
-func SumSizes(f map[string]int) int {
+// sumSizes sums the sizes of all directories <= 100k.
+func sumSizes(f map[string]int) int {
 	sum := 0
 
 	for _, d := range f {

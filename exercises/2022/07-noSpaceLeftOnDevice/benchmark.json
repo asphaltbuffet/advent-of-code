@@ -1,0 +1,15 @@
+{
+  "day": 7,
+  "dir": "exercises/2022/07-noSpaceLeftOnDevice",
+  "implementations": {
+    "Golang": {
+      "part.1.avg": 0.0003805786999999999,
+      "part.1.max": 0.0027424,
+      "part.1.min": 0.0001808,
+      "part.2.avg": 0.0003816944000000002,
+      "part.2.max": 0.0016571,
+      "part.2.min": 0.0001811
+    }
+  },
+  "numRuns": 1000
+}
