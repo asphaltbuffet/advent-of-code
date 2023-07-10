@@ -1,23 +1,24 @@
-package aoc22_11_test
+//go:build test
+// +build test
+
+package exercises
 
 import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-
-	"github.com/asphaltbuffet/advent-of-code/exercises/aoc22_11"
 )
 
 func Test_ProcessRound(t *testing.T) {
 	tests := []struct {
 		name  string
-		input aoc22_11.Day11
-		want  aoc22_11.Day11
+		input Day11
+		want  Day11
 	}{
 		{
 			"Example",
-			aoc22_11.Day11{
-				Monkeys: []*aoc22_11.Monkey{
+			Day11{
+				Monkeys: []*Monkey{
 					{
 						Items:     []int{79, 98},
 						Divisor:   23,
@@ -56,8 +57,8 @@ func Test_ProcessRound(t *testing.T) {
 					},
 				},
 			},
-			aoc22_11.Day11{
-				Monkeys: []*aoc22_11.Monkey{
+			Day11{
+				Monkeys: []*Monkey{
 					{
 						Items:     []int{20, 23, 27, 26},
 						Divisor:   23,

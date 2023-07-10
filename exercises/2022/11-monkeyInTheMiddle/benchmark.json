@@ -1,0 +1,15 @@
+{
+  "day": 11,
+  "dir": "exercises/2022/11-monkeyInTheMiddle",
+  "implementations": {
+    "Golang": {
+      "part.1.avg": 0.00010124220000000017,
+      "part.1.max": 0.0021811,
+      "part.1.min": 0.0000558,
+      "part.2.avg": 0.035259208199999996,
+      "part.2.max": 0.0742152,
+      "part.2.min": 0.0322501
+    }
+  },
+  "numRuns": 1000
+}

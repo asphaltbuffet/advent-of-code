@@ -1,18 +1,19 @@
-package aoc22_11_test
+//go:build test
+// +build test
+
+package exercises
 
 import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-
-	"github.com/asphaltbuffet/advent-of-code/exercises/aoc22_11"
 )
 
 func Test_ParseInput(t *testing.T) {
 	tests := []struct {
 		name  string
 		input []string
-		want  aoc22_11.Day11
+		want  Day11
 	}{
 		{"Single Monkey", []string{
 			"Monkey 0:",
@@ -21,8 +22,8 @@ func Test_ParseInput(t *testing.T) {
 			"  Test: divisible by 23",
 			"    If true: throw to monkey 2",
 			"    If false: throw to monkey 3",
-		}, aoc22_11.Day11{
-			Monkeys: []*aoc22_11.Monkey{
+		}, Day11{
+			Monkeys: []*Monkey{
 				{
 					ID:        0,
 					Items:     []int{79, 98},
@@ -64,8 +65,8 @@ func Test_ParseInput(t *testing.T) {
 			"  Test: divisible by 17",
 			"    If true: throw to monkey 0",
 			"    If false: throw to monkey 1",
-		}, aoc22_11.Day11{
-			Monkeys: []*aoc22_11.Monkey{
+		}, Day11{
+			Monkeys: []*Monkey{
 				{
 					ID:        0,
 					Items:     []int{79, 98},
@@ -112,7 +113,7 @@ func Test_ParseInput(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			d := aoc22_11.Day11{Product: 1}
+			d := Day11{Product: 1}
 
 			err := d.ParseInput(tt.input)
 			assert.NoError(t, err)
