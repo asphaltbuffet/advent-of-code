@@ -1,28 +1,32 @@
-// Package aoc22_13 contains the solution for day 13 of Advent of Code 2022.
-package aoc22_13 //nolint:revive,stylecheck // I don't care about the package name
+package exercises
 
 import (
 	"fmt"
 	"sort"
-	"strconv"
+	"strings"
+
+	"github.com/asphaltbuffet/advent-of-code/internal/common"
 )
 
-// D13P1 returns the solution for 2022 day 13 part 1.
-// https://adventofcode.com/2022/day/13
-//
-// answer:
-func D13P1(data []string) string {
+// Exercise for Advent of Code 2022 day 13
+type Exercise struct {
+	common.BaseExercise
+}
+
+// One returns the answer to the first part of the exercise.
+func (c Exercise) One(instr string) (any, error) {
+	data := strings.Split(instr, "\n")
 	sum := 0
 
 	for i := 0; i < len(data); i += 3 {
 		first, err := ParsePacket(data[i])
 		if err != nil {
-			return fmt.Sprintf("error parsing first packet: %v", err)
+			return nil, fmt.Errorf("parsing first packet: %w", err)
 		}
 
 		second, err := ParsePacket(data[i+1])
 		if err != nil {
-			return fmt.Sprintf("error parsing second packet: %v", err)
+			return nil, fmt.Errorf("parsing second packet: %w", err)
 		}
 
 		if IsOrdered(first, second) {
@@ -32,24 +36,24 @@ func D13P1(data []string) string {
 
 	// fmt.Printf("valid pairs: %v\n", pairResult)
 
-	return strconv.Itoa(sum)
+	return sum, nil
 }
 
-// D13P2 returns the solution for 2022 day 13 part 2.
-// answer:
-func D13P2(data []string) string {
+// Two returns the answer to the second part of the exercise.
+func (c Exercise) Two(instr string) (any, error) {
+	data := strings.Split(instr, "\n")
 	var packets []any
 	packets = append(packets, []any{[]any{2.}}, []any{[]any{6.}})
 
 	for i := 0; i < len(data); i += 3 {
 		first, err := ParsePacket(data[i])
 		if err != nil {
-			return fmt.Sprintf("error parsing first packet: %v", err)
+			return nil, fmt.Errorf("error parsing first packet: %w", err)
 		}
 
 		second, err := ParsePacket(data[i+1])
 		if err != nil {
-			return fmt.Sprintf("error parsing second packet: %v", err)
+			return nil, fmt.Errorf("parsing second packet: %w", err)
 		}
 
 		packets = append(packets, first, second)
@@ -67,5 +71,5 @@ func D13P2(data []string) string {
 		}
 	}
 
-	return strconv.Itoa(idx)
+	return idx, nil
 }

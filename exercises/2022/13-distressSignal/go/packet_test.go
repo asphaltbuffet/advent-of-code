@@ -1,11 +1,9 @@
-package aoc22_13_test
+package exercises
 
 import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-
-	"github.com/asphaltbuffet/advent-of-code/exercises/aoc22_13"
 )
 
 func TestIsOrdered_Slice(t *testing.T) {
@@ -25,7 +23,7 @@ func TestIsOrdered_Slice(t *testing.T) {
 
 		t.Run(tt.name, func(t *testing.T) {
 			// t.Parallel()
-			got := aoc22_13.IsOrdered(tt.left.([]interface{}), tt.right.([]interface{}))
+			got := IsOrdered(tt.left.([]interface{}), tt.right.([]interface{}))
 			assert.Equal(t, tt.want, got)
 		})
 	}
@@ -50,7 +48,7 @@ func TestParsePacket(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			// t.Parallel()
 
-			got, err := aoc22_13.ParsePacket(tt.input)
+			got, err := ParsePacket(tt.input)
 
 			tt.assertion(t, err)
 

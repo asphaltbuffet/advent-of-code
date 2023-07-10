@@ -1,0 +1,15 @@
+{
+  "day": 13,
+  "dir": "exercises/2022/13-distressSignal",
+  "implementations": {
+    "Golang": {
+      "part.1.avg": 0.0016202908999999996,
+      "part.1.max": 0.0081951,
+      "part.1.min": 0.0012952,
+      "part.2.avg": 0.004689438099999996,
+      "part.2.max": 0.0192708,
+      "part.2.min": 0.0038275
+    }
+  },
+  "numRuns": 1000
+}
