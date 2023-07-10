@@ -1,18 +1,24 @@
-// Package aoc22_08 contains the solution for day 8 of Advent of Code 2022.
-package aoc22_08 //nolint:revive,stylecheck // I don't care about the package name
+package exercises
 
 import (
 	"sort"
-	"strconv"
+	"strings"
 
+	"github.com/asphaltbuffet/advent-of-code/internal/common"
 	aoc "github.com/asphaltbuffet/advent-of-code/pkg/utilities"
 )
 
 var dimX, dimY int
 
-// D8P1 returns the solution for 2022 day 8 part 1.
+// Exercise for Advent of Code 2022 day 8.
+type Exercise struct {
+	common.BaseExercise
+}
+
+// One returns the answer to the first part of the exercise.
 // answer: 1805
-func D8P1(data []string) string {
+func (c Exercise) One(instr string) (any, error) {
+	data := strings.Split(instr, "\n")
 	dimX = len(data[0])
 	dimY = len(data)
 
@@ -36,12 +42,13 @@ func D8P1(data []string) string {
 	sort.Ints(out)
 	// fmt.Printf("visible trees: %v\n", out)
 
-	return strconv.Itoa(len(out) - 1) // -1 for the "edge" tree
+	return len(out) - 1, nil
 }
 
-// D8P2 returns the solution for 2022 day 8 part 2.
+// Two returns the answer to the second part of the exercise.
 // answer: 444528
-func D8P2(data []string) string {
+func (c Exercise) Two(instr string) (any, error) {
+	data := strings.Split(instr, "\n")
 	dimX = len(data[0])
 	dimY = len(data)
 
@@ -66,5 +73,5 @@ func D8P2(data []string) string {
 		}
 	}
 
-	return strconv.Itoa(maxScenicScore)
+	return maxScenicScore, nil
 }

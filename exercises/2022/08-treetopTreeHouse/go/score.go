@@ -1,4 +1,4 @@
-package aoc22_08 //nolint:revive,stylecheck // I don't care about the package name
+package exercises
 
 // CalculateScoreUp calculates the score for the tree at the given location.
 func CalculateScoreUp(h, r, c int, m [][]int) int {

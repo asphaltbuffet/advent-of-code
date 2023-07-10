@@ -1,4 +1,4 @@
-package aoc22_08 //nolint:revive,stylecheck // I don't care about the package name
+package exercises
 
 import (
 	"fmt"
