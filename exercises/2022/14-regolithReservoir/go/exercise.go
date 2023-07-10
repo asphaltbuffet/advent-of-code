@@ -1,25 +1,21 @@
-// Package aoc22_14 contains the solution for day 14 of Advent of Code 2022.
-package aoc22_14 //nolint:revive,stylecheck // I don't care about the package name
+package exercises
 
 import (
 	"fmt"
-	"strconv"
+	"strings"
+
+	"github.com/asphaltbuffet/advent-of-code/internal/common"
 )
 
-// Day14 is the exercise environment.
-type Day14 struct {
-	Tiles map[Point]Tile
-	MinX  int
-	MaxX  int
-	MaxY  int
+// Exercise for Advent of Code 2022 day 14
+type Exercise struct {
+	common.BaseExercise
 }
 
-// D14P1 returns the solution for 2022 day 14 part 1.
-//
-// https://adventofcode.com/2022/day/14
-//
+// One returns the answer to the first part of the exercise.
 // answer: 672
-func D14P1(data []string) string {
+func (c Exercise) One(instr string) (any, error) {
+	data := strings.Split(instr, "\n")
 	day14 := Day14{
 		Tiles: make(map[Point]Tile, 0),
 		MinX:  0,
@@ -46,7 +42,6 @@ func D14P1(data []string) string {
 		switch err {
 		case ErrVoidPath:
 			// we've reached the bottom, that's fine
-			fmt.Println("simulation complete")
 		default:
 			fmt.Printf("ERROR: building graph: %v\n", err)
 		}
@@ -62,23 +57,13 @@ func D14P1(data []string) string {
 		}
 	}
 
-	return strconv.Itoa(count)
+	return count, nil
 }
 
-// ProcessInput takes raw input and populates the exercise's environment.
-func ProcessInput(data []string) ([][]Point, error) {
-	// parse the input by line
-	points, err := InputToPoints(data)
-	if err != nil {
-		return nil, fmt.Errorf("converting input to points: %w", err)
-	}
-
-	return points, nil
-}
-
-// D14P2 returns the solution for 2022 day 14 part 2.
+// Two returns the answer to the second part of the exercise.
 // answer: 26831
-func D14P2(data []string) string {
+func (c Exercise) Two(instr string) (any, error) {
+	data := strings.Split(instr, "\n")
 	day14 := Day14{
 		Tiles: make(map[Point]Tile, 0),
 		MinX:  0,
@@ -120,5 +105,24 @@ func D14P2(data []string) string {
 		}
 	}
 
-	return strconv.Itoa(count)
+	return count, nil
+}
+
+// Day14 is the exercise environment.
+type Day14 struct {
+	Tiles map[Point]Tile
+	MinX  int
+	MaxX  int
+	MaxY  int
+}
+
+// ProcessInput takes raw input and populates the exercise's environment.
+func ProcessInput(data []string) ([][]Point, error) {
+	// parse the input by line
+	points, err := InputToPoints(data)
+	if err != nil {
+		return nil, fmt.Errorf("converting input to points: %w", err)
+	}
+
+	return points, nil
 }

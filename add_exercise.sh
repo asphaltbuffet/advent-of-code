@@ -9,8 +9,8 @@ fi
 year=$1
 day=$2
 
-# Interval in seconds (2 minutes = 120 seconds)
-interval=120
+# Interval in seconds
+interval=30
 
 # File to store the timestamp of the last execution
 timestamp_file="/tmp/aoc_timestamp.txt"  # Specify the desired path and filename
@@ -30,7 +30,7 @@ elapsed_time=$((current_timestamp - last_timestamp))
 
 # Check if the required interval has passed
 if [ "$elapsed_time" -lt "$interval" ]; then
-    echo "Script can only be executed once every 2 minutes. Please wait for the next interval."
+    echo "Script can only be executed once every 30s. Please wait for the next interval."
     exit 1
 fi
 

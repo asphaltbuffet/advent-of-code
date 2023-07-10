@@ -1,4 +1,4 @@
-package aoc22_14 //nolint:revive,stylecheck // I don't care about the package name
+package exercises
 
 import (
 	"errors"

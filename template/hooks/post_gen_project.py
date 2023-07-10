@@ -1,18 +1,17 @@
 import subprocess
 import os
 import sys
+from aocd import get_data
 
 # Get the day and year parameters from Cookiecutter context
-day = "{{ cookiecutter.dayNumber }}"
-year = "{{ cookiecutter.year }}"
-
-# Run the command and capture the output
-result = subprocess.run(["aocd", day, year], capture_output=True, text=True)
+day = int("{{ cookiecutter.dayNumber }}")
+year = int("{{ cookiecutter.year }}")
 
 # Write the output to a file named 'input.txt'
 output_file = os.path.join(os.getcwd(), "input.txt")
+data = get_data(day=day, year=year)
 with open(output_file, "w") as file:
-    file.write(result.stdout)
+    file.write(data)
 
 # truncate the output path a bit
 dirname = os.path.dirname(output_file)

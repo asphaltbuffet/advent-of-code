@@ -1,0 +1,15 @@
+{
+  "day": 14,
+  "dir": "exercises/2022/14-regolithReservoir",
+  "implementations": {
+    "Golang": {
+      "part.1.avg": 0.0006172282000000004,
+      "part.1.max": 0.0059744,
+      "part.1.min": 0.0005156,
+      "part.2.avg": 0.008297429800000006,
+      "part.2.max": 0.042637,
+      "part.2.min": 0.0068607
+    }
+  },
+  "numRuns": 1000
+}
