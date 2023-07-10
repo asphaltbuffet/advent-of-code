@@ -1,22 +1,30 @@
-// Package aoc22_09 contains the solution for day 9 of Advent of Code 2022.
-package aoc22_09 //nolint:revive,stylecheck // I don't care about the package name
+package exercises
 
 import (
 	"fmt"
 	"strconv"
 	"strings"
-)
 
-const debug bool = false
+	"github.com/asphaltbuffet/advent-of-code/internal/common"
+)
 
 // Point is an x/y tuple of ints.
 type Point struct {
 	X, Y int
 }
 
-// D9P1 returns the solution for 2022 day 9 part 1.
+// Exercise for Advent of Code 2022 day 9
+type Exercise struct {
+	common.BaseExercise
+}
+
+var minX, maxX, minY, maxY int
+
+// One returns the answer to the first part of the exercise.
 // answer: 6266
-func D9P1(data []string) string {
+func (c Exercise) One(instr string) (any, error) {
+	data := strings.Split(instr, "\n")
+
 	// initialize locations of head and tail
 	visited := make(map[Point]bool)
 	headLocation := Point{0, 0}
@@ -65,7 +73,63 @@ func D9P1(data []string) string {
 		}
 	}
 
-	return strconv.Itoa(len(visited))
+	return len(visited), nil
+}
+
+// Two returns the answer to the second part of the exercise.
+// answer: 2369
+func (c Exercise) Two(instr string) (any, error) {
+	data := strings.Split(instr, "\n")
+
+	// track the bounds of the grid (for debugging)
+	minX, maxX, minY, maxY = 0, 0, 0, 0
+
+	// initialize locations of head and tail
+	visited := make(map[Point]bool)
+	headLocation := Point{0, 0}
+
+	// initialize the tail locations. Tail 0 is the head, tail 9 is the end.
+	var tailLocation []Point
+
+	for i := 0; i < 10; i++ {
+		tailLocation = append(tailLocation, Point{0, 0})
+	}
+
+	visited[tailLocation[9]] = true
+
+	// iterate over the data
+	for _, line := range data {
+		// get the direction and distance
+		direction, right, _ := strings.Cut(line, " ")
+
+		distance, err := strconv.Atoi(right)
+		if err != nil {
+			fmt.Printf("invalid distance: %v\n", err)
+		}
+
+		// calculate the headMovement
+		headMovement := getMovement(direction)
+
+		// move the head
+		for i := 0; i < distance; i++ {
+			headLocation.X += headMovement.X
+			headLocation.Y += headMovement.Y
+			tailLocation[0] = headLocation
+
+			for j := 1; j < 10; j++ {
+				tailMovement := CalculateMovement(tailLocation[j-1], tailLocation[j])
+
+				tailLocation[j].X += tailMovement.X
+				tailLocation[j].Y += tailMovement.Y
+
+				if j == 9 {
+					visited[tailLocation[j]] = true
+				}
+			}
+		}
+	}
+
+	return len(visited), nil
 }
 
 // Abs returns the absolute value of an int.
@@ -95,98 +159,6 @@ func CalculateMovement(h, t Point) Point {
 	}
 
 	return m
-}
-
-var minX, maxX, minY, maxY int
-
-// D9P2 returns the solution for 2022 day 9 part 2.
-// answer: 2369
-func D9P2(data []string) string {
-	// track the bounds of the grid (for debugging)
-	minX, maxX, minY, maxY = 0, 0, 0, 0
-
-	// initialize locations of head and tail
-	visited := make(map[Point]bool)
-	headLocation := Point{0, 0}
-
-	// initialize the tail locations. Tail 0 is the head, tail 9 is the end.
-	var tailLocation []Point
-
-	for i := 0; i < 10; i++ {
-		tailLocation = append(tailLocation, Point{0, 0})
-	}
-
-	visited[tailLocation[9]] = true
-
-	// iterate over the data
-	for _, line := range data {
-		if debug {
-			fmt.Printf("\n== %s ==\n\n", line)
-		}
-
-		// get the direction and distance
-		direction, right, _ := strings.Cut(line, " ")
-
-		distance, err := strconv.Atoi(right)
-		if err != nil {
-			fmt.Printf("invalid distance: %v\n", err)
-		}
-
-		// calculate the headMovement
-		headMovement := getMovement(direction)
-
-		// move the head
-		for i := 0; i < distance; i++ {
-			headLocation.X += headMovement.X
-			headLocation.Y += headMovement.Y
-			tailLocation[0] = headLocation
-
-			for j := 1; j < 10; j++ {
-				tailMovement := CalculateMovement(tailLocation[j-1], tailLocation[j])
-
-				tailLocation[j].X += tailMovement.X
-				tailLocation[j].Y += tailMovement.Y
-
-				if j == 9 {
-					visited[tailLocation[j]] = true
-				}
-
-				if debug {
-					setDebugMinMax(tailLocation)
-				}
-			}
-
-			if debug {
-				fmt.Printf("head: %v, tail: %v\n", headLocation, tailLocation)
-			}
-		}
-
-		if debug {
-			PrintState(tailLocation)
-		}
-	}
-
-	return strconv.Itoa(len(visited))
-}
-
-func setDebugMinMax(tailLocation []Point) {
-	for _, t := range tailLocation {
-		if t.X < minX {
-			minX = t.X
-		}
-
-		if t.X > maxX {
-			maxX = t.X
-		}
-
-		if t.Y < minY {
-			minY = t.Y
-		}
-
-		if t.Y > maxY {
-			maxY = t.Y
-		}
-	}
 }
 
 func getMovement(direction string) Point {

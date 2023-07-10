@@ -1,0 +1,15 @@
+{
+  "day": 9,
+  "dir": "exercises/2022/09-ropeBridge",
+  "implementations": {
+    "Golang": {
+      "part.1.avg": 0.0011730696999999993,
+      "part.1.max": 0.0054515,
+      "part.1.min": 0.0006668,
+      "part.2.avg": 0.0020967994999999996,
+      "part.2.max": 0.0089371,
+      "part.2.min": 0.0012442
+    }
+  },
+  "numRuns": 1000
+}

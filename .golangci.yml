@@ -19,6 +19,11 @@ linters-settings:
     require-specific: true # don't require nolint directives to be specific about which linter is being skipped
   revive:
     confidence: 0
+    rules:
+      - name: package-comments
+        disabled: true
+  stylecheck:
+    checks: ["all", "-ST1000"]
 
 linters:
   disable-all: true
@@ -33,7 +38,7 @@ linters:
     - gocritic
     - goconst
     - gocyclo
-    - godot
+    # - godot
     - godox
     - gofumpt
     - goimports
