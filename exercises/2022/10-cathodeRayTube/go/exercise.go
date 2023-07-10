@@ -1,12 +1,77 @@
-// Package aoc22_10 contains the solution for day 10 of Advent of Code 2022.
-package aoc22_10 //nolint:revive,stylecheck // I don't care about the package name
+package exercises
 
 import (
 	"fmt"
-	"log"
 	"strconv"
 	"strings"
+
+	"github.com/asphaltbuffet/advent-of-code/internal/common"
 )
+
+// Exercise for Advent of Code 2022 day 10.
+type Exercise struct {
+	common.BaseExercise
+}
+
+// One returns the answer to the first part of the exercise.
+// answer: 17380
+func (c Exercise) One(instr string) (any, error) {
+	data := strings.Split(instr, "\n")
+	part1 := Day10{
+		Cycle:    1,
+		X:        map[int]int{0: 0, 1: 1},
+		Commands: []Command{},
+		Cycle20:  1,
+		Cycle60:  1,
+		Cycle100: 1,
+		Cycle140: 1,
+		Cycle180: 1,
+		Cycle220: 1,
+	}
+
+	err := part1.Parse(data)
+	if err != nil {
+		return nil, fmt.Errorf("parsing input: %w", err)
+	}
+
+	err = part1.Process()
+	if err != nil {
+		return nil, fmt.Errorf("processing input: %w", err)
+	}
+
+	calc := part1.Calculate()
+
+	return calc, nil
+}
+
+// Two returns the answer to the second part of the exercise.
+// answer: FGCUZREC
+func (c Exercise) Two(instr string) (any, error) {
+	data := strings.Split(instr, "\n")
+	part1 := Day10{
+		Cycle:    1,
+		X:        map[int]int{0: 0, 1: 1},
+		Commands: []Command{},
+		Cycle20:  1,
+		Cycle60:  1,
+		Cycle100: 1,
+		Cycle140: 1,
+		Cycle180: 1,
+		Cycle220: 1,
+	}
+
+	err := part1.Parse(data)
+	if err != nil {
+		return nil, fmt.Errorf("parsing input: %w", err)
+	}
+
+	err = part1.Process()
+	if err != nil {
+		return nil, fmt.Errorf("processing input: %w", err)
+	}
+
+	return part1.Draw(), nil
+}
 
 // Instruction is string type for instructions.
 type Instruction string
@@ -44,39 +109,6 @@ type Day10 struct {
 	Cycle140 int
 	Cycle180 int
 	Cycle220 int
-}
-
-// D10P1 returns the solution for 2022 day 10 part 1.
-//
-// https://adventofcode.com/2022/day/10
-//
-// answer: 17380
-func D10P1(data []string) string {
-	part1 := Day10{
-		Cycle:    1,
-		X:        map[int]int{0: 0, 1: 1},
-		Commands: []Command{},
-		Cycle20:  1,
-		Cycle60:  1,
-		Cycle100: 1,
-		Cycle140: 1,
-		Cycle180: 1,
-		Cycle220: 1,
-	}
-
-	err := part1.Parse(data)
-	if err != nil {
-		return fmt.Sprintf("parsing input: %v", err)
-	}
-
-	err = part1.Process()
-	if err != nil {
-		return fmt.Sprintf("processing input: %v", err)
-	}
-
-	c := part1.Calculate()
-
-	return strconv.Itoa(c)
 }
 
 // Parse converts the input data into a tokenized form.
@@ -148,62 +180,31 @@ func (d *Day10) Process() error {
 	// }
 
 	// log.Printf("final X: %v", d.X)
-	log.Printf("cycle 20: %d", d.Cycle20)
-	log.Printf("cycle 60: %d", d.Cycle60)
-	log.Printf("cycle 100: %d", d.Cycle100)
-	log.Printf("cycle 140: %d", d.Cycle140)
-	log.Printf("cycle 180: %d", d.Cycle180)
-	log.Printf("cycle 220: %d", d.Cycle220)
+	// log.Printf("cycle 20: %d", d.Cycle20)
+	// log.Printf("cycle 60: %d", d.Cycle60)
+	// log.Printf("cycle 100: %d", d.Cycle100)
+	// log.Printf("cycle 140: %d", d.Cycle140)
+	// log.Printf("cycle 180: %d", d.Cycle180)
+	// log.Printf("cycle 220: %d", d.Cycle220)
 
 	return nil
 }
 
 // Calculate returns the result of the processing.
 func (d *Day10) Calculate() int {
-	log.Printf("cycles: %d, %d, %d, %d, %d, %d",
-		(Cycle20 * d.Cycle20),
-		(Cycle60 * d.Cycle60),
-		(Cycle100 * d.Cycle100),
-		(Cycle140 * d.Cycle140),
-		(Cycle180 * d.Cycle180),
-		(Cycle220 * d.Cycle220))
-
-	return (Cycle20 * d.Cycle20) + (Cycle60 * d.Cycle60) + (Cycle100 * d.Cycle100) + (Cycle140 * d.Cycle140) + (Cycle180 * d.Cycle180) + (Cycle220 * d.Cycle220)
-}
-
-// D10P2 returns the solution for 2022 day 10 part 2.
-// answer: FGCUZREC
-func D10P2(data []string) string {
-	part1 := Day10{
-		Cycle:    1,
-		X:        map[int]int{0: 0, 1: 1},
-		Commands: []Command{},
-		Cycle20:  1,
-		Cycle60:  1,
-		Cycle100: 1,
-		Cycle140: 1,
-		Cycle180: 1,
-		Cycle220: 1,
-	}
-
-	err := part1.Parse(data)
-	if err != nil {
-		return fmt.Sprintf("parsing input: %v", err)
-	}
-
-	err = part1.Process()
-	if err != nil {
-		return fmt.Sprintf("processing input: %v", err)
-	}
-
-	return part1.Draw()
+	return (Cycle20 * d.Cycle20) +
+		(Cycle60 * d.Cycle60) +
+		(Cycle100 * d.Cycle100) +
+		(Cycle140 * d.Cycle140) +
+		(Cycle180 * d.Cycle180) +
+		(Cycle220 * d.Cycle220)
 }
 
 // Draw returns a string showing which pixels are lit.
 func (d *Day10) Draw() string {
 	const (
-		Lit  string = "#"
-		Dark string = "."
+		Lit  string = "█"
+		Dark string = "░"
 	)
 
 	sb := strings.Builder{}

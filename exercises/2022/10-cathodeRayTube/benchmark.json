@@ -1,0 +1,15 @@
+{
+  "day": 10,
+  "dir": "exercises/2022/10-cathodeRayTube",
+  "implementations": {
+    "Golang": {
+      "part.1.avg": 0.000044730499999999995,
+      "part.1.max": 0.0007157,
+      "part.1.min": 0.0000148,
+      "part.2.avg": 0.00005600519999999998,
+      "part.2.max": 0.0016094,
+      "part.2.min": 0.0000215
+    }
+  },
+  "numRuns": 1000
+}
