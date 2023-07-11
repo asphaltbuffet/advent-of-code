@@ -1,4 +1,4 @@
-package aoc22_25 //nolint:revive,stylecheck // I don't care about the package name
+package exercises
 
 import (
 	"strconv"

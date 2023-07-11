@@ -1,11 +1,9 @@
-package aoc22_25_test
+package exercises
 
 import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-
-	"github.com/asphaltbuffet/advent-of-code/exercises/aoc22_25"
 )
 
 func TestDecode(t *testing.T) {
@@ -24,7 +22,7 @@ func TestDecode(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got := aoc22_25.Decode(tt.input)
+			got := Decode(tt.input)
 			assert.Equal(t, tt.want, got)
 		})
 	}
@@ -49,7 +47,7 @@ func TestEncode(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got := aoc22_25.Encode(tt.input)
+			got := Encode(tt.input)
 			assert.Equal(t, tt.want, got)
 		})
 	}
@@ -67,8 +65,8 @@ func FuzzEncode(f *testing.F) {
 			t.Skip("negative numbers are not supported")
 		}
 
-		e := aoc22_25.Encode(n)
-		d := aoc22_25.Decode(e)
+		e := Encode(n)
+		d := Decode(e)
 		assert.Equal(t, n, d)
 	})
 }
