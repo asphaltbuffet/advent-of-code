@@ -1,0 +1,15 @@
+{
+  "day": 15,
+  "dir": "exercises/2022/15-beaconExclusionZone",
+  "implementations": {
+    "Golang": {
+      "part.1.avg": 2.065522830999999,
+      "part.1.max": 2.5457761,
+      "part.1.min": 1.8855836,
+      "part.2.avg": 0.281321835,
+      "part.2.max": 0.3390309,
+      "part.2.min": 0.2647712
+    }
+  },
+  "numRuns": 100
+}
