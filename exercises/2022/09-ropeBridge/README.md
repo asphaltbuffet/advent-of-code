@@ -2,7 +2,7 @@
 
 ## Go
 
-```console
+```text
 2022-9 Rope Bridge (Golang)
 
 Running...

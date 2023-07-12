@@ -2,7 +2,7 @@
 
 ## Go
 
-```console
+```text
 2022-10 Cathode Ray Tube (Golang)
 
 Running...

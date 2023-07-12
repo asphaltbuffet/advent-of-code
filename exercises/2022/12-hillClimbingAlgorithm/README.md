@@ -2,7 +2,7 @@
 
 ## Go
 
-```console
+```text
 2022-12 Hill Climbing Algorithm (Golang)
 
 Running...

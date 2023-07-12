@@ -2,7 +2,7 @@
 
 ## Go
 
-```console
+```text
 2022-14 Regolith Reservoir (Golang)
 
 Running...

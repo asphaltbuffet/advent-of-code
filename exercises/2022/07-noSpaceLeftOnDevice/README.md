@@ -2,7 +2,7 @@
 
 ## Go
 
-```console
+```text
 2022-7 No Space Left On Device (Golang)
 
 Running...

@@ -4,7 +4,7 @@
 
 Note: Two tests are intended to have failed.
 
-```console
+```text
 2022-6 Tuning Trouble (Golang)
 
 Running...

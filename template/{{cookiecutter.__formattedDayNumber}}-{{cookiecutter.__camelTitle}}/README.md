@@ -1,5 +1,7 @@
 # [Day {{ cookiecutter.dayNumber }}: {{ cookiecutter.__formattedTitle }}](https://adventofcode.com/{{ cookiecutter.year }}/day/{{ cookiecutter.dayNumber }})
 
+<!-- [Day {{ cookiecutter.dayNumber }}: {{ cookiecutter.__formattedTitle }}]({{cookiecutter.__formattedDayNumber}}-{{cookiecutter.__camelTitle}}) -->
+
 ## Go
 
 ```text

@@ -2,7 +2,7 @@
 
 ## Go
 
-```console
+```text
 2022-11 Monkey In The Middle (Golang)
 
 Running...

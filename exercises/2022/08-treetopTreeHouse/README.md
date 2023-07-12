@@ -1,8 +1,8 @@
 # [Day 8: Treetop Tree House](https://adventofcode.com/2022/day/8)
 
-# Go
+## Go
 
-```console
+```text
 2022-8 Treetop Tree House (Golang)
 
 Running...
