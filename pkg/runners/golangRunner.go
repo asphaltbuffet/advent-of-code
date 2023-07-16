@@ -10,6 +10,7 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"runtime"
 	"text/template"
 )
 
@@ -40,6 +41,11 @@ var golangInterface []byte
 func (g *golangRunner) Start() error {
 	g.wrapperFilepath = filepath.Join(g.dir, golangWrapperFilename)
 	g.executableFilepath = filepath.Join(g.dir, golangWrapperExecutableFilename)
+
+	// windows requires .exe extension
+	if runtime.GOOS == "windows" {
+		g.executableFilepath += ".exe"
+	}
 
 	// determine package import path
 	buildPath := fmt.Sprintf(
