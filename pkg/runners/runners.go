@@ -5,7 +5,7 @@ type Part uint8
 const (
 	PartOne Part = iota + 1
 	PartTwo
-	Visualise
+	Visualize
 )
 
 type Runner interface {

@@ -75,6 +75,7 @@ func setupBuffers(cmd *exec.Cmd) (io.WriteCloser, error) {
 }
 
 func checkWait(cmd *exec.Cmd) ([]byte, error) {
+	//nolint:errcheck // we will handle errors in the loop
 	c := cmd.Stdout.(*customWriter)
 
 	for {
@@ -84,7 +85,6 @@ func checkWait(cmd *exec.Cmd) ([]byte, error) {
 		}
 
 		if cmd.ProcessState != nil {
-			// this is only populated after program exit - we have an issue
 			return nil, fmt.Errorf("run failed with exit code %d: %s", cmd.ProcessState.ExitCode(), cmd.Stderr.(*bytes.Buffer).String())
 		}
 
@@ -101,7 +101,7 @@ func readJSONFromCommand(res interface{}, cmd *exec.Cmd) error {
 
 		err = json.Unmarshal(inp, res)
 		if err != nil {
-			// echo anything that won't parse to stdout (this lets us add debug print statements)
+			// anything returned as an error is considered a debug message
 			fmt.Printf("[%s] %v\n", au.BrightRed("DBG"), strings.TrimSpace(string(inp)))
 		} else {
 			break
