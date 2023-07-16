@@ -218,3 +218,5 @@ pyrightconfig.json
 
 advent-of-code
 input.txt
+runtime-wrapper*
+*.swp
