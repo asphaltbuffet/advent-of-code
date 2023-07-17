@@ -5,7 +5,7 @@
 # Advent of Code
 
 ![2021 Stars](https://img.shields.io/badge/2021_⭐-4-red)
-![2022 Stars](https://img.shields.io/badge/2022_⭐-31-blue)
+![2022 Stars](https://img.shields.io/badge/2022_⭐-32-blue)
 
 Collecting solutions to Advent-of-Code exercises. Structure and runtime heavily influenced by [gh:codemicro/adventOfCode](https://github.com/codemicro/adventOfCode)
 
