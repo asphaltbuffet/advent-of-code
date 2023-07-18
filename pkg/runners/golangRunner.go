@@ -10,6 +10,7 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"runtime"
 	"text/template"
 )
 
@@ -41,6 +42,11 @@ func (g *golangRunner) Start() error {
 	g.wrapperFilepath = filepath.Join(g.dir, golangWrapperFilename)
 	g.executableFilepath = filepath.Join(g.dir, golangWrapperExecutableFilename)
 
+	// windows requires .exe extension
+	if runtime.GOOS == "windows" {
+		g.executableFilepath += ".exe"
+	}
+
 	// determine package import path
 	buildPath := fmt.Sprintf(
 		golangBuildpathBase,
@@ -48,7 +54,7 @@ func (g *golangRunner) Start() error {
 		filepath.Base(g.dir))
 	importPath := buildPath + "/go"
 
-	// generate code
+	// generate wrapper code from template
 	var wrapperContent []byte
 	{
 		tpl := template.Must(template.New("").Parse(string(golangInterface)))
@@ -62,31 +68,37 @@ func (g *golangRunner) Start() error {
 		wrapperContent = b.Bytes()
 	}
 
-	// save interaction code
-	if err := os.WriteFile(g.wrapperFilepath, wrapperContent, 0o644); err != nil {
+	// write wrapped code
+	if err := os.WriteFile(g.wrapperFilepath, wrapperContent, 0o600); err != nil {
 		return err
 	}
 
-	// compile executable
 	stderrBuffer := new(bytes.Buffer)
 
-	cmd := exec.Command(golangInstallation, "build", "-tags", "runtime", "-o", g.executableFilepath, buildPath)
+	//nolint:gosec // no user input
+	cmd := exec.Command(
+		golangInstallation,
+		"build",
+		"-tags", "runtime",
+		"-o", g.executableFilepath,
+		buildPath)
+
 	cmd.Stderr = stderrBuffer
 	if err := cmd.Run(); err != nil {
 		return fmt.Errorf("compilation failed: %s: %s", err, stderrBuffer.String())
 	}
 
 	if !cmd.ProcessState.Success() {
-		return errors.New("compilation failed, hence cannot continue")
+		return errors.New("compilation failed")
 	}
 
-	// now we run!
 	absExecPath, err := filepath.Abs(g.executableFilepath)
 	if err != nil {
 		return err
 	}
 
-	// run executable
+	// run executable for exercise (wrapped)
+	//nolint:gosec // no user input
 	g.cmd = exec.Command(absExecPath)
 	cmd.Dir = g.dir
 
@@ -103,6 +115,7 @@ func (g *golangRunner) Stop() error {
 	if g.cmd == nil || g.cmd.Process == nil {
 		return nil
 	}
+
 	return g.cmd.Process.Kill()
 }
 
@@ -110,9 +123,11 @@ func (g *golangRunner) Cleanup() error {
 	if g.wrapperFilepath != "" {
 		_ = os.Remove(g.wrapperFilepath)
 	}
+
 	if g.executableFilepath != "" {
 		_ = os.Remove(g.executableFilepath)
 	}
+
 	return nil
 }
 
@@ -121,11 +136,14 @@ func (g *golangRunner) Run(task *Task) (*Result, error) {
 	if err != nil {
 		return nil, err
 	}
+
 	_, _ = g.stdin.Write(append(taskJSON, '\n'))
 
 	res := new(Result)
+
 	if err := readJSONFromCommand(res, g.cmd); err != nil {
 		return nil, err
 	}
+
 	return res, nil
 }

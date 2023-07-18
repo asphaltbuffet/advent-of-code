@@ -52,7 +52,7 @@ func run() error {
 			run = func() (interface{}, error) {
 				return (ex.Exercise{}).Two(task.Input)
 			}
-		case runners.Visualise:
+		case runners.Visualize:
 			run = func() (interface{}, error) {
 				return "", (ex.Exercise{}).Vis(task.Input, task.OutputDir)
 			}
@@ -60,9 +60,7 @@ func run() error {
 
 		startTime := time.Now()
 		res, err := run()
-		endTIme := time.Now()
-
-		runningTime := endTIme.Sub(startTime).Seconds()
+		runningTime := time.Since(startTime).Seconds()
 
 		if err != nil {
 			sendResult(task.TaskID, false, err.Error(), runningTime)
