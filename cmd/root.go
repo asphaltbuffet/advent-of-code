@@ -105,10 +105,9 @@ func RunRootCmd(cmd *cobra.Command, args []string) error {
 		return err
 	}
 
-	bb := color.New(color.FgBlack, color.Bold)
-	bb.Printf(
-		"%s-%d %s (%s)\n\n",
-		strings.TrimPrefix(selectedYear, "exercises/"),
+	//nolint:errcheck,gosec // printing to stdout
+	bold.Printf("%s-%d %s (%s)\n\n",
+		year,
 		selectedExercise.Number,
 		selectedExercise.Name,
 		runners.RunnerNames[selectedImplementation],
@@ -151,7 +150,7 @@ func runVisualize(runner runners.Runner, exerciseInputString string) error {
 	// directory the runner is run in, which is the exercise directory
 	r, err := runner.Run(&runners.Task{
 		TaskID:    id,
-		Part:      runners.Visualise,
+		Part:      runners.Visualize,
 		Input:     exerciseInputString,
 		OutputDir: ".",
 	})
@@ -159,24 +158,23 @@ func runVisualize(runner runners.Runner, exerciseInputString string) error {
 		return err
 	}
 
-	fmt.Print(au.Bold("Visualization: "))
+	bold.Print("Visualization: ") //nolint:errcheck,gosec // printing to stdout
 
-	var status string
-	var followUpText string
+	var status, followUpText string
 
 	if !r.Ok {
 		status = incompleteLabel
-		followUpText = "saying \"" + r.Output + "\""
+		followUpText = fmt.Sprintf(" saying %q", r.Output)
 	} else {
 		status = passLabel
 	}
 
 	if followUpText == "" {
-		followUpText = fmt.Sprintf("in %.4f seconds", r.Duration)
+		followUpText = fmt.Sprintf(" in %s", humanize.SI(r.Duration, "s"))
 	}
 
 	fmt.Print(status)
-	fmt.Println(au.Gray(10, " "+followUpText))
+	dimmed.Println(followUpText) //nolint:errcheck,gosec // printing to stdout
 
 	return nil
 }

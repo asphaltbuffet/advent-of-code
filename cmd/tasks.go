@@ -5,8 +5,8 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/dustin/go-humanize"
 	"github.com/fatih/color"
-	au "github.com/logrusorgru/aurora" // TODO: replace with faitdh/color package
 
 	"github.com/asphaltbuffet/advent-of-code/pkg/exercise"
 	"github.com/asphaltbuffet/advent-of-code/pkg/runners"
@@ -16,6 +16,12 @@ var (
 	passLabel       = color.New(color.FgHiGreen).Sprint("pass")
 	failLabel       = color.New(color.FgHiRed).Sprint("fail")
 	incompleteLabel = color.New(color.BgHiYellow).Sprint("did not complete")
+
+	bold       = color.New(color.Bold)
+	dimmed     = color.New(color.FgHiBlack, color.Italic)
+	brightBlue = color.New(color.FgHiBlue)
+	boldBlue   = color.New(color.Bold, color.FgHiBlue)
+	boldYellow = color.New(color.Bold, color.FgHiYellow)
 )
 
 func makeTestID(part runners.Part, n int) string {
@@ -26,6 +32,7 @@ func parseTestID(x string) (runners.Part, int) {
 	y := strings.Split(x, ".")
 	p, _ := strconv.Atoi(y[1])
 	n, _ := strconv.Atoi(y[2])
+
 	return runners.Part(p), n
 }
 
@@ -36,12 +43,14 @@ func makeMainID(part runners.Part) string {
 func parseMainID(x string) runners.Part {
 	y := strings.Split(x, ".")
 	p, _ := strconv.Atoi(y[1])
+
 	return runners.Part(p)
 }
 
 func runTests(runner runners.Runner, info *exercise.Info) error {
 	for i, testCase := range info.TestCases.One {
 		id := makeTestID(runners.PartOne, i)
+
 		result, err := runner.Run(&runners.Task{
 			TaskID: id,
 			Part:   runners.PartOne,
@@ -75,39 +84,40 @@ func runTests(runner runners.Runner, info *exercise.Info) error {
 func handleTestResult(r *runners.Result, testCase *exercise.TestCase) {
 	part, n := parseTestID(r.TaskID)
 
-	fmt.Print(
-		color.New(color.Bold).Sprintf("Test %s: ",
-			color.New(color.FgHiBlue).Sprintf("%d.%d", part, n),
-		))
+	bold.Print("Test ")               //nolint:errcheck,gosec // printing to stdout
+	boldBlue.Printf("%d.%d", part, n) //nolint:errcheck,gosec // printing to stdout
+	bold.Print(": ")                  //nolint:errcheck,gosec // printing to stdout
 
 	passed := r.Output == testCase.Expected
 
-	var status string
-	var followUpText string
-	if !r.Ok {
+	var status, followUpText string
+
+	switch {
+	case !r.Ok:
 		status = incompleteLabel
-		followUpText = "saying \"" + r.Output + "\""
-	} else if passed {
+		followUpText = fmt.Sprintf(" saying %q", r.Output)
+	case passed:
 		status = passLabel
-	} else {
+	default:
 		status = failLabel
 	}
 
 	if followUpText == "" {
-		followUpText = fmt.Sprintf("in %.4f seconds", r.Duration)
+		followUpText = fmt.Sprintf(" in %s", humanize.SI(r.Duration, "s"))
 	}
 
 	fmt.Print(status)
-	fmt.Println(au.Gray(10, " "+followUpText))
+	dimmed.Println(followUpText) //nolint:errcheck,gosec // printing to stdout
 
 	if !passed && r.Ok {
-		fmt.Printf(" └ Expected %s, got %s\n", au.BrightBlue(testCase.Expected), au.BrightBlue(r.Output))
+		fmt.Printf(" └ Expected %s, got %s\n", brightBlue.Sprint(testCase.Expected), brightBlue.Sprint(r.Output))
 	}
 }
 
 func runMainTasks(runner runners.Runner, input string) error {
 	for part := runners.PartOne; part <= runners.PartTwo; part += 1 {
 		id := makeMainID(part)
+
 		result, err := runner.Run(&runners.Task{
 			TaskID: id,
 			Part:   part,
@@ -116,21 +126,24 @@ func runMainTasks(runner runners.Runner, input string) error {
 		if err != nil {
 			return err
 		}
+
 		handleMainResult(result)
 	}
+
 	return nil
 }
 
 func handleMainResult(r *runners.Result) {
 	part := parseMainID(r.TaskID)
 
-	fmt.Print(au.Bold(fmt.Sprintf("Part %d: ", au.Yellow(part))))
+	bold.Print("Part ")             //nolint:errcheck,gosec // printing to stdout
+	boldYellow.Printf("%d: ", part) //nolint:errcheck,gosec // printing to stdout
 
 	if !r.Ok {
 		fmt.Print(incompleteLabel)
-		fmt.Println(au.Gray(10, " saying \""+r.Output+"\""))
+		dimmed.Printf(" saying %s", r.Output) //nolint:errcheck,gosec // printing to stdout
 	} else {
-		fmt.Print(au.BrightBlue(r.Output))
-		fmt.Println(au.Gray(10, fmt.Sprintf(" in %.4f seconds", r.Duration)))
+		brightBlue.Print(r.Output)                              //nolint:errcheck,gosec // printing to stdout
+		dimmed.Printf(" in %s\n", humanize.SI(r.Duration, "s")) //nolint:errcheck,gosec // printing to stdout
 	}
 }
