@@ -26,11 +26,11 @@ require (
 require (
 	github.com/AlecAivazis/survey/v2 v2.3.7
 	github.com/dominikbraun/graph v0.23.0
+	github.com/dustin/go-humanize v1.0.1
 	github.com/fatih/color v1.15.0
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
 	github.com/logrusorgru/aurora v2.0.3+incompatible
 	github.com/schollz/progressbar/v3 v3.13.1
-	github.com/sirupsen/logrus v1.9.3
 	github.com/spf13/pflag v1.0.5 // indirect
 	go.uber.org/multierr v1.11.0
 )

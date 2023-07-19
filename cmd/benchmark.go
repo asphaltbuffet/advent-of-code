@@ -8,11 +8,34 @@ import (
 	"strings"
 
 	"github.com/schollz/progressbar/v3"
+	"github.com/spf13/cobra"
 
 	"github.com/asphaltbuffet/advent-of-code/pkg/exercise"
 	"github.com/asphaltbuffet/advent-of-code/pkg/runners"
 	"github.com/asphaltbuffet/advent-of-code/pkg/utilities"
 )
+
+var (
+	benchmarkCmd *cobra.Command
+	iterations   int
+)
+
+func GetBenchmarkCmd() *cobra.Command {
+	if benchmarkCmd == nil {
+		benchmarkCmd = &cobra.Command{
+			Use:     "benchmark [flags]",
+			Aliases: []string{"bench", "b"},
+			Short:   "generate benchmark data for an exercise",
+			RunE: func(cmd *cobra.Command, args []string) error {
+				return runBenchmark(selectedExercise, exerciseInputString, iterations)
+			},
+		}
+	}
+
+	benchmarkCmd.Flags().IntVarP(&iterations, "number", "n", 1000, "number of benchmark iterations to run")
+
+	return benchmarkCmd
+}
 
 func makeBenchmarkID(part runners.Part, number int) string {
 	if number == -1 {
@@ -68,7 +91,7 @@ func runBenchmark(selectedExercise *exercise.Exercise, input string, numberRuns 
 		return err
 	}
 
-	return os.WriteFile(fpath, jBytes, 0o644)
+	return os.WriteFile(fpath, jBytes, 0o600)
 }
 
 type values struct {
