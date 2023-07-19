@@ -1,0 +1,15 @@
+{
+  "day": 17,
+  "dir": "exercises/2022/17-pyroclasticFlow",
+  "implementations": {
+    "Golang": {
+      "part.1.avg": 0.0020365479,
+      "part.1.max": 0.0105336,
+      "part.1.min": 0.0016781,
+      "part.2.avg": 0.010242217899999977,
+      "part.2.max": 0.0401753,
+      "part.2.min": 0.009135
+    }
+  },
+  "numRuns": 1000
+}

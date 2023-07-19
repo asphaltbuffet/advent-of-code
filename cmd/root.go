@@ -5,10 +5,8 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
-	"strings"
 
-	"github.com/fatih/color"
-	au "github.com/logrusorgru/aurora"
+	"github.com/dustin/go-humanize"
 	"github.com/spf13/cobra"
 
 	"github.com/asphaltbuffet/advent-of-code/pkg/exercise"
@@ -25,8 +23,6 @@ var (
 	year           string
 	day            int
 	implementation string
-	benchmark      bool
-	interations    int
 	testOnly       bool
 	noTest         bool
 	visualize      bool
@@ -47,23 +43,24 @@ func Execute() {
 func GetRootCommand() *cobra.Command {
 	if rootCmd == nil {
 		rootCmd = &cobra.Command{
-			Use:     "advent-of-code [command]",
-			Version: "2.0.0",
-			Short:   "advent-of-code is a collection of AoC solutions",
-			Long:    `advent-of-code is a collection of AoC solutions`,
-			PreRunE: getExerciseData,
-			RunE:    RunRootCmd,
+			Use:               "advent-of-code [command]",
+			Version:           "2.0.0",
+			Short:             "advent-of-code is a collection of AoC solutions",
+			Long:              `advent-of-code is a collection of AoC solutions`,
+			PersistentPreRunE: getExerciseData,
+			RunE:              RunRootCmd,
 		}
 	}
 
-	rootCmd.Flags().StringVarP(&year, "year", "y", "", "AoC year to use")
-	rootCmd.Flags().IntVarP(&day, "day", "d", 0, "exercise day to use")
-	rootCmd.Flags().StringVarP(&implementation, "implementation", "i", "", "implementation to use")
-	rootCmd.Flags().BoolVarP(&benchmark, "benchmark", "b", false, "benchmark a day's implementations")
-	rootCmd.Flags().IntVarP(&interations, "benchmark-n", "n", 1000, "number of benchmark iterations to run")
 	rootCmd.Flags().BoolVarP(&testOnly, "test-only", "t", false, "only run test inputs")
 	rootCmd.Flags().BoolVarP(&noTest, "no-test", "x", false, "do not run test inputs")
 	rootCmd.Flags().BoolVarP(&visualize, "visualize", "g", false, "generate visualization")
+
+	rootCmd.PersistentFlags().StringVarP(&year, "year", "y", "", "AoC year to use")
+	rootCmd.PersistentFlags().IntVarP(&day, "day", "d", 0, "exercise day to use")
+	rootCmd.PersistentFlags().StringVarP(&implementation, "implementation", "i", "", "implementation to use")
+
+	rootCmd.AddCommand(GetBenchmarkCmd())
 
 	return rootCmd
 }
@@ -102,20 +99,15 @@ func getExerciseData(cmd *cobra.Command, args []string) error {
 
 // RunRootCmd is the entry point for the CLI.
 func RunRootCmd(cmd *cobra.Command, args []string) error {
-	if benchmark {
-		return runBenchmark(selectedExercise, exerciseInputString, interations)
-	}
-
 	// List and select implementations
 	selectedImplementation, err := selectImplementation(selectedExercise)
 	if err != nil {
 		return err
 	}
 
-	bb := color.New(color.FgBlack, color.Bold)
-	bb.Printf(
-		"%s-%d %s (%s)\n\n",
-		strings.TrimPrefix(selectedYear, "exercises/"),
+	//nolint:errcheck,gosec // printing to stdout
+	bold.Printf("%s-%d %s (%s)\n\n",
+		year,
 		selectedExercise.Number,
 		selectedExercise.Name,
 		runners.RunnerNames[selectedImplementation],
@@ -158,7 +150,7 @@ func runVisualize(runner runners.Runner, exerciseInputString string) error {
 	// directory the runner is run in, which is the exercise directory
 	r, err := runner.Run(&runners.Task{
 		TaskID:    id,
-		Part:      runners.Visualise,
+		Part:      runners.Visualize,
 		Input:     exerciseInputString,
 		OutputDir: ".",
 	})
@@ -166,24 +158,23 @@ func runVisualize(runner runners.Runner, exerciseInputString string) error {
 		return err
 	}
 
-	fmt.Print(au.Bold("Visualization: "))
+	bold.Print("Visualization: ") //nolint:errcheck,gosec // printing to stdout
 
-	var status string
-	var followUpText string
+	var status, followUpText string
 
 	if !r.Ok {
 		status = incompleteLabel
-		followUpText = "saying \"" + r.Output + "\""
+		followUpText = fmt.Sprintf(" saying %q", r.Output)
 	} else {
 		status = passLabel
 	}
 
 	if followUpText == "" {
-		followUpText = fmt.Sprintf("in %.4f seconds", r.Duration)
+		followUpText = fmt.Sprintf(" in %s", humanize.SI(r.Duration, "s"))
 	}
 
 	fmt.Print(status)
-	fmt.Println(au.Gray(10, " "+followUpText))
+	dimmed.Println(followUpText) //nolint:errcheck,gosec // printing to stdout
 
 	return nil
 }
