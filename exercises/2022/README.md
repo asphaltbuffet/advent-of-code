@@ -10,7 +10,7 @@
 | [Day 2: Rock Paper Scissors](02-rockPaperScissors/README.md)          |  ★ ★  | [Go](02-rockPaperScissors/go), [Python](02-rockPaperScissors/py)           |
 | [Day 3: Rucksack Reorganization](03-rucksackReorganization/README.md) |  ★ ★  | [Go](03-rucksackReorganization/go), [Python](03-rucksackReorganization/py) |
 | [Day 4: Camp Cleanup](04-campCleanup/README.md)                       |  ★ ★  | [Go](04-campCleanup/go), [Python](04-campCleanup/py)                       |
-| [Day 5: Supply Stacks](05-supplyStacks/README.md)                     |  ★ ★  | [Go](05-supplyStacks/go), [Python](05-supplyStacks/py)                     |
+| [Day 5: Supply Stacks](05-supplyStacks/README.md)                     |  ★ ★  | [Go](05-supplyStacks/go)<!--, [Python](05-supplyStacks/py)-->              |
 | [Day 6: Tuning Trouble](06-tuningTrouble/README.md)                   |  ★ ★  | [Go](06-tuningTrouble/go)                                                  |
 | [Day 7: No Space Left On Device](07-noSpaceLeftOnDevice/README.md)    |  ★ ★  | [Go](07-noSpaceLeftOnDevice/go)                                            |
 | [Day 8: Treetop Tree House](08-treetopTreeHouse/README.md)            |  ★ ★  | [Go](08-treetopTreeHouse/go)                                               |
@@ -21,8 +21,8 @@
 | [Day 13: Distress Signal](13-distressSignal/README.md)                |  ★ ★  | [Go](13-distressSignal/go)                                                 |
 | [Day 14: Regolith Reservoir](14-regolithReservoir/README.md)          |  ★ ★  | [Go](14-regolithReservoir/go)                                              |
 | [Day 15: Beacon Exclusion Zone](15-beaconExclusionZone/README.md)     |  ★ ★  | [Go](15-beaconExclusionZone/go)                                            |
-| [Day 16: Proboscidea Volcanium](16-proboscideaVolcanium/go)           |  ☆ ☆  | <!--[Go](16-proboscideaVolcanium/go)-->                                    |
-| 17                                                                    |  ☆ ☆  |                                                                            |
+| [Day 16: Proboscidea Volcanium](16-proboscideaVolcanium/go)           |  ★ ☆  | [Go](16-proboscideaVolcanium/go)                                           |
+| [Day 17: Pyroclastic Flow](17-pyroclasticFlow/README.md)              |  ★ ★  | [Go](17-pyroclasticFlow/go), [Python](17-pyroclasticFlow/py)               |
 | 18                                                                    |  ☆ ☆  |                                                                            |
 | 19                                                                    |  ☆ ☆  |                                                                            |
 | 20                                                                    |  ☆ ☆  |                                                                            |

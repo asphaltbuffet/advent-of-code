@@ -5,7 +5,14 @@
 ## Go
 
 ```text
-    < section intentionally left blank >
+2022-17 Pyroclastic Flow (Golang)
+
+Running...
+
+Test 1.0: pass in 1.5066 ms
+Test 2.0: pass in 323.5 µs
+Part 1: 3181 in 1.7185 ms
+Part 2: 1570434782634 in 19.3873 ms
 ```
 
 ## Python
