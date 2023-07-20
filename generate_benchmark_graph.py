@@ -59,8 +59,8 @@ figure = plt.figure(figsize=(25 / 2, 5))
 axp1 = figure.add_subplot(1, 2, 1)
 axp2 = figure.add_subplot(1, 2, 2, sharey=axp1)
 
-axp1.axhline(y=15, color="#fc8080", linestyle="--")
-axp2.axhline(y=15, color="#fc8080", linestyle="--")
+axp1.axhline(y=15, color="#fc8080", linestyle="dotted")
+axp2.axhline(y=15, color="#fc8080", linestyle="dotted")
 
 for i, language in enumerate(benchmark_data):
     data = benchmark_data[language]
@@ -78,10 +78,10 @@ for i, language in enumerate(benchmark_data):
         if key.endswith(".2"):
             part_two_times.append(data[key])
 
-    colour = COLORS.get(language)
+    color = COLORS.get(language)
 
-    p1 = axp1.scatter(days, part_one_times, color=colour)
-    p2 = axp2.scatter(days, part_two_times, color=colour)
+    p1 = axp1.scatter(days, part_one_times, color=color)
+    p2 = axp2.scatter(days, part_two_times, color=color)
 
     for i, day in enumerate(days):
         if i + 1 >= len(days):
@@ -91,13 +91,13 @@ for i, language in enumerate(benchmark_data):
                 (day, days[i + 1]),
                 (part_one_times[i], part_one_times[i + 1]),
                 "-",
-                color=colour,
+                color=color,
             )
             axp2.plot(
                 (day, days[i + 1]),
                 (part_two_times[i], part_two_times[i + 1]),
                 "-",
-                color=colour,
+                color=color,
             )
 
 figure.suptitle(f"Average {YEAR} exercise running time")

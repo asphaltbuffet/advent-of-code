@@ -10,7 +10,7 @@
 | [Day 2: Rock Paper Scissors](02-rockPaperScissors/README.md)          |  ★ ★  | [Go](02-rockPaperScissors/go), [Python](02-rockPaperScissors/py)           |
 | [Day 3: Rucksack Reorganization](03-rucksackReorganization/README.md) |  ★ ★  | [Go](03-rucksackReorganization/go), [Python](03-rucksackReorganization/py) |
 | [Day 4: Camp Cleanup](04-campCleanup/README.md)                       |  ★ ★  | [Go](04-campCleanup/go), [Python](04-campCleanup/py)                       |
-| [Day 5: Supply Stacks](05-supplyStacks/README.md)                     |  ★ ★  | [Go](05-supplyStacks/go)<!--, [Python](05-supplyStacks/py)-->              |
+| [Day 5: Supply Stacks](05-supplyStacks/README.md)                     |  ★ ★  | [Go](05-supplyStacks/go), [Python](05-supplyStacks/py)              |
 | [Day 6: Tuning Trouble](06-tuningTrouble/README.md)                   |  ★ ★  | [Go](06-tuningTrouble/go)                                                  |
 | [Day 7: No Space Left On Device](07-noSpaceLeftOnDevice/README.md)    |  ★ ★  | [Go](07-noSpaceLeftOnDevice/go)                                            |
 | [Day 8: Treetop Tree House](08-treetopTreeHouse/README.md)            |  ★ ★  | [Go](08-treetopTreeHouse/go)                                               |
