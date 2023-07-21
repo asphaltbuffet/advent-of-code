@@ -28,6 +28,7 @@ require (
 	github.com/dominikbraun/graph v0.23.0
 	github.com/dustin/go-humanize v1.0.1
 	github.com/fatih/color v1.15.0
+	github.com/go-echarts/go-echarts/v2 v2.2.7
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
 	github.com/logrusorgru/aurora v2.0.3+incompatible
 	github.com/schollz/progressbar/v3 v3.13.1

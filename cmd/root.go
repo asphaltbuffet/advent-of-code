@@ -61,6 +61,7 @@ func GetRootCommand() *cobra.Command {
 	rootCmd.PersistentFlags().StringVarP(&implementation, "implementation", "i", "", "implementation to use")
 
 	rootCmd.AddCommand(GetBenchmarkCmd())
+	rootCmd.AddCommand(GetGraphCmd())
 
 	return rootCmd
 }
