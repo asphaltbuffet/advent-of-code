@@ -1,0 +1,15 @@
+{
+  "day": 16,
+  "dir": "exercises/2022/16-proboscideaVolcanium",
+  "implementations": {
+    "Golang": {
+      "part.1.avg": 0.2960248,
+      "part.1.max": 0.2960248,
+      "part.1.min": 0.2960248,
+      "part.2.avg": 1043.183,
+      "part.2.max": 1043.183,
+      "part.2.min": 1043.183
+    }
+  },
+  "numRuns": 1
+}

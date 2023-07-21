@@ -137,7 +137,10 @@ func (g *golangRunner) Run(task *Task) (*Result, error) {
 		return nil, err
 	}
 
-	_, _ = g.stdin.Write(append(taskJSON, '\n'))
+	_, err = g.stdin.Write(append(taskJSON, '\n'))
+	if err != nil {
+		return nil, err
+	}
 
 	res := new(Result)
 
