@@ -3,24 +3,40 @@ package exercises
 import (
 	"fmt"
 	"os"
-	"sort"
 	"strings"
 
 	"github.com/asphaltbuffet/advent-of-code/internal/common"
 )
 
+const MaxDistance = 999999
+
 var (
-	tracking map[string]int
-	open     map[string]bool
+	valves    map[string]valve
+	distances map[string]map[string]int
+	nonZero   []string
 )
 
+type Sequence struct {
+	flow    int
+	visited map[string]bool
+}
+
 type valve struct {
-	flowRate    int
+	flow        int
 	connections []string
 }
 
-func parse(input string) map[string]valve {
-	valves := map[string]valve{}
+// Exercise for Advent of Code 2022 day 16.
+type Exercise struct {
+	common.BaseExercise
+}
+
+func parse(input string) (map[string]valve, error) {
+	if len(input) == 0 {
+		return nil, fmt.Errorf("input is empty")
+	}
+
+	valves = map[string]valve{}
 
 	for _, line := range strings.Split(input, "\n") {
 		var name string
@@ -28,14 +44,14 @@ func parse(input string) map[string]valve {
 		parts := strings.Split(line, "; ")
 		v := valve{}
 
-		_, err := fmt.Sscanf(parts[0], "Valve %s has flow rate=%d", &name, &v.flowRate)
+		_, err := fmt.Sscanf(parts[0], "Valve %s has flow rate=%d", &name, &v.flow)
 		if err != nil {
-			panic("parsing valve name and flow rate" + err.Error())
+			return nil, fmt.Errorf("parsing valve name and flow rate: %w", err)
 		}
 
 		connections := strings.Split(parts[1], ", ")
 
-		if v.flowRate > 0 {
+		if v.flow > 0 {
 			nonZero = append(nonZero, name)
 		}
 
@@ -45,25 +61,24 @@ func parse(input string) map[string]valve {
 		valves[name] = v
 	}
 
-	return valves
-}
-
-// Exercise for Advent of Code 2022 day 16.
-type Exercise struct {
-	common.BaseExercise
+	return valves, nil
 }
 
 // Vis is the visualization of the exercise.
-func (c Exercise) Vis(instr string, outdir string) error {
+func (e Exercise) Vis(instr string, outdir string) error {
 	sb := strings.Builder{}
 
-	rooms := parse(instr)
+	rooms, err := parse(instr)
+	if err != nil {
+		return fmt.Errorf("parsing input: %w", err)
+	}
+
 	connections := map[string]bool{}
 
 	sb.WriteString("flowchart TD\n")
 
 	for k, v := range rooms {
-		sb.WriteString(fmt.Sprintf("\t%s[%s: %d]\n", k, k, v.flowRate))
+		sb.WriteString(fmt.Sprintf("\t%s[%s: %d]\n", k, k, v.flow))
 
 		for _, c := range v.connections {
 			if _, ok := connections[fmt.Sprintf("%s --- %s", c, k)]; !ok {
@@ -76,7 +91,7 @@ func (c Exercise) Vis(instr string, outdir string) error {
 		sb.WriteString(fmt.Sprintf("\t%s\n", k))
 	}
 
-	err := os.WriteFile(outdir+"/vis.txt", []byte(sb.String()), 0o600)
+	err = os.WriteFile(outdir+"/vis.mmd", []byte(sb.String()), 0o600)
 	if err != nil {
 		return fmt.Errorf("writing visualization to file: %w", err)
 	}
@@ -89,91 +104,159 @@ func (c Exercise) Vis(instr string, outdir string) error {
 // wrong: 1566 (too low)
 // wrong: 1589 (too low)
 // answer: 1647
-func (c Exercise) One(instr string) (any, error) {
-	valves := parse(instr)
+func (e Exercise) One(instr string) (any, error) {
+	var err error
 
-	// track best flow for each state
-	tracking = map[string]int{}
+	valves, err = parse(instr)
+	if err != nil {
+		return nil, fmt.Errorf("parsing input: %w", err)
+	}
 
-	// track open valves separately
-	open = map[string]bool{}
+	distances = floydWarshall(valves)
 
-	// we can skip checking effect of opening a valve if the flow is zero
-	for name, v := range valves {
-		if v.flowRate == 0 {
-			open[name] = true
+	sequences := getSequences("AA", 30, Sequence{0, make(map[string]bool)})
+
+	max := 0
+
+	// look at all possible sequences and find the best flow
+	for i := 0; i < len(sequences); i++ {
+		seq := sequences[i]
+
+		if seq.flow > max {
+			max = seq.flow
 		}
 	}
 
-	// start at AA and recurse through all paths, returning the best
-	return bfs(valves, "AA", 30, 0), nil
+	return max, nil
 }
 
 // Two returns the answer to the second part of the exercise.
 // answer:
-func (c Exercise) Two(instr string) (any, error) {
-	return nil, nil
-}
+func (e Exercise) Two(instr string) (any, error) {
+	var err error
 
-func bfs(valves map[string]valve, curRoom string, timeLeft, curFlow int) int {
-	if timeLeft == 0 {
-		return 0
+	valves, err = parse(instr)
+	if err != nil {
+		return nil, fmt.Errorf("parsing input: %w", err)
 	}
 
-	h := hash(curRoom, timeLeft, curFlow)
+	distances = floydWarshall(valves)
 
-	// if we've already seen this state, return the best flow
-	if v, ok := tracking[h]; ok {
-		return v
-	}
+	sequences := getSequences("AA", 26, Sequence{0, make(map[string]bool)})
 
-	maxFlow := 0
+	max := 0
 
-	// if the valve is closed, test result of opening it
-	if !open[curRoom] {
-		open[curRoom] = true
+	for i := 0; i < len(sequences)-1; i++ {
+		me := sequences[i]
+		if len(me.visited) == 0 {
+			continue
+		}
 
-		newFlow := curFlow + valves[curRoom].flowRate
+		for j := i + 1; j < len(sequences); j++ {
+			elephant := sequences[j]
+			if len(elephant.visited) == 0 {
+				continue
+			}
 
-		maxFlow = curFlow + bfs(valves, curRoom, timeLeft-1, newFlow)
+			combinedFlow := me.flow + elephant.flow
 
-		// close it for other testing (hash will track open state history)
-		open[curRoom] = false
-	}
-
-	// check adjacent valves (without opening this valve)
-	for _, v := range valves[curRoom].connections {
-		testFlow := curFlow + bfs(valves, v, timeLeft-1, curFlow)
-
-		if testFlow > maxFlow {
-			maxFlow = testFlow
+			if combinedFlow > max && hasNoOverlap(me.visited, elephant.visited) {
+				max = combinedFlow
+			}
 		}
 	}
 
-	tracking[h] = maxFlow
-
-	return maxFlow
+	return max, nil
 }
 
-func hash(valve string, timeLeft int, flow int) string {
-	names := make([]string, 0, len(open))
+func hasNoOverlap(m1, m2 map[string]bool) bool {
+	for key := range m1 {
+		if m2[key] {
+			return false
+		}
+	}
+	return true
+}
 
-	for k, isOpen := range open {
-		if isOpen {
-			names = append(names, k)
+func (s Sequence) copy() Sequence {
+	return Sequence{s.flow, copyMap(s.visited)}
+}
+
+func getSequences(curValve string, time int, curSeqence Sequence) []Sequence {
+	sequences := []Sequence{curSeqence}
+
+	// add all non-zero valves that haven't been visited
+	for i := 0; i < len(nonZero); i++ {
+		next := nonZero[i]
+		newTime := time - distances[curValve][next] - 1
+
+		if curSeqence.visited[next] || newTime <= 0 {
+			continue
+		}
+
+		newSeq := Sequence{
+			curSeqence.flow + newTime*valves[next].flow,
+			copyMap(curSeqence.visited),
+		}
+
+		newSeq.visited[next] = true
+
+		// get all sequences branching from this valve
+		// add all the results to sequence list
+		sequences = append(sequences, getSequences(next, newTime, newSeq)...)
+	}
+
+	return sequences
+}
+
+func floydWarshall(valves map[string]valve) map[string]map[string]int {
+	dist := make(map[string]map[string]int, len(valves))
+
+	// set initial distances
+	for i := range valves {
+		dist[i] = make(map[string]int)
+
+		for j := range valves {
+			switch {
+			case i == j:
+				dist[i][j] = 0
+			case contains(valves[i].connections, j):
+				dist[i][j] = 1
+			default:
+				dist[i][j] = MaxDistance
+			}
 		}
 	}
 
-	sort.Strings(names)
+	// run floyd-warshall
+	for k := range valves {
+		for i := range valves {
+			for j := range valves {
+				if dist[i][k]+dist[k][j] < dist[i][j] {
+					dist[i][j] = dist[i][k] + dist[k][j]
+				}
+			}
+		}
+	}
 
-	// switch to string builder to avoid creating intermediate strings
-	var sb strings.Builder
+	return dist
+}
 
-	sb.WriteString(valve)
-	sb.WriteString(fmt.Sprint(timeLeft))
-	sb.WriteString(strings.Join(names, ""))
-	sb.WriteString(fmt.Sprint(flow))
+func contains(arr []string, val string) bool {
+	for _, v := range arr {
+		if v == val {
+			return true
+		}
+	}
 
-	// return fmt.Sprint(valve, timeLeft, names, flow)
-	return sb.String()
+	return false
+}
+
+func copyMap(m map[string]bool) map[string]bool {
+	mcopy := make(map[string]bool)
+	for k, v := range m {
+		mcopy[k] = v
+	}
+
+	return mcopy
 }
