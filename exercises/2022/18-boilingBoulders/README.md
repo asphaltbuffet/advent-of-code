@@ -9,11 +9,10 @@
 
 Running...
 
-Test 1.0: pass in 35.9 µs
-Test 2.0: fail in 500 ns
- └ Expected , got <nil>
-Part 1: 4456 in 3.0138 ms
-Part 2: <nil> in 400 ns
+Test 1.0: pass in 35.3 µs
+Test 2.0: pass in 48.1 µs
+Part 1: 4456 in 3.1213 ms
+Part 2: 2510 in 992.74 ms
 ```
 
 ## Python
