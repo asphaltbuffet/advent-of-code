@@ -23,7 +23,7 @@
 | [Day 15: Beacon Exclusion Zone](15-beaconExclusionZone/README.md)     |  ★ ★  | [Go](15-beaconExclusionZone/go)                                            |
 | [Day 16: Proboscidea Volcanium](16-proboscideaVolcanium/go)           |  ★ ★  | [Go](16-proboscideaVolcanium/go)                                           |
 | [Day 17: Pyroclastic Flow](17-pyroclasticFlow/README.md)              |  ★ ★  | [Go](17-pyroclasticFlow/go), [Python](17-pyroclasticFlow/py)               |
-| 18                                                                    |  ☆ ☆  |                                                                            |
+| [Day 18: Boiling Boulders](18-boilingBoulders/README.md)              |  ★ ☆  | [Go](18-boilingBoulders/go), [Python](18-boilingBoulders/py)               |
 | 19                                                                    |  ☆ ☆  |                                                                            |
 | 20                                                                    |  ☆ ☆  |                                                                            |
 | 21                                                                    |  ☆ ☆  |                                                                            |
