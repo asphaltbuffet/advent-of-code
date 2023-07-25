@@ -8,29 +8,22 @@ on:
 jobs:
   update:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        year: [2022, 2021, 2020, 2019, 2018, 2017, 2016, 2015]
+        color: [red, darkblue, yellow, orange, lightgrey, green, blue, black]
     steps:
       - uses: actions/checkout@v3
 
-      - name: "2022"
+      - name: "Update Badge"
         uses: joblo2213/aoc-badges-action@v3
         with:
           userid: ${{ secrets.AOC_USERID }}
           session: ${{ secrets.AOC_SESSION }}
-          year: 2022
+          year: ${{ matrix.year }}
           #leaderboard: 'https://adventofcode.com/2020/leaderboard/private/view/00000.json'
           #file: 'README.md'                                                                         
-          starsRegex: '(?<=https:\/\/img\.shields\.io\/badge\/2022_⭐-)[0-9]+(?=-blue)'             
-          #daysCompletedRegex: '(?<=https:\/\/img\.shields\.io\/badge\/days%20completed-)[0-9]+(?=-red)'  
-
-      - name: "2021"
-        uses: joblo2213/aoc-badges-action@v3
-        with:
-          userid: ${{ secrets.AOC_USERID }}
-          session: ${{ secrets.AOC_SESSION }}
-          year: 2021                                                                                    
-          #leaderboard: 'https://adventofcode.com/2020/leaderboard/private/view/00000.json'              
-          #file: 'README.md'                                                                           
-          starsRegex: '(?<=https:\/\/img\.shields\.io\/badge\/2021_⭐-)[0-9]+(?=-red)'        
+          starsRegex: '(?<=https:\/\/img\.shields\.io\/badge\/${{ matrix.year }}_⭐-)[0-9]+(?=-${{ matrix.color }})'             
           #daysCompletedRegex: '(?<=https:\/\/img\.shields\.io\/badge\/days%20completed-)[0-9]+(?=-red)'  
 
       - name: Create Pull Request
