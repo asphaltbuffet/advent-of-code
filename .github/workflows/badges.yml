@@ -19,7 +19,7 @@ jobs:
           year: 2022
           #leaderboard: 'https://adventofcode.com/2020/leaderboard/private/view/00000.json'
           #file: 'README.md'                                                                         
-          starsRegex: '(?<=https:\/\/img\.shields\.io\/badge\/2022_⭐-)[0-9]+(?=-blue)'             
+          starsRegex: '(?<=https:\/\/img\.shields\.io\/badge\/2022_⭐-)[0-9]+(?=-red)'             
           #daysCompletedRegex: '(?<=https:\/\/img\.shields\.io\/badge\/days%20completed-)[0-9]+(?=-red)'  
 
       - name: "2021"
@@ -30,7 +30,73 @@ jobs:
           year: 2021                                                                                    
           #leaderboard: 'https://adventofcode.com/2020/leaderboard/private/view/00000.json'              
           #file: 'README.md'                                                                           
-          starsRegex: '(?<=https:\/\/img\.shields\.io\/badge\/2021_⭐-)[0-9]+(?=-red)'        
+          starsRegex: '(?<=https:\/\/img\.shields\.io\/badge\/2021_⭐-)[0-9]+(?=-darkblue)'        
+          #daysCompletedRegex: '(?<=https:\/\/img\.shields\.io\/badge\/days%20completed-)[0-9]+(?=-red)'  
+
+      - name: "2020"
+        uses: joblo2213/aoc-badges-action@v3
+        with:
+          userid: ${{ secrets.AOC_USERID }}
+          session: ${{ secrets.AOC_SESSION }}
+          year: 2020
+          #leaderboard: 'https://adventofcode.com/2020/leaderboard/private/view/00000.json'
+          #file: 'README.md'                                                                         
+          starsRegex: '(?<=https:\/\/img\.shields\.io\/badge\/2020_⭐-)[0-9]+(?=-yellow)'             
+          #daysCompletedRegex: '(?<=https:\/\/img\.shields\.io\/badge\/days%20completed-)[0-9]+(?=-red)'  
+
+      - name: "2019"
+        uses: joblo2213/aoc-badges-action@v3
+        with:
+          userid: ${{ secrets.AOC_USERID }}
+          session: ${{ secrets.AOC_SESSION }}
+          year: 2019
+          #leaderboard: 'https://adventofcode.com/2020/leaderboard/private/view/00000.json'
+          #file: 'README.md'                                                                         
+          starsRegex: '(?<=https:\/\/img\.shields\.io\/badge\/2019_⭐-)[0-9]+(?=-orange)'             
+          #daysCompletedRegex: '(?<=https:\/\/img\.shields\.io\/badge\/days%20completed-)[0-9]+(?=-red)'  
+
+      - name: "2018"
+        uses: joblo2213/aoc-badges-action@v3
+        with:
+          userid: ${{ secrets.AOC_USERID }}
+          session: ${{ secrets.AOC_SESSION }}
+          year: 2018
+          #leaderboard: 'https://adventofcode.com/2020/leaderboard/private/view/00000.json'
+          #file: 'README.md'                                                                         
+          starsRegex: '(?<=https:\/\/img\.shields\.io\/badge\/2018_⭐-)[0-9]+(?=-lightgrey)'             
+          #daysCompletedRegex: '(?<=https:\/\/img\.shields\.io\/badge\/days%20completed-)[0-9]+(?=-red)'  
+
+      - name: "2017"
+        uses: joblo2213/aoc-badges-action@v3
+        with:
+          userid: ${{ secrets.AOC_USERID }}
+          session: ${{ secrets.AOC_SESSION }}
+          year: 2017
+          #leaderboard: 'https://adventofcode.com/2020/leaderboard/private/view/00000.json'
+          #file: 'README.md'                                                                         
+          starsRegex: '(?<=https:\/\/img\.shields\.io\/badge\/2017_⭐-)[0-9]+(?=-green)'             
+          #daysCompletedRegex: '(?<=https:\/\/img\.shields\.io\/badge\/days%20completed-)[0-9]+(?=-red)'  
+
+      - name: "2016"
+        uses: joblo2213/aoc-badges-action@v3
+        with:
+          userid: ${{ secrets.AOC_USERID }}
+          session: ${{ secrets.AOC_SESSION }}
+          year: 2016
+          #leaderboard: 'https://adventofcode.com/2020/leaderboard/private/view/00000.json'
+          #file: 'README.md'                                                                         
+          starsRegex: '(?<=https:\/\/img\.shields\.io\/badge\/2016_⭐-)[0-9]+(?=-blue)'             
+          #daysCompletedRegex: '(?<=https:\/\/img\.shields\.io\/badge\/days%20completed-)[0-9]+(?=-red)'  
+
+      - name: "2015"
+        uses: joblo2213/aoc-badges-action@v3
+        with:
+          userid: ${{ secrets.AOC_USERID }}
+          session: ${{ secrets.AOC_SESSION }}
+          year: 2015
+          #leaderboard: 'https://adventofcode.com/2020/leaderboard/private/view/00000.json'
+          #file: 'README.md'                                                                         
+          starsRegex: '(?<=https:\/\/img\.shields\.io\/badge\/2015_⭐-)[0-9]+(?=-black)'             
           #daysCompletedRegex: '(?<=https:\/\/img\.shields\.io\/badge\/days%20completed-)[0-9]+(?=-red)'  
 
       - name: Create Pull Request
