@@ -22,10 +22,10 @@ Part 2: 2510 in 992.74 ms
 
 Running...
 
-Test 1.0: pass in 27.894974 µs
-Test 2.0: did not complete saying "<class 'NotImplementedError'>"
-Part 1: 4456 in 5.438566 ms
-Part 2: did not complete saying <class 'NotImplementedError'>
+Test 1.0: pass in 34.093857 µs
+Test 2.0: pass in 121.593475 µs
+Part 1: 4456 in 6.937504 ms
+Part 2: 2510 in 3.8764 s
     ```
 
 ## 2022 Run Times
