@@ -1,0 +1,15 @@
+{
+  "day": 1,
+  "dir": "exercises/2015/01-notQuiteLisp",
+  "implementations": {
+    "Golang": {
+      "part.1.avg": 0.0000020081000000000024,
+      "part.1.max": 0.0001235,
+      "part.1.min": 5e-7,
+      "part.2.avg": 0.000015667000000000045,
+      "part.2.max": 0.0003169,
+      "part.2.min": 0.0000058
+    }
+  },
+  "numRuns": 1000
+}
