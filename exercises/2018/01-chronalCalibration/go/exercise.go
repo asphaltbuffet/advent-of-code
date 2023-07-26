@@ -33,5 +33,23 @@ func (c Exercise) One(instr string) (any, error) {
 // Two returns the answer to the second part of the exercise.
 // answer:
 func (c Exercise) Two(instr string) (any, error) {
-	return nil, nil
+	sum := 0
+	seen := map[int]bool{0: true}
+
+	for {
+		for _, f := range strings.Split(instr, "\n") {
+			n, err := strconv.Atoi(f)
+			if err != nil {
+				return nil, fmt.Errorf("parsing input: %w", err)
+			}
+
+			sum += n
+
+			if seen[sum] {
+				return sum, nil
+			}
+
+			seen[sum] = true
+		}
+	}
 }
