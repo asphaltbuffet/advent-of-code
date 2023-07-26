@@ -38,7 +38,24 @@ func (c Exercise) One(instr string) (any, error) {
 // Two returns the answer to the second part of the exercise.
 // answer:
 func (c Exercise) Two(instr string) (any, error) {
-	return nil, nil
+	r := parse(instr)
+
+	sum := 0
+
+	for i := 0; i < r.Len(); i++ {
+		v, _ := r.Value.(int)
+		n, _ := r.Move(r.Len() / 2).Value.(int)
+
+		// fmt.Printf("%d & %d\n", v, n)
+
+		if v == n {
+			sum += v
+		}
+
+		r = r.Next()
+	}
+
+	return sum, nil
 }
 
 func parse(instr string) *ring.Ring {
