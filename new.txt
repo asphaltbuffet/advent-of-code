@@ -1,0 +1,21 @@
+goos: linux
+goarch: amd64
+pkg: github.com/asphaltbuffet/advent-of-code/exercises/2022/19-notEnoughMinerals/go
+cpu: Intel(R) Core(TM) i7-9700K CPU @ 3.60GHz
+BenchmarkParse-8   	   59940	     20114 ns/op	   29116 B/op	     101 allocs/op
+BenchmarkParse-8   	   56415	     20057 ns/op	   29101 B/op	     101 allocs/op
+BenchmarkParse-8   	   60404	     19392 ns/op	   29117 B/op	     101 allocs/op
+BenchmarkParse-8   	   62330	     19577 ns/op	   29096 B/op	     101 allocs/op
+BenchmarkParse-8   	   62217	     19482 ns/op	   29102 B/op	     101 allocs/op
+BenchmarkParse-8   	   62330	     19490 ns/op	   29114 B/op	     101 allocs/op
+BenchmarkParse-8   	   60063	     19532 ns/op	   29124 B/op	     101 allocs/op
+BenchmarkParse-8   	   61474	     19897 ns/op	   29121 B/op	     101 allocs/op
+BenchmarkParse-8   	   59100	     21846 ns/op	   29155 B/op	     101 allocs/op
+BenchmarkParse-8   	   60823	     19976 ns/op	   29114 B/op	     101 allocs/op
+BenchmarkParse-8   	   59893	     20436 ns/op	   29146 B/op	     101 allocs/op
+BenchmarkParse-8   	   61888	     19699 ns/op	   29115 B/op	     101 allocs/op
+BenchmarkParse-8   	   60908	     19760 ns/op	   29103 B/op	     101 allocs/op
+BenchmarkParse-8   	   56334	     19958 ns/op	   29102 B/op	     101 allocs/op
+BenchmarkParse-8   	   60950	     19716 ns/op	   29107 B/op	     101 allocs/op
+PASS
+ok  	github.com/asphaltbuffet/advent-of-code/exercises/2022/19-notEnoughMinerals/go	21.101s

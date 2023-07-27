@@ -48,7 +48,7 @@ fi
 
 #echo "Puzzle name for year $year, day $day: $puzzle_name"
 
-echo $( cookiecutter template -f --no-input year=$year dayNumber=$day exerciseTitle="$puzzle_name" -o exercises/$year )
+echo $( cookiecutter template --no-input year=$year dayNumber=$day exerciseTitle="$puzzle_name" -o exercises/$year )
 
 # Store the current timestamp as the last execution timestamp
 echo "$current_timestamp" > "$timestamp_file"
