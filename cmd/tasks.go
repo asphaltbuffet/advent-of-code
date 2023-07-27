@@ -103,7 +103,7 @@ func handleTestResult(r *runners.Result, testCase *exercise.TestCase) {
 	}
 
 	if followUpText == "" {
-		followUpText = fmt.Sprintf(" in %s", humanize.SI(r.Duration, "s"))
+		followUpText = fmt.Sprintf(" in %s", humanize.SIWithDigits(r.Duration, 1, "s"))
 	}
 
 	fmt.Print(status)
@@ -141,9 +141,9 @@ func handleMainResult(r *runners.Result) {
 
 	if !r.Ok {
 		fmt.Print(incompleteLabel)
-		dimmed.Printf(" saying %s", r.Output) //nolint:errcheck,gosec // printing to stdout
+		dimmed.Printf(" saying %q\n", r.Output) //nolint:errcheck,gosec // printing to stdout
 	} else {
-		brightBlue.Print(r.Output)                              //nolint:errcheck,gosec // printing to stdout
-		dimmed.Printf(" in %s\n", humanize.SI(r.Duration, "s")) //nolint:errcheck,gosec // printing to stdout
+		brightBlue.Print(r.Output)                                           //nolint:errcheck,gosec // printing to stdout
+		dimmed.Printf(" in %s\n", humanize.SIWithDigits(r.Duration, 1, "s")) //nolint:errcheck,gosec // printing to stdout
 	}
 }
