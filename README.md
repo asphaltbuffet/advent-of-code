@@ -9,9 +9,9 @@
 [![2017 Stars](https://img.shields.io/badge/2017_⭐-2-green)](exercises/2017/README.md)
 [![2018 Stars](https://img.shields.io/badge/2018_⭐-2-lightgrey)](exercises/2018/README.md)
 [![2019 Stars](https://img.shields.io/badge/2019_⭐-2-orange)](exercises/2019/README.md)
-[![2020 Stars](https://img.shields.io/badge/2020_⭐-0-yellow)](exercises/2020/README.md)
+[![2020 Stars](https://img.shields.io/badge/2020_⭐-2-yellow)](exercises/2020/README.md)
 [![2021 Stars](https://img.shields.io/badge/2021_⭐-4-darkblue)](exercises/2021/README.md)
-[![2022 Stars](https://img.shields.io/badge/2022_⭐-37-red)](exercises/2022/README.md)
+[![2022 Stars](https://img.shields.io/badge/2022_⭐-39-red)](exercises/2022/README.md)
 
 Collecting solutions to Advent-of-Code exercises. Structure and runtime heavily influenced by [gh:codemicro/adventOfCode](https://github.com/codemicro/adventOfCode)
 
