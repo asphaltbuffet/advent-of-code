@@ -9,12 +9,12 @@ type Exercise struct {
 
 // One returns the answer to the first part of the exercise.
 // answer:
-func (c Exercise) One(instr string) (any, error) {
+func (e Exercise) One(instr string) (any, error) {
 	return nil, nil
 }
 
 // Two returns the answer to the second part of the exercise.
 // answer:
-func (c Exercise) Two(instr string) (any, error) {
+func (e Exercise) Two(instr string) (any, error) {
 	return nil, nil
 }
