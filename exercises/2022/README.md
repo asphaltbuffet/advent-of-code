@@ -26,7 +26,7 @@
 | [Day 18: Boiling Boulders][rm18]         |  ★ ★  | [Go][g18], [Python][p18] |
 | [Day 19: Not Enough Minerals][rm19]      |  ★ ★  | [Go][g19]                |
 | [Day 20: Grove Positioning System][rm20] |  ★ ★  | [Go][g20]                |
-| 21                                       |  ☆ ☆  |                          |
+| [Day 21: Monkey Math][rm21]              |  ☆ ☆  | [Go][g21]                |
 | 22                                       |  ☆ ☆  |                          |
 | 23                                       |  ☆ ☆  |                          |
 | 24                                       |  ☆ ☆  |                          |
@@ -56,6 +56,7 @@
 [rm18]: 18-boilingBoulders/README.md
 [rm19]: 19-notEnoughMinerals/README.md
 [rm20]: 20-grovePositioningSystem/README.md
+[rm21]: 21-monkeyMath/README.md
 [rm25]: 25-fullOfHotAir/README.md
 
 [g1]: 01-calorieCounting/go
@@ -78,6 +79,7 @@
 [g18]: 18-boilingBoulders/go
 [g19]: 19-notEnoughMinerals/go
 [g20]: 20-grovePositioningSystem/go
+[g21]: 21-monkeyMath/go
 [g25]: 25-fullOfHotAir/go
 
 [p1]: 01-calorieCounting/py
