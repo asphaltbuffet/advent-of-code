@@ -1,8 +1,6 @@
 package exercises
 
 import (
-	"fmt"
-
 	"github.com/asphaltbuffet/advent-of-code/internal/common"
 )
 
@@ -15,7 +13,7 @@ type Exercise struct {
 // wrong: 9476 (too high)
 // answer: 4066
 func (e Exercise) One(instr string) (any, error) {
-	f, err := parse(instr)
+	f, err := parse(instr, 1)
 	if err != nil {
 		return nil, err
 	}
@@ -33,13 +31,31 @@ func (e Exercise) One(instr string) (any, error) {
 
 	c1, c2, c3 := f.getCoordinates()
 
-	fmt.Printf("coordinates = %d %d %d\n", c1, c2, c3)
+	// fmt.Printf("coordinates = %d %d %d\n", c1, c2, c3)
 
 	return c1 + c2 + c3, nil
 }
 
 // Two returns the answer to the second part of the exercise.
-// answer:
+// answer: 6704537992933
 func (e Exercise) Two(instr string) (any, error) {
-	return nil, nil
+	f, err := parse(instr, 811589153)
+	if err != nil {
+		return nil, err
+	}
+
+	for i := 0; i < 10; i++ {
+		err = f.decrypt()
+		if err != nil {
+			return nil, err
+		}
+	}
+
+	// fmt.Println(f.decryptedToString())
+
+	c1, c2, c3 := f.getCoordinates()
+
+	// fmt.Printf("coordinates = %d %d %d\n", c1, c2, c3)
+
+	return c1 + c2 + c3, nil
 }

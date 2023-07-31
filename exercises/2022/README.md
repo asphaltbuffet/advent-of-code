@@ -25,7 +25,7 @@
 | [Day 17: Pyroclastic Flow][rm17]         |  ★ ★  | [Go][g17], [Python][p17] |
 | [Day 18: Boiling Boulders][rm18]         |  ★ ★  | [Go][g18], [Python][p18] |
 | [Day 19: Not Enough Minerals][rm19]      |  ★ ★  | [Go][g19]                |
-| [Day 20: Grove Positioning System][rm20] |  ★ ☆  | [Go][g20]                |
+| [Day 20: Grove Positioning System][rm20] |  ★ ★  | [Go][g20]                |
 | 21                                       |  ☆ ☆  |                          |
 | 22                                       |  ☆ ☆  |                          |
 | 23                                       |  ☆ ☆  |                          |

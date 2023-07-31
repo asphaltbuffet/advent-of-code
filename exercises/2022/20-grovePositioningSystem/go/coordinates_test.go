@@ -73,7 +73,7 @@ func TestPrint(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			cf, err := parse(tt.ringValues)
+			cf, err := parse(tt.ringValues, 1)
 			require.NoError(t, err, "parse failed")
 
 			got := cf.decryptedToString()
@@ -94,7 +94,7 @@ func TestDecrypt(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			cf, err := parse(tt.input)
+			cf, err := parse(tt.input, 1)
 			require.NoError(t, err, "parse failed")
 
 			err = cf.decrypt()
@@ -119,7 +119,7 @@ func TestParse(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			cf, err := parse(tt.input)
+			cf, err := parse(tt.input, 1)
 			require.NoError(t, err, "parse failed")
 
 			got := cf.decryptedToString()
@@ -138,14 +138,15 @@ func TestGetCoordinates(t *testing.T) {
 	tests := []struct {
 		name       string
 		ringValues string
+		key        int
 		expected   expected
 	}{
-		{"example", "1\n2\n-3\n4\n0\n3\n-2", expected{one: 4, two: -3, three: 2}},
+		{"example", "1\n2\n-3\n4\n0\n3\n-2", 1, expected{one: 4, two: -3, three: 2}},
 	}
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			cf, err := parse(tt.ringValues)
+			cf, err := parse(tt.ringValues, tt.key)
 			require.NoError(t, err, "parse failed")
 			require.Equal(t, cf.zero.Element.value, 0)
 

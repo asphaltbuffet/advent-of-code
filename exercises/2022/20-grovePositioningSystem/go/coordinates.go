@@ -19,7 +19,7 @@ type digit struct {
 	visited bool
 }
 
-func parse(instr string) (*coordinateFile, error) {
+func parse(instr string, key int) (*coordinateFile, error) {
 	lines := strings.Split(instr, "\n")
 
 	cf := &coordinateFile{
@@ -35,7 +35,7 @@ func parse(instr string) (*coordinateFile, error) {
 			return nil, fmt.Errorf("parsing line %d: %w", i, err)
 		}
 
-		cf.decrypted.Element = digit{v, false}
+		cf.decrypted.Element = digit{v * key, false}
 		cf.encrypted = append(cf.encrypted, cf.decrypted)
 
 		// create an anchor to the zero value
@@ -91,6 +91,10 @@ func (cf *coordinateFile) getCoordinates() (int, int, int) {
 }
 
 func shift(r *ring.Ring[digit], n int) {
+	if n%r.Len() == 0 {
+		return
+	}
+
 	l := r.Len() - 1
 	h := l >> 1
 
