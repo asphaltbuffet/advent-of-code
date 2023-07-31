@@ -2,6 +2,12 @@
 
 <!-- [Day 20: Grove Positioning System](20-grovePositioningSystem) -->
 
+Let's do an initial bit of designing with MS Paint:
+
+![design diagram](diagram.png)
+
+Later, I changed 'encrypted' to be an array since I would never need to move backward through it or loop end to end...
+
 ## Go
 
 ```text
