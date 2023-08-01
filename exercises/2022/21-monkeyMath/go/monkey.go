@@ -34,12 +34,12 @@ func calc(name string, raw map[string]string, done map[string]int) (int, error) 
 	case 3:
 		left, err := calc(action[0], raw, done)
 		if err != nil {
-			return 0, fmt.Errorf("caculating left of %q: %w", name, err)
+			return 0, fmt.Errorf("calculating left of %q: %w", name, err)
 		}
 
 		right, err := calc(action[2], raw, done)
 		if err != nil {
-			return 0, fmt.Errorf("caculating right of %q: %w", name, err)
+			return 0, fmt.Errorf("calculating right of %q: %w", name, err)
 		}
 
 		switch action[1] {
@@ -52,7 +52,7 @@ func calc(name string, raw map[string]string, done map[string]int) (int, error) 
 		case "/":
 			done[name] = left / right
 		default:
-			return 0, fmt.Errorf("nnknown operator: %s", action[1])
+			return 0, fmt.Errorf("unknown operator: %s", action[1])
 		}
 	}
 
