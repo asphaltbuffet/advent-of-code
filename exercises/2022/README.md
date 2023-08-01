@@ -26,7 +26,7 @@
 | [Day 18: Boiling Boulders][rm18]         |  ★ ★  | [Go][g18], [Python][p18] |
 | [Day 19: Not Enough Minerals][rm19]      |  ★ ★  | [Go][g19]                |
 | [Day 20: Grove Positioning System][rm20] |  ★ ★  | [Go][g20]                |
-| [Day 21: Monkey Math][rm21]              |  ☆ ☆  | [Go][g21]                |
+| [Day 21: Monkey Math][rm21]              |  ★ ★  | [Go][g21], [Python][p21] |
 | 22                                       |  ☆ ☆  |                          |
 | 23                                       |  ☆ ☆  |                          |
 | 24                                       |  ☆ ☆  |                          |
@@ -89,3 +89,4 @@
 [p5]: 05-supplyStacks/py
 [p17]: 17-pyroclasticFlow/py
 [p18]: 18-boilingBoulders/py
+[p21]: 21-monkeyMath/py

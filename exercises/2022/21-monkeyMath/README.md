@@ -15,13 +15,27 @@
 ## Go
 
 ```text
-    < section intentionally left blank >
+2022-21 Monkey Math (Golang)
+
+Running...
+
+Test 1.0: pass in 8.5 µs
+Test 2.0: pass in 56.9 µs
+Part 1: 49288254556480 in 726 µs
+Part 2: 3558714869436 in 5 ms
 ```
 
 ## Python
 
 ```text
-    < section intentionally left blank >
+2022-21 Monkey Math (Python)
+
+Running...
+
+Test 1.0: pass in 19.7 µs
+Test 2.0: pass in 46.9 µs
+Part 1: 49288254556480 in 1.7 ms
+Part 2: 3558714869436 in 2.6 ms
 ```
 
 ## 2022 Run Times
