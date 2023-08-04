@@ -28,7 +28,7 @@
 | [Day 20: Grove Positioning System][rm20] |  ★ ★  | [Go][g20]                |
 | [Day 21: Monkey Math][rm21]              |  ★ ★  | [Go][g21], [Python][p21] |
 | 22                                       |  ☆ ☆  |                          |
-| 23                                       |  ☆ ☆  |                          |
+| [Day 23: Unstable Diffusion][rm23]       |  ★ ★  | [Go][g23]                |
 | 24                                       |  ☆ ☆  |                          |
 | [Day 25: Full Of Hot Air][rm25]          |  ★ ☆  | [Go][g25]                |
 
@@ -57,6 +57,7 @@
 [rm19]: 19-notEnoughMinerals/README.md
 [rm20]: 20-grovePositioningSystem/README.md
 [rm21]: 21-monkeyMath/README.md
+[rm23]: 23-unstableDiffusion/README.md
 [rm25]: 25-fullOfHotAir/README.md
 
 [g1]: 01-calorieCounting/go
@@ -80,6 +81,7 @@
 [g19]: 19-notEnoughMinerals/go
 [g20]: 20-grovePositioningSystem/go
 [g21]: 21-monkeyMath/go
+[g23]: 23-unstableDiffusion/go
 [g25]: 25-fullOfHotAir/go
 
 [p1]: 01-calorieCounting/py
