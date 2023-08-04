@@ -1,6 +1,8 @@
 package exercises
 
 import (
+	"strings"
+
 	"github.com/asphaltbuffet/advent-of-code/internal/common"
 )
 
@@ -9,25 +11,33 @@ type Exercise struct {
 	common.BaseExercise
 }
 
+// this is the dimensions of a block, hacking this in for now
+var blockSize = 4
+
 // One returns the answer to the first part of the exercise.
-// answer:
+// answer: 103224
 func (e Exercise) One(instr string) (any, error) {
-	mm, path := parse(instr)
+	if strings.Count(instr, "\n") > 50 {
+		blockSize = 50
+	}
 
-	b := newBoard(mm)
+	board := parse(instr, blockSize)
 
-	// b.debugPrint()
+	state := followPath(board, false)
 
-	b.move(path)
-
-	row := b.location.position.y + 1
-	col := b.location.position.x + 1
-
-	return 1000*row + 4*col + b.facing, nil
+	return 1000*(state.row+1) + 4*(state.col+1) + int(state.face), nil
 }
 
 // Two returns the answer to the second part of the exercise.
-// answer:
+// answer: 189097
 func (e Exercise) Two(instr string) (any, error) {
-	return nil, nil
+	if strings.Count(instr, "\n") > 50 {
+		blockSize = 50
+	}
+
+	board := parse(instr, blockSize)
+
+	state := followPath(board, true)
+
+	return 1000*(state.row+1) + 4*(state.col+1) + int(state.face), nil
 }

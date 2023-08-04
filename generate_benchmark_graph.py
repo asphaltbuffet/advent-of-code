@@ -46,6 +46,10 @@ for filename in files:
         x = benchmark_data.get(language, {})
         x[str(data["day"]) + ".1"] = data["implementations"][language]["part.1.avg"]
         x[str(data["day"]) + ".2"] = data["implementations"][language]["part.2.avg"]
+
+        for key in x:
+            if x[key] == 0:
+                x[key] = None
         benchmark_data[language] = x
 
 all_days = set()

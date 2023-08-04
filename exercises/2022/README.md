@@ -27,10 +27,10 @@
 | [Day 19: Not Enough Minerals][rm19]      |  ★ ★  | [Go][g19]                |
 | [Day 20: Grove Positioning System][rm20] |  ★ ★  | [Go][g20]                |
 | [Day 21: Monkey Math][rm21]              |  ★ ★  | [Go][g21], [Python][p21] |
-| 22                                       |  ☆ ☆  |                          |
+| [Day 22: Monkey Map][rm22]               |  ★ ★  | [Go][g22]                |
 | [Day 23: Unstable Diffusion][rm23]       |  ★ ★  | [Go][g23]                |
 | [Day 24: Blizzard Basin][rm24]           |  ★ ★  | [Go][g24]                |
-| [Day 25: Full Of Hot Air][rm25]          |  ★ ☆  | [Go][g25]                |
+| [Day 25: Full Of Hot Air][rm25]          |  ★ ★  | [Go][g25]                |
 
 ## 2022 Run Times
 
@@ -57,6 +57,7 @@
 [rm19]: 19-notEnoughMinerals/README.md
 [rm20]: 20-grovePositioningSystem/README.md
 [rm21]: 21-monkeyMath/README.md
+[rm22]: 22-monkeyMap/README.md
 [rm23]: 23-unstableDiffusion/README.md
 [rm24]: 24-blizzardBasin/README.md
 [rm25]: 25-fullOfHotAir/README.md
@@ -82,6 +83,7 @@
 [g19]: 19-notEnoughMinerals/go
 [g20]: 20-grovePositioningSystem/go
 [g21]: 21-monkeyMath/go
+[g22]: 22-monkeyMap/go
 [g23]: 23-unstableDiffusion/go
 [g24]: 24-blizzardBasin/go
 [g25]: 25-fullOfHotAir/go

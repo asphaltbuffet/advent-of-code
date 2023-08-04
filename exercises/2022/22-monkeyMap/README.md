@@ -15,7 +15,14 @@
 ## Go
 
 ```text
-    < section intentionally left blank >
+2022-22 Monkey Map (Golang)
+
+Running...
+
+Test 1.0: pass in 36.9 µs
+Test 2.0: pass in 20 ms
+Part 1: 103224 in 4.3 ms
+Part 2: 189097 in 924 ms
 ```
 
 ## Python
