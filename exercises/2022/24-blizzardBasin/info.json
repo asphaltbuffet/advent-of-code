@@ -1,0 +1,24 @@
+{
+    "inputFile": "input.txt",
+    "puzzle": {
+        "inputFile": "input.txt",
+        "expected": [
+            "264",
+            "789"
+        ]
+    },
+    "testCases": {
+        "one": [
+            {
+                "input": "#.######\n#>>.<^<#\n#.<..<<#\n#>v.><>#\n#<^v^^>#\n######.#",
+                "expected": "18"
+            }
+        ],
+        "two": [
+            {
+                "input": "#.######\n#>>.<^<#\n#.<..<<#\n#>v.><>#\n#<^v^^>#\n######.#",
+                "expected": "54"
+            }
+        ]
+    }
+}
