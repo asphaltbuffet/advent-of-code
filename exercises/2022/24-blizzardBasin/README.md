@@ -15,7 +15,14 @@
 ## Go
 
 ```text
-    < section intentionally left blank >
+2022-24 Blizzard Basin (Golang)
+
+Running...
+
+Test 1.0: pass in 91 µs
+Test 2.0: pass in 261.1 µs
+Part 1: 264 in 265.5 ms
+Part 2: 789 in 606.7 ms
 ```
 
 ## Python

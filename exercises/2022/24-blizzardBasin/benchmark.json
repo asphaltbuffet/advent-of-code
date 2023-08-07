@@ -1,0 +1,15 @@
+{
+  "day": 24,
+  "dir": "exercises/2022/24-blizzardBasin",
+  "implementations": {
+    "Golang": {
+      "part.1.avg": 0.17392138090000023,
+      "part.1.max": 0.2285817,
+      "part.1.min": 0.1624307,
+      "part.2.avg": 0.5057966693999998,
+      "part.2.max": 0.6098705,
+      "part.2.min": 0.4830049
+    }
+  },
+  "numRuns": 1000
+}

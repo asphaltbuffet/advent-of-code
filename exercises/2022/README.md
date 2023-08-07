@@ -29,7 +29,7 @@
 | [Day 21: Monkey Math][rm21]              |  ★ ★  | [Go][g21], [Python][p21] |
 | 22                                       |  ☆ ☆  |                          |
 | [Day 23: Unstable Diffusion][rm23]       |  ★ ★  | [Go][g23]                |
-| 24                                       |  ☆ ☆  |                          |
+| [Day 24: Blizzard Basin][rm24]           |  ★ ★  | [Go][g24]                |
 | [Day 25: Full Of Hot Air][rm25]          |  ★ ☆  | [Go][g25]                |
 
 ## 2022 Run Times
@@ -58,6 +58,7 @@
 [rm20]: 20-grovePositioningSystem/README.md
 [rm21]: 21-monkeyMath/README.md
 [rm23]: 23-unstableDiffusion/README.md
+[rm24]: 24-blizzardBasin/README.md
 [rm25]: 25-fullOfHotAir/README.md
 
 [g1]: 01-calorieCounting/go
@@ -82,6 +83,7 @@
 [g20]: 20-grovePositioningSystem/go
 [g21]: 21-monkeyMath/go
 [g23]: 23-unstableDiffusion/go
+[g24]: 24-blizzardBasin/go
 [g25]: 25-fullOfHotAir/go
 
 [p1]: 01-calorieCounting/py
