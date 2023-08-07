@@ -1,0 +1,15 @@
+{
+  "day": 23,
+  "dir": "exercises/2022/23-unstableDiffusion",
+  "implementations": {
+    "Golang": {
+      "part.1.avg": 0.020297776399999995,
+      "part.1.max": 0.0583582,
+      "part.1.min": 0.0182746,
+      "part.2.avg": 2.8720632252000007,
+      "part.2.max": 3.7770358,
+      "part.2.min": 2.8133116
+    }
+  },
+  "numRuns": 250
+}
