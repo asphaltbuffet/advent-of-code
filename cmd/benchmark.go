@@ -32,7 +32,7 @@ func GetBenchmarkCmd() *cobra.Command {
 		}
 	}
 
-	benchmarkCmd.Flags().IntVarP(&iterations, "number", "n", 1000, "number of benchmark iterations to run")
+	benchmarkCmd.Flags().IntVarP(&iterations, "number", "n", 30, "number of benchmark iterations to run")
 
 	return benchmarkCmd
 }
