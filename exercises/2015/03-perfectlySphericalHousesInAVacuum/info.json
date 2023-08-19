@@ -1,5 +1,9 @@
 {
     "inputFile": "input.txt",
+    "answers": {
+        "one": "2572",
+        "two": "2631"
+    },
     "testCases": {
         "one": [
             {

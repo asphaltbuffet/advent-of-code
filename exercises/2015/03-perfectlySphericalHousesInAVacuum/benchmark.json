@@ -1,0 +1,23 @@
+{
+  "day": 3,
+  "dir": "exercises/2015/03-perfectlySphericalHousesInAVacuum",
+  "implementations": {
+    "Golang": {
+      "part.1.avg": 0.0007337733333333333,
+      "part.1.max": 0.0021973,
+      "part.1.min": 0.0003299,
+      "part.2.avg": 0.0007855599999999999,
+      "part.2.max": 0.0037097,
+      "part.2.min": 0.0003461
+    },
+    "Python": {
+      "part.1.avg": 0.0019866069157918292,
+      "part.1.max": 0.0029675960540771484,
+      "part.1.min": 0.0016591548919677734,
+      "part.2.avg": 0.00241698424021403,
+      "part.2.max": 0.0035538673400878906,
+      "part.2.min": 0.002037525177001953
+    }
+  },
+  "numRuns": 30
+}

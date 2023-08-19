@@ -8,7 +8,7 @@
 |------------------------------------------------------|:-----:|------------------------|
 | [Day 1: Not Quite Lisp][rm1]                         |  ★ ★  | [Go][g1], [Python][p1] |
 | [Day 2: I Was Told There Would Be No Math][rm2]      |  ★ ★  | [Go][g2], [Python][p2] |
-| [Day 3: Perfectly Spherical Houses In A Vacuum][rm3] |  ☆ ☆  | [Go][g3], [Python][p3] |
+| [Day 3: Perfectly Spherical Houses In A Vacuum][rm3] |  ★ ★  | [Go][g3], [Python][p3] |
 | 4                                                    |  ☆ ☆  |                        |
 | 5                                                    |  ☆ ☆  |                        |
 | 6                                                    |  ☆ ☆  |                        |
