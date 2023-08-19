@@ -23,7 +23,7 @@ class Exercise(BaseExercise):
         visited = set()
         visited.add((0, 0))
 
-        for i, c in enumerate(instr):
+        for c in instr:
             x, y = move(x, y, c)
             visited.add((x, y))
 
