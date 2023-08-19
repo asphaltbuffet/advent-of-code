@@ -6,8 +6,8 @@ from aocpy import BaseExercise
 class Exercise(BaseExercise):
     @staticmethod
     def one(instr: str) -> int:
-        raise NotImplementedError
+        raise NotImplementedError("part 1 not implemented")
 
     @staticmethod
     def two(instr: str) -> int:
-        raise NotImplementedError
+        raise NotImplementedError("part 2 not implemented")
