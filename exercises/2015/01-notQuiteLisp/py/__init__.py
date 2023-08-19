@@ -6,7 +6,9 @@ from aocpy import BaseExercise
 class Exercise(BaseExercise):
     @staticmethod
     def one(instr: str) -> int:
-        raise NotImplementedError
+        up = instr.count("(")
+        down = instr.count(")")
+        return up - down
 
     @staticmethod
     def two(instr: str) -> int:
