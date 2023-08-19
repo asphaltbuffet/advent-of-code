@@ -7,8 +7,8 @@ import os
 import sys
 import re
 
-OUTPUT_FILE = sys.argv[1]
-YEAR = sys.argv[2]
+# OUTPUT_FILE = sys.argv[1]
+YEAR = sys.argv[1]
 
 COLORS = {"Golang": "#00ADD8", "Python": "#3776AB"}
 
@@ -126,4 +126,4 @@ do_auxillary_parts(axp1)
 do_auxillary_parts(axp2)
 
 plt.tight_layout()
-plt.savefig(OUTPUT_FILE)
+plt.savefig(os.path.join("exercises", YEAR, "run-times.png"))
