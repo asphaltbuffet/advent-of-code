@@ -3,8 +3,12 @@
     "testCases": {
         "one": [
             {
-                "input": "",
-                "expected": ""
+                "input": "2x3x4",
+                "expected": "58"
+            },
+            {
+                "input": "1x1x10",
+                "expected": "43"
             }
         ],
         "two": [
