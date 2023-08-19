@@ -1,0 +1,37 @@
+{
+    "inputFile": "input.txt",
+    "answers": {
+        "one": "2572",
+        "two": "2631"
+    },
+    "testCases": {
+        "one": [
+            {
+                "input": ">",
+                "expected": "2"
+            },
+            {
+                "input": "^>v<",
+                "expected": "4"
+            },
+            {
+                "input": "^v^v^v^v^v",
+                "expected": "2"
+            }
+        ],
+        "two": [
+            {
+                "input": "^v",
+                "expected": "3"
+            },
+            {
+                "input": "^>v<",
+                "expected": "3"
+            },
+            {
+                "input": "^v^v^v^v^v",
+                "expected": "11"
+            }
+        ]
+    }
+}
