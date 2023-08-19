@@ -45,7 +45,7 @@ while True:
     try:
         result = run()
     except Exception as e:
-        error = f"{type(e)}: {e}"
+        error = f"{e}"
 
         # error = f"{type(e)}: {e}\n{''.join(traceback.format_tb(e.__traceback__))}"
 
