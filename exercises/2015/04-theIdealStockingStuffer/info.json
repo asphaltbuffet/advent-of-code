@@ -1,0 +1,21 @@
+{
+    "inputFile": "input.txt",
+    "testCases": {
+        "one": [
+            {
+                "input": "abcdef",
+                "expected": "609043"
+            },
+            {
+                "input": "pqrstuv",
+                "expected": "1048970"
+            }
+        ],
+        "two": [
+            {
+                "input": "",
+                "expected": ""
+            }
+        ]
+    }
+}
