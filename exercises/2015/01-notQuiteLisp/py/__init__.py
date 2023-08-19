@@ -12,4 +12,12 @@ class Exercise(BaseExercise):
 
     @staticmethod
     def two(instr: str) -> int:
-        raise NotImplementedError
+        floor = 0
+        for i, c in enumerate(instr):
+            if c == "(":
+                floor += 1
+            elif c == ")":
+                floor -= 1
+
+            if floor == -1:
+                return i + 1
