@@ -13,7 +13,6 @@ type Exercise struct {
 }
 
 // One returns the answer to the first part of the exercise.
-// answer:
 func (e Exercise) One(instr string) (any, error) {
 	dims := parse(instr)
 
@@ -33,9 +32,20 @@ func (e Exercise) One(instr string) (any, error) {
 }
 
 // Two returns the answer to the second part of the exercise.
-// answer:
 func (e Exercise) Two(instr string) (any, error) {
-	return nil, nil
+	dims := parse(instr)
+
+	var total int
+
+	for _, dim := range dims {
+		d := max(dim[0], dim[1], dim[2])
+		p := 2 * (dim[0] + dim[1] + dim[2] - d)
+		a := dim[0] * dim[1] * dim[2]
+
+		total += p + a
+	}
+
+	return total, nil
 }
 
 func parse(instr string) [][3]int {
