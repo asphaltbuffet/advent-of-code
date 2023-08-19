@@ -16,6 +16,7 @@ var (
 	passLabel       = color.New(color.FgHiGreen).Sprint("pass")
 	failLabel       = color.New(color.FgHiRed).Sprint("fail")
 	incompleteLabel = color.New(color.BgHiYellow).Sprint("did not complete")
+	missingLabel    = color.New(color.FgHiYellow, color.Italic).Sprint("empty")
 
 	bold       = color.New(color.Bold)
 	dimmed     = color.New(color.FgHiBlack, color.Italic)
@@ -51,6 +52,16 @@ func runTests(runner runners.Runner, info *exercise.Info) error {
 	for i, testCase := range info.TestCases.One {
 		id := makeTestID(runners.PartOne, i)
 
+		if testCase.Input == "" && testCase.Expected == "" {
+			handleTestResult(&runners.Result{
+				TaskID: id,
+				Ok:     false,
+				Output: "empty input or expected output",
+			}, testCase)
+
+			continue
+		}
+
 		result, err := runner.Run(&runners.Task{
 			TaskID: id,
 			Part:   runners.PartOne,
@@ -65,6 +76,16 @@ func runTests(runner runners.Runner, info *exercise.Info) error {
 
 	for i, testCase := range info.TestCases.Two {
 		id := makeTestID(runners.PartTwo, i)
+
+		if testCase.Input == "" && testCase.Expected == "" {
+			handleTestResult(&runners.Result{
+				TaskID: id,
+				Ok:     false,
+				Output: "empty input or expected output",
+			}, testCase)
+
+			continue
+		}
 
 		result, err := runner.Run(&runners.Task{
 			TaskID: id,
@@ -89,20 +110,26 @@ func handleTestResult(r *runners.Result, testCase *exercise.TestCase) {
 	bold.Print(": ")                  //nolint:errcheck,gosec // printing to stdout
 
 	passed := r.Output == testCase.Expected
+	missing := testCase.Input == "" && testCase.Expected == ""
 
 	var status, followUpText string
 
 	switch {
+	case missing:
+		status = missingLabel
+
 	case !r.Ok:
 		status = incompleteLabel
 		followUpText = fmt.Sprintf(" saying %q", r.Output)
+
 	case passed:
 		status = passLabel
+
 	default:
 		status = failLabel
 	}
 
-	if followUpText == "" {
+	if followUpText == "" && !missing {
 		followUpText = fmt.Sprintf(" in %s", humanize.SIWithDigits(r.Duration, 1, "s"))
 	}
 
