@@ -4,6 +4,7 @@ import (
 	"unicode"
 )
 
+// TODO: this fails on hyphenated words: Intern-Elves -> Intern- Elves
 func CamelToTitle(x string) string {
 	var out string
 	for i, char := range x {
