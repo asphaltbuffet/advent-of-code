@@ -1,0 +1,23 @@
+{
+  "day": 2,
+  "dir": "exercises/2015/02-iWasToldThereWouldBeNoMath",
+  "implementations": {
+    "Golang": {
+      "part.1.avg": 0.0008913699999999999,
+      "part.1.max": 0.0021791,
+      "part.1.min": 0.0007082,
+      "part.2.avg": 0.0009698700000000001,
+      "part.2.max": 0.0043279,
+      "part.2.min": 0.0007206
+    },
+    "Python": {
+      "part.1.avg": 0.001783927281697591,
+      "part.1.max": 0.006613016128540039,
+      "part.1.min": 0.0009148120880126953,
+      "part.2.avg": 0.0019247134526570637,
+      "part.2.max": 0.008932113647460938,
+      "part.2.min": 0.0009605884552001953
+    }
+  },
+  "numRuns": 30
+}

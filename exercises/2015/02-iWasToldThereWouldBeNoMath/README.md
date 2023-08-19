@@ -15,13 +15,31 @@
 ## Go
 
 ```text
-    < section intentionally left blank >
+2015-2 I Was Told There Would Be No Math (Golang)
+
+Running...
+
+Test 1.0: pass in 14.6 µs
+Test 1.1: pass in 20.2 µs
+Test 2.0: pass in 6.2 µs
+Test 2.1: pass in 6.3 µs
+Part 1: 1598415 in 821.8 µs
+Part 2: 3812909 in 787.9 µs
 ```
 
 ## Python
 
 ```text
-    < section intentionally left blank >
+2015-2 I Was Told There Would Be No Math (Python)
+
+Running...
+
+Test 1.0: pass in 23.6 µs
+Test 1.1: pass in 10.2 µs
+Test 2.0: pass in 15.2 µs
+Test 2.1: pass in 12.1 µs
+Part 1: 1598415 in 1.1 ms
+Part 2: 3812909 in 1 ms
 ```
 
 ## 2015 Run Times
