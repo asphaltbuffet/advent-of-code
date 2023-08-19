@@ -1,0 +1,29 @@
+{
+    "inputFile": "input.txt",
+    "answers": {
+        "one": "1598415",
+        "two": ""
+    },
+    "testCases": {
+        "one": [
+            {
+                "input": "2x3x4",
+                "expected": "58"
+            },
+            {
+                "input": "1x1x10",
+                "expected": "43"
+            }
+        ],
+        "two": [
+            {
+                "input": "2x3x4",
+                "expected": "34"
+            },
+            {
+                "input": "1x1x10",
+                "expected": "14"
+            }
+        ]
+    }
+}

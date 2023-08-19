@@ -6,8 +6,18 @@ from aocpy import BaseExercise
 class Exercise(BaseExercise):
     @staticmethod
     def one(instr: str) -> int:
-        raise NotImplementedError
+        up = instr.count("(")
+        down = instr.count(")")
+        return up - down
 
     @staticmethod
     def two(instr: str) -> int:
-        raise NotImplementedError
+        floor = 0
+        for i, c in enumerate(instr):
+            if c == "(":
+                floor += 1
+            elif c == ")":
+                floor -= 1
+
+            if floor == -1:
+                return i + 1
