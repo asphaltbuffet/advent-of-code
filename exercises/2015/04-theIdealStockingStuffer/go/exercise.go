@@ -1,7 +1,7 @@
 package exercises
 
 import (
-	"crypto/md5"
+	"crypto/md5" //nolint:gosec // md5 is not used for security
 	"encoding/hex"
 	"strconv"
 

@@ -1,0 +1,23 @@
+{
+  "day": 4,
+  "dir": "exercises/2015/04-theIdealStockingStuffer",
+  "implementations": {
+    "Golang": {
+      "part.1.avg": 0.01785757,
+      "part.1.max": 0.0293976,
+      "part.1.min": 0.0163824,
+      "part.2.avg": 0.5805091166666667,
+      "part.2.max": 0.6514786,
+      "part.2.min": 0.5587843
+    },
+    "Python": {
+      "part.1.avg": 0.07787660757700603,
+      "part.1.max": 0.1004786491394043,
+      "part.1.min": 0.07006311416625977,
+      "part.2.avg": 2.4363782008488974,
+      "part.2.max": 3.130521535873413,
+      "part.2.min": 2.334759473800659
+    }
+  },
+  "numRuns": 30
+}
