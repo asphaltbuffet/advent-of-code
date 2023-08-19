@@ -13,7 +13,6 @@ type Exercise struct {
 }
 
 // One returns the answer to the first part of the exercise.
-// answer:
 func (c Exercise) One(instr string) (any, error) {
 	up := strings.Count(instr, "(")
 	down := strings.Count(instr, ")")
@@ -24,7 +23,6 @@ func (c Exercise) One(instr string) (any, error) {
 }
 
 // Two returns the answer to the second part of the exercise.
-// answer:
 func (c Exercise) Two(instr string) (any, error) {
 	floor := 0
 
