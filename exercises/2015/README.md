@@ -11,7 +11,7 @@
 | [Day 3: Perfectly Spherical Houses In A Vacuum][rm3] |  ★ ★  | [Go][g3], [Python][p3] |
 | [Day 4: The Ideal Stocking Stuffer][rm4]             |  ★ ★  | [Go][g4], [Python][p4] |
 | [Day 5: Doesn't He Have Intern-Elves For This?][rm5] |  ★ ★  | [Go][g5], [Python][p5] |
-| 6                                                    |  ☆ ☆  |                        |
+| [Day 6: Probably A Fire Hazard][rm6]                 |  ★ ★  | [Go][g6], [Python][p6] |
 | 7                                                    |  ☆ ☆  |                        |
 | 8                                                    |  ☆ ☆  |                        |
 | 9                                                    |  ☆ ☆  |                        |
@@ -51,3 +51,6 @@
 [rm5]: 05-doesntHeHaveIntern-ElvesForThis/README.md
 [g5]: 05-doesntHeHaveIntern-ElvesForThis/go
 [p5]: 05-doesntHeHaveIntern-ElvesForThis/py
+[rm6]: 06-probablyAFireHazard/README.md
+[g6]: 06-probablyAFireHazard/go
+[p6]: 06-probablyAFireHazard/py

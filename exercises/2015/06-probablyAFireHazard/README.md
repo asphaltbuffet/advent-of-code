@@ -15,7 +15,18 @@
 ## Go
 
 ```text
-    < section intentionally left blank >
+2015-6 Probably A Fire Hazard (Golang)
+
+Running...
+
+Test 1.0: pass in 259.9 ms
+Test 1.1: pass in 118 µs
+Test 1.2: pass in 11.9 µs
+Test 2.0: pass in 371 ms
+Test 2.1: pass in 100.8 µs
+Test 2.2: pass in 10.6 µs
+Part 1: 569999 in 2.7 s
+Part 2: 17836115 in 2.8 s
 ```
 
 ## Python
