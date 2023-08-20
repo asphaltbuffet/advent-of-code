@@ -15,7 +15,23 @@
 ## Go
 
 ```text
-    < section intentionally left blank >
+2015-5 Doesnt He Have Intern- Elves For This (Golang)
+
+Running...
+
+Test 1.0: pass in 1.1 µs
+Test 1.1: pass in 1.4 µs
+Test 1.2: pass in 1.7 µs
+Test 1.3: pass in 1.8 µs
+Test 1.4: pass in 1.7 µs
+Test 1.5: pass in 2.9 µs
+Test 2.0: pass in 1.5 µs
+Test 2.1: pass in 1.4 µs
+Test 2.2: pass in 1.7 µs
+Test 2.3: pass in 1.7 µs
+Test 2.4: pass in 2.6 µs
+Part 1: 236 in 82.8 µs
+Part 2: 51 in 235.2 µs
 ```
 
 ## Python
