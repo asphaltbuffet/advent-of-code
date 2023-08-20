@@ -14,7 +14,7 @@ COLORS = {"Golang": "#00ADD8", "Python": "#3776AB"}
 
 MAX_Y_VALUE = 1
 
-exercise_dir_regex = re.compile("""(?m)^(\d{2})-([a-zA-Z]+)$""")
+exercise_dir_regex = re.compile("""(?m)^(\d{2})-([a-zA-Z-'"]+)$""")
 
 directories = []
 path = os.path.join("exercises", YEAR)

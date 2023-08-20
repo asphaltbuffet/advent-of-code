@@ -21,7 +21,7 @@ func (c *Exercise) String() string {
 	return fmt.Sprintf("%d - %s", c.Number, c.Name)
 }
 
-var exerciseDirRegexp = regexp.MustCompile(`(?m)^(\d{2})-([a-zA-Z]+)$`)
+var exerciseDirRegexp = regexp.MustCompile(`(?m)^(\d{2})-([a-zA-Z-'"]+)$`)
 
 func ListingFromDir(sourceDir string) ([]*Exercise, error) {
 	dirEntries, err := os.ReadDir(sourceDir)
@@ -30,13 +30,14 @@ func ListingFromDir(sourceDir string) ([]*Exercise, error) {
 	}
 
 	var out []*Exercise
+
 	for _, entry := range dirEntries {
 		if entry.IsDir() && exerciseDirRegexp.MatchString(entry.Name()) {
 			dir := entry.Name()
 
-			x := strings.Split(dir, "-")
-			dayInt, _ := strconv.Atoi(x[0]) // error ignored because regex should have ensured this is ok
-			dayTitle := utilities.CamelToTitle(x[1])
+			left, right, _ := strings.Cut(dir, "-")
+			dayInt, _ := strconv.Atoi(left) // error ignored because regex should have ensured this is ok
+			dayTitle := utilities.CamelToTitle(right)
 			out = append(out, &Exercise{
 				Number: dayInt,
 				Name:   dayTitle,

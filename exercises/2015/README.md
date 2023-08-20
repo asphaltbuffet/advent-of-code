@@ -10,7 +10,7 @@
 | [Day 2: I Was Told There Would Be No Math][rm2]      |  ★ ★  | [Go][g2], [Python][p2] |
 | [Day 3: Perfectly Spherical Houses In A Vacuum][rm3] |  ★ ★  | [Go][g3], [Python][p3] |
 | [Day 4: The Ideal Stocking Stuffer][rm4]             |  ★ ★  | [Go][g4], [Python][p4] |
-| 5                                                    |  ☆ ☆  |                        |
+| [Day 5: Doesn't He Have Intern-Elves For This?][rm5] |  ★ ★  | [Go][g5], [Python][p5] |
 | 6                                                    |  ☆ ☆  |                        |
 | 7                                                    |  ☆ ☆  |                        |
 | 8                                                    |  ☆ ☆  |                        |
@@ -48,3 +48,6 @@
 [rm4]: 04-theIdealStockingStuffer/README.md
 [g4]: 04-theIdealStockingStuffer/go
 [p4]: 04-theIdealStockingStuffer/py
+[rm5]: 05-doesntHeHaveIntern-ElvesForThis/README.md
+[g5]: 05-doesntHeHaveIntern-ElvesForThis/go
+[p5]: 05-doesntHeHaveIntern-ElvesForThis/py

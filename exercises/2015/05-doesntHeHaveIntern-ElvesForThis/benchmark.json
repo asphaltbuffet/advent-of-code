@@ -1,0 +1,23 @@
+{
+  "day": 5,
+  "dir": "exercises/2015/05-doesntHeHaveIntern-ElvesForThis",
+  "implementations": {
+    "Golang": {
+      "part.1.avg": 0.00009339,
+      "part.1.max": 0.0001627,
+      "part.1.min": 0.0000768,
+      "part.2.avg": 0.00027011666666666674,
+      "part.2.max": 0.0006356,
+      "part.2.min": 0.0002111
+    },
+    "Python": {
+      "part.1.avg": 0.002101588249206543,
+      "part.1.max": 0.002737760543823242,
+      "part.1.min": 0.0017535686492919922,
+      "part.2.avg": 0.003635660807291667,
+      "part.2.max": 0.0041887760162353516,
+      "part.2.min": 0.0032186508178710938
+    }
+  },
+  "numRuns": 30
+}
