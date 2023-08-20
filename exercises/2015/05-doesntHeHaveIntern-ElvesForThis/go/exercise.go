@@ -1,7 +1,6 @@
 package exercises
 
 import (
-	"fmt"
 	"strings"
 
 	"github.com/asphaltbuffet/advent-of-code/internal/common"
@@ -13,7 +12,6 @@ type Exercise struct {
 }
 
 // One returns the answer to the first part of the exercise.
-// answer:
 func (e Exercise) One(instr string) (any, error) {
 	count := 0
 
@@ -31,9 +29,19 @@ func (e Exercise) One(instr string) (any, error) {
 }
 
 // Two returns the answer to the second part of the exercise.
-// answer:
 func (e Exercise) Two(instr string) (any, error) {
-	return nil, fmt.Errorf("part two not implemented")
+	count := 0
+
+	for _, line := range strings.Split(instr, "\n") {
+		p := hasPair(line)
+		s := hasSeparated(line)
+
+		if p && s {
+			count++
+		}
+	}
+
+	return count, nil
 }
 
 func hasVowels(s string) bool {
@@ -59,6 +67,26 @@ func hasDoubles(s string) bool {
 func hasBad(s string) bool {
 	for _, c := range []string{"ab", "cd", "pq", "xy"} {
 		if strings.Contains(s, c) {
+			return true
+		}
+	}
+
+	return false
+}
+
+func hasPair(s string) bool {
+	for i := 0; i < len(s)-2; i++ {
+		if strings.Count(s, s[i:i+2]) > 1 {
+			return true
+		}
+	}
+
+	return false
+}
+
+func hasSeparated(s string) bool {
+	for i := 0; i < len(s)-2; i++ {
+		if s[i] == s[i+2] {
 			return true
 		}
 	}
