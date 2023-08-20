@@ -21,12 +21,32 @@
             {
                 "input": "dvszwmarrgswjxmb",
                 "expected": "0"
+            },
+            {
+                "input": "ugknbfddgicrmopn\naaa\njchzalrnumimnmhp\nhaegwjzuvuyypxyu\ndvszwmarrgswjxmb",
+                "expected": "2"
             }
         ],
         "two": [
             {
-                "input": "",
-                "expected": ""
+                "input": "qjhvhtzxzqqjkmpb",
+                "expected": "1"
+            },
+            {
+                "input": "xxyxx",
+                "expected": "1"
+            },
+            {
+                "input": "uurcxstgmygtbstg",
+                "expected": "0"
+            },
+            {
+                "input": "ieodomkazucvgmuy",
+                "expected": "0"
+            },
+            {
+                "input": "qjhvhtzxzqqjkmpb\nxxyxx\nuurcxstgmygtbstg\nieodomkazucvgmuy",
+                "expected": "2"
             }
         ]
     }
