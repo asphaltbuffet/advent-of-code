@@ -1,0 +1,23 @@
+{
+  "day": 6,
+  "dir": "exercises/2015/06-probablyAFireHazard",
+  "implementations": {
+    "Golang": {
+      "part.1.avg": 2.675654686666667,
+      "part.1.max": 3.16271,
+      "part.1.min": 2.5161809,
+      "part.2.avg": 2.938513846666666,
+      "part.2.max": 3.3461811,
+      "part.2.min": 2.6423335
+    },
+    "Python": {
+      "part.1.avg": 4.2172863483428955,
+      "part.1.max": 5.457192897796631,
+      "part.1.min": 4.0755531787872314,
+      "part.2.avg": 5.634616168340047,
+      "part.2.max": 7.12275767326355,
+      "part.2.min": 5.435950517654419
+    }
+  },
+  "numRuns": 30
+}
