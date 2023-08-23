@@ -3,7 +3,6 @@ package exercises
 import (
 	"container/heap"
 	"fmt"
-	"strings"
 
 	"github.com/asphaltbuffet/advent-of-code/internal/common"
 )
@@ -15,15 +14,14 @@ type Exercise struct {
 
 // One returns the answer to the first part of the exercise.
 // answer: 151312
-func (c Exercise) One(instr string) (any, error) {
-	data := strings.Split(instr, "\n")
+func (e Exercise) One(instr string) (any, error) {
 	d := Day11{
 		Monkeys: []*Monkey{},
 		Product: 1,
 	}
 
 	// Read monkeys into structs
-	err := d.ParseInput(data)
+	err := d.ParseInput(instr)
 	if err != nil {
 		return nil, fmt.Errorf("parsing input: %w", err)
 	}
@@ -52,15 +50,14 @@ func (c Exercise) One(instr string) (any, error) {
 
 // Two returns the answer to the second part of the exercise.
 // answer: 51382025916
-func (c Exercise) Two(instr string) (any, error) {
-	data := strings.Split(instr, "\n")
+func (e Exercise) Two(instr string) (any, error) {
 	d := Day11{
 		Monkeys: []*Monkey{},
 		Product: 1,
 	}
 
 	// Read monkeys into structs
-	err := d.ParseInput(data)
+	err := d.ParseInput(instr)
 	if err != nil {
 		return nil, fmt.Errorf("parsing input: %w", err)
 	}
