@@ -12,7 +12,7 @@
 | [Day 4: The Ideal Stocking Stuffer][rm4]             |  ★ ★  | [Go][g4], [Python][p4] |
 | [Day 5: Doesn't He Have Intern-Elves For This?][rm5] |  ★ ★  | [Go][g5], [Python][p5] |
 | [Day 6: Probably A Fire Hazard][rm6]                 |  ★ ★  | [Go][g6], [Python][p6] |
-| 7                                                    |  ☆ ☆  |                        |
+| [Day 7: Some Assembly Required][rm7]                 |  ★ ★  | [Go][g7], [Python][p7] |
 | 8                                                    |  ☆ ☆  |                        |
 | 9                                                    |  ☆ ☆  |                        |
 | 10                                                   |  ☆ ☆  |                        |
@@ -54,3 +54,6 @@
 [rm6]: 06-probablyAFireHazard/README.md
 [g6]: 06-probablyAFireHazard/go
 [p6]: 06-probablyAFireHazard/py
+[rm7]: 07-someAssemblyRequired/README.md
+[g7]: 07-someAssemblyRequired/go
+[p7]: 07-someAssemblyRequired/py
