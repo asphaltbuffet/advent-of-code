@@ -15,7 +15,21 @@
 ## Go
 
 ```text
-    < section intentionally left blank >
+2015-7 Some Assembly Required (Golang)
+
+Running...
+
+Test 1.0: pass in 6 µs
+Test 1.1: pass in 7.9 µs
+Test 1.2: pass in 8.3 µs
+Test 1.3: pass in 8 µs
+Test 1.4: pass in 8 µs
+Test 1.5: pass in 7.6 µs
+Test 1.6: pass in 6.9 µs
+Test 1.7: pass in 18.8 µs
+Test 2.0: empty
+Part 1: 46065 in 179.9 µs
+Part 2: 14134 in 157.1 µs
 ```
 
 ## Python
