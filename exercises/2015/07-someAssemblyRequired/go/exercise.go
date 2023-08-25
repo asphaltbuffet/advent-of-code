@@ -27,7 +27,16 @@ func (e Exercise) One(instr string) (any, error) {
 
 // Two returns the answer to the second part of the exercise.
 func (e Exercise) Two(instr string) (any, error) {
-	return nil, fmt.Errorf("part 2 not implemented")
+	circuit, solved := parse(instr)
+	solved["b"] = 46065
+
+	answer := solve(circuit, solved, "a")
+
+	if answer < 0 {
+		answer += (1 << 16)
+	}
+
+	return answer, nil
 }
 
 type wire struct {
