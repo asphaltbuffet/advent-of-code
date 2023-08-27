@@ -15,7 +15,20 @@
 ## Go
 
 ```text
-    < section intentionally left blank >
+2015-8 Matchsticks (Golang)
+
+Running...
+
+Test 1.0: pass in 2.1 µs
+Test 1.1: pass in 13.3 µs
+Test 1.2: pass in 14.5 µs
+Test 1.3: pass in 7.1 µs
+Test 2.0: pass in 4.7 µs
+Test 2.1: pass in 4.3 µs
+Test 2.2: pass in 12.7 µs
+Test 2.3: pass in 4.8 µs
+Part 1: 1371 in 171.4 µs
+Part 2: 2117 in 93.6 µs
 ```
 
 ## Python
