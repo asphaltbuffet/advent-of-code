@@ -1,0 +1,41 @@
+{
+    "inputFile": "input.txt",
+    "testCases": {
+        "one": [
+            {
+                "input": "\"\"",
+                "expected": "2"
+            },
+            {
+                "input": "\"abc\"",
+                "expected": "2"
+            },
+            {
+                "input": "\"aaa\\\"aaa\"",
+                "expected": "3"
+            },
+            {
+                "input": "\"\\x27\"",
+                "expected": "5"
+            }
+        ],
+        "two": [
+            {
+                "input": "\"\"",
+                "expected": "4"
+            },
+            {
+                "input": "\"abc\"",
+                "expected": "4"
+            },
+            {
+                "input": "\"aaa\\\"aaa\"",
+                "expected": "6"
+            },
+            {
+                "input": "\"\\x27\"",
+                "expected": "5"
+            }
+        ]
+    }
+}
