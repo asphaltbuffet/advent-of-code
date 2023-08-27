@@ -21,8 +21,20 @@
         ],
         "two": [
             {
-                "input": "",
-                "expected": ""
+                "input": "\"\"",
+                "expected": "4"
+            },
+            {
+                "input": "\"abc\"",
+                "expected": "4"
+            },
+            {
+                "input": "\"aaa\\\"aaa\"",
+                "expected": "6"
+            },
+            {
+                "input": "\"\\x27\"",
+                "expected": "5"
             }
         ]
     }
