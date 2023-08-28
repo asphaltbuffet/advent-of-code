@@ -38,11 +38,7 @@ func (e Exercise) Two(instr string) (any, error) {
 	sum := 0
 
 	for _, line := range strings.Split(instr, "\n") {
-		ol := len(line)
-
-		line = fmt.Sprintf("%q", line)
-
-		sum += len(line) - ol
+		sum += len(fmt.Sprintf("%q", line)) - len(line)
 	}
 
 	return sum, nil
