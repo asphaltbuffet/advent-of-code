@@ -15,7 +15,15 @@
 ## Go
 
 ```text
-    < section intentionally left blank >
+2015-9 All In A Single Night (Golang)
+
+Running...
+
+Test 1.0: pass in 61.3 µs
+Test 1.1: pass in 40.3 µs
+Test 2.0: pass in 46.6 µs
+Part 1: 141 in 47.4 ms
+Part 2: 736 in 46 ms
 ```
 
 ## Python
