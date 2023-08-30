@@ -14,7 +14,7 @@
 | [Day 6: Probably A Fire Hazard][rm6]                 |  ★ ★  | [Go][g6], [Python][p6] |
 | [Day 7: Some Assembly Required][rm7]                 |  ★ ★  | [Go][g7], [Python][p7] |
 | [Day 8: Matchsticks][rm8]                            |  ★ ★  | [Go][g8], [Python][p8] |
-| 9                                                    |  ☆ ☆  |                        |
+| [Day 9: All In A Single Night][rm9]                  |  ★ ★  | [Go][g9], [Python][p9] |
 | 10                                                   |  ☆ ☆  |                        |
 | 11                                                   |  ☆ ☆  |                        |
 | 12                                                   |  ☆ ☆  |                        |
@@ -60,3 +60,6 @@
 [rm8]: 08-matchsticks/README.md
 [g8]: 08-matchsticks/go
 [p8]: 08-matchsticks/py
+[rm9]: 09-allInASingleNight/README.md
+[g9]: 09-allInASingleNight/go
+[p9]: 09-allInASingleNight/py

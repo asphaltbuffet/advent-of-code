@@ -1,0 +1,23 @@
+{
+  "day": 9,
+  "dir": "exercises/2015/09-allInASingleNight",
+  "implementations": {
+    "Golang": {
+      "part.1.avg": 0.04668431,
+      "part.1.max": 0.0601586,
+      "part.1.min": 0.0416286,
+      "part.2.avg": 0.04739059999999999,
+      "part.2.max": 0.0647757,
+      "part.2.min": 0.0413786
+    },
+    "Python": {
+      "part.1.avg": 0.059078152974446616,
+      "part.1.max": 0.11184406280517578,
+      "part.1.min": 0.045313119888305664,
+      "part.2.avg": 0.06053656737009684,
+      "part.2.max": 0.11025524139404297,
+      "part.2.min": 0.04526329040527344
+    }
+  },
+  "numRuns": 30
+}
