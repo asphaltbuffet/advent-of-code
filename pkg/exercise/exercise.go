@@ -17,11 +17,11 @@ type Exercise struct {
 	Dir    string
 }
 
-func (c *Exercise) String() string {
-	return fmt.Sprintf("%d - %s", c.Number, c.Name)
+func (e *Exercise) String() string {
+	return fmt.Sprintf("%d - %s", e.Number, e.Name)
 }
 
-var exerciseDirRegexp = regexp.MustCompile(`(?m)^(\d{2})-([a-zA-Z-'"]+)$`)
+var exerciseDirRegexp = regexp.MustCompile(`(?m)^(\d{2})-([a-zA-Z-,'"]+)$`)
 
 func ListingFromDir(sourceDir string) ([]*Exercise, error) {
 	dirEntries, err := os.ReadDir(sourceDir)
