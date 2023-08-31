@@ -1,15 +1,24 @@
 {
-  "day": 16,
+  "date": "2023-08-31T18:08:07.0059855Z",
   "dir": "exercises/2022/16-proboscideaVolcanium",
-  "implementations": {
-    "Golang": {
-      "part.1.avg": 0.2960248,
-      "part.1.max": 0.2960248,
-      "part.1.min": 0.2960248,
-      "part.2.avg": 1043.183,
-      "part.2.max": 1043.183,
-      "part.2.min": 1043.183
+  "year": "2022",
+  "day": 16,
+  "numRuns": 1,
+  "implementations": [
+    {
+      "name": "Golang",
+      "part-one": {
+        "mean": 0.2546833,
+        "median": 0.2546833,
+        "min": 0.2546833,
+        "max": 0.2546833
+      },
+      "part-two": {
+        "mean": 1013.5635566,
+        "median": 1013.5635566,
+        "min": 1013.5635566,
+        "max": 1013.5635566
+      }
     }
-  },
-  "numRuns": 1
+  ]
 }
