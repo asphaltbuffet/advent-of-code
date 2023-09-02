@@ -22,6 +22,7 @@ func (c *Exercise) GetImplementations() ([]string, error) {
 			continue
 		}
 
+		// TODO: should check if the implementation is more than just template
 		if _, ok := runners.Available[strings.ToLower(entry.Name())]; ok {
 			impls = append(impls, entry.Name())
 		} // TODO: log warning if there are directories that don't match any known runners

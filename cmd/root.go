@@ -43,12 +43,12 @@ func Execute() {
 func GetRootCommand() *cobra.Command {
 	if rootCmd == nil {
 		rootCmd = &cobra.Command{
-			Use:               "advent-of-code [command]",
-			Version:           "2.0.0",
-			Short:             "advent-of-code is a collection of AoC solutions",
-			Long:              `advent-of-code is a collection of AoC solutions`,
-			PersistentPreRunE: getExerciseData,
-			RunE:              RunRootCmd,
+			Use:     "advent-of-code [command]",
+			Version: "2.0.0",
+			Short:   "advent-of-code is a collection of AoC solutions",
+			Long:    `advent-of-code is a collection of AoC solutions`,
+			PreRunE: getExerciseData,
+			RunE:    RunRootCmd,
 		}
 	}
 
