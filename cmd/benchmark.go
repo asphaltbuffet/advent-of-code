@@ -2,23 +2,48 @@ package cmd
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"os"
 	"path/filepath"
 	"strings"
+	"time"
 
+	"github.com/greenpau/go-calculator"
 	"github.com/schollz/progressbar/v3"
 	"github.com/spf13/cobra"
 
 	"github.com/asphaltbuffet/advent-of-code/pkg/exercise"
 	"github.com/asphaltbuffet/advent-of-code/pkg/runners"
-	"github.com/asphaltbuffet/advent-of-code/pkg/utilities"
 )
 
 var (
 	benchmarkCmd *cobra.Command
-	iterations   int
+
+	iterations int
 )
+
+type BenchmarkData struct {
+	Date            time.Time             `json:"date,omitempty"`
+	Dir             string                `json:"dir"`
+	Year            string                `json:"year,omitempty"`
+	Day             int                   `json:"day"`
+	Runs            int                   `json:"numRuns"`
+	Implementations []*ImplementationData `json:"implementations"`
+}
+
+type ImplementationData struct {
+	Name    string    `json:"name"`
+	PartOne *PartData `json:"part-one"`
+	PartTwo *PartData `json:"part-two,omitempty"`
+}
+
+type PartData struct {
+	Mean   float64 `json:"mean"`
+	Median float64 `json:"median"`
+	Min    float64 `json:"min"`
+	Max    float64 `json:"max"`
+}
 
 func GetBenchmarkCmd() *cobra.Command {
 	if benchmarkCmd == nil {
@@ -26,6 +51,7 @@ func GetBenchmarkCmd() *cobra.Command {
 			Use:     "benchmark [flags]",
 			Aliases: []string{"bench", "b"},
 			Short:   "generate benchmark data for an exercise",
+			PreRunE: getExerciseData,
 			RunE: func(cmd *cobra.Command, args []string) error {
 				return runBenchmark(selectedExercise, exerciseInputString, iterations)
 			},
@@ -33,6 +59,10 @@ func GetBenchmarkCmd() *cobra.Command {
 	}
 
 	benchmarkCmd.Flags().IntVarP(&iterations, "number", "n", 30, "number of benchmark iterations to run")
+	// TODO: add flag to compare to previous benchmark data
+	// TODO: add flag to compare to other implementations
+	// TODO: add flag to skip writing to file
+	// TODO: add flag to print calculated results to stdout
 
 	return benchmarkCmd
 }
@@ -45,48 +75,63 @@ func makeBenchmarkID(part runners.Part, number int) string {
 	return fmt.Sprintf("benchmark.part.%d.%d", part, number)
 }
 
+// ImplementationError indicates that the implementation task failed.
+type ImplementationError struct {
+	Impl string
+}
+
+func (e *ImplementationError) Error() string {
+	return fmt.Sprintf("%s run failed", e.Impl)
+}
+
 func runBenchmark(selectedExercise *exercise.Exercise, input string, numberRuns int) error {
 	implementations, err := selectedExercise.GetImplementations()
 	if err != nil {
 		return err
 	}
 
-	var valueSets []*values
+	var (
+		implData []*ImplementationData
+		ie       *ImplementationError
+	)
 
 	for _, implementation := range implementations {
-		v, implErr := benchmarkImplementation(implementation,
+		d, implErr := benchmarkImplementation(implementation,
 			selectedExercise.Dir,
 			input,
 			numberRuns)
-		if implErr != nil {
+		if errors.As(implErr, &ie) {
+			fmt.Println()
+			fmt.Printf("Skipping %s due to error: %v\n",
+				runners.RunnerNames[implementation],
+				implErr)
+
+			continue
+		} else if err != nil {
 			return implErr
 		}
 
-		valueSets = append(valueSets, v)
-	}
-
-	// make file
-	jdata := make(map[string]interface{})
-	jdata["day"] = selectedExercise.Number
-	jdata["dir"] = selectedExercise.Dir
-	jdata["numRuns"] = numberRuns
-	jdata["implementations"] = make(map[string]interface{})
-
-	for _, vs := range valueSets {
-		x := make(map[string]interface{})
-
-		for _, v := range vs.values {
-			x[v.key] = v.value
+		if d != nil {
+			implData = append(implData, d)
 		}
 
-		(jdata["implementations"].(map[string]interface{}))[vs.implementation] = x
+		fmt.Println()
+	}
+
+	benchmarkData := &BenchmarkData{
+		Implementations: implData,
+		Day:             selectedExercise.Day,
+		Runs:            numberRuns,
+		Year:            year,
+		Date:            time.Now().UTC(),
+		Dir:             selectedExercise.Dir,
 	}
 
 	fpath := filepath.Join(selectedExercise.Dir, "benchmark.json")
 
 	fmt.Println("Writing results to", fpath)
 
-	jBytes, err := json.MarshalIndent(jdata, "", "  ")
+	jBytes, err := json.MarshalIndent(benchmarkData, "", "  ")
 	if err != nil {
 		return err
 	}
@@ -94,23 +139,14 @@ func runBenchmark(selectedExercise *exercise.Exercise, input string, numberRuns 
 	return os.WriteFile(fpath, jBytes, 0o600)
 }
 
-type values struct {
-	implementation string
-	values         []kv
-}
-
-type kv struct {
-	key   string
-	value float64
-}
-
-func benchmarkImplementation(implementation string, dir string, inputString string, numberRuns int) (*values, error) {
+func benchmarkImplementation(implementation string, dir string, inputString string, numberRuns int) (*ImplementationData, error) {
 	var (
 		tasks   []*runners.Task
 		results []*runners.Result
 	)
 
 	runner := runners.Available[implementation](dir)
+
 	for i := 0; i < numberRuns; i++ {
 		tasks = append(tasks, &runners.Task{
 			TaskID: makeBenchmarkID(runners.PartOne, i),
@@ -139,6 +175,7 @@ func benchmarkImplementation(implementation string, dir string, inputString stri
 		_ = runner.Cleanup()
 	}()
 
+	// TODO: add a timecheck and if bechmarking takes too long, limit number of runs
 	for _, task := range tasks {
 		res, err := runner.Run(task)
 		if err != nil {
@@ -146,16 +183,34 @@ func benchmarkImplementation(implementation string, dir string, inputString stri
 			return nil, err
 		}
 
+		// bad results are not recorded
+		if !res.Ok {
+			_ = pb.Close()
+			return nil, &ImplementationError{Impl: runners.RunnerNames[implementation]}
+		}
+
 		results = append(results, res)
 		_ = pb.Add(1)
 	}
 
-	fmt.Println()
+	p1Stats, p2Stats, err := resultsToStats(results)
+	if err != nil {
+		return nil, err
+	}
 
+	return &ImplementationData{
+		Name:    runners.RunnerNames[implementation],
+		PartOne: p1Stats,
+		PartTwo: p2Stats,
+	}, nil
+}
+
+func resultsToStats(results []*runners.Result) (*PartData, *PartData, error) {
 	var (
-		p1, p2 []float64
-		p1id   = makeBenchmarkID(runners.PartOne, -1)
-		p2id   = makeBenchmarkID(runners.PartTwo, -1)
+		p1, p2           []float64
+		p1id             = makeBenchmarkID(runners.PartOne, -1)
+		p2id             = makeBenchmarkID(runners.PartTwo, -1)
+		p1Stats, p2Stats *PartData
 	)
 
 	for _, result := range results {
@@ -166,15 +221,51 @@ func benchmarkImplementation(implementation string, dir string, inputString stri
 		}
 	}
 
-	return &values{
-		implementation: runners.RunnerNames[implementation],
-		values: []kv{
-			{"part.1.avg", utilities.MeanFloatSlice(p1)},
-			{"part.1.min", utilities.MinFloatSlice(p1)},
-			{"part.1.max", utilities.MaxFloatSlice(p1)},
-			{"part.2.avg", utilities.MeanFloatSlice(p2)},
-			{"part.2.min", utilities.MinFloatSlice(p2)},
-			{"part.2.max", utilities.MaxFloatSlice(p2)},
-		},
-	}, nil
+	if len(p1) == 0 && len(p2) == 0 {
+		return nil, nil, &ImplementationError{Impl: runners.RunnerNames[implementation]}
+	}
+
+	if len(p1) > 0 {
+		p1calc := calculator.New(p1).RunAll()
+		if p1calc == nil {
+			return nil, nil, fmt.Errorf("calculating part one results: %s", runners.RunnerNames[implementation])
+		}
+
+		p1Stats = &PartData{
+			Mean:   p1calc.Register.Mean,
+			Min:    p1calc.Register.MinValue,
+			Max:    p1calc.Register.MaxValue,
+			Median: p1calc.Register.Median,
+		}
+	} else {
+		fmt.Printf(
+			"No results for %s part one\n",
+			runners.RunnerNames[implementation],
+		)
+	}
+
+	if len(p2) > 0 {
+		p2calc := calculator.New(p2).RunAll()
+		if p2calc == nil {
+			return nil, nil,
+				fmt.Errorf(
+					"calculating part two results: %s",
+					runners.RunnerNames[implementation],
+				)
+		}
+
+		p2Stats = &PartData{
+			Mean:   p2calc.Register.Mean,
+			Min:    p2calc.Register.MinValue,
+			Max:    p2calc.Register.MaxValue,
+			Median: p2calc.Register.Median,
+		}
+	} else {
+		fmt.Printf(
+			"No results for %s part two\n",
+			runners.RunnerNames[implementation],
+		)
+	}
+
+	return p1Stats, p2Stats, nil
 }
