@@ -12,13 +12,13 @@ import (
 )
 
 type Exercise struct {
-	Number int
-	Name   string
-	Dir    string
+	Day  int
+	Name string
+	Dir  string
 }
 
 func (e *Exercise) String() string {
-	return fmt.Sprintf("%d - %s", e.Number, e.Name)
+	return fmt.Sprintf("%d - %s", e.Day, e.Name)
 }
 
 var exerciseDirRegexp = regexp.MustCompile(`(?m)^(\d{2})-([a-zA-Z-,'"]+)$`)
@@ -39,9 +39,9 @@ func ListingFromDir(sourceDir string) ([]*Exercise, error) {
 			dayInt, _ := strconv.Atoi(left) // error ignored because regex should have ensured this is ok
 			dayTitle := utilities.CamelToTitle(right)
 			out = append(out, &Exercise{
-				Number: dayInt,
-				Name:   dayTitle,
-				Dir:    filepath.Join(sourceDir, dir),
+				Day:  dayInt,
+				Name: dayTitle,
+				Dir:  filepath.Join(sourceDir, dir),
 			})
 		}
 	}

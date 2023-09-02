@@ -109,7 +109,7 @@ func RunRootCmd(cmd *cobra.Command, args []string) error {
 	//nolint:errcheck,gosec // printing to stdout
 	bold.Printf("%s-%d %s (%s)\n\n",
 		year,
-		selectedExercise.Number,
+		selectedExercise.Day,
 		selectedExercise.Name,
 		runners.RunnerNames[selectedImplementation],
 	)
