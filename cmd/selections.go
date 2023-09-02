@@ -89,7 +89,7 @@ func selectExercise(dir string) (*exercise.Exercise, error) {
 
 	if day != 0 {
 		for _, ch := range exercises {
-			if ch.Number == day {
+			if ch.Day == day {
 				return ch, nil
 			}
 		}

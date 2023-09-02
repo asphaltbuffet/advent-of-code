@@ -1,15 +1,24 @@
 {
-  "day": 7,
+  "date": "2023-08-31T17:07:44.0634753Z",
   "dir": "exercises/2022/07-noSpaceLeftOnDevice",
-  "implementations": {
-    "Golang": {
-      "part.1.avg": 0.0003805786999999999,
-      "part.1.max": 0.0027424,
-      "part.1.min": 0.0001808,
-      "part.2.avg": 0.0003816944000000002,
-      "part.2.max": 0.0016571,
-      "part.2.min": 0.0001811
+  "year": "2022",
+  "day": 7,
+  "numRuns": 30,
+  "implementations": [
+    {
+      "name": "Golang",
+      "part-one": {
+        "mean": 0.00027463333333333336,
+        "median": 0.0002405,
+        "min": 0.0001964,
+        "max": 0.000356
+      },
+      "part-two": {
+        "mean": 0.00036470666666666666,
+        "median": 0.00021735,
+        "min": 0.000204,
+        "max": 0.0019746
+      }
     }
-  },
-  "numRuns": 1000
+  ]
 }

@@ -1,15 +1,24 @@
 {
-  "day": 15,
+  "date": "2023-08-31T17:12:57.9221241Z",
   "dir": "exercises/2022/15-beaconExclusionZone",
-  "implementations": {
-    "Golang": {
-      "part.1.avg": 2.065522830999999,
-      "part.1.max": 2.5457761,
-      "part.1.min": 1.8855836,
-      "part.2.avg": 0.281321835,
-      "part.2.max": 0.3390309,
-      "part.2.min": 0.2647712
+  "year": "2022",
+  "day": 15,
+  "numRuns": 30,
+  "implementations": [
+    {
+      "name": "Golang",
+      "part-one": {
+        "mean": 1.8382562833333334,
+        "median": 1.80375205,
+        "min": 1.7008115,
+        "max": 2.1888898
+      },
+      "part-two": {
+        "mean": 0.2812554066666667,
+        "median": 0.28621244999999995,
+        "min": 0.2743136,
+        "max": 0.2966898
+      }
     }
-  },
-  "numRuns": 100
+  ]
 }

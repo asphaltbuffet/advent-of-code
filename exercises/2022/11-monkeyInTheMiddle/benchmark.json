@@ -1,15 +1,24 @@
 {
-  "day": 11,
+  "date": "2023-09-01T17:53:21.0481707Z",
   "dir": "exercises/2022/11-monkeyInTheMiddle",
-  "implementations": {
-    "Golang": {
-      "part.1.avg": 0.00010124220000000017,
-      "part.1.max": 0.0021811,
-      "part.1.min": 0.0000558,
-      "part.2.avg": 0.035259208199999996,
-      "part.2.max": 0.0742152,
-      "part.2.min": 0.0322501
+  "year": "2022",
+  "day": 11,
+  "numRuns": 30,
+  "implementations": [
+    {
+      "name": "Golang",
+      "part-one": {
+        "mean": 0.00022739666666666666,
+        "median": 0.0001952,
+        "min": 0.0001172,
+        "max": 0.0007221
+      },
+      "part-two": {
+        "mean": 0.03991216,
+        "median": 0.03625795,
+        "min": 0.0338821,
+        "max": 0.0750139
+      }
     }
-  },
-  "numRuns": 1000
+  ]
 }

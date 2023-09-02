@@ -1,15 +1,24 @@
 {
-  "day": 6,
+  "date": "2023-08-31T17:07:35.3048141Z",
   "dir": "exercises/2022/06-tuningTrouble",
-  "implementations": {
-    "Golang": {
-      "part.1.avg": 0.0003755202000000003,
-      "part.1.max": 0.0015367,
-      "part.1.min": 0.0002206,
-      "part.2.avg": 0.003402244000000002,
-      "part.2.max": 0.0163829,
-      "part.2.min": 0.0020118
+  "year": "2022",
+  "day": 6,
+  "numRuns": 30,
+  "implementations": [
+    {
+      "name": "Golang",
+      "part-one": {
+        "mean": 0.00030969999999999994,
+        "median": 0.00026005,
+        "min": 0.0002261,
+        "max": 0.0004966
+      },
+      "part-two": {
+        "mean": 0.0027235233333333334,
+        "median": 0.00231445,
+        "min": 0.0021148,
+        "max": 0.0035808
+      }
     }
-  },
-  "numRuns": 1000
+  ]
 }

@@ -43,12 +43,12 @@ func Execute() {
 func GetRootCommand() *cobra.Command {
 	if rootCmd == nil {
 		rootCmd = &cobra.Command{
-			Use:               "advent-of-code [command]",
-			Version:           "2.0.0",
-			Short:             "advent-of-code is a collection of AoC solutions",
-			Long:              `advent-of-code is a collection of AoC solutions`,
-			PersistentPreRunE: getExerciseData,
-			RunE:              RunRootCmd,
+			Use:     "advent-of-code [command]",
+			Version: "2.0.0",
+			Short:   "advent-of-code is a collection of AoC solutions",
+			Long:    `advent-of-code is a collection of AoC solutions`,
+			PreRunE: getExerciseData,
+			RunE:    RunRootCmd,
 		}
 	}
 
@@ -61,6 +61,7 @@ func GetRootCommand() *cobra.Command {
 	rootCmd.PersistentFlags().StringVarP(&implementation, "implementation", "i", "", "implementation to use")
 
 	rootCmd.AddCommand(GetBenchmarkCmd())
+	rootCmd.AddCommand(GetGraphCmd())
 
 	return rootCmd
 }
@@ -108,7 +109,7 @@ func RunRootCmd(cmd *cobra.Command, args []string) error {
 	//nolint:errcheck,gosec // printing to stdout
 	bold.Printf("%s-%d %s (%s)\n\n",
 		year,
-		selectedExercise.Number,
+		selectedExercise.Day,
 		selectedExercise.Name,
 		runners.RunnerNames[selectedImplementation],
 	)

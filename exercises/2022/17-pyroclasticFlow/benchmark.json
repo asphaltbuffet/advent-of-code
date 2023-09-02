@@ -1,15 +1,24 @@
 {
-  "day": 17,
+  "date": "2023-09-01T01:20:32.8569885Z",
   "dir": "exercises/2022/17-pyroclasticFlow",
-  "implementations": {
-    "Golang": {
-      "part.1.avg": 0.0020365479,
-      "part.1.max": 0.0105336,
-      "part.1.min": 0.0016781,
-      "part.2.avg": 0.010242217899999977,
-      "part.2.max": 0.0401753,
-      "part.2.min": 0.009135
+  "year": "2022",
+  "day": 17,
+  "numRuns": 30,
+  "implementations": [
+    {
+      "name": "Golang",
+      "part-one": {
+        "mean": 0.004812916666666667,
+        "median": 0.0019925,
+        "min": 0.0019178,
+        "max": 0.0426164
+      },
+      "part-two": {
+        "mean": 0.012507419999999995,
+        "median": 0.012502599999999999,
+        "min": 0.0107157,
+        "max": 0.0297954
+      }
     }
-  },
-  "numRuns": 1000
+  ]
 }

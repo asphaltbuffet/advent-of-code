@@ -1,15 +1,24 @@
 {
-  "day": 24,
+  "date": "2023-09-01T01:29:22.7145248Z",
   "dir": "exercises/2022/24-blizzardBasin",
-  "implementations": {
-    "Golang": {
-      "part.1.avg": 0.17392138090000023,
-      "part.1.max": 0.2285817,
-      "part.1.min": 0.1624307,
-      "part.2.avg": 0.5057966693999998,
-      "part.2.max": 0.6098705,
-      "part.2.min": 0.4830049
+  "year": "2022",
+  "day": 24,
+  "numRuns": 30,
+  "implementations": [
+    {
+      "name": "Golang",
+      "part-one": {
+        "mean": 0.1756264633333333,
+        "median": 0.1633935,
+        "min": 0.1554912,
+        "max": 0.2518713
+      },
+      "part-two": {
+        "mean": 0.50190502,
+        "median": 0.5028464500000001,
+        "min": 0.4659426,
+        "max": 0.561833
+      }
     }
-  },
-  "numRuns": 1000
+  ]
 }

@@ -1,0 +1,21 @@
+{
+    "inputFile": "input.txt",
+    "testCases": {
+        "one": [
+            {
+                "input": "London to Dublin = 464\nLondon to Belfast = 518\nDublin to Belfast = 141",
+                "expected": "605"
+            },
+            {
+                "input": "London to Dublin = 464\nDublin to Belfast = 141",
+                "expected": "605"
+            }
+        ],
+        "two": [
+            {
+                "input": "London to Dublin = 464\nLondon to Belfast = 518\nDublin to Belfast = 141",
+                "expected": "982"
+            }
+        ]
+    }
+}

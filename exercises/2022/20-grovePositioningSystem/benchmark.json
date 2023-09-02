@@ -1,15 +1,24 @@
 {
-  "day": 20,
+  "date": "2023-09-01T01:25:53.389669Z",
   "dir": "exercises/2022/20-grovePositioningSystem",
-  "implementations": {
-    "Golang": {
-      "part.1.avg": 0.11938777559999995,
-      "part.1.max": 0.2111178,
-      "part.1.min": 0.1092641,
-      "part.2.avg": 1.5141043976000002,
-      "part.2.max": 2.2369776,
-      "part.2.min": 1.3629389
+  "year": "2022",
+  "day": 20,
+  "numRuns": 30,
+  "implementations": [
+    {
+      "name": "Golang",
+      "part-one": {
+        "mean": 0.11697046000000001,
+        "median": 0.1192816,
+        "min": 0.1104552,
+        "max": 0.1768456
+      },
+      "part-two": {
+        "mean": 1.3942835666666664,
+        "median": 1.3667865,
+        "min": 1.3630438,
+        "max": 1.5927246
+      }
     }
-  },
-  "numRuns": 250
+  ]
 }

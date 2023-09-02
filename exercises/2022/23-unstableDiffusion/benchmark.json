@@ -1,15 +1,24 @@
 {
-  "day": 23,
+  "date": "2023-09-01T01:28:09.4312114Z",
   "dir": "exercises/2022/23-unstableDiffusion",
-  "implementations": {
-    "Golang": {
-      "part.1.avg": 0.020297776399999995,
-      "part.1.max": 0.0583582,
-      "part.1.min": 0.0182746,
-      "part.2.avg": 2.8720632252000007,
-      "part.2.max": 3.7770358,
-      "part.2.min": 2.8133116
+  "year": "2022",
+  "day": 23,
+  "numRuns": 30,
+  "implementations": [
+    {
+      "name": "Golang",
+      "part-one": {
+        "mean": 0.020682236666666673,
+        "median": 0.0193896,
+        "min": 0.0185443,
+        "max": 0.0386112
+      },
+      "part-two": {
+        "mean": 2.802983613333333,
+        "median": 2.7773695,
+        "min": 2.7720547,
+        "max": 2.9535638
+      }
     }
-  },
-  "numRuns": 250
+  ]
 }

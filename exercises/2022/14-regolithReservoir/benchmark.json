@@ -1,15 +1,24 @@
 {
-  "day": 14,
+  "date": "2023-08-31T17:11:42.1415631Z",
   "dir": "exercises/2022/14-regolithReservoir",
-  "implementations": {
-    "Golang": {
-      "part.1.avg": 0.0006172282000000004,
-      "part.1.max": 0.0059744,
-      "part.1.min": 0.0005156,
-      "part.2.avg": 0.008297429800000006,
-      "part.2.max": 0.042637,
-      "part.2.min": 0.0068607
+  "year": "2022",
+  "day": 14,
+  "numRuns": 30,
+  "implementations": [
+    {
+      "name": "Golang",
+      "part-one": {
+        "mean": 0.0005997833333333333,
+        "median": 0.00056495,
+        "min": 0.0005108,
+        "max": 0.0010603
+      },
+      "part-two": {
+        "mean": 0.007916760000000002,
+        "median": 0.0071861,
+        "min": 0.0062009,
+        "max": 0.0119693
+      }
     }
-  },
-  "numRuns": 1000
+  ]
 }

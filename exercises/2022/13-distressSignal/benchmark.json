@@ -1,15 +1,24 @@
 {
-  "day": 13,
+  "date": "2023-08-31T17:11:06.2441572Z",
   "dir": "exercises/2022/13-distressSignal",
-  "implementations": {
-    "Golang": {
-      "part.1.avg": 0.0016202908999999996,
-      "part.1.max": 0.0081951,
-      "part.1.min": 0.0012952,
-      "part.2.avg": 0.004689438099999996,
-      "part.2.max": 0.0192708,
-      "part.2.min": 0.0038275
+  "year": "2022",
+  "day": 13,
+  "numRuns": 30,
+  "implementations": [
+    {
+      "name": "Golang",
+      "part-one": {
+        "mean": 0.0018567166666666663,
+        "median": 0.00146195,
+        "min": 0.0012661,
+        "max": 0.0080951
+      },
+      "part-two": {
+        "mean": 0.005537656666666667,
+        "median": 0.004636599999999999,
+        "min": 0.0038933,
+        "max": 0.0227043
+      }
     }
-  },
-  "numRuns": 1000
+  ]
 }
