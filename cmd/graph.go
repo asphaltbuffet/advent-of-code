@@ -3,159 +3,350 @@ package cmd
 import (
 	"encoding/json"
 	"fmt"
+	"image/color"
+	"io/fs"
+	"math"
 	"os"
-	"path"
 	"path/filepath"
-	"regexp"
 
-	"github.com/fatih/color"
-	"github.com/go-echarts/go-echarts/v2/charts"
-	"github.com/go-echarts/go-echarts/v2/opts"
+	"github.com/dustin/go-humanize"
 	"github.com/spf13/cobra"
+	"gonum.org/v1/plot"
+	"gonum.org/v1/plot/plotter"
+	"gonum.org/v1/plot/plotutil"
+	"gonum.org/v1/plot/vg"
+	"gonum.org/v1/plot/vg/draw"
+	"gonum.org/v1/plot/vg/vgimg"
 )
 
 var (
 	graphCmd *cobra.Command
 
-	output string
+	outfile string
+
+	langColor = map[string]color.Color{
+		"Golang": color.RGBA{R: 0, G: 173, B: 216, A: 255},
+		"Python": color.RGBA{R: 55, G: 118, B: 171, A: 255},
+	}
 )
-
-type BenchmarkData struct {
-	Implementations map[string]map[string]float64 `json:"implementations"`
-	Day             int                           `json:"day"`
-}
-
-type Metrics struct {
-	Day            int
-	Part1          float64
-	Part2          float64
-	Implementation string
-}
 
 func GetGraphCmd() *cobra.Command {
 	if graphCmd == nil {
 		graphCmd = &cobra.Command{
-			Use:     "graph [flags]",
-			Aliases: []string{"g"},
-			Short:   "generate run-time graph for a year",
+			Use:   "graph year [flags]",
+			Args:  cobra.ExactArgs(1),
+			Short: "generate run-time graph for a year",
+			PersistentPreRun: func(cmd *cobra.Command, args []string) {
+				fmt.Println("gathering data...")
+			},
 			RunE: func(cmd *cobra.Command, args []string) error {
-				return runGraph()
+				return runGraph(args[0])
 			},
 		}
 	}
 
-	graphCmd.Flags().StringVarP(&output, "output", "o", "run-times.html", "file to write output to")
+	graphCmd.Flags().StringVarP(&outfile, "output", "o", "run-times.png", "file to write output to")
 
 	return graphCmd
 }
 
-func runGraph() error {
-	if output == "" {
-		output = fmt.Sprintf("%s_run-times.html", year)
-	}
+func getBenchmarkFilesByYear(year string) ([]string, error) {
+	benchFiles := []string{}
 
-	exerciseDirRegex := regexp.MustCompile(`^(\d{2})-[a-zA-Z]+$`)
+	// use filepath.walk to get all benchmark.json files
+	err := filepath.WalkDir(filepath.Join("exercises", year), func(path string, d fs.DirEntry, err error) error {
+		if err != nil {
+			return nil
+		}
 
-	var directories []string
+		if filepath.Base(path) == "benchmark.json" {
+			benchFiles = append(benchFiles, path)
+		}
 
-	exercisePath := filepath.Join("exercises", year)
-
-	files, err := os.ReadDir(exercisePath)
+		return nil
+	})
 	if err != nil {
-		return fmt.Errorf("failed to read directory: %w", err)
+		return nil, fmt.Errorf("searching for benchmark files: %w", err)
 	}
 
-	for _, file := range files {
-		if file.IsDir() && exerciseDirRegex.MatchString(file.Name()) {
-			directories = append(directories, file.Name())
-		}
+	return benchFiles, nil
+}
+
+func runGraph(year string) error {
+	files, err := getBenchmarkFilesByYear(year)
+	if err != nil {
+		return fmt.Errorf("getting benchmark files: %w", err)
 	}
 
-	benchmarkFiles := make([]string, len(directories))
-	for i, dir := range directories {
-		benchmarkFiles[i] = filepath.Join(dir, "benchmark.json")
-	}
+	fmt.Printf("found %d benchmark files:\n", len(files))
+	benchData := make([]*BenchmarkData, len(files))
 
-	benchmarkData := make(map[string]map[string]float64)
-	benchmarkData["Golang"] = make(map[string]float64)
-	benchmarkData["Python"] = make(map[string]float64)
+	for i, bf := range files {
+		var data *BenchmarkData
 
-	metrics := []Metrics{}
-
-	for _, filename := range benchmarkFiles {
-		filepath := filepath.Join(exercisePath, filename)
-
-		data, err := os.ReadFile(path.Clean(filepath))
+		data, err = readBenchmarkFile(bf)
 		if err != nil {
-			color.Yellow("Warning: missing file %q", filepath)
-			continue
+			return fmt.Errorf("reading benchmark file: %w", err)
 		}
 
-		var benchmark BenchmarkData
+		data.Year = year
+		benchData[i] = data
+	}
 
-		err = json.Unmarshal(data, &benchmark)
-		if err != nil {
-			color.HiRed("failed to unmarshal JSON: %w", err)
-			continue
+	err = generateGraph(benchData, outfile)
+	if err != nil {
+		return fmt.Errorf("generating graph: %w", err)
+	}
+
+	fmt.Printf("wrote %s graph to %s\n", year, outfile)
+
+	return nil
+}
+
+func readBenchmarkFile(path string) (*BenchmarkData, error) {
+	var bd BenchmarkData
+
+	f, err := os.ReadFile(filepath.Clean(path))
+	if err != nil {
+		return nil, fmt.Errorf("reading file: %w", err)
+	}
+
+	err = json.Unmarshal(f, &bd)
+	if err != nil {
+		return nil, fmt.Errorf("unmarshalling json: %w", err)
+	}
+
+	return &bd, nil
+}
+
+func mapBenchmarkData(benchData []*BenchmarkData) map[string]map[int]plotter.XYs {
+	langs := map[string]bool{}
+	days := map[int]bool{}
+
+	// initialize maps to store data more effectively for plotting
+	for _, bd := range benchData {
+		for _, impl := range bd.Implementations {
+			langs[impl.Name] = true
+			days[bd.Day] = true
 		}
+	}
 
-		m := Metrics{}
+	dataMap := make(map[string]map[int]plotter.XYs, len(langs))
 
-		for lang, info := range benchmark.Implementations {
-			m = Metrics{
-				Day:            benchmark.Day,
-				Part1:          info["part.1.avg"],
-				Part2:          info["part.2.avg"],
-				Implementation: lang,
+	for lang := range langs {
+		dataMap[lang] = make(map[int]plotter.XYs, 2)
+		dataMap[lang][0] = plotter.XYs{}
+		dataMap[lang][1] = plotter.XYs{}
+	}
+
+	for _, bd := range benchData {
+		for _, impl := range bd.Implementations {
+			dataMap[impl.Name][0] = append(dataMap[impl.Name][0], plotter.XY{
+				X: float64(bd.Day),
+				Y: impl.PartOne.Mean,
+			})
+
+			if impl.PartTwo == nil {
+				continue
+			}
+
+			dataMap[impl.Name][1] = append(dataMap[impl.Name][1],
+				plotter.XY{
+					X: float64(bd.Day),
+					Y: impl.PartTwo.Mean,
+				})
+		}
+	}
+
+	return dataMap
+}
+
+func generateGraph(benchData []*BenchmarkData, outfile string) error {
+	plots, err := NewBenchmarkPlots(benchData[0].Year)
+	if err != nil {
+		return fmt.Errorf("creating plots: %w", err)
+	}
+
+	dataMap := mapBenchmarkData(benchData)
+
+	for lang, parts := range dataMap {
+		for part, xys := range parts {
+			var (
+				ln *plotter.Line
+				pt *plotter.Scatter
+			)
+
+			ln, pt, err = plotter.NewLinePoints(xys)
+			if err != nil {
+				return fmt.Errorf("filling %s part %d plot: %w", lang, part, err)
+			}
+
+			ln.Color = langColor[lang]
+			pt.Shape = draw.CircleGlyph{}
+			pt.Color = langColor[lang]
+
+			plots[0][part].Add(ln, pt)
+			plots[0][part].Legend.Add(lang, ln, pt)
+		}
+	}
+
+	// make sure both plots have the same Y axis for alignment
+	max := max(plots[0][0].Y.Max, plots[0][1].Y.Max, 60)
+	plots[0][0].Y.Max = max
+	plots[0][1].Y.Max = max
+
+	min := min(plots[0][0].Y.Min, plots[0][1].Y.Min)
+	plots[0][0].Y.Min = min
+	plots[0][1].Y.Min = min
+
+	img := vgimg.NewWith(vgimg.UseWH(12.5*vg.Inch, 5*vg.Inch), vgimg.UseDPI(300))
+	dc := draw.New(img)
+
+	const rows, cols = 1, 2
+
+	t := draw.Tiles{
+		Rows:      rows,
+		Cols:      cols,
+		PadX:      vg.Points(20),
+		PadRight:  vg.Points(10),
+		PadLeft:   vg.Points(10),
+		PadBottom: vg.Points(10),
+		PadTop:    vg.Points(10),
+	}
+
+	canvases := plot.Align(plots, t, dc)
+
+	for r := 0; r < rows; r++ {
+		for c := 0; c < cols; c++ {
+			if plots[r][c] != nil {
+				plots[r][c].Draw(canvases[r][c])
 			}
 		}
-
-		metrics = append(metrics, m)
 	}
 
-	chart := charts.NewLine()
+	path := filepath.Join("exercises", benchData[0].Year, outfile)
+	fmt.Printf("writing graph to %s\n", path)
 
-	goPart1 := make([]opts.LineData, 25)
-	goPart2 := make([]opts.LineData, 25)
-	pyPart1 := make([]opts.LineData, 25)
-	pyPart2 := make([]opts.LineData, 25)
-
-	for _, m := range metrics {
-		if m.Implementation == "Golang" {
-			goPart1[m.Day-1] = opts.LineData{Value: m.Part1}
-			goPart2[m.Day-1] = opts.LineData{Value: m.Part2}
-		} else {
-			pyPart1[m.Day-1] = opts.LineData{Value: m.Part1}
-			pyPart2[m.Day-1] = opts.LineData{Value: m.Part2}
-		}
-	}
-
-	days := []string{"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25"}
-	goalMax := make([]opts.LineData, 0)
-	for i := 0; i < 25; i++ {
-		goalMax = append(goalMax, opts.LineData{Value: 15})
-	}
-
-	chart.SetGlobalOptions(
-		charts.WithTitleOpts(opts.Title{Title: fmt.Sprintf("AoC %s run-times", year), Subtitle: "Average run-times for each day"}),
-		charts.WithYAxisOpts(opts.YAxis{Type: "log", LogBase: 1}),
-		charts.WithXAxisOpts(opts.XAxis{Name: "Day"}),
-	)
-	chart.SetXAxis(days).
-		AddSeries("Golang Part 1", goPart1).
-		AddSeries("Golang Part 2", goPart2).
-		AddSeries("Python Part 1", pyPart1).
-		AddSeries("Python Part 2", pyPart2)
-
-	f, err := os.Create(path.Join(exercisePath, output))
+	w, err := os.Create(filepath.Clean(path))
 	if err != nil {
-		return fmt.Errorf("failed to create file: %w", err)
+		return fmt.Errorf("creating image file: %w", err)
 	}
 
-	err = chart.Render(f)
-	if err != nil {
-		return fmt.Errorf("failed to render chart: %w", err)
+	png := vgimg.PngCanvas{Canvas: img}
+	if _, err := png.WriteTo(w); err != nil {
+		return fmt.Errorf("writing image file: %w", err)
 	}
 
 	return nil
+}
+
+func NewBenchmarkPlots(year string) ([][]*plot.Plot, error) {
+	const rows, cols = 1, 2
+	plots := make([][]*plot.Plot, rows)
+
+	for j := 0; j < rows; j++ {
+		plots[j] = make([]*plot.Plot, cols)
+
+		for i := 0; i < cols; i++ {
+			p := plot.New()
+
+			p.X.Label.Text = "Day"
+
+			// p.Y.Label.Text = "Running time (seconds)"
+			p.Y.Tick.Marker = HumanizedLogTicks{}
+			p.X.Tick.Marker = plot.TickerFunc(func(min, max float64) []plot.Tick {
+				ticks := []plot.Tick{}
+
+				for i := min; i <= max; i++ {
+					ticks = append(
+						ticks,
+						plot.Tick{
+							Value: i,
+							Label: fmt.Sprintf("%d", int(i)),
+						},
+					)
+				}
+
+				return ticks
+			})
+			p.Y.Scale = plot.LogScale{}
+			p.Y.Min = 0.000001
+			// part1Plot.Y.Max = +10
+			// part1Plot.X.Label.Position = draw.PosRight
+			// part1Plot.Y.Label.Position = draw.PosTop
+
+			plots[j][i] = p
+		}
+	}
+
+	part1Plot := plots[0][0]
+	part2Plot := plots[0][1]
+
+	part1Plot.Title.Text = fmt.Sprintf(
+		"Average Exercise Running Time\nAdvent of Code %s: Part One",
+		year)
+	part2Plot.Title.Text = fmt.Sprintf(
+		"Average Exercise Running Time\nAdvent of Code %s: Part Two",
+		year)
+
+	g := plotter.NewGrid()
+	g.Vertical.Color = color.Transparent
+	part1Plot.Add(g)
+	part2Plot.Add(g)
+
+	redline := plotter.NewFunction(func(x float64) float64 { return 15 })
+	redline.Color = color.RGBA{R: 255, G: 0, B: 0, A: 255}
+	redline.Dashes = plotutil.Dashes(2)
+	part1Plot.Add(redline)
+	part2Plot.Add(redline)
+
+	return plots, nil
+}
+
+// HumanizedLogTicks is suitable for the Tick.Marker field of an Axis,
+// it returns tick marks suitable for a log-scale axis which have been
+// humanized.
+type HumanizedLogTicks struct {
+	// Prec specifies the precision of tick rendering
+	// according to the documentation for strconv.FormatFloat.
+	Prec int
+}
+
+var _ plot.Ticker = HumanizedLogTicks{}
+
+// Ticks returns Ticks in a specified range
+func (t HumanizedLogTicks) Ticks(min, max float64) []plot.Tick {
+	if min <= 0 || max <= 0 {
+		panic("Values must be greater than 0 for a log scale.")
+	}
+
+	val := math.Pow10(int(math.Log10(min)))
+	max = math.Pow10(int(math.Ceil(math.Log10(max))))
+
+	var ticks []plot.Tick
+
+	for val < max {
+		for i := 1; i < 10; i++ {
+			if i == 1 {
+				ticks = append(
+					ticks,
+					plot.Tick{
+						Value: val,
+						Label: humanize.SIWithDigits(val, 0, "s"),
+					})
+			}
+
+			ticks = append(ticks, plot.Tick{Value: val * float64(i)})
+		}
+
+		val *= 10
+	}
+
+	ticks = append(ticks,
+		plot.Tick{
+			Value: val,
+			Label: humanize.SIWithDigits(val, 0, "s"),
+		})
+
+	return ticks
 }
