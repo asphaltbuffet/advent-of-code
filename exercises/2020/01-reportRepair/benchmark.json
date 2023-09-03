@@ -1,15 +1,24 @@
 {
-  "day": 1,
+  "date": "2023-09-03T00:01:55.4012319Z",
   "dir": "exercises/2020/01-reportRepair",
-  "implementations": {
-    "Golang": {
-      "part.1.avg": 0.000023160400000000003,
-      "part.1.max": 0.0005285,
-      "part.1.min": 0.0000072,
-      "part.2.avg": 0.00015558430000000003,
-      "part.2.max": 0.0094683,
-      "part.2.min": 0.0000573
+  "year": "2020",
+  "day": 1,
+  "numRuns": 30,
+  "implementations": [
+    {
+      "name": "Golang",
+      "part-one": {
+        "mean": 0.000011163333333333332,
+        "median": 0.00001095,
+        "min": 0.0000096,
+        "max": 0.0000217
+      },
+      "part-two": {
+        "mean": 0.00006609000000000001,
+        "median": 0.0000629,
+        "min": 0.000062,
+        "max": 0.0000915
+      }
     }
-  },
-  "numRuns": 1000
+  ]
 }

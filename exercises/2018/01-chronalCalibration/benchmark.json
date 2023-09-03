@@ -1,15 +1,24 @@
 {
-  "day": 1,
+  "date": "2023-09-02T14:23:19.3010562Z",
   "dir": "exercises/2018/01-chronalCalibration",
-  "implementations": {
-    "Golang": {
-      "part.1.avg": 0.00002340259999999998,
-      "part.1.max": 0.0001365,
-      "part.1.min": 0.0000189,
-      "part.2.avg": 0.015205715200000011,
-      "part.2.max": 0.054004,
-      "part.2.min": 0.012094
+  "year": "2018",
+  "day": 1,
+  "numRuns": 30,
+  "implementations": [
+    {
+      "name": "Golang",
+      "part-one": {
+        "mean": 0.000028563333333333328,
+        "median": 0.0000214,
+        "min": 0.0000201,
+        "max": 0.0001138
+      },
+      "part-two": {
+        "mean": 0.018524803333333333,
+        "median": 0.01419565,
+        "min": 0.011588,
+        "max": 0.0600822
+      }
     }
-  },
-  "numRuns": 1000
+  ]
 }
