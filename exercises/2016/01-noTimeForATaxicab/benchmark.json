@@ -1,15 +1,24 @@
 {
-  "day": 1,
+  "date": "2023-09-02T14:20:51.8946365Z",
   "dir": "exercises/2016/01-noTimeForATaxicab",
-  "implementations": {
-    "Golang": {
-      "part.1.avg": 0.000018775099999999996,
-      "part.1.max": 0.0002733,
-      "part.1.min": 0.0000067,
-      "part.2.avg": 0.0002827103000000001,
-      "part.2.max": 0.0030261,
-      "part.2.min": 0.0001218
+  "year": "2016",
+  "day": 1,
+  "numRuns": 30,
+  "implementations": [
+    {
+      "name": "Golang",
+      "part-one": {
+        "mean": 0.00004036000000000001,
+        "median": 0.0000295,
+        "min": 0.0000081,
+        "max": 0.0000971
+      },
+      "part-two": {
+        "mean": 0.00057615,
+        "median": 0.0006335,
+        "min": 0.0001509,
+        "max": 0.0010822
+      }
     }
-  },
-  "numRuns": 1000
+  ]
 }
