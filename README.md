@@ -4,7 +4,7 @@
 
 # Advent of Code
 
-[![2015 Stars](https://img.shields.io/badge/2015_⭐-16-black)](exercises/2015/README.md)
+[![2015 Stars](https://img.shields.io/badge/2015_⭐-18-black)](exercises/2015/README.md)
 [![2016 Stars](https://img.shields.io/badge/2016_⭐-2-blue)](exercises/2016/README.md)
 [![2017 Stars](https://img.shields.io/badge/2017_⭐-2-green)](exercises/2017/README.md)
 [![2018 Stars](https://img.shields.io/badge/2018_⭐-2-lightgrey)](exercises/2018/README.md)
