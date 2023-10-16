@@ -220,3 +220,4 @@ advent-of-code
 input.txt
 runtime-wrapper*
 *.swp
+tracks/**/.exercism/
