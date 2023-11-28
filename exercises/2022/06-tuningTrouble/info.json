@@ -1,61 +1,69 @@
 {
-    "inputFile": "input.txt",
-    "testCases": {
-        "one": [
-            {
-                "input": "bvwc",
-                "expected": "4"
-            },
-            {
-                "input": "babababababababababababababaab",
-                "expected": "processing datastream: not found"
-            },
-            {
-                "input": "bvwbjplbgvbhsrlpgdmjqwftvncz",
-                "expected": "5"
-            },
-            {
-                "input": "nppdvjthqldpwncqszvftbrmjlhg",
-                "expected": "6"
-            },
-            {
-                "input": "nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg",
-                "expected": "10"
-            },
-            {
-                "input": "zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw",
-                "expected": "11"
-            }
-        ],
-        "two": [
-            {
-                "input": "abcdefghijklmn",
-                "expected": "14"
-            },
-            {
-                "input": "babababababababababababababaab",
-                "expected": "processing datastream: not found"
-            },
-            {
-                "input": "mjqjpqmgbljsphdztnvjfqwrcgsmlb",
-                "expected": "19"
-            },
-            {
-                "input": "bvwbjplbgvbhsrlpgdmjqwftvncz",
-                "expected": "23"
-            },
-            {
-                "input": "nppdvjthqldpwncqszvftbrmjlhg",
-                "expected": "23"
-            },
-            {
-                "input": "nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg",
-                "expected": "29"
-            },
-            {
-                "input": "zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw",
-                "expected": "26"
-            }
-        ]
+    "type": "advent",
+    "id": "2022-06",
+    "title": "Tuning Trouble",
+    "year": 2022,
+    "day": 6,
+    "url": "https://adventofcode.com/2022/day/6",
+    "data": {
+        "inputFile": "input.txt",
+        "testCases": {
+            "one": [
+                {
+                    "input": "bvwc",
+                    "expected": "4"
+                },
+                {
+                    "input": "babababababababababababababaab",
+                    "expected": "processing datastream: not found"
+                },
+                {
+                    "input": "bvwbjplbgvbhsrlpgdmjqwftvncz",
+                    "expected": "5"
+                },
+                {
+                    "input": "nppdvjthqldpwncqszvftbrmjlhg",
+                    "expected": "6"
+                },
+                {
+                    "input": "nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg",
+                    "expected": "10"
+                },
+                {
+                    "input": "zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw",
+                    "expected": "11"
+                }
+            ],
+            "two": [
+                {
+                    "input": "abcdefghijklmn",
+                    "expected": "14"
+                },
+                {
+                    "input": "babababababababababababababaab",
+                    "expected": "processing datastream: not found"
+                },
+                {
+                    "input": "mjqjpqmgbljsphdztnvjfqwrcgsmlb",
+                    "expected": "19"
+                },
+                {
+                    "input": "bvwbjplbgvbhsrlpgdmjqwftvncz",
+                    "expected": "23"
+                },
+                {
+                    "input": "nppdvjthqldpwncqszvftbrmjlhg",
+                    "expected": "23"
+                },
+                {
+                    "input": "nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg",
+                    "expected": "29"
+                },
+                {
+                    "input": "zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw",
+                    "expected": "26"
+                }
+            ]
+        }
     }
 }

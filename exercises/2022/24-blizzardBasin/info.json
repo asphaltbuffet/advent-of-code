@@ -1,24 +1,29 @@
 {
-    "inputFile": "input.txt",
-    "puzzle": {
+    "type": "advent",
+    "id": "2022-24",
+    "title": "Blizzard Basin",
+    "year": 2022,
+    "day": 24,
+    "url": "https://adventofcode.com/2022/day/24",
+    "data": {
         "inputFile": "input.txt",
-        "expected": [
-            "264",
-            "789"
-        ]
-    },
-    "testCases": {
-        "one": [
-            {
-                "input": "#.######\n#>>.<^<#\n#.<..<<#\n#>v.><>#\n#<^v^^>#\n######.#",
-                "expected": "18"
-            }
-        ],
-        "two": [
-            {
-                "input": "#.######\n#>>.<^<#\n#.<..<<#\n#>v.><>#\n#<^v^^>#\n######.#",
-                "expected": "54"
-            }
-        ]
+        "puzzle": {
+            "inputFile": "input.txt",
+            "expected": ["264", "789"]
+        },
+        "testCases": {
+            "one": [
+                {
+                    "input": "#.######\n#>>.<^<#\n#.<..<<#\n#>v.><>#\n#<^v^^>#\n######.#",
+                    "expected": "18"
+                }
+            ],
+            "two": [
+                {
+                    "input": "#.######\n#>>.<^<#\n#.<..<<#\n#>v.><>#\n#<^v^^>#\n######.#",
+                    "expected": "54"
+                }
+            ]
+        }
     }
 }

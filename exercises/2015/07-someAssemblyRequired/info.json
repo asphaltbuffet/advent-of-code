@@ -1,45 +1,53 @@
 {
-    "inputFile": "input.txt",
-    "testCases": {
-        "one": [
-            {
-                "input": "123 -> x\n456 -> y\nx AND y -> a\nx OR y -> e\nx LSHIFT 2 -> f\ny RSHIFT 2 -> g\nNOT x -> h\nNOT y -> i",
-                "expected": "72"
-            },
-            {
-                "input": "123 -> x\n456 -> y\nx AND y -> d\nx OR y -> a\nx LSHIFT 2 -> f\ny RSHIFT 2 -> g\nNOT x -> h\nNOT y -> i",
-                "expected": "507"
-            },
-            {
-                "input": "123 -> x\n456 -> y\nx AND y -> d\nx OR y -> e\nx LSHIFT 2 -> a\ny RSHIFT 2 -> g\nNOT x -> h\nNOT y -> i",
-                "expected": "492"
-            },
-            {
-                "input": "123 -> x\n456 -> y\nx AND y -> d\nx OR y -> e\nx LSHIFT 2 -> f\ny RSHIFT 2 -> a\nNOT x -> h\nNOT y -> i",
-                "expected": "114"
-            },
-            {
-                "input": "123 -> x\n456 -> y\nx AND y -> d\nx OR y -> e\nx LSHIFT 2 -> f\ny RSHIFT 2 -> g\nNOT x -> a\nNOT y -> i",
-                "expected": "65412"
-            },
-            {
-                "input": "123 -> x\n456 -> y\nx AND y -> d\nx OR y -> e\nx LSHIFT 2 -> f\ny RSHIFT 2 -> g\nNOT x -> h\nNOT y -> a",
-                "expected": "65079"
-            },
-            {
-                "input": "123 -> a\n456 -> y\nx AND y -> d\nx OR y -> e\nx LSHIFT 2 -> f\ny RSHIFT 2 -> g\nNOT x -> h\nNOT y -> i",
-                "expected": "123"
-            },
-            {
-                "input": "123 -> x\n456 -> a\nx AND y -> d\nx OR y -> e\nx LSHIFT 2 -> f\ny RSHIFT 2 -> g\nNOT x -> h\nNOT y -> i",
-                "expected": "456"
-            }
-        ],
-        "two": [
-            {
-                "input": "",
-                "expected": ""
-            }
-        ]
+    "type": "advent",
+    "id": "2015-07",
+    "title": "Some Assembly Required",
+    "year": 2015,
+    "day": 7,
+    "url": "https://adventofcode.com/2015/day/7",
+    "data": {
+        "inputFile": "input.txt",
+        "testCases": {
+            "one": [
+                {
+                    "input": "123 -> x\n456 -> y\nx AND y -> a\nx OR y -> e\nx LSHIFT 2 -> f\ny RSHIFT 2 -> g\nNOT x -> h\nNOT y -> i",
+                    "expected": "72"
+                },
+                {
+                    "input": "123 -> x\n456 -> y\nx AND y -> d\nx OR y -> a\nx LSHIFT 2 -> f\ny RSHIFT 2 -> g\nNOT x -> h\nNOT y -> i",
+                    "expected": "507"
+                },
+                {
+                    "input": "123 -> x\n456 -> y\nx AND y -> d\nx OR y -> e\nx LSHIFT 2 -> a\ny RSHIFT 2 -> g\nNOT x -> h\nNOT y -> i",
+                    "expected": "492"
+                },
+                {
+                    "input": "123 -> x\n456 -> y\nx AND y -> d\nx OR y -> e\nx LSHIFT 2 -> f\ny RSHIFT 2 -> a\nNOT x -> h\nNOT y -> i",
+                    "expected": "114"
+                },
+                {
+                    "input": "123 -> x\n456 -> y\nx AND y -> d\nx OR y -> e\nx LSHIFT 2 -> f\ny RSHIFT 2 -> g\nNOT x -> a\nNOT y -> i",
+                    "expected": "65412"
+                },
+                {
+                    "input": "123 -> x\n456 -> y\nx AND y -> d\nx OR y -> e\nx LSHIFT 2 -> f\ny RSHIFT 2 -> g\nNOT x -> h\nNOT y -> a",
+                    "expected": "65079"
+                },
+                {
+                    "input": "123 -> a\n456 -> y\nx AND y -> d\nx OR y -> e\nx LSHIFT 2 -> f\ny RSHIFT 2 -> g\nNOT x -> h\nNOT y -> i",
+                    "expected": "123"
+                },
+                {
+                    "input": "123 -> x\n456 -> a\nx AND y -> d\nx OR y -> e\nx LSHIFT 2 -> f\ny RSHIFT 2 -> g\nNOT x -> h\nNOT y -> i",
+                    "expected": "456"
+                }
+            ],
+            "two": [
+                {
+                    "input": "",
+                    "expected": ""
+                }
+            ]
+        }
     }
 }

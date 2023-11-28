@@ -1,17 +1,25 @@
 {
-    "inputFile": "input.txt",
-    "testCases": {
-        "one": [
-            {
-                "input": "30373\n25512\n65332\n33549\n35390",
-                "expected": "21"
-            }
-        ],
-        "two": [
-            {
-                "input": "30373\n25512\n65332\n33549\n35390",
-                "expected": "8"
-            }
-        ]
+    "type": "advent",
+    "id": "2022-08",
+    "title": "Treetop Tree House",
+    "year": 2022,
+    "day": 8,
+    "url": "https://adventofcode.com/2022/day/8",
+    "data": {
+        "inputFile": "input.txt",
+        "testCases": {
+            "one": [
+                {
+                    "input": "30373\n25512\n65332\n33549\n35390",
+                    "expected": "21"
+                }
+            ],
+            "two": [
+                {
+                    "input": "30373\n25512\n65332\n33549\n35390",
+                    "expected": "8"
+                }
+            ]
+        }
     }
 }

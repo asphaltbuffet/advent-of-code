@@ -1,41 +1,49 @@
 {
-    "inputFile": "input.txt",
-    "testCases": {
-        "one": [
-            {
-                "input": "+1\n-2\n+3\n+1",
-                "expected": "3"
-            },
-            {
-                "input": "+1\n+1\n+1",
-                "expected": "3"
-            },
-            {
-                "input": "+1\n+1\n-2",
-                "expected": "0"
-            },
-            {
-                "input": "-1\n-2\n-3",
-                "expected": "-6"
-            }
-        ],
-        "two": [
-            {
-                "input": "+1\n-1",
-                "expected": "0"
-            },
-            {
-                "input": "+3\n+3\n+4\n-2\n-4",
-                "expected": "10"
-            },
-            {
-                "input": "-6\n+3\n+8\n+5\n-6",
-                "expected": "5"
-            },
-            {
-                "input": "+7\n+7\n-2\n-7\n-4",
-                "expected": "14"
-            }
-        ]
+    "type": "advent",
+    "id": "2018-01",
+    "title": "Chronal Calibration",
+    "year": 2018,
+    "day": 1,
+    "url": "https://adventofcode.com/2018/day/1",
+    "data": {
+        "inputFile": "input.txt",
+        "testCases": {
+            "one": [
+                {
+                    "input": "+1\n-2\n+3\n+1",
+                    "expected": "3"
+                },
+                {
+                    "input": "+1\n+1\n+1",
+                    "expected": "3"
+                },
+                {
+                    "input": "+1\n+1\n-2",
+                    "expected": "0"
+                },
+                {
+                    "input": "-1\n-2\n-3",
+                    "expected": "-6"
+                }
+            ],
+            "two": [
+                {
+                    "input": "+1\n-1",
+                    "expected": "0"
+                },
+                {
+                    "input": "+3\n+3\n+4\n-2\n-4",
+                    "expected": "10"
+                },
+                {
+                    "input": "-6\n+3\n+8\n+5\n-6",
+                    "expected": "5"
+                },
+                {
+                    "input": "+7\n+7\n-2\n-7\n-4",
+                    "expected": "14"
+                }
+            ]
+        }
     }
 }

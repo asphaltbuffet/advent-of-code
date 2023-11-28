@@ -1,17 +1,25 @@
 {
-    "inputFile": "input.txt",
-    "testCases": {
-        "one": [
-            {
-                "input": "A Y\nB X\nC Z",
-                "expected": "15"
-            }
-        ],
-        "two": [
-            {
-                "input": "A Y\nB X\nC Z",
-                "expected": "12"
-            }
-        ]
+    "type": "advent",
+    "id": "2022-02",
+    "title": "Rock Paper Scissors",
+    "year": 2022,
+    "day": 2,
+    "url": "https://adventofcode.com/2022/day/2",
+    "data": {
+        "inputFile": "input.txt",
+        "testCases": {
+            "one": [
+                {
+                    "input": "A Y\nB X\nC Z",
+                    "expected": "15"
+                }
+            ],
+            "two": [
+                {
+                    "input": "A Y\nB X\nC Z",
+                    "expected": "12"
+                }
+            ]
+        }
     }
 }

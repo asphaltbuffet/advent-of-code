@@ -1,53 +1,61 @@
 {
-    "inputFile": "input.txt",
-    "testCases": {
-        "one": [
-            {
-                "input": "(())",
-                "expected": "0"
-            },
-            {
-                "input": "()()",
-                "expected": "0"
-            },
-            {
-                "input": "(((",
-                "expected": "3"
-            },
-            {
-                "input": "(()(()(",
-                "expected": "3"
-            },
-            {
-                "input": "))(((((",
-                "expected": "3"
-            },
-            {
-                "input": "())",
-                "expected": "-1"
-            },
-            {
-                "input": "))(",
-                "expected": "-1"
-            },
-            {
-                "input": ")))",
-                "expected": "-3"
-            },
-            {
-                "input": ")())())",
-                "expected": "-3"
-            }
-        ],
-        "two": [
-            {
-                "input": ")",
-                "expected": "1"
-            },
-            {
-                "input": "()())",
-                "expected": "5"
-            }
-        ]
+    "type": "advent",
+    "id": "2015-01",
+    "title": "Not Quite Lisp",
+    "year": 2015,
+    "day": 1,
+    "url": "https://adventofcode.com/2015/day/1",
+    "data": {
+        "inputFile": "input.txt",
+        "testCases": {
+            "one": [
+                {
+                    "input": "(())",
+                    "expected": "0"
+                },
+                {
+                    "input": "()()",
+                    "expected": "0"
+                },
+                {
+                    "input": "(((",
+                    "expected": "3"
+                },
+                {
+                    "input": "(()(()(",
+                    "expected": "3"
+                },
+                {
+                    "input": "))(((((",
+                    "expected": "3"
+                },
+                {
+                    "input": "())",
+                    "expected": "-1"
+                },
+                {
+                    "input": "))(",
+                    "expected": "-1"
+                },
+                {
+                    "input": ")))",
+                    "expected": "-3"
+                },
+                {
+                    "input": ")())())",
+                    "expected": "-3"
+                }
+            ],
+            "two": [
+                {
+                    "input": ")",
+                    "expected": "1"
+                },
+                {
+                    "input": "()())",
+                    "expected": "5"
+                }
+            ]
+        }
     }
 }
