@@ -1,21 +1,29 @@
 {
-    "inputFile": "input.txt",
-    "testCases": {
-        "one": [
-            {
-                "input": "$ cd /\n$ ls\ndir a\n14848514 b.txt\n8504156 c.dat\ndir d\n$ cd a\n$ ls\ndir e\n29116 f\n2557 g\n62596 h.lst\n$ cd e\n$ ls\n584 i\n$ cd ..\n$ cd ..\n$ cd d\n$ ls\n4060174 j\n8033020 d.log\n5626152 d.ext\n7214296 k",
-                "expected": "95437"
-            },
-            {
-                "input": "$ cd /\n$ ls\ndir a\n500 b.txt\n1500 c.dat\n$ cd a\n$ ls\ndir e\n30000 f\n3000 g\n60000 h.lst\n$ cd e\n$ ls\n600 i",
-                "expected": "189800"
-            }
-        ],
-        "two": [
-            {
-                "input": "$ cd /\n$ ls\ndir a\n14848514 b.txt\n8504156 c.dat\ndir d\n$ cd a\n$ ls\ndir e\n29116 f\n2557 g\n62596 h.lst\n$ cd e\n$ ls\n584 i\n$ cd ..\n$ cd ..\n$ cd d\n$ ls\n4060174 j\n8033020 d.log\n5626152 d.ext\n7214296 k",
-                "expected": "24933642"
-            }
-        ]
+    "type": "advent",
+    "id": "2022-07",
+    "title": "No Space Left On Device",
+    "year": 2022,
+    "day": 7,
+    "url": "https://adventofcode.com/2022/day/7",
+    "data": {
+        "inputFile": "input.txt",
+        "testCases": {
+            "one": [
+                {
+                    "input": "$ cd /\n$ ls\ndir a\n14848514 b.txt\n8504156 c.dat\ndir d\n$ cd a\n$ ls\ndir e\n29116 f\n2557 g\n62596 h.lst\n$ cd e\n$ ls\n584 i\n$ cd ..\n$ cd ..\n$ cd d\n$ ls\n4060174 j\n8033020 d.log\n5626152 d.ext\n7214296 k",
+                    "expected": "95437"
+                },
+                {
+                    "input": "$ cd /\n$ ls\ndir a\n500 b.txt\n1500 c.dat\n$ cd a\n$ ls\ndir e\n30000 f\n3000 g\n60000 h.lst\n$ cd e\n$ ls\n600 i",
+                    "expected": "189800"
+                }
+            ],
+            "two": [
+                {
+                    "input": "$ cd /\n$ ls\ndir a\n14848514 b.txt\n8504156 c.dat\ndir d\n$ cd a\n$ ls\ndir e\n29116 f\n2557 g\n62596 h.lst\n$ cd e\n$ ls\n584 i\n$ cd ..\n$ cd ..\n$ cd d\n$ ls\n4060174 j\n8033020 d.log\n5626152 d.ext\n7214296 k",
+                    "expected": "24933642"
+                }
+            ]
+        }
     }
 }

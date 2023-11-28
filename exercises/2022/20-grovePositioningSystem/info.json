@@ -1,21 +1,29 @@
 {
-    "inputFile": "input.txt",
-    "answers": {
-        "one": "4066",
-        "two": "6704537992933"
-    },
-    "testCases": {
-        "one": [
-            {
-                "input": "1\n2\n-3\n3\n-2\n0\n4",
-                "expected": "3"
-            }
-        ],
-        "two": [
-            {
-                "input": "1\n2\n-3\n3\n-2\n0\n4",
-                "expected": "1623178306"
-            }
-        ]
+    "type": "advent",
+    "id": "2022-20",
+    "title": "Grove Positioning System",
+    "year": 2022,
+    "day": 20,
+    "url": "https://adventofcode.com/2022/day/20",
+    "data": {
+        "inputFile": "input.txt",
+        "answers": {
+            "one": "4066",
+            "two": "6704537992933"
+        },
+        "testCases": {
+            "one": [
+                {
+                    "input": "1\n2\n-3\n3\n-2\n0\n4",
+                    "expected": "3"
+                }
+            ],
+            "two": [
+                {
+                    "input": "1\n2\n-3\n3\n-2\n0\n4",
+                    "expected": "1623178306"
+                }
+            ]
+        }
     }
 }

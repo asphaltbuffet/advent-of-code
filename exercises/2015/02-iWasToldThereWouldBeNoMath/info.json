@@ -1,29 +1,37 @@
 {
-    "inputFile": "input.txt",
-    "answers": {
-        "one": "1598415",
-        "two": ""
-    },
-    "testCases": {
-        "one": [
-            {
-                "input": "2x3x4",
-                "expected": "58"
-            },
-            {
-                "input": "1x1x10",
-                "expected": "43"
-            }
-        ],
-        "two": [
-            {
-                "input": "2x3x4",
-                "expected": "34"
-            },
-            {
-                "input": "1x1x10",
-                "expected": "14"
-            }
-        ]
+    "type": "advent",
+    "id": "2015-02",
+    "title": "I Was Told There Would Be No Math",
+    "year": 2015,
+    "day": 2,
+    "url": "https://adventofcode.com/2015/day/2",
+    "data": {
+        "inputFile": "input.txt",
+        "answers": {
+            "one": "1598415",
+            "two": ""
+        },
+        "testCases": {
+            "one": [
+                {
+                    "input": "2x3x4",
+                    "expected": "58"
+                },
+                {
+                    "input": "1x1x10",
+                    "expected": "43"
+                }
+            ],
+            "two": [
+                {
+                    "input": "2x3x4",
+                    "expected": "34"
+                },
+                {
+                    "input": "1x1x10",
+                    "expected": "14"
+                }
+            ]
+        }
     }
 }
