@@ -221,3 +221,5 @@ input.txt
 runtime-wrapper*
 *.swp
 tracks/**/.exercism/
+
+elf.toml
