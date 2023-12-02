@@ -4,9 +4,9 @@
 
 <!-- ★ ☆ -->
 
-| Exercise    | Stars | Solutions |
-|-------------|:-----:|-----------|
-| Day 1: TBD  |  ☆ ☆  |           |
+| Exercise                     | Stars | Solutions |
+|------------------------------|:-----:|-----------|
+| [Day 1: Trebuchet?!][rm1]    |  ⭐⭐   | [Go][go1] |
 | Day 2: TBD  |  ☆ ☆  |           |
 | Day 3: TBD  |  ☆ ☆  |           |
 | Day 4: TBD  |  ☆ ☆  |           |
@@ -35,3 +35,17 @@
 ## 2023 Run Times
 
 ![2023 exercise run-time graphs](run-times.png)
+
+## 2023 [Personal Leaderboard](https://adventofcode.com/2023/leaderboard/self)
+
+```text
+      --------Part 1--------   --------Part 2--------
+Day       Time   Rank  Score       Time   Rank  Score
+  2   00:47:33   9949      0   00:53:01   9117      0
+  1   00:30:29  10081      0   02:13:25  12194      0
+```
+
+<!-- reference links -->
+
+[rm1]: exercises/2023/01-trebuchet?/README.md
+[go1]: exercises/2023/01-trebuchet?/go

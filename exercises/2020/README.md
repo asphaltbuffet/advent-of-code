@@ -38,3 +38,9 @@
 ## 2020 Run Times
 
 ![2020 exercise run-time graphs](run-times.png)
+
+## 2020 Personal Leaderboard
+
+```text
+
+```

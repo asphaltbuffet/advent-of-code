@@ -35,3 +35,11 @@
 ## 2017 Run Times
 
 ![2017 exercise run-time graphs](run-times.png)
+
+## 2017 Personal Leaderboard
+
+```text
+      --------Part 1--------   --------Part 2--------
+Day       Time   Rank  Score       Time   Rank  Score
+  1       >24h  62414      0       >24h  52206      0
+```

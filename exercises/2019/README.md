@@ -32,10 +32,19 @@
 | 24                                                |  ☆ ☆  |                            |
 | 25                                                |  ☆ ☆  |                            |
 
-[rm_1]: 01-theTyrannyOfTheRocketEquation/README.md
-[go_1]: 01-theTyrannyOfTheRocketEquation/go
-[py_1]: 01-theTyrannyOfTheRocketEquation/py
 
 ## 2019 Run Times
 
 ![2019 exercise run-time graphs](run-times.png)
+
+## 2019 [Personal Leaderboard](https://adventofcode.com/2019/leaderboard/self)
+
+```text
+      --------Part 1---------   --------Part 2---------
+Day       Time    Rank  Score       Time    Rank  Score
+  1       >24h  123648      0       >24h  108432      0
+```
+
+[rm_1]: 01-theTyrannyOfTheRocketEquation/README.md
+[go_1]: 01-theTyrannyOfTheRocketEquation/go
+[py_1]: 01-theTyrannyOfTheRocketEquation/py
