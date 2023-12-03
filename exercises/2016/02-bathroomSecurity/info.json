@@ -1,0 +1,24 @@
+{
+  "id": "2016-02",
+  "title": "Bathroom Security",
+  "year": 2016,
+  "day": 2,
+  "url": "https://adventofcode.com/2016/day/2",
+  "data": {
+    "inputFile": "input.txt",
+    "testCases": {
+      "one": [
+        {
+          "input": "",
+          "expected": ""
+        }
+      ],
+      "two": [
+        {
+          "input": "",
+          "expected": ""
+        }
+      ]
+    }
+  }
+}
