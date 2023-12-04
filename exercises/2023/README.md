@@ -9,7 +9,7 @@
 | [Day 1: Trebuchet?!][rm1]    |  ⭐⭐   | [Go][go1] |
 | [Day 2: Cube Conundrum][rm2] |  ⭐⭐   | [Go][go2] |
 | [Day 3: Gear Ratios][rm3]    |  ⭐⭐   | [Go][go3] |
-| Day 4: TBD                   |  ☆ ☆  |           |
+| [Day 4: Scratchcards][rm4]   |  ☆ ☆  | [Go][go4] |
 | Day 5: TBD                   |  ☆ ☆  |           |
 | Day 6: TBD                   |  ☆ ☆  |           |
 | Day 7: TBD                   |  ☆ ☆  |           |
@@ -54,3 +54,5 @@ Day       Time   Rank  Score       Time   Rank  Score
 [go2]: exercises/2023/02-cubeConundrum/go
 [rm3]: exercises/2023/03-gearRatios/README.md
 [go3]: exercises/2023/03-gearRatios/go
+[rm4]: exercises/2023/04-scratchcards/README.md
+[go4]: exercises/2023/04-scratchcards/go
