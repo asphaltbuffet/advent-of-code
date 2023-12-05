@@ -15,7 +15,14 @@
 ## Go
 
 ```text
-< section intentionally left blank >
+ ───────────────────
+ ADVENT OF CODE 2023
+ Day 4: Scratchcards
+ ───────────────────
+  Test 1.0: PASS in 26.9 µs
+  Test 2.0: PASS in 17.7 µs
+  Part 1: 23441 in 446.2 µs
+  Part 2: 5923918 in 495.6 µs
 ```
 
 ## Python

@@ -9,7 +9,7 @@
 | [Day 1: Trebuchet?!][rm1]    |  ⭐⭐   | [Go][go1] |
 | [Day 2: Cube Conundrum][rm2] |  ⭐⭐   | [Go][go2] |
 | [Day 3: Gear Ratios][rm3]    |  ⭐⭐   | [Go][go3] |
-| [Day 4: Scratchcards][rm4]   |  ☆ ☆  | [Go][go4] |
+| [Day 4: Scratchcards][rm4]                    |  ⭐⭐   | [Go][go4] |
 | Day 5: TBD                   |  ☆ ☆  |           |
 | Day 6: TBD                   |  ☆ ☆  |           |
 | Day 7: TBD                   |  ☆ ☆  |           |
