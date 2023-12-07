@@ -1,8 +1,6 @@
 package exercises
 
 import (
-	"fmt"
-
 	"github.com/asphaltbuffet/advent-of-code/internal/common"
 )
 
@@ -13,10 +11,22 @@ type Exercise struct {
 
 // One returns the answer to the first part of the exercise.
 func (e Exercise) One(instr string) (any, error) {
-	return nil, fmt.Errorf("part 1 not implemented")
+	races := parseRaces(instr)
+	total := 1
+
+	for _, r := range races {
+		n := r.CountFasterTimes()
+		total *= n
+	}
+
+	return total, nil
 }
 
 // Two returns the answer to the second part of the exercise.
 func (e Exercise) Two(instr string) (any, error) {
-	return nil, fmt.Errorf("part 2 not implemented")
+	r := parseBigRace(instr)
+
+	n := r.CountFasterTimes()
+
+	return n, nil
 }

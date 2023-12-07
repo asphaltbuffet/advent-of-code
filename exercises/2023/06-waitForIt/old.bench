@@ -1,0 +1,66 @@
+goos: windows
+goarch: amd64
+pkg: github.com/asphaltbuffet/advent-of-code/exercises/2023/06-waitForIt/go
+cpu: Intel(R) Core(TM) i7-9700K CPU @ 3.60GHz
+BenchmarkPartOne/input_0-8         	  786374	      1435 ns/op	    2000 B/op	      22 allocs/op
+BenchmarkPartOne/input_0-8         	  999949	      1368 ns/op	    2000 B/op	      22 allocs/op
+BenchmarkPartOne/input_0-8         	  910815	      1406 ns/op	    2000 B/op	      22 allocs/op
+BenchmarkPartOne/input_0-8         	  855450	      1343 ns/op	    2000 B/op	      22 allocs/op
+BenchmarkPartOne/input_0-8         	  913471	      1381 ns/op	    2000 B/op	      22 allocs/op
+BenchmarkPartOne/input_0-8         	  972998	      1391 ns/op	    2000 B/op	      22 allocs/op
+BenchmarkPartOne/input_0-8         	  832384	      1392 ns/op	    2000 B/op	      22 allocs/op
+BenchmarkPartOne/input_0-8         	  909441	      1411 ns/op	    2000 B/op	      22 allocs/op
+BenchmarkPartOne/input_0-8         	  798652	      1425 ns/op	    2000 B/op	      22 allocs/op
+BenchmarkPartOne/input_0-8         	  855120	      1400 ns/op	    2000 B/op	      22 allocs/op
+BenchmarkPartOne/input_1-8         	  302140	      3841 ns/op	    8368 B/op	      27 allocs/op
+BenchmarkPartOne/input_1-8         	  296223	      3654 ns/op	    8368 B/op	      27 allocs/op
+BenchmarkPartOne/input_1-8         	  407665	      3597 ns/op	    8368 B/op	      27 allocs/op
+BenchmarkPartOne/input_1-8         	  357709	      3641 ns/op	    8368 B/op	      27 allocs/op
+BenchmarkPartOne/input_1-8         	  339314	      3583 ns/op	    8368 B/op	      27 allocs/op
+BenchmarkPartOne/input_1-8         	  336609	      3616 ns/op	    8368 B/op	      27 allocs/op
+BenchmarkPartOne/input_1-8         	  314598	      3754 ns/op	    8368 B/op	      27 allocs/op
+BenchmarkPartOne/input_1-8         	  368154	      3809 ns/op	    8368 B/op	      27 allocs/op
+BenchmarkPartOne/input_1-8         	  374592	      3678 ns/op	    8368 B/op	      27 allocs/op
+BenchmarkPartOne/input_1-8         	  333692	      3545 ns/op	    8368 B/op	      27 allocs/op
+BenchmarkPartOne/input_2-8         	  386706	      3533 ns/op	    7920 B/op	      27 allocs/op
+BenchmarkPartOne/input_2-8         	  314910	      3642 ns/op	    7920 B/op	      27 allocs/op
+BenchmarkPartOne/input_2-8         	  303813	      3661 ns/op	    7920 B/op	      27 allocs/op
+BenchmarkPartOne/input_2-8         	  382764	      3580 ns/op	    7920 B/op	      27 allocs/op
+BenchmarkPartOne/input_2-8         	  387122	      3566 ns/op	    7920 B/op	      27 allocs/op
+BenchmarkPartOne/input_2-8         	  299998	      3573 ns/op	    7920 B/op	      27 allocs/op
+BenchmarkPartOne/input_2-8         	  345798	      3669 ns/op	    7920 B/op	      27 allocs/op
+BenchmarkPartOne/input_2-8         	  324294	      3659 ns/op	    7920 B/op	      27 allocs/op
+BenchmarkPartOne/input_2-8         	  317593	      3572 ns/op	    7920 B/op	      27 allocs/op
+BenchmarkPartOne/input_2-8         	  343344	      3699 ns/op	    7920 B/op	      27 allocs/op
+BenchmarkPartTwo/input_0-8         	    5220	    232587 ns/op	 1294515 B/op	       9 allocs/op
+BenchmarkPartTwo/input_0-8         	    5112	    249352 ns/op	 1294514 B/op	       9 allocs/op
+BenchmarkPartTwo/input_0-8         	    4836	    245511 ns/op	 1294514 B/op	       9 allocs/op
+BenchmarkPartTwo/input_0-8         	    5713	    224343 ns/op	 1294514 B/op	       9 allocs/op
+BenchmarkPartTwo/input_0-8         	    4790	    250721 ns/op	 1294514 B/op	       9 allocs/op
+BenchmarkPartTwo/input_0-8         	    4089	    263379 ns/op	 1294515 B/op	       9 allocs/op
+BenchmarkPartTwo/input_0-8         	    5714	    225276 ns/op	 1294514 B/op	       9 allocs/op
+BenchmarkPartTwo/input_0-8         	    5032	    229204 ns/op	 1294514 B/op	       9 allocs/op
+BenchmarkPartTwo/input_0-8         	    5986	    213485 ns/op	 1294514 B/op	       9 allocs/op
+BenchmarkPartTwo/input_0-8         	    5112	    215126 ns/op	 1294514 B/op	       9 allocs/op
+BenchmarkPartTwo/input_1-8         	       9	 117028178 ns/op	1094566074 B/op	       9 allocs/op
+BenchmarkPartTwo/input_1-8         	       9	 118177800 ns/op	1094566097 B/op	       9 allocs/op
+BenchmarkPartTwo/input_1-8         	       9	 131761778 ns/op	1094566084 B/op	       9 allocs/op
+BenchmarkPartTwo/input_1-8         	      10	 110485460 ns/op	1094566075 B/op	       9 allocs/op
+BenchmarkPartTwo/input_1-8         	      10	 109484380 ns/op	1094566073 B/op	       9 allocs/op
+BenchmarkPartTwo/input_1-8         	      10	 110706130 ns/op	1094566084 B/op	       9 allocs/op
+BenchmarkPartTwo/input_1-8         	      10	 109809280 ns/op	1094566094 B/op	       9 allocs/op
+BenchmarkPartTwo/input_1-8         	       9	 111184122 ns/op	1094566095 B/op	       9 allocs/op
+BenchmarkPartTwo/input_1-8         	      10	 110376580 ns/op	1094566075 B/op	       9 allocs/op
+BenchmarkPartTwo/input_1-8         	       9	 111193600 ns/op	1094566073 B/op	       9 allocs/op
+BenchmarkPartTwo/input_2-8         	      14	  75653236 ns/op	751993030 B/op	       9 allocs/op
+BenchmarkPartTwo/input_2-8         	      15	  75892727 ns/op	751993024 B/op	       9 allocs/op
+BenchmarkPartTwo/input_2-8         	      15	  75913300 ns/op	751993030 B/op	       9 allocs/op
+BenchmarkPartTwo/input_2-8         	      14	  86527843 ns/op	751993030 B/op	       9 allocs/op
+BenchmarkPartTwo/input_2-8         	      14	  75587664 ns/op	751993038 B/op	       9 allocs/op
+BenchmarkPartTwo/input_2-8         	      14	  75663507 ns/op	751993026 B/op	       9 allocs/op
+BenchmarkPartTwo/input_2-8         	      14	  75808650 ns/op	751993045 B/op	       9 allocs/op
+BenchmarkPartTwo/input_2-8         	      14	  76364486 ns/op	751993044 B/op	       9 allocs/op
+BenchmarkPartTwo/input_2-8         	      14	  75899571 ns/op	751993030 B/op	       9 allocs/op
+BenchmarkPartTwo/input_2-8         	      14	  75619486 ns/op	751993024 B/op	       9 allocs/op
+PASS
+ok  	github.com/asphaltbuffet/advent-of-code/exercises/2023/06-waitForIt/go	86.488s
