@@ -1,0 +1,32 @@
+{
+  "id": "2023-08",
+  "title": "Haunted Wasteland",
+  "year": 2023,
+  "day": 8,
+  "url": "https://adventofcode.com/2023/day/8",
+  "data": {
+    "inputFile": "input.txt",
+    "testCases": {
+      "one": [
+        {
+          "input": "RL\n\nAAA = (BBB, CCC)\nBBB = (DDD, EEE)\nCCC = (ZZZ, GGG)\nDDD = (DDD, DDD)\nEEE = (EEE, EEE)\nGGG = (GGG, GGG)\nZZZ = (ZZZ, ZZZ)",
+          "expected": "2"
+        },
+        {
+          "input": "LLR\n\nAAA = (BBB, BBB)\nBBB = (AAA, ZZZ)\nZZZ = (ZZZ, ZZZ)",
+          "expected": "6"
+        }
+      ],
+      "two": [
+        {
+          "input": "LR\n\n11A = (11B, XXX)\n11B = (XXX, 11Z)\n11Z = (11B, XXX)\n22A = (22B, XXX)\n22B = (22C, 22C)\n22C = (22Z, 22Z)\n22Z = (22B, 22B)\nXXX = (XXX, XXX)",
+          "expected": "6"
+        }
+      ]
+    },
+    "answers": {
+      "a": "19199",
+      "b": "13663968099527"
+    }
+  }
+}

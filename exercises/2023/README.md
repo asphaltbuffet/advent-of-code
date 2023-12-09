@@ -13,7 +13,7 @@
 | [Day 5: If You Give A Seed A Fertilizer][rm5] |  ☆ ☆  | [Go][go5] |
 | [Day 6: Wait For It][rm6]                     |  ⭐⭐   | [Go][go6] |
 | [Day 7: Camel Cards][rm7]                     |  ⭐⭐   | [Go][go7] |
-| Day 8: TBD                                    |  ☆ ☆  |           |
+| [Day 8: Haunted Wasteland][rm8]               |  ⭐⭐   | [Go][go8] |
 | Day 9: TBD                                    |  ☆ ☆  |           |
 | Day 10: TBD                                   |  ☆ ☆  |           |
 | Day 11: TBD                                   |  ☆ ☆  |           |
@@ -62,3 +62,5 @@ Day       Time   Rank  Score       Time   Rank  Score
 [go6]: 06-waitForIt/go
 [rm7]: 07-camelCards/README.md
 [go7]: 07-camelCards/go
+[rm8]: 08-hauntedWasteland/README.md
+[go8]: 08-hauntedWasteland/go
