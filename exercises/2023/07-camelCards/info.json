@@ -1,0 +1,28 @@
+{
+  "id": "2023-07",
+  "title": "Camel Cards",
+  "year": 2023,
+  "day": 7,
+  "url": "https://adventofcode.com/2023/day/7",
+  "data": {
+    "inputFile": "input.txt",
+    "testCases": {
+      "one": [
+        {
+          "input": "32T3K 765\nT55J5 684\nKK677 28\nKTJJT 220\nQQQJA 483",
+          "expected": "6440"
+        }
+      ],
+      "two": [
+        {
+          "input": "32T3K 765\nT55J5 684\nKK677 28\nKTJJT 220\nQQQJA 483",
+          "expected": "5905"
+        }
+      ]
+    },
+    "answers": {
+      "a": "246912307",
+      "b": "246894760"
+    }
+  }
+}

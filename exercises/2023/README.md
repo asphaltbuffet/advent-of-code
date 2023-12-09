@@ -11,8 +11,8 @@
 | [Day 3: Gear Ratios][rm3]                     |  ⭐⭐   | [Go][go3] |
 | [Day 4: Scratchcards][rm4]                    |  ⭐⭐   | [Go][go4] |
 | [Day 5: If You Give A Seed A Fertilizer][rm5] |  ☆ ☆  | [Go][go5] |
-| Day 6: TBD                                    |  ☆ ☆  |           |
-| Day 7: TBD                                    |  ☆ ☆  |           |
+| [Day 6: Wait For It][rm6]                     |  ⭐⭐   | [Go][go6] |
+| [Day 7: Camel Cards][rm7]                     |  ⭐⭐   | [Go][go7] |
 | Day 8: TBD                                    |  ☆ ☆  |           |
 | Day 9: TBD                                    |  ☆ ☆  |           |
 | Day 10: TBD                                   |  ☆ ☆  |           |
@@ -48,13 +48,17 @@ Day       Time   Rank  Score       Time   Rank  Score
 
 <!-- reference links -->
 
-[rm1]: exercises/2023/01-trebuchet?/README.md
-[go1]: exercises/2023/01-trebuchet?/go
-[rm2]: exercises/2023/02-cubeConundrum/README.md
-[go2]: exercises/2023/02-cubeConundrum/go
-[rm3]: exercises/2023/03-gearRatios/README.md
-[go3]: exercises/2023/03-gearRatios/go
-[rm4]: exercises/2023/04-scratchcards/README.md
-[go4]: exercises/2023/04-scratchcards/go
-[rm5]: exercises/2023/05-ifYouGiveASeedAFertilizer/README.md
-[go5]: exercises/2023/05-ifYouGiveASeedAFertilizer/go
+[rm1]: 01-trebuchet?/README.md
+[go1]: 01-trebuchet?/go
+[rm2]: 02-cubeConundrum/README.md
+[go2]: 02-cubeConundrum/go
+[rm3]: 03-gearRatios/README.md
+[go3]: 03-gearRatios/go
+[rm4]: 04-scratchcards/README.md
+[go4]: 04-scratchcards/go
+[rm5]: 05-ifYouGiveASeedAFertilizer/README.md
+[go5]: 05-ifYouGiveASeedAFertilizer/go
+[rm6]: 06-waitForIt/README.md
+[go6]: 06-waitForIt/go
+[rm7]: 07-camelCards/README.md
+[go7]: 07-camelCards/go
