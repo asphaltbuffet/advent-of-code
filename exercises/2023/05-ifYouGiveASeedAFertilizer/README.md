@@ -15,7 +15,14 @@
 ## Go
 
 ```text
-< section intentionally left blank >
+ ──────────────────────────────────────
+ ADVENT OF CODE 2023
+ Day 5: If You Give A Seed A Fertilizer
+ ──────────────────────────────────────
+  Test 1.1: PASS in 89.2 µs
+  Test 2.1: PASS in 97 µs
+    Part 1: 251346198 405.6 µs
+    Part 2: 72263011 470.9 s
 ```
 
 ## Python
