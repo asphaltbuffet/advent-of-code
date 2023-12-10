@@ -1,0 +1,26 @@
+goos: windows
+goarch: amd64
+pkg: github.com/asphaltbuffet/advent-of-code/exercises/2023/07-camelCards/go
+cpu: Intel(R) Core(TM) i7-9700K CPU @ 3.60GHz
+BenchmarkPartOne/example-8         	  177502	      6430 ns/op	    1088 B/op	      54 allocs/op
+BenchmarkPartOne/example-8         	  184753	      6140 ns/op	    1088 B/op	      54 allocs/op
+BenchmarkPartOne/example-8         	  197739	      6285 ns/op	    1088 B/op	      54 allocs/op
+BenchmarkPartOne/example-8         	  173912	      6278 ns/op	    1088 B/op	      54 allocs/op
+BenchmarkPartOne/example-8         	  175162	      6156 ns/op	    1088 B/op	      54 allocs/op
+BenchmarkPartOne/example-8         	  199465	      6123 ns/op	    1088 B/op	      54 allocs/op
+BenchmarkPartOne/example-8         	  203784	      6254 ns/op	    1088 B/op	      54 allocs/op
+BenchmarkPartOne/example-8         	  180573	      6413 ns/op	    1088 B/op	      54 allocs/op
+BenchmarkPartOne/example-8         	  161037	      6334 ns/op	    1088 B/op	      54 allocs/op
+BenchmarkPartOne/example-8         	  193546	      6356 ns/op	    1088 B/op	      54 allocs/op
+BenchmarkPartTwo/example-8         	  172279	      6851 ns/op	    1088 B/op	      54 allocs/op
+BenchmarkPartTwo/example-8         	  166664	      6828 ns/op	    1088 B/op	      54 allocs/op
+BenchmarkPartTwo/example-8         	  158199	      6726 ns/op	    1088 B/op	      54 allocs/op
+BenchmarkPartTwo/example-8         	  164796	      6738 ns/op	    1088 B/op	      54 allocs/op
+BenchmarkPartTwo/example-8         	  182863	      6816 ns/op	    1088 B/op	      54 allocs/op
+BenchmarkPartTwo/example-8         	  190452	      6889 ns/op	    1088 B/op	      54 allocs/op
+BenchmarkPartTwo/example-8         	  169033	      6858 ns/op	    1088 B/op	      54 allocs/op
+BenchmarkPartTwo/example-8         	  173943	      6825 ns/op	    1088 B/op	      54 allocs/op
+BenchmarkPartTwo/example-8         	  185370	      6684 ns/op	    1088 B/op	      54 allocs/op
+BenchmarkPartTwo/example-8         	  173908	      6900 ns/op	    1088 B/op	      54 allocs/op
+PASS
+ok  	github.com/asphaltbuffet/advent-of-code/exercises/2023/07-camelCards/go	25.178s

@@ -35,3 +35,11 @@
 ## 2018 Run Times
 
 ![2018 exercise run-time graphs](run-times.png)
+
+## 2018 Personal Leaderboard
+
+```text
+      --------Part 1--------   --------Part 2--------
+Day       Time   Rank  Score       Time   Rank  Score
+  1       >24h  95975      0       >24h  75133      0
+```

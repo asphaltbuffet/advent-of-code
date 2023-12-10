@@ -36,6 +36,22 @@
 
 ![2015 exercise run-time graphs](run-times.png)
 
+## 2015 Personal Leaderboard
+
+```text
+      --------Part 1--------   --------Part 2--------
+Day       Time   Rank  Score       Time   Rank  Score
+  9       >24h  17966      0       >24h  17628      0
+  8       >24h  20844      0       >24h  19704      0
+  7       >24h  22058      0       >24h  21300      0
+  6       >24h  31598      0       >24h  30306      0
+  5       >24h  39843      0       >24h  33941      0
+  4       >24h  40729      0       >24h  39311      0
+  3       >24h  49018      0       >24h  45253      0
+  2       >24h  59857      0       >24h  54236      0
+  1       >24h  92389      0       >24h  76258      0
+```
+
 [rm1]: 01-notQuiteLisp/README.md
 [g1]: 01-notQuiteLisp/go
 [p1]: 01-notQuiteLisp/py

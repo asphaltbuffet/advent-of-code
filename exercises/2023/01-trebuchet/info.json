@@ -1,0 +1,24 @@
+{
+  "id": "2023-01",
+  "title": "Trebuchet?!",
+  "year": 2023,
+  "day": 1,
+  "url": "https://adventofcode.com/2023/day/1",
+  "data": {
+    "inputFile": "input.txt",
+    "testCases": {
+      "one": [
+        {
+          "input": "1abc2\npqr3stu8vwx\na1b2c3d4e5f\ntreb7uchet",
+          "expected": "142"
+        }
+      ],
+      "two": [
+        {
+          "input": "two1nine\neightwothree\nabcone2threexyz\nxtwone3four\n4nineeightseven2\nzoneight234\n7pqrstsixteen",
+          "expected": "281"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "2023-06",
+  "title": "Wait For It",
+  "year": 2023,
+  "day": 6,
+  "url": "https://adventofcode.com/2023/day/6",
+  "data": {
+    "inputFile": "input.txt",
+    "testCases": {
+      "one": [
+        {
+          "input": "Time:      7  15   30\nDistance:  9  40  200",
+          "expected": "288"
+        }
+      ],
+      "two": [
+        {
+          "input": "Time:      7  15   30\nDistance:  9  40  200",
+          "expected": "71503"
+        }
+      ]
+    },
+    "answers": {
+      "a": "771628",
+      "b": "27363861"
+    }
+  }
+}
