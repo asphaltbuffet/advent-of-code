@@ -15,7 +15,17 @@
 ## Go
 
 ```text
-< section intentionally left blank >
+ ───────────────────
+ ADVENT OF CODE 2023
+ Day 10: Pipe Maze
+ ───────────────────
+  Test 1.1: PASS in 18 µs
+  Test 1.2: PASS in 11.8 µs
+  Test 2.1: PASS in 54.1 µs
+  Test 2.2: PASS in 60.5 µs
+  Test 2.3: PASS in 91.4 µs
+    Part 1: 6942 7.9 ms
+    Part 2: 297 156.4 ms
 ```
 
 ## Python
@@ -23,6 +33,16 @@
 ```text
 < section intentionally left blank >
 ```
+
+## Visualizations
+
+### Part 1
+
+![part1](part1.png)
+
+### Part 2
+
+![part2](part2.png)
 
 ## 2023 Run Times
 

@@ -41,9 +41,9 @@ type Pipe struct {
 	Shape PipeShape
 }
 
-func parseInput(s string) (map[Point]Pipe, Point, error) {
+func parseInput(s string) (map[Point]*Pipe, Point, error) {
 	lines := strings.Split(s, "\n")
-	pipes := make(map[Point]Pipe, len(lines)*len(lines[0]))
+	pipes := make(map[Point]*Pipe, len(lines)*len(lines[0]))
 
 	var start Point
 	for y, line := range lines {
@@ -51,12 +51,15 @@ func parseInput(s string) (map[Point]Pipe, Point, error) {
 			shape := GetShape(r)
 			if shape == InvalidPipe {
 				return nil, Point{-1, -1}, fmt.Errorf("invalid pipe shape: %c", r)
-			} else if shape == NoPipe {
-				continue
 			}
+
 			pos := Point{x, y}
 			connections := getConnections(pos, shape)
-			pipes[pos] = Pipe{Pos: pos, To: connections, Shape: shape}
+			pipes[pos] = &Pipe{
+				Pos:   pos,
+				To:    connections,
+				Shape: shape,
+			}
 
 			if shape == StartPipe {
 				start = pos
@@ -68,6 +71,11 @@ func parseInput(s string) (map[Point]Pipe, Point, error) {
 }
 
 func getConnections(pos Point, shape PipeShape) []Point {
+	// ground has no connections
+	if shape == NoPipe {
+		return []Point{}
+	}
+
 	connections := make([]Point, 0, 2) // only start pipe can have 4 connections; all others have 2
 
 	// make north connections
@@ -97,53 +105,108 @@ func getConnections(pos Point, shape PipeShape) []Point {
 	return connections
 }
 
-func findPathLength(m map[Point]Pipe, start Point) (int, error) {
-	path := []Pipe{m[start]}
+func findPath(m map[Point]*Pipe, start Point) ([]Point, map[Point]bool, error) {
+	isOnPath := make(map[Point]bool, len(m))
+	isOnPath[start] = true
+	path := []Point{start}
 
-	// fmt.Printf("starting at %v\n", start)
-
-	var next, last, cur Pipe
-	last = m[start]
+	var next, cur *Pipe
 	cur = m[start]
 
 	for {
-		np := getNextPoint(m, last, cur)
+		np := getNextPoint(m, isOnPath, cur)
 		if np == (Point{-1, -1}) {
-			return 0, fmt.Errorf("no next point found")
+			if slices.Contains(cur.To, start) {
+				// if we've found the start again, we're done
+				path = append(path, start)
+				break
+			}
+
+			return nil, nil, fmt.Errorf("no next point found for %+v", cur)
 		}
 
-		// if we've found the start again, we're done
-		if np == start {
-			break
-		}
-
+		isOnPath[np] = true
+		path = append(path, np)
 		next = m[np]
 
-		path = append(path, next)
-
-		// fmt.Printf("current path: %+v\n", path)
-
-		last = cur
 		cur = next
 	}
 
-	return len(path), nil
+	return path, isOnPath, nil
 }
 
-func getNextPoint(m map[Point]Pipe, last, cur Pipe) Point {
+func getNextPoint(m map[Point]*Pipe, seen map[Point]bool, cur *Pipe) Point {
 	for _, p := range cur.To {
 		// skip if we just came from this pipe
-		if last.Pos == p {
+		if seen[p] {
 			continue
 		}
 
+		// make sure the pipes can connect
 		if slices.Contains(m[p].To, cur.Pos) {
-			// fmt.Printf("found next pipe at %v\n", p)
 			return p
 		}
 	}
 
-	// if we get here, something has gone very wrong
-	fmt.Printf("no next pipe found for %+v\n", cur)
+	// should only get here if we've
 	return Point{-1, -1}
+}
+
+func countInside(s string) int {
+	m, start, err := parseInput(s)
+	if err != nil {
+		return 0
+	}
+
+	path, onpath, err := findPath(m, start)
+	if err != nil {
+		return 0
+	}
+
+	var count int
+
+	lines := strings.Split(s, "\n")
+
+	for y := 0; y < len(lines); y++ {
+		for x := 0; x < len(lines[0]); x++ {
+			tmp := (Point{x, y})
+
+			switch {
+			case onpath[tmp]:
+				continue
+			case windingNumber(tmp, path):
+				count++
+			}
+		}
+	}
+
+	return count
+}
+
+func windingNumber(pt Point, path []Point) bool {
+	wn := 0 // the winding number counter
+
+	// loop through all edges of the polygon
+	for i := 0; i < len(path)-1; i++ {
+		if path[i].Y <= pt.Y {
+			if path[i+1].Y > pt.Y { // an upward crossing
+				if isLeft(path[i], path[i+1], pt) > 0 { // point is left of edge
+					wn++ // have a valid up intersect
+				}
+			}
+		} else {
+			if path[i+1].Y <= pt.Y { // a downward crossing
+				if isLeft(path[i], path[i+1], pt) < 0 { // point is right of edge
+					wn-- // have a valid down intersect
+				}
+			}
+		}
+	}
+
+	return wn != 0
+}
+
+// test if a point is left (>0) or right (<0) of an edge
+func isLeft(a, b, c Point) int {
+	return (b.X-a.X)*(c.Y-a.Y) - (c.X-a.X)*(b.Y-a.Y)
 }
