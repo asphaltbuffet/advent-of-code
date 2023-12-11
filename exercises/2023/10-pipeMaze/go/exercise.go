@@ -1,8 +1,6 @@
 package exercises
 
 import (
-	"fmt"
-
 	"github.com/asphaltbuffet/advent-of-code/internal/common"
 )
 
@@ -18,15 +16,17 @@ func (e Exercise) One(instr string) (any, error) {
 		return nil, err
 	}
 
-	n, err := findPathLength(m, start)
+	_, path, err := findPath(m, start)
 	if err != nil {
 		return nil, err
 	}
 
-	return n / 2, nil
+	return len(path) / 2, nil
 }
 
 // Two returns the answer to the second part of the exercise.
 func (e Exercise) Two(instr string) (any, error) {
-	return nil, fmt.Errorf("part 2 not implemented")
+	count := countInside(instr)
+
+	return count, nil
 }

@@ -39,7 +39,7 @@ func Test_parseInput(t *testing.T) {
 	}
 
 	type wants struct {
-		pipes     map[Point]Pipe
+		pipes     map[Point]*Pipe
 		start     Point
 		assertion require.ErrorAssertionFunc
 	}
@@ -55,7 +55,7 @@ func Test_parseInput(t *testing.T) {
 				s: "...\n...\n...",
 			},
 			wants: wants{
-				pipes: map[Point]Pipe{
+				pipes: map[Point]*Pipe{
 					// {0, 0}: {Pos: Point{0, 0}, Shape: NoPipe},
 					// {1, 0}: {Pos: Point{1, 0}, Shape: NoPipe},
 					// {2, 0}: {Pos: Point{2, 0}, Shape: NoPipe},
@@ -76,7 +76,7 @@ func Test_parseInput(t *testing.T) {
 				s: "F-7\n|.|\nL-J",
 			},
 			wants: wants{
-				pipes: map[Point]Pipe{
+				pipes: map[Point]*Pipe{
 					{0, 0}: {Pos: Point{0, 0}, Shape: SECornerPipe, To: []Point{{0, 1}, {1, 0}}},
 					{1, 0}: {Pos: Point{1, 0}, Shape: HorizontalPipe, To: []Point{{0, 0}, {2, 0}}},
 					{2, 0}: {Pos: Point{2, 0}, Shape: SWCornerPipe, To: []Point{{1, 0}, {2, 1}}},
@@ -96,7 +96,7 @@ func Test_parseInput(t *testing.T) {
 				s: "FS7\n|.|\nL-J",
 			},
 			wants: wants{
-				pipes: map[Point]Pipe{
+				pipes: map[Point]*Pipe{
 					{0, 0}: {Pos: Point{0, 0}, Shape: SECornerPipe, To: []Point{{0, 1}, {1, 0}}},
 					{1, 0}: {Pos: Point{1, 0}, Shape: StartPipe, To: []Point{{0, 0}, {1, 1}, {2, 0}, {1, -1}}},
 					{2, 0}: {Pos: Point{2, 0}, Shape: SWCornerPipe, To: []Point{{1, 0}, {2, 1}}},
@@ -123,7 +123,7 @@ func Test_parseInput(t *testing.T) {
 	}
 }
 
-func verifyPipes(t *testing.T, expected map[Point]Pipe, actual map[Point]Pipe) {
+func verifyPipes(t *testing.T, expected map[Point]*Pipe, actual map[Point]*Pipe) {
 	t.Helper()
 
 	for k, pipe := range expected {
