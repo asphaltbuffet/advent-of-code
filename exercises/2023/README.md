@@ -15,22 +15,22 @@
 | [Day 7: Camel Cards][rm7]                     |  ⭐⭐   | [Go][go7] |
 | [Day 8: Haunted Wasteland][rm8]               |  ⭐⭐   | [Go][go8] |
 | [Day 9: Mirage Maintenance][rm9]              |  ⭐⭐   | [Go][go9] |
-| Day 10: TBD                                   |  ☆ ☆  |           |
-| Day 11: TBD                                   |  ☆ ☆  |           |
-| Day 12: TBD                                   |  ☆ ☆  |           |
-| Day 13: TBD                                   |  ☆ ☆  |           |
-| Day 14: TBD                                   |  ☆ ☆  |           |
-| Day 15: TBD                                   |  ☆ ☆  |           |
-| Day 16: TBD                                   |  ☆ ☆  |           |
-| Day 17: TBD                                   |  ☆ ☆  |           |
-| Day 18: TBD                                   |  ☆ ☆  |           |
-| Day 19: TBD                                   |  ☆ ☆  |           |
-| Day 20: TBD                                   |  ☆ ☆  |           |
-| Day 21: TBD                                   |  ☆ ☆  |           |
-| Day 22: TBD                                   |  ☆ ☆  |           |
-| Day 23: TBD                                   |  ☆ ☆  |           |
-| Day 24: TBD                                   |  ☆ ☆  |           |
-| Day 25: TBD                                   |  ☆ ☆  |           |
+| [Day 10: Pipe Maze][rm10]                     |  ⭐⭐   | [Go][go10] |
+| Day 11: TBD                                   |  ☆ ☆  |            |
+| Day 12: TBD                                   |  ☆ ☆  |            |
+| Day 13: TBD                                   |  ☆ ☆  |            |
+| Day 14: TBD                                   |  ☆ ☆  |            |
+| Day 15: TBD                                   |  ☆ ☆  |            |
+| Day 16: TBD                                   |  ☆ ☆  |            |
+| Day 17: TBD                                   |  ☆ ☆  |            |
+| Day 18: TBD                                   |  ☆ ☆  |            |
+| Day 19: TBD                                   |  ☆ ☆  |            |
+| Day 20: TBD                                   |  ☆ ☆  |            |
+| Day 21: TBD                                   |  ☆ ☆  |            |
+| Day 22: TBD                                   |  ☆ ☆  |            |
+| Day 23: TBD                                   |  ☆ ☆  |            |
+| Day 24: TBD                                   |  ☆ ☆  |            |
+| Day 25: TBD                                   |  ☆ ☆  |            |
 
 ## 2023 Run Times
 
@@ -66,3 +66,5 @@ Day       Time   Rank  Score       Time   Rank  Score
 [go8]: 08-hauntedWasteland/go
 [rm9]: 09-mirageMaintenance/README.md
 [go9]: 09-mirageMaintenance/go
+[rm10]: exercises/2023/10-pipeMaze/README.md
+[go10]: exercises/2023/10-pipeMaze/go
