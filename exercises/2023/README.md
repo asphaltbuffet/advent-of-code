@@ -4,19 +4,19 @@
 
 <!-- ★ ☆ -->
 
-| Exercise                                      | Stars | Solutions |
-|-----------------------------------------------|:-----:|-----------|
-| [Day 1: Trebuchet?!][rm1]                     |  ⭐⭐   | [Go][go1] |
-| [Day 2: Cube Conundrum][rm2]                  |  ⭐⭐   | [Go][go2] |
-| [Day 3: Gear Ratios][rm3]                     |  ⭐⭐   | [Go][go3] |
-| [Day 4: Scratchcards][rm4]                    |  ⭐⭐   | [Go][go4] |
-| [Day 5: If You Give A Seed A Fertilizer][rm5] |  ⭐⭐   | [Go][go5] |
-| [Day 6: Wait For It][rm6]                     |  ⭐⭐   | [Go][go6] |
-| [Day 7: Camel Cards][rm7]                     |  ⭐⭐   | [Go][go7] |
-| [Day 8: Haunted Wasteland][rm8]               |  ⭐⭐   | [Go][go8] |
-| [Day 9: Mirage Maintenance][rm9]              |  ⭐⭐   | [Go][go9] |
+| Exercise                                      | Stars | Solutions  |
+|-----------------------------------------------|:-----:|------------|
+| [Day 1: Trebuchet?!][rm1]                     |  ⭐⭐   | [Go][go1]  |
+| [Day 2: Cube Conundrum][rm2]                  |  ⭐⭐   | [Go][go2]  |
+| [Day 3: Gear Ratios][rm3]                     |  ⭐⭐   | [Go][go3]  |
+| [Day 4: Scratchcards][rm4]                    |  ⭐⭐   | [Go][go4]  |
+| [Day 5: If You Give A Seed A Fertilizer][rm5] |  ⭐⭐   | [Go][go5]  |
+| [Day 6: Wait For It][rm6]                     |  ⭐⭐   | [Go][go6]  |
+| [Day 7: Camel Cards][rm7]                     |  ⭐⭐   | [Go][go7]  |
+| [Day 8: Haunted Wasteland][rm8]               |  ⭐⭐   | [Go][go8]  |
+| [Day 9: Mirage Maintenance][rm9]              |  ⭐⭐   | [Go][go9]  |
 | [Day 10: Pipe Maze][rm10]                     |  ⭐⭐   | [Go][go10] |
-| Day 11: TBD                                   |  ☆ ☆  |            |
+| [Day 11: Cosmic Expansion][rm11]              |  ⭐⭐   | [Go][go11] |
 | Day 12: TBD                                   |  ☆ ☆  |            |
 | Day 13: TBD                                   |  ☆ ☆  |            |
 | Day 14: TBD                                   |  ☆ ☆  |            |
@@ -41,6 +41,7 @@
 ```text
       --------Part 1--------   --------Part 2--------
 Day       Time   Rank  Score       Time   Rank  Score
+ 11       >24h  46886      0       >24h  45035      0
  10       >24h  42307      0       >24h  32659      0
   9       >24h  62366      0       >24h  61519      0
   8   22:38:21  56748      0       >24h  48635      0
@@ -75,3 +76,5 @@ Day       Time   Rank  Score       Time   Rank  Score
 [go9]: 09-mirageMaintenance/go
 [rm10]: 10-pipeMaze/README.md
 [go10]: 10-pipeMaze/go
+[rm11]: 11-cosmicExpansion/README.md
+[go11]: 11-cosmicExpansion/go
