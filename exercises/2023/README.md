@@ -73,5 +73,5 @@ Day       Time   Rank  Score       Time   Rank  Score
 [go8]: 08-hauntedWasteland/go
 [rm9]: 09-mirageMaintenance/README.md
 [go9]: 09-mirageMaintenance/go
-[rm10]: exercises/2023/10-pipeMaze/README.md
-[go10]: exercises/2023/10-pipeMaze/go
+[rm10]: 10-pipeMaze/README.md
+[go10]: 10-pipeMaze/go

@@ -6,9 +6,9 @@
 [Go][go10]
 [Python][py10]
 
-[rm10]: exercises/2023/10-pipeMaze/README.md
-[go10]: exercises/2023/10-pipeMaze/go
-[py10]: exercises/2023/10-pipeMaze/py
+[rm10]: 10-pipeMaze/README.md
+[go10]: 10-pipeMaze/go
+[py10]: 10-pipeMaze/py
 
 -->
 
