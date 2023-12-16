@@ -17,7 +17,7 @@
 | [Day 9: Mirage Maintenance][rm9]              |  ⭐⭐   | [Go][go9]  |
 | [Day 10: Pipe Maze][rm10]                     |  ⭐⭐   | [Go][go10] |
 | [Day 11: Cosmic Expansion][rm11]              |  ⭐⭐   | [Go][go11] |
-| Day 12: TBD                                   |  ☆ ☆  |            |
+| [Day 12: Hot Springs][rm12]                   |  ☆ ☆  | [Go][go12] |
 | Day 13: TBD                                   |  ☆ ☆  |            |
 | Day 14: TBD                                   |  ☆ ☆  |            |
 | Day 15: TBD                                   |  ☆ ☆  |            |
@@ -78,3 +78,5 @@ Day       Time   Rank  Score       Time   Rank  Score
 [go10]: 10-pipeMaze/go
 [rm11]: 11-cosmicExpansion/README.md
 [go11]: 11-cosmicExpansion/go
+[rm12]: 12-hotSprings/README.md
+[go12]: 12-hotSprings/go
