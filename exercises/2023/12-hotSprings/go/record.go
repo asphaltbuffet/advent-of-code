@@ -61,79 +61,96 @@ func expandAndParseLine(s string) (*Record, error) {
 		expandedRight[i] = right
 	}
 
-	newLine := strings.Trim(strings.Join(expandedLeft, "?"), ".") + " " + strings.Join(expandedRight, ",")
+	newLine := strings.Join(expandedLeft, "?") + " " + strings.Join(expandedRight, ",")
 
 	return parseLine(newLine)
 }
 
 func generateRegex(sizes []int) (*regexp.Regexp, error) {
-	// if len(sizes) == 0 {
-	// 	return nil, fmt.Errorf("no contiguous values provided")
-	// }
-
 	reSections := []string{}
 	for _, c := range sizes {
-		// if c < 1 {
-		// 	return nil, fmt.Errorf("invalid contiguous section value: %d", c)
-		// }
-
 		reSections = append(reSections, fmt.Sprintf("[ud]{%d}", c))
 	}
 
 	genRegex := `^[u\.]*` + strings.Join(reSections, `[u\.]+`) + `[u\.]*$`
+	genRegex = strings.ReplaceAll(genRegex, `{1}`, "")
 
 	return regexp.MustCompile(genRegex), nil
 }
 
-// Generates all possible combinations of the string where 'u' is replaced by 'd'.
 func (r *Record) countCombinations() (int, error) {
-	// if len(r.Checksum) == 0 {
-	// 	return -1, fmt.Errorf("no contiguous values provided")
-	// }
-
-	re, _ := generateRegex(r.Checksum)
-	// if err != nil {
-	// 	return -1, err
-	// }
-	var n int
-	for _, i := range r.Checksum {
-		n += i
+	if len(r.Checksum) == 0 {
+		return -1, fmt.Errorf("no contiguous values provided")
 	}
 
-	// fmt.Printf("starting with %q\n", r.Condition)
-	return countHelper(r.Condition, n, re), nil
+	// determine how much 'd' we need (max)
+	var needed int
+	for _, size := range r.Checksum {
+		needed += size
+	}
+
+	re, err := generateRegex(r.Checksum)
+	if err != nil {
+		return -1, err
+	}
+
+	memo := make(map[string]int)
+	return countHelper(r.Condition, needed, re, memo), nil
 }
 
-func countHelper(s string, n int, re *regexp.Regexp) int {
-	var sum int
-	idx := strings.Index(s, "u")
+func countHelper(s string, n int, re *regexp.Regexp, memo map[string]int) int {
+	if v, ok := memo[s]; ok {
+		return v
+	}
 
-	if idx == -1 || n == strings.Count(s, "d") {
+	var sum int
+	left, right, canReplace := strings.Cut(s, "u")
+	diff := n - strings.Count(s, "d")
+
+	if diff < 0 { // too much 'd'
+		return 0
+	} else if diff == 0 { // just enough 'd'
 		if re.MatchString(s) {
-			// fmt.Printf("nothing to replace, %q matches pattern\n", s)
 			return 1
 		}
 
 		return 0
+
+	} else if !canReplace { // not enough 'd', can't get more
+		return 0
+	} else if !re.MatchString(s) { // is it worth continuing?
+		return 0
 	}
 
 	// unknown, replace with 'd' and '.' and recurse
-	dSub := s[:idx] + "d" + s[idx+1:]
-	nSub := s[:idx] + "." + s[idx+1:]
+	dSub := replaceDotsAndJoin(left, "d", right)
+	nSub := replaceDotsAndJoin(left, ".", right)
 
-	// reDot := regexp.MustCompile(`\.{2,}`)
-	// nSub = reDot.ReplaceAllLiteralString(nSub, ".")
+	sum += countHelper(dSub, n, re, memo)
+	sum += countHelper(nSub, n, re, memo)
 
-	// fmt.Printf("from %q checking %q and %q\n", s, dSub, nSub)
-	if re.MatchString(dSub) {
-		// fmt.Printf("recurse with %q\n", dSub)
-		sum += countHelper(dSub, n, re)
-	}
-
-	if re.MatchString(nSub) {
-		// fmt.Printf("recurse with %q\n", nSub)
-		sum += countHelper(nSub, n, re)
-	}
+	memo[s] = sum
 
 	return sum
+}
+
+func replaceDotsAndJoin(left, middle, right string) string {
+	var result strings.Builder
+	consecutiveDots := 0
+
+	for _, str := range []string{left, middle, right} {
+		for _, ch := range str {
+			if ch == '.' {
+				consecutiveDots++
+				if consecutiveDots == 1 {
+					result.WriteRune(ch)
+				}
+			} else {
+				consecutiveDots = 0
+				result.WriteRune(ch)
+			}
+		}
+	}
+
+	return result.String()
 }

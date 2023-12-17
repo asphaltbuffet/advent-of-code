@@ -73,7 +73,7 @@ func Test_generateRegex(t *testing.T) {
 			args: args{
 				sizes: []int{1, 1, 3},
 			},
-			want:      `^[u\.]*[ud]{1}[u\.]+[ud]{1}[u\.]+[ud]{3}[u\.]*$`,
+			want:      `^[u\.]*[ud][u\.]+[ud][u\.]+[ud]{3}[u\.]*$`,
 			assertion: require.NoError,
 		},
 		{
@@ -81,16 +81,8 @@ func Test_generateRegex(t *testing.T) {
 			args: args{
 				sizes: []int{1, 3, 1, 6},
 			},
-			want:      `^[u\.]*[ud]{1}[u\.]+[ud]{3}[u\.]+[ud]{1}[u\.]+[ud]{6}[u\.]*$`,
+			want:      `^[u\.]*[ud][u\.]+[ud]{3}[u\.]+[ud][u\.]+[ud]{6}[u\.]*$`,
 			assertion: require.NoError,
-		},
-		{
-			name: "empty",
-			args: args{
-				sizes: []int{},
-			},
-			want:      ``,
-			assertion: require.Error,
 		},
 	}
 	for _, tt := range tests {
@@ -157,6 +149,33 @@ func Test_expandAndParseLine(t *testing.T) {
 			got, err := expandAndParseLine(tt.args.s)
 			tt.assertion(t, err)
 			assert.Equal(t, tt.want, got)
+		})
+	}
+}
+
+func Test_replaceDotsAndJoin(t *testing.T) {
+	type args struct {
+		left   string
+		middle string
+		right  string
+	}
+	tests := []struct {
+		name string
+		args args
+		want string
+	}{
+		{"all d", args{"dd", "d", "dd"}, "ddddd"},
+		{"all u", args{"du", "d", "ud"}, "dudud"},
+		{"no replacement", args{"d.u", "d", ".ud"}, "d.ud.ud"},
+		{"left replacement", args{"d..u", "d", ".ud"}, "d.ud.ud"},
+		{"right replacement", args{"d.u", "d", "u..d"}, "d.udu.d"},
+		{"overlap left replacement", args{"du.", ".", "ud"}, "du.ud"},
+		{"overlap right replacement", args{"du", ".", ".ud"}, "du.ud"},
+		{"overlap all replacement", args{"du.", ".", ".ud"}, "du.ud"},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			assert.Equal(t, tt.want, replaceDotsAndJoin(tt.args.left, tt.args.middle, tt.args.right))
 		})
 	}
 }

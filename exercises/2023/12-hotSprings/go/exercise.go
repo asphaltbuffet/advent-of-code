@@ -29,8 +29,6 @@ func (e Exercise) One(instr string) (any, error) {
 
 			count, _ := r.countCombinations()
 
-			// fmt.Printf("line %d: %d\n", i, count)
-
 			cnt <- count
 		}(i, line, cnt)
 	}
@@ -61,7 +59,6 @@ func (e Exercise) Two(instr string) (any, error) {
 			r, _ := expandAndParseLine(line)
 
 			count, _ := r.countCombinations()
-			// fmt.Printf("line %d: %d\n", i, count)
 
 			cnt <- count
 		}(i, line, cnt)
