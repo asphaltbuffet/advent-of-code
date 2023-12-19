@@ -34,5 +34,5 @@
             "source.organizeImports": "explicit"
         }
     },
-    "go.lintOnSave": "file"
+    "go.lintOnSave": "package"
 }

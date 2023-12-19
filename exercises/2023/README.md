@@ -18,7 +18,7 @@
 | [Day 10: Pipe Maze][rm10]                     |  ⭐⭐   | [Go][go10] |
 | [Day 11: Cosmic Expansion][rm11]              |  ⭐⭐   | [Go][go11] |
 | [Day 12: Hot Springs][rm12]                   |  ⭐⭐   | [Go][go12] |
-| Day 13: TBD                                   |  ☆ ☆  |            |
+| [Day 13: Point of Incidence][rm13]            |  ⭐⭐   | [Go][go13] |
 | Day 14: TBD                                   |  ☆ ☆  |            |
 | Day 15: TBD                                   |  ☆ ☆  |            |
 | Day 16: TBD                                   |  ☆ ☆  |            |
@@ -80,3 +80,5 @@ Day       Time   Rank  Score       Time   Rank  Score
 [go11]: 11-cosmicExpansion/go
 [rm12]: 12-hotSprings/README.md
 [go12]: 12-hotSprings/go
+[rm13]: 13-pointOfIncidence/README.md
+[go13]: 13-pointOfIncidence/go
