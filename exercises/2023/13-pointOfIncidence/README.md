@@ -15,7 +15,20 @@
 ## Go
 
 ```text
-< section intentionally left blank >
+──────────────────────────────────────────
+           ADVENT OF CODE 2023
+        Day 13: Point of Incidence
+──────────────────────────────────────────
+
+Testing...
+  1.1: PASS              0.01 ms
+  2.1: PASS              0.01 ms
+
+Solving...
+    1: PASS              0.72 ms
+      ⤷ 32723
+    2: PASS              0.74 ms
+      ⤷ 34536
 ```
 
 ## Python
