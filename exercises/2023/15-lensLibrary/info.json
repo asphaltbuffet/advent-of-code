@@ -1,0 +1,28 @@
+{
+  "id": "2023-15",
+  "title": "Lens Library",
+  "year": 2023,
+  "day": 15,
+  "url": "https://adventofcode.com/2023/day/15",
+  "data": {
+    "inputFile": "input.txt",
+    "testCases": {
+      "one": [
+        {
+          "input": "rn=1,cm-,qp=3,cm=2,qp-,pc=4,ot=9,ab=5,pc-,pc=6,ot=7",
+          "expected": "1320"
+        }
+      ],
+      "two": [
+        {
+          "input": "rn=1,cm-,qp=3,cm=2,qp-,pc=4,ot=9,ab=5,pc-,pc=6,ot=7",
+          "expected": "145"
+        }
+      ]
+    },
+    "answers": {
+      "a": "511343",
+      "b": "294474"
+    }
+  }
+}

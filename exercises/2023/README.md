@@ -20,7 +20,7 @@
 | [Day 12: Hot Springs][rm12]                   |  ⭐⭐   | [Go][go12] |
 | [Day 13: Point of Incidence][rm13]            |  ⭐⭐   | [Go][go13] |
 | [Day 14: Parabolic Reflector Dish][rm14]      |  ⭐⭐   | [Go][go14] |
-| Day 15: TBD                                   |  ☆ ☆  |            |
+| [Day 15: Lens Library][rm15]                  |  ⭐⭐   | [Go][go15] |
 | Day 16: TBD                                   |  ☆ ☆  |            |
 | Day 17: TBD                                   |  ☆ ☆  |            |
 | Day 18: TBD                                   |  ☆ ☆  |            |
@@ -41,6 +41,7 @@
 ```text
       --------Part 1--------   --------Part 2--------
 Day       Time   Rank  Score       Time   Rank  Score
+ 15       >24h  39295      0       >24h  35917      0
  14       >24h  38152      0       >24h  31691      0
  13       >24h  36838      0       >24h  32847      0
  12       >24h  35413      0       >24h  25545      0
@@ -87,3 +88,5 @@ Day       Time   Rank  Score       Time   Rank  Score
 [go13]: 13-pointOfIncidence/go
 [rm14]: 14-parabolicReflectorDish/README.md
 [go14]: 14-parabolicReflectorDish/go
+[rm15]: 15-lensLibrary/README.md
+[go15]: 15-lensLibrary/go
