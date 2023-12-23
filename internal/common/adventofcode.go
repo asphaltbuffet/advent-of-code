@@ -2,6 +2,7 @@ package common
 
 import (
 	"errors"
+	"fmt"
 )
 
 // BaseExercise is the base struct for all exercises.
@@ -20,4 +21,11 @@ func (c BaseExercise) Two(instr string) (interface{}, error) {
 // Vis is the visualization of the exercise.
 func (c BaseExercise) Vis(instr string, outdir string) error {
 	return errors.New("not implemented")
+}
+
+// Close is called when the exercise is done.
+func Close() {
+	if recover() != nil {
+		fmt.Printf("PANIC: %v\n", recover())
+	}
 }
