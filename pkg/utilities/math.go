@@ -33,3 +33,16 @@ func MaxFloatSlice(arr []float64) float64 {
 
 	return max
 }
+
+// greatest common divisor (GCD) via Euclidean algorithm
+func GCD(a, b int) int {
+	for b != 0 {
+		a, b = b, a%b
+	}
+	return a
+}
+
+// least common multiple (LCM)
+func LCM(a, b int) int {
+	return a / GCD(a, b) * b
+}
