@@ -25,7 +25,7 @@
 | Day 17: TBD                                   |  ☆ ☆  |            |
 | Day 18: TBD                                   |  ☆ ☆  |            |
 | Day 19: TBD                                   |  ☆ ☆  |            |
-| Day 20: TBD                                   |  ☆ ☆  |            |
+| [Day 20: Pulse Propagation][rm20]             |  ⭐⭐   | [Go][go20] |
 | Day 21: TBD                                   |  ☆ ☆  |            |
 | Day 22: TBD                                   |  ☆ ☆  |            |
 | Day 23: TBD                                   |  ☆ ☆  |            |
@@ -90,3 +90,5 @@ Day       Time   Rank  Score       Time   Rank  Score
 [go14]: 14-parabolicReflectorDish/go
 [rm15]: 15-lensLibrary/README.md
 [go15]: 15-lensLibrary/go
+[rm20]: 20-pulsePropagation/README.md
+[go20]: 20-pulsePropagation/go
