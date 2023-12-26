@@ -21,7 +21,7 @@
 | [Day 13: Point of Incidence][rm13]            |  ⭐⭐   | [Go][go13] |
 | [Day 14: Parabolic Reflector Dish][rm14]      |  ⭐⭐   | [Go][go14] |
 | [Day 15: Lens Library][rm15]                  |  ⭐⭐   | [Go][go15] |
-| Day 16: TBD                                   |  ☆ ☆  |            |
+| [Day 16: The Floor Will Be Lava][rm16]        |  ⭐⭐   | [Go][go16] |
 | Day 17: TBD                                   |  ☆ ☆  |            |
 | Day 18: TBD                                   |  ☆ ☆  |            |
 | Day 19: TBD                                   |  ☆ ☆  |            |
@@ -90,5 +90,7 @@ Day       Time   Rank  Score       Time   Rank  Score
 [go14]: 14-parabolicReflectorDish/go
 [rm15]: 15-lensLibrary/README.md
 [go15]: 15-lensLibrary/go
+[rm16]: 16-theFloorWillBeLava/README.md
+[go16]: 16-theFloorWillBeLava/go
 [rm20]: 20-pulsePropagation/README.md
 [go20]: 20-pulsePropagation/go
