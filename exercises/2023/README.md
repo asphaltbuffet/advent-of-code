@@ -22,8 +22,8 @@
 | [Day 14: Parabolic Reflector Dish][rm14]      |  ⭐⭐   | [Go][go14] |
 | [Day 15: Lens Library][rm15]                  |  ⭐⭐   | [Go][go15] |
 | [Day 16: The Floor Will Be Lava][rm16]        |  ⭐⭐   | [Go][go16] |
-| Day 17: TBD                                   |  ☆ ☆  |            |
-| Day 18: TBD                                   |  ☆ ☆  |            |
+| [Day 17: Clumsy Crucible][rm17]               |  ☆ ☆  | [Go][go17] |
+| [Day 18: Lavaduct Lagoon][rm18]               |  ⭐⭐   | [Go][go18] |
 | Day 19: TBD                                   |  ☆ ☆  |            |
 | [Day 20: Pulse Propagation][rm20]             |  ⭐⭐   | [Go][go20] |
 | Day 21: TBD                                   |  ☆ ☆  |            |
@@ -92,5 +92,9 @@ Day       Time   Rank  Score       Time   Rank  Score
 [go15]: 15-lensLibrary/go
 [rm16]: 16-theFloorWillBeLava/README.md
 [go16]: 16-theFloorWillBeLava/go
+[rm17]: 17-clumsyCrucible/README.md
+[go17]: 17-clumsyCrucible/go
+[rm18]: 18-lavaductLagoon/README.md
+[go18]: 18-lavaductLagoon/go
 [rm20]: 20-pulsePropagation/README.md
 [go20]: 20-pulsePropagation/go

@@ -8,15 +8,15 @@ import (
 
 // ConvertStringSliceToIntSlice converts a slice of strings to a slice of ints.
 func ConvertStringSliceToIntSlice(s []string) ([]int, error) {
-	out := make([]int, len(s))
+	out := make([]int, 0, len(s))
 
-	for i, v := range s {
+	for _, v := range s {
 		n, err := strconv.Atoi(v)
 		if err != nil {
 			return nil, fmt.Errorf("converting string to int: %w", err)
 		}
 
-		out[i] = n
+		out = append(out, n)
 	}
 
 	return out, nil

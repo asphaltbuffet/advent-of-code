@@ -46,3 +46,12 @@ func GCD(a, b int) int {
 func LCM(a, b int) int {
 	return a / GCD(a, b) * b
 }
+
+// AbsInt returns the absolute value of an integer.
+func AbsInt(x int) int {
+	if x < 0 {
+		return -x
+	}
+
+	return x
+}
