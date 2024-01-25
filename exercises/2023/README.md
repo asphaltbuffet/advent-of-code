@@ -27,10 +27,10 @@
 | [Day 19: Aplenty][rm19]                       |  ⭐⭐   | [Go][go19] |
 | [Day 20: Pulse Propagation][rm20]             |  ⭐⭐   | [Go][go20] |
 | [Day 21: Step Counter][rm21]                  |  ⭐⭐   | [Go][go21] |
-| [Day 22: Sand Slabs][rm22]                    |  ☆ ☆  | [Go][go22] |
-| [Day 23: A Long Walk][rm23]                   |  ☆ ☆  | [Go][go23] |
-| [Day 24: Never Tell Me The Odds][rm24]        |  ☆ ☆  | [Go][go24] |
-| [Day 25: Snowverload][rm25]                   |  ☆ ☆  | [Go][go25] |
+| [Day 22: Sand Slabs][rm22]                    |  ⭐⭐   | [Go][go22] |
+| [Day 23: A Long Walk][rm23]                   |  ⭐⭐   | [Go][go23] |
+| [Day 24: Never Tell Me The Odds][rm24]        |  ⭐⭐   | [Go][go24] |
+| [Day 25: Snowverload][rm25]                   |  ⭐⭐   | [Go][go25] |
 
 ## 2023 Run Times
 
@@ -41,6 +41,10 @@
 ```text
       --------Part 1--------   --------Part 2--------
 Day       Time   Rank  Score       Time   Rank  Score
+ 25       >24h  13866      0       >24h  10821      0
+ 24       >24h  17085      0       >24h  12145      0
+ 23       >24h  17800      0       >24h  14833      0
+ 22       >24h  17081      0       >24h  16081      0
  21       >24h  24613      0       >24h  14483      0
  20       >24h  16910      0       >24h  14229      0
  19       >24h  29760      0       >24h  22746      0

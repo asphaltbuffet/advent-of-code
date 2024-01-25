@@ -15,7 +15,17 @@
 ## Go
 
 ```text
-< section intentionally left blank >
+──────────────────────────────────────────
+           ADVENT OF CODE 2023            
+           Day 25: Snowverload            
+──────────────────────────────────────────
+          
+Testing...
+  1.1: PASS              0.54 ms
+          
+Solving...
+    1: PASS            179.09 ms
+      ⤷ 562912
 ```
 
 ## Python
