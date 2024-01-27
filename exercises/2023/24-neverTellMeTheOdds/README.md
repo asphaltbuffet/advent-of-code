@@ -15,7 +15,21 @@
 ## Go
 
 ```text
-< section intentionally left blank >
+──────────────────────────────────────────
+           ADVENT OF CODE 2023            
+      Day 24: Never Tell Me The Odds      
+──────────────────────────────────────────
+          
+Testing...
+  1.1: PASS              0.04 ms
+  2.1: ERROR 
+      ⤷ saying: no solution found
+          
+Solving...
+    1: PASS              3.77 ms
+      ⤷ 16665
+    2: PASS             12.11 ms
+      ⤷ 769840447420960
 ```
 
 ## Python
