@@ -1,8 +1,6 @@
 package exercises
 
 import (
-	"fmt"
-
 	"github.com/asphaltbuffet/advent-of-code/internal/common"
 )
 
@@ -13,10 +11,24 @@ type Exercise struct {
 
 // One returns the answer to the first part of the exercise.
 func (e Exercise) One(instr string) (any, error) {
-	return nil, fmt.Errorf("part 1 not implemented")
+	bricks := parseInput(instr)
+
+	bricksBelow, bricksAbove := getBrickOrder(bricks)
+
+	canDisintegrate := getNonSupportingBricks(bricks, bricksBelow, bricksAbove)
+
+	return len(canDisintegrate), nil
 }
 
 // Two returns the answer to the second part of the exercise.
 func (e Exercise) Two(instr string) (any, error) {
-	return nil, fmt.Errorf("part 2 not implemented")
+	bricks := parseInput(instr)
+
+	bricksBelow, bricksAbove := getBrickOrder(bricks)
+
+	canDisintegrate := getNonSupportingBricks(bricks, bricksBelow, bricksAbove)
+
+	total := countDisintegratable(bricks, bricksBelow, bricksAbove, canDisintegrate)
+
+	return total, nil
 }

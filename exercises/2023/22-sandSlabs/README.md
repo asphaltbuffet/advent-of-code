@@ -15,7 +15,20 @@
 ## Go
 
 ```text
-< section intentionally left blank >
+──────────────────────────────────────────
+           ADVENT OF CODE 2023            
+            Day 22: Sand Slabs            
+──────────────────────────────────────────
+          
+Testing...
+  1.1: PASS              0.04 ms
+  2.1: PASS              0.15 ms
+          
+Solving...
+    1: PASS            323.66 ms
+      ⤷ 461
+    2: PASS            331.37 ms
+      ⤷ 74074
 ```
 
 ## Python
