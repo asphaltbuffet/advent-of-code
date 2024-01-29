@@ -18,7 +18,7 @@ type Item[T any] struct {
 type PriorityQueue[T any] []*Item[T]
 
 // NewItem sets index manually
-func (pq *PriorityQueue[T]) NewItem(value *T, priority, index int) {
+func (pq *PriorityQueue[T]) NewItem(value *T, priority int, index int) {
 	(*pq)[index] = &Item[T]{
 		value,
 		priority,
@@ -50,14 +50,14 @@ func (pq PriorityQueue[T]) Swap(i, j int) {
 	pq[j].index = j
 }
 
-func (pq *PriorityQueue[T]) Push(x interface{}) {
+func (pq *PriorityQueue[T]) Push(x any) {
 	n := len(*pq)
 	item := x.(*Item[T])
 	item.index = n
 	*pq = append(*pq, item)
 }
 
-func (pq *PriorityQueue[T]) Pop() interface{} {
+func (pq *PriorityQueue[T]) Pop() any {
 	old := *pq
 	n := len(old)
 	item := old[n-1]
@@ -81,10 +81,36 @@ func (pq *PriorityQueue[T]) Update(value *T, priority int) {
 	}
 }
 
+// UpdateOrAdd modifies the priority and value of an Item in the queue or adds it if it's not there.
+func (pq *PriorityQueue[T]) UpdateOrAdd(value *T, priority int) {
+	// find item
+	for _, item := range *pq {
+		if item.value == value {
+			item.priority = priority
+			heap.Fix(pq, item.index)
+
+			return
+		}
+	}
+
+	// if we get here, we didn't find the item
+	pq.PushValue(value, priority)
+}
+
 func (pq *PriorityQueue[T]) Get() *T {
 	return heap.Pop(pq).(*Item[T]).value
 }
 
 func (pq *PriorityQueue[T]) Init() {
 	heap.Init(pq)
+}
+
+func (pq *PriorityQueue[T]) Has(value *T) bool {
+	for _, item := range *pq {
+		if item.value == value {
+			return true
+		}
+	}
+
+	return false
 }

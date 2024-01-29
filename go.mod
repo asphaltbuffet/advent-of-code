@@ -30,4 +30,6 @@ require (
 	github.com/caarlos0/log v0.4.4
 	github.com/dominikbraun/graph v0.23.0
 	github.com/fatih/color v1.16.0
+	github.com/kettek/apng v0.0.0-20220823221153-ff692776a607
+	golang.org/x/image v0.14.0
 )

@@ -1,0 +1,33 @@
+{
+  "id": "2023-20",
+  "title": "Pulse Propagation",
+  "year": 2023,
+  "day": 20,
+  "url": "https://adventofcode.com/2023/day/20",
+  "data": {
+    "inputFile": "input.txt",
+    "testCases": {
+      "one": [
+        {
+          "input": "broadcaster -> a, b, c\n%a -> b\n%b -> c\n%c -> inv\n&inv -> a",
+          "expected": "32000000"
+        },
+        {
+          "input": "broadcaster -> a\n%a -> inv, con\n&inv -> b\n%b -> con\n&con -> output",
+          "expected": "11687500"
+        }
+      ],
+      "two": [
+        {
+          "source": "austin",
+          "input": "%cf -> tz\n%kr -> xn, gq\n%cp -> sq, bd\nbroadcaster -> vn, sj, tg, kn\n%hc -> pm\n%fd -> xn, mj\n%qz -> xf\n%vf -> mc, pm\n%zm -> rz, pm\n%cn -> bd, qz\n%jj -> bp\n%ks -> ff\n%nb -> xn, ks\n%bm -> pm, vf\n&xn -> kc, jb, cb, tg, ks, tx\n%lm -> rk\n%dn -> bd, cn\n%ft -> dn\n%pn -> pm, ll\n%rk -> bp, fs\n%tz -> bp, gp\n%mc -> jx\n%fs -> kx\n%jf -> bd, fm\n%rz -> hc, pm\n%tg -> cb, xn\n&hf -> rx\n%vp -> pn\n&pm -> ll, mc, sj, vd, vp\n%rn -> kc, xn\n%vn -> bd, cp\n&nd -> hf\n%fm -> bd, gc\n%ff -> xn, fd\n&bp -> cf, fh, pc, kn, fs, gn, lm\n&pc -> hf\n%mj -> xn\n%qg -> bd\n%fh -> lm\n%kc -> nb\n%xf -> bd, jf\n%gc -> qg, bd\n&bd -> vn, sq, qz, ft, nd\n%jb -> kr\n%gp -> bp, rp\n%gq -> xn, rn\n%sj -> pm, bm\n%rp -> bp, jj\n%sq -> ft\n%cb -> jb\n&vd -> hf\n%gn -> cf\n%kx -> gn, bp\n%ll -> zm\n&tx -> hf\n%jx -> md, pm\n%md -> pm, vp\n%kn -> fh, bp",
+          "expected": "221453937522197"
+        }
+      ]
+    },
+    "answers": {
+      "a": "684125385",
+      "b": "225872806380073"
+    }
+  }
+}
