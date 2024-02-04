@@ -1,0 +1,24 @@
+[
+  {
+    "run-date": "2024-01-31T06:43:42.77040368Z",
+    "title": "Clumsy Crucible",
+    "year": 2023,
+    "day": 17,
+    "numRuns": 10,
+    "implementations": [
+      {
+        "name": "Go",
+        "part-one": {
+          "mean": 0.2133082,
+          "min": 0.192288032,
+          "max": 0.236109428
+        },
+        "part-two": {
+          "mean": 0.70458225,
+          "min": 0.661210097,
+          "max": 0.748366824
+        }
+      }
+    ]
+  }
+]
