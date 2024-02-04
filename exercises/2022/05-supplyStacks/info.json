@@ -36,6 +36,10 @@
                     "expected": "MCD"
                 }
             ]
+        },
+        "answers": {
+            "a": "SHMSDGZVC",
+            "b": "VRZGHDFBQ"
         }
     }
 }

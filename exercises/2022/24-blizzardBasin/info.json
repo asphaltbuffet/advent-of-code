@@ -7,10 +7,6 @@
     "url": "https://adventofcode.com/2022/day/24",
     "data": {
         "inputFile": "input.txt",
-        "puzzle": {
-            "inputFile": "input.txt",
-            "expected": ["264", "789"]
-        },
         "testCases": {
             "one": [
                 {
@@ -24,6 +20,10 @@
                     "expected": "54"
                 }
             ]
+        },
+        "answers": {
+            "a": "264",
+            "b": "789"
         }
     }
 }

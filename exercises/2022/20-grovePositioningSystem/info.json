@@ -7,10 +7,6 @@
     "url": "https://adventofcode.com/2022/day/20",
     "data": {
         "inputFile": "input.txt",
-        "answers": {
-            "one": "4066",
-            "two": "6704537992933"
-        },
         "testCases": {
             "one": [
                 {
@@ -24,6 +20,10 @@
                     "expected": "1623178306"
                 }
             ]
+        },
+        "answers": {
+            "a": "4066",
+            "b": "6704537992933"
         }
     }
 }

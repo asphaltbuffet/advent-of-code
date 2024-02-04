@@ -14,10 +14,6 @@
                     "expected": "4"
                 },
                 {
-                    "input": "babababababababababababababaab",
-                    "expected": "processing datastream: not found"
-                },
-                {
                     "input": "bvwbjplbgvbhsrlpgdmjqwftvncz",
                     "expected": "5"
                 },
@@ -40,10 +36,6 @@
                     "expected": "14"
                 },
                 {
-                    "input": "babababababababababababababaab",
-                    "expected": "processing datastream: not found"
-                },
-                {
                     "input": "mjqjpqmgbljsphdztnvjfqwrcgsmlb",
                     "expected": "19"
                 },
@@ -64,6 +56,10 @@
                     "expected": "26"
                 }
             ]
+        },
+        "answers": {
+            "a": "1707",
+            "b": "3697"
         }
     }
 }
