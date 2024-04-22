@@ -112,7 +112,7 @@ jobs:
           #daysCompletedRegex: '(?<=https:\/\/img\.shields\.io\/badge\/days%20completed-)[0-9]+(?=-red)'  
 
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v5.0.2
+        uses: peter-evans/create-pull-request@v6.0.4
         with:
           commit-message: Update AoC Badges
           title: changes to AoC Badges
