@@ -10,7 +10,6 @@ require (
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/elliotchance/orderedmap/v2 v2.2.0 // indirect
 	github.com/kr/pretty v0.3.1 // indirect
-	github.com/logrusorgru/aurora v2.0.3+incompatible // indirect
 	github.com/lucasb-eyer/go-colorful v1.2.0 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
 	github.com/mattn/go-isatty v0.0.20 // indirect
@@ -26,10 +25,9 @@ require (
 )
 
 require (
-	github.com/asphaltbuffet/elf v0.1.0
 	github.com/caarlos0/log v0.4.4
 	github.com/dominikbraun/graph v0.23.0
 	github.com/fatih/color v1.16.0
 	github.com/kettek/apng v0.0.0-20220823221153-ff692776a607
-	golang.org/x/image v0.14.0
+	golang.org/x/image v0.18.0
 )
