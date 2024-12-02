@@ -7,7 +7,7 @@
 | Title                            | Stars | Solutions |
 | -------------------------------- | :---: | --------- |
 | [Day 1: Historian Hysteria][rm1] |  ★★   | [Go][go1] |
-| Day 2                            |  ☆☆   |           |
+| [Day 2: Red-Nosed Reports][rm2]                            |  ☆☆   |  [Go][go2]         |
 | Day 3                            |  ☆☆   |           |
 | Day 4                            |  ☆☆   |           |
 | Day 5                            |  ☆☆   |           |
@@ -46,3 +46,5 @@ TODO
 
 [rm1]: 01-historianHysteria/README.md
 [go1]: 01-historianHysteria/go
+[rm2]: 02-red-NosedReports/README.md
+[go2]: 02-red-NosedReports/go
