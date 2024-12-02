@@ -1,0 +1,28 @@
+{
+  "id": "2024-01",
+  "title": "Historian Hysteria",
+  "year": 2024,
+  "day": 1,
+  "url": "https://adventofcode.com/2024/day/1",
+  "data": {
+    "inputFile": "input.txt",
+    "testCases": {
+      "one": [
+        {
+          "input": "3   4\n4   3\n2   5\n1   3\n3   9\n3   3",
+          "expected": "11"
+        }
+      ],
+      "two": [
+        {
+          "input": "3   4\n4   3\n2   5\n1   3\n3   9\n3   3",
+          "expected": "31"
+        }
+      ]
+    },
+    "answers": {
+      "a": "2164381",
+      "b": "20719933"
+    }
+  }
+}
