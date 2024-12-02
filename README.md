@@ -17,7 +17,7 @@ Collecting solutions to programming exercises.
 [![2021 Stars](https://img.shields.io/badge/2021_⭐-4-darkblue)](exercises/2021/README.md)
 [![2022 Stars](https://img.shields.io/badge/2022_⭐-50-red)](exercises/2022/README.md)
 [![2023 Stars](https://img.shields.io/badge/2023_⭐-50-pink)](exercises/2023/README.md)
-
+[![2024 Stars](https://img.shields.io/badge/2024_⭐-0-green)](exercises/2024/README.md)
 
 ## Project Euler
 
