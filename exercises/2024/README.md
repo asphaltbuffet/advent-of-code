@@ -6,7 +6,7 @@
 
 | Title                            | Stars | Solutions |
 | -------------------------------- | :---: | --------- |
-| [Day 1: Historian Hysteria][rm1] |  ☆☆   | [Go][go1] |
+| [Day 1: Historian Hysteria][rm1] |  ★★   | [Go][go1] |
 | Day 2                            |  ☆☆   |           |
 | Day 3                            |  ☆☆   |           |
 | Day 4                            |  ☆☆   |           |
