@@ -1,0 +1,28 @@
+{
+  "id": "2024-02",
+  "title": "Red-Nosed Reports",
+  "year": 2024,
+  "day": 2,
+  "url": "https://adventofcode.com/2024/day/2",
+  "data": {
+    "inputFile": "input.txt",
+    "testCases": {
+      "one": [
+        {
+          "input": "7 6 4 2 1\n1 2 7 8 9\n9 7 6 2 1\n1 3 2 4 5\n8 6 4 4 1\n1 3 6 7 9",
+          "expected": "2"
+        }
+      ],
+      "two": [
+        {
+          "input": "7 6 4 2 1\n1 2 7 8 9\n9 7 6 2 1\n1 3 2 4 5\n8 6 4 4 1\n1 3 6 7 9",
+          "expected": "4"
+        }
+      ]
+    },
+    "answers": {
+      "a": "549",
+      "b": "589"
+    }
+  }
+}
