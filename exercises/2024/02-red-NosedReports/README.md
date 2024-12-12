@@ -15,7 +15,15 @@
 ## Go
 
 ```text
-< section intentionally left blank >
+──────────────────────────────────────────
+           ADVENT OF CODE 2024            
+         Day 2: Red-Nosed Reports         
+──────────────────────────────────────────
+Solving (Go)...
+  1.1: PASS                478µs
+      ⤷ 549
+  2.1: PASS                707µs
+      ⤷ 589
 ```
 
 ## Python

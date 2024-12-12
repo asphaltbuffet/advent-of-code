@@ -6,8 +6,8 @@
 
 | Title                            | Stars | Solutions |
 | -------------------------------- | :---: | --------- |
-| [Day 1: Historian Hysteria][rm1] |  ★★   | [Go][go1] |
-| [Day 2: Red-Nosed Reports][rm2]                            |  ☆☆   |  [Go][go2]         |
+| [Day 1: Historian Hysteria][rm1] |  ⭐⭐   | [Go][go1] |
+| [Day 2: Red-Nosed Reports][rm2]  |  ⭐⭐   | [Go][go2] |
 | Day 3                            |  ☆☆   |           |
 | Day 4                            |  ☆☆   |           |
 | Day 5                            |  ☆☆   |           |
