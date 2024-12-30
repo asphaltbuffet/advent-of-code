@@ -99,7 +99,7 @@ jobs:
           starsRegex: '(?<=https:\/\/img\.shields\.io\/badge\/2015_⭐-)[0-9]+(?=-black)'             
 
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v6.0.4
+        uses: peter-evans/create-pull-request@v7.0.6
         with:
           commit-message: Update AoC Badges
           title: changes to AoC Badges
