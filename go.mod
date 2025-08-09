@@ -9,7 +9,7 @@ require (
 	github.com/charmbracelet/lipgloss v1.0.0 // indirect
 	github.com/charmbracelet/x/ansi v0.5.2 // indirect
 	github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc // indirect
-	github.com/elliotchance/orderedmap/v2 v2.5.0 // indirect
+	github.com/elliotchance/orderedmap/v2 v2.7.0 // indirect
 	github.com/kr/pretty v0.3.1 // indirect
 	github.com/lucasb-eyer/go-colorful v1.2.0 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
@@ -25,8 +25,7 @@ require (
 )
 
 require (
-	github.com/asphaltbuffet/elf v0.2.0
-	github.com/caarlos0/log v0.4.6
+	github.com/caarlos0/log v0.4.8
 	github.com/dominikbraun/graph v0.23.0
 	github.com/fatih/color v1.18.0
 	github.com/kettek/apng v0.0.0-20220823221153-ff692776a607
