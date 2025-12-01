@@ -11,6 +11,7 @@
 [py1]: 01-secretEntrance/py
 
 -->
+e0x434C49434B` translates to 'CLICK'.
 
 ## Go
 
