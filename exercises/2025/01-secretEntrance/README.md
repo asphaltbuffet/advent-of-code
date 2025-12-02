@@ -16,7 +16,15 @@ e0x434C49434B` translates to 'CLICK'.
 ## Go
 
 ```text
-< section intentionally left blank >
+──────────────────────────────────────────
+           ADVENT OF CODE 2025            
+          Day 1: Secret Entrance          
+──────────────────────────────────────────
+Solving (Go)...
+  1.1: PASS                128µs
+      ⤷ 1135
+  2.1: PASS                135µs
+      ⤷ 6558
 ```
 
 ## Python

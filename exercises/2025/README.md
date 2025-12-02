@@ -6,7 +6,7 @@
 
 | Title                            | Stars | Solutions |
 | -------------------------------- | :---: | --------- |
-| [Day 1: Secret Entrance][rm1]    |  ⭐⭐   | [Go][go1] |
+| [Day 1: Secret Entrance][rm1]    |  ⭐⭐ | [][go1] |
 | Day 2                            |  ☆☆   |           |
 | Day 3                            |  ☆☆   |           |
 | Day 4                            |  ☆☆   |           |
@@ -39,7 +39,8 @@
 ## [2025 Personal Leaderboard](https://adventofcode.com/2025/leaderboard/self)
 
 ```text
-TODO
+Day   -Part 1-   -Part 2-
+  1   09:21:37   22:15:45
 ```
 
 <!-- reference links -->

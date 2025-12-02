@@ -15,14 +15,22 @@
       ],
       "two": [
         {
-          "input": "",
-          "expected": ""
+            "input": "L68",
+            "expected": "1"
+        },
+        {
+            "input": "R68",
+            "expected": "1"
+        },
+        {
+          "input": "L68\nL30\nR48\nL5\nR60\nL55\nL1\nL99\nR14\nL82",
+          "expected": "6"
         }
       ]
     },
     "answers": {
-      "a": "",
-      "b": ""
+      "a": "1135",
+      "b": "6558"
     }
   }
 }
