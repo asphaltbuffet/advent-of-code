@@ -6,8 +6,8 @@
 
 | Title                            | Stars | Solutions |
 | -------------------------------- | :---: | --------- |
-| [Day 1: Secret Entrance][rm1]    |  ⭐⭐ | [][go1] |
-| Day 2                            |  ☆☆   |           |
+| [Day 1: Secret Entrance][rm1]    |  ⭐⭐ | [][go1]  |
+| [Day 2: Gift Shop][rm2]          |  ☆☆   | [][go2]  |
 | Day 3                            |  ☆☆   |           |
 | Day 4                            |  ☆☆   |           |
 | Day 5                            |  ☆☆   |           |
@@ -47,3 +47,5 @@ Day   -Part 1-   -Part 2-
 
 [rm1]: 01-secretEntrance/README.md
 [go1]: 01-secretEntrance/go
+[rm2]: 02-giftShop/README.md
+[go2]: 02-giftShop/go
