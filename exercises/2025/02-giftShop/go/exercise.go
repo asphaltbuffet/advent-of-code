@@ -2,7 +2,9 @@ package exercises
 
 import (
 	"fmt"
+	"iter"
 	"math"
+	"slices"
 	"strconv"
 	"strings"
 
@@ -27,15 +29,35 @@ func (e Exercise) One(instr string) (any, error) {
 	}
 
 	for _, p := range pp {
-		sum += p.sumInvalid()
+		for id := range InvalidIds(p.Lower, p.Upper) {
+			sum += id
+		}
 	}
 
 	return sum, nil
 }
 
 // Two returns the answer to the second part of the exercise.
+// 20942028300 -> too high
 func (e Exercise) Two(instr string) (any, error) {
-	return nil, fmt.Errorf("part 2 not implemented")
+	var sum int
+
+	pp, err := parseInput(instr)
+	if err != nil {
+		return nil, fmt.Errorf("invalid input: %w", err)
+	}
+
+	for _, p := range pp {
+		rep, err := p.Repeated()
+		if err != nil {
+			return nil, fmt.Errorf("generating repeats for %d-%d: %w", p.Lower, p.Upper, err)
+		}
+		for _, id := range rep {
+			sum += id
+		}
+	}
+
+	return sum, nil
 }
 
 type Pair struct {
@@ -71,56 +93,6 @@ func parseInput(s string) ([]Pair, error) {
 	}
 
 	return pairs, nil
-}
-
-func (p Pair) sumInvalid() int {
-	var sum int
-
-	for _, id := range p.findInvalid() {
-		sum += id
-	}
-
-	return sum
-}
-
-func (p Pair) findInvalid() []int {
-	//  XXXX => AA,BB
-	// XXXXX => 0AA,BBB
-	split := len(p.LowerString) / 2
-	if len(p.LowerString)%2 != 0 {
-		split++
-	}
-
-	mult := pow10(split)
-	// right := p.Lower % mult
-
-	left := p.Lower / mult
-	n := left*mult + left // AA00+AA
-	for n < p.Lower {
-		left++
-		if left >= mult { // we added a digit to left
-			mult *= 10
-		}
-		n = left*mult + left
-	}
-
-	invalids := make([]int, 0, 0)
-
-	for n <= p.Upper { // NNNN <= BBBB
-		// fmt.Println(n)
-		invalids = append(invalids, n) // AAAA
-
-		left++
-		if left >= mult { // we added a digit to left
-			mult *= 10
-		}
-		n = left*mult + left // BBBB
-
-	}
-
-	// fmt.Println(invalids)
-
-	return invalids
 }
 
 func pow10(m int) int {
@@ -177,11 +149,36 @@ func IsInvalid(n int) bool {
 	return l == r
 }
 
-func InvalidIds(min, max int) func(yield func(int) bool) {
+func isRepeatedPattern(n int) bool {
+	if n <= 0 {
+		return false
+	}
+	s := strconv.Itoa(n)
+
+	for patLen := 1; patLen <= len(s)/2; patLen++ {
+		if len(s)%patLen != 0 {
+			continue
+		}
+		pat := s[:patLen]
+		ok := true
+		for i := patLen; i < len(s); i += patLen {
+			if s[i:i+patLen] != pat {
+				ok = false
+				break
+			}
+		}
+		if ok {
+			return true
+		}
+	}
+	return false
+}
+
+func InvalidIds(a, b int) iter.Seq[int] {
 	return func(yield func(int) bool) {
-		for i := min; i <= max; NextInvalid(i) {
-			if i == min && !IsInvalid(i) {
-				i = NextInvalid(i)
+		for i := a; i <= b; i = NextInvalid(i) {
+			if i == a && !IsInvalid(i) {
+				continue
 			}
 
 			if !yield(i) {
@@ -189,4 +186,72 @@ func InvalidIds(min, max int) func(yield func(int) bool) {
 			}
 		}
 	}
+}
+
+func (p Pair) Repeated() ([]int, error) {
+	if p.Lower <= 0 || p.Lower > p.Upper {
+		return nil, fmt.Errorf("%d-%d: invalid pair", p.Lower, p.Upper)
+	}
+
+	llen, ulen := intLen(p.Lower), intLen(p.Upper)
+
+	// speed up with a lookup table
+	powTen := make([]int, ulen+1)
+	powTen[0] = 1
+	for k := 1; k <= ulen; k++ {
+		powTen[k] = powTen[k-1] * 10
+	}
+
+	rr := []int{}
+
+	for numLen := max(llen, 2); numLen <= ulen; numLen++ {
+		for patLen := 1; patLen <= ulen/2; patLen++ {
+			// skip if it won't make any usable patterns
+			if numLen%patLen != 0 {
+				continue
+			}
+
+			start := powTen[patLen-1]
+			end := powTen[patLen] - 1
+
+			for j := start; j <= end; j++ {
+				n := 0
+				repeats := numLen / patLen
+				for k := 0; k < repeats; k++ {
+					n = n*powTen[patLen] + j
+				}
+				if n < p.Lower {
+					continue
+				}
+
+				if n > p.Upper {
+					break
+				}
+
+				rr = append(rr, n)
+			}
+		}
+	}
+
+	slices.Sort(rr)
+	return slices.Compact(rr), nil
+}
+
+func intLen(x int) int {
+	return int(math.Log10(float64(x)) + 1)
+}
+
+func IsRepeating(n int) bool {
+	if n < 10 {
+		return false
+	}
+
+	s := strconv.Itoa(n)
+	for i := 1; i <= len(s)/2; i++ {
+		r := strings.Repeat(s[:i], len(s)/i)
+		if r == s {
+			return true
+		}
+	}
+	return false
 }
