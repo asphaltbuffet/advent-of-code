@@ -1,6 +1,6 @@
 module github.com/asphaltbuffet/advent-of-code
 
-go 1.23
+go 1.25.4
 
 require github.com/stretchr/testify v1.10.0
 
