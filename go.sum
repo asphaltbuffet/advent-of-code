@@ -1,9 +1,7 @@
-github.com/asphaltbuffet/elf v0.2.0 h1:M38soM6XTzoTnfYFYCbtr/Uv6hGh/UYZ6metJCXK4ro=
-github.com/asphaltbuffet/elf v0.2.0/go.mod h1:Z+LMoIVq6eBcgYK5wO/Iv8hCIv6xYeC2V43ogbrq+Og=
 github.com/aymanbagabas/go-osc52/v2 v2.0.1 h1:HwpRHbFMcZLEVr42D4p7XBqjyuxQH5SMiErDT4WkJ2k=
 github.com/aymanbagabas/go-osc52/v2 v2.0.1/go.mod h1:uYgXzlJ7ZpABp8OJ+exZzJJhRNQ2ASbcXHWsFqH8hp8=
-github.com/caarlos0/log v0.4.6 h1:FBu78sqfS8rhi2f6I1kJMvY6Dwpi6/evsJBoo9rv3oI=
-github.com/caarlos0/log v0.4.6/go.mod h1:eEGBxtO8MGEE+zITQ/yHAYDqJUQTHUde6v9U1VOxLKM=
+github.com/caarlos0/log v0.4.8 h1:k2URuG28jxzVUSltOjY1qy0zmCNVhMeNr8cP5P/2jB4=
+github.com/caarlos0/log v0.4.8/go.mod h1:oGfAH1ldO3nYYrbXtofO6y2K/QTPF/VaGMFmD/LRa+M=
 github.com/charmbracelet/lipgloss v1.0.0 h1:O7VkGDvqEdGi93X+DeqsQ7PKHDgtQfF8j8/O2qFMQNg=
 github.com/charmbracelet/lipgloss v1.0.0/go.mod h1:U5fy9Z+C38obMs+T+tJqst9VGzlOYGj4ri9reL3qUlo=
 github.com/charmbracelet/x/ansi v0.5.2 h1:dEa1x2qdOZXD/6439s+wF7xjV+kZLu/iN00GuXXrU9E=
@@ -13,8 +11,8 @@ github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc h1:U9qPSI2PIWSS1
 github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/dominikbraun/graph v0.23.0 h1:TdZB4pPqCLFxYhdyMFb1TBdFxp8XLcJfTTBQucVPgCo=
 github.com/dominikbraun/graph v0.23.0/go.mod h1:yOjYyogZLY1LSG9E33JWZJiq5k83Qy2C6POAuiViluc=
-github.com/elliotchance/orderedmap/v2 v2.5.0 h1:WRPmWGChucaZ09eEd3UkU8XfVajv6ZZ6eg3+x0cLWPM=
-github.com/elliotchance/orderedmap/v2 v2.5.0/go.mod h1:85lZyVbpGaGvHvnKa7Qhx7zncAdBIBq6u56Hb1PRU5Q=
+github.com/elliotchance/orderedmap/v2 v2.7.0 h1:WHuf0DRo63uLnldCPp9ojm3gskYwEdIIfAUVG5KhoOc=
+github.com/elliotchance/orderedmap/v2 v2.7.0/go.mod h1:85lZyVbpGaGvHvnKa7Qhx7zncAdBIBq6u56Hb1PRU5Q=
 github.com/fatih/color v1.18.0 h1:S8gINlzdQ840/4pfAwic/ZE0djQEH3wM94VfqLTZcOM=
 github.com/fatih/color v1.18.0/go.mod h1:4FelSpRwEGDpQ12mAdzqdOukCy4u8WUtOY6lkT/6HfU=
 github.com/kettek/apng v0.0.0-20220823221153-ff692776a607 h1:8tP9cdXzcGX2AvweVVG/lxbI7BSjWbNNUustwJ9dQVA=
