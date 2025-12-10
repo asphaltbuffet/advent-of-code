@@ -7,7 +7,7 @@
 | Title                            | Stars | Solutions |
 | -------------------------------- | :---: | --------- |
 | [Day 1: Secret Entrance][rm1]    |  ⭐⭐ | [][go1]  |
-| [Day 2: Gift Shop][rm2]          |  ☆☆   | [][go2]  |
+| [Day 2: Gift Shop][rm2]          |  ⭐⭐ | [][go2]  |
 | Day 3                            |  ☆☆   |           |
 | Day 4                            |  ☆☆   |           |
 | Day 5                            |  ☆☆   |           |
