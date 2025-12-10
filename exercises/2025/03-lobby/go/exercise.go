@@ -1,7 +1,6 @@
 package exercises
 
 import (
-	"fmt"
 	"strings"
 
 	"github.com/asphaltbuffet/advent-of-code/internal/common"
@@ -17,6 +16,7 @@ func (e Exercise) One(instr string) (any, error) {
 	var sum int
 	for bank := range strings.Lines(instr) {
 		sum += Largest(strings.Trim(bank, "\n"))
+		// sum += LongLargest(strings.Trim(bank, "\n"), 2)
 	}
 
 	return sum, nil
@@ -24,7 +24,12 @@ func (e Exercise) One(instr string) (any, error) {
 
 // Two returns the answer to the second part of the exercise.
 func (e Exercise) Two(instr string) (any, error) {
-	return nil, fmt.Errorf("part 2 not implemented")
+	var sum int
+	for bank := range strings.Lines(instr) {
+		sum += LongLargest(strings.Trim(bank, "\n"), 12)
+	}
+
+	return sum, nil
 }
 
 // Largest creates the max 2-digit integer from consecutive integers in a string.
@@ -50,4 +55,43 @@ func Largest(b string) int {
 	}
 
 	return l*10 + r
+}
+
+func LongLargest(b string, digits int) int {
+	bank := make([]int, len(b))
+
+	for i, r := range b {
+		bank[i] = int(r - '0')
+	}
+	// fmt.Println("bank: ", bank)
+
+	out := 0
+	remaining := digits
+
+	for i := 0; remaining > 0; {
+		window := len(b) - i - remaining + 1
+		// fmt.Printf("i=%d w=%d r= %d out=%d\n", i, window, remaining, out)
+
+		m, idx := MaxInRange(bank[i : i+window])
+		out = out*10 + m
+
+		i += idx + 1
+		remaining--
+	}
+
+	return out
+}
+
+func MaxInRange(b []int) (int, int) {
+	idx := 0
+	m := 0
+
+	for i, n := range b {
+		if n > m {
+			m = n
+			idx = i
+		}
+	}
+
+	return m, idx
 }
