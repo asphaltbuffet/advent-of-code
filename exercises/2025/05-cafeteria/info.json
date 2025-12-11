@@ -9,8 +9,8 @@
     "testCases": {
       "one": [
         {
-          "input": "",
-          "expected": ""
+          "input": "3-5\n10-14\n16-20\n12-18\n\n1\n5\n8\n11\n17\n32",
+          "expected": "3"
         }
       ],
       "two": [
@@ -21,7 +21,7 @@
       ]
     },
     "answers": {
-      "a": "",
+      "a": "848",
       "b": ""
     }
   }
