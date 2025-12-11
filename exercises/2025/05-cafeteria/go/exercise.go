@@ -1,7 +1,6 @@
 package exercises
 
 import (
-	"fmt"
 	"strings"
 
 	"github.com/asphaltbuffet/advent-of-code/internal/common"
@@ -38,5 +37,21 @@ func (e Exercise) One(instr string) (any, error) {
 
 // Two returns the answer to the second part of the exercise.
 func (e Exercise) Two(instr string) (any, error) {
-	return nil, fmt.Errorf("part 2 not implemented")
+	inputs := strings.Split(instr, "\n\n")
+
+	inv, err := LoadInventory(inputs[0])
+	if err != nil {
+		return nil, err
+	}
+
+	// // do this the dumb way first
+	// nums := make(map[int]bool, len(inputs[0])*100)
+	// for _, r := range inv.Ranges {
+	// 	for i := r.Low; i <= r.High; i++ {
+	// 		nums[i] = true
+	// 	}
+	// }
+	// return len(nums), nil
+
+	return inv.CountRanges(), nil
 }

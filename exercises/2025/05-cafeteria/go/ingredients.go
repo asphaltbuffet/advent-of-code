@@ -1,8 +1,10 @@
 package exercises
 
 import (
+	"cmp"
 	"fmt"
 	"math"
+	"slices"
 	"strconv"
 	"strings"
 )
@@ -49,8 +51,31 @@ func LoadInventory(s string) (*Inventory, error) {
 	return &Inventory{
 		Lowest:  lowest,
 		Highest: highest,
-		Ranges:  ranges,
+		Ranges:  Coalesce(ranges),
 	}, nil
+}
+
+func Coalesce(rr []Range) []Range {
+	slices.SortFunc(rr, func(a, b Range) int {
+		lc := cmp.Compare(a.Low, b.Low)
+		if lc == 0 {
+			return cmp.Compare(a.High, b.High)
+		}
+		return lc
+	})
+
+	out := []Range{rr[0]}
+	last := 0
+	for i := 1; i < len(rr); i++ {
+		if out[last].High >= rr[i].Low {
+			out[last].High = max(out[last].High, rr[i].High)
+		} else {
+			out = append(out, rr[i])
+			last++
+		}
+	}
+
+	return out
 }
 
 func LoadIngredients(s string) ([]int, error) {
@@ -80,4 +105,13 @@ func (inv Inventory) IsFresh(id int) bool {
 	}
 
 	return false
+}
+
+func (inv Inventory) CountRanges() int {
+	var count int
+	for _, r := range inv.Ranges {
+		count += r.High - r.Low + 1
+	}
+
+	return count
 }
