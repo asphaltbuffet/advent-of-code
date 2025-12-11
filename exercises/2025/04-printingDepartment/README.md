@@ -15,7 +15,15 @@
 ## Go
 
 ```text
-< section intentionally left blank >
+──────────────────────────────────────────
+           ADVENT OF CODE 2025            
+        Day 4: Printing Department        
+──────────────────────────────────────────
+Solving (Go)...
+  1.1: PASS              6.154ms
+      ⤷ 1537
+  2.1: PASS              62.68ms
+      ⤷ 8707
 ```
 
 ## Python

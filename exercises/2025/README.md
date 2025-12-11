@@ -9,7 +9,7 @@
 | [Day 1: Secret Entrance][rm1]    |  ⭐⭐ | [][go1]  |
 | [Day 2: Gift Shop][rm2]          |  ⭐⭐ | [][go2]  |
 | [Day 3: Lobby][rm3]              |  ⭐⭐ | [Go][go3] |
-| [Day 4: Printing Department][rm4]|  ☆☆   | [Go][go4] |
+| [Day 4: Printing Department][rm4]|  ⭐⭐ | [Go][go4] |
 | Day 5                            |  ☆☆   |           |
 | Day 6                            |  ☆☆   |           |
 | Day 7                            |  ☆☆   |           |
