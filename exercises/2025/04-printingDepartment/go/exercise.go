@@ -23,5 +23,10 @@ func (e Exercise) One(instr string) (any, error) {
 
 // Two returns the answer to the second part of the exercise.
 func (e Exercise) Two(instr string) (any, error) {
-	return nil, fmt.Errorf("part 2 not implemented")
+	f, err := NewFloor(instr)
+	if err != nil {
+		return nil, fmt.Errorf("create floor: %w", err)
+	}
+
+	return f.RemoveRolls(), nil
 }

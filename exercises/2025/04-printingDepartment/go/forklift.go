@@ -1,6 +1,8 @@
 package exercises
 
-import "strings"
+import (
+	"strings"
+)
 
 type Point struct {
 	X int
@@ -62,4 +64,23 @@ func (p Point) Adjacent() []Point {
 		Point{p.X, p.Y - 1},
 		Point{p.X, p.Y + 1},
 	}
+}
+
+func (f Floor) RemoveRolls() int {
+	var removed int
+	var done bool
+
+	for !done {
+		// assume done until we remove a roll
+		done = true
+		for p, v := range f {
+			if !v || f.CanAccess(p) {
+				delete(f, p)
+				removed++
+				done = false
+			}
+		}
+	}
+
+	return removed
 }
