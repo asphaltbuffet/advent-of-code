@@ -15,7 +15,18 @@
 ## Go
 
 ```text
-< section intentionally left blank >
+──────────────────────────────────────────
+           ADVENT OF CODE 2025            
+             Day 5: Cafeteria             
+──────────────────────────────────────────
+Testing (Go)...
+  1.1: PASS                 50µs
+  2.1: PASS                 10µs
+Solving (Go)...
+  1.1: PASS                691µs
+      ⤷ 848
+  2.1: PASS                243µs
+      ⤷ 334714395325710
 ```
 
 ## Python
