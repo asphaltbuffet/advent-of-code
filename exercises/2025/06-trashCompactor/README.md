@@ -15,7 +15,18 @@
 ## Go
 
 ```text
-< section intentionally left blank >
+──────────────────────────────────────────
+           ADVENT OF CODE 2025            
+          Day 6: Trash Compactor          
+──────────────────────────────────────────
+Testing (Go)...
+  1.1: PASS                 52µs
+  2.1: PASS                 18µs
+Solving (Go)...
+  1.1: PASS              2.176ms
+      ⤷ 6378679666679
+  2.1: PASS              2.017ms
+      ⤷ 11494432585168
 ```
 
 ## Python
