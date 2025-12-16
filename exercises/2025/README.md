@@ -6,12 +6,12 @@
 
 | Title                            | Stars | Solutions |
 | -------------------------------- | :---: | --------- |
-| [Day 1: Secret Entrance][rm1]    |  ⭐⭐ | [Go][go1]  |
-| [Day 2: Gift Shop][rm2]          |  ⭐⭐ | [Go][go2]  |
+| [Day 1: Secret Entrance][rm1]    |  ⭐⭐ | [Go][go1] |
+| [Day 2: Gift Shop][rm2]          |  ⭐⭐ | [Go][go2] |
 | [Day 3: Lobby][rm3]              |  ⭐⭐ | [Go][go3] |
 | [Day 4: Printing Department][rm4]|  ⭐⭐ | [Go][go4] |
 | [Day 5: Cafeteria][rm5]          |  ⭐⭐ | [Go][go5] |
-| Day 6                            |  ☆☆   |           |
+| [Day 6: Trash Compactor][rm6]    |  ⭐⭐ | [Go][go6] |
 | Day 7                            |  ☆☆   |           |
 | Day 8                            |  ☆☆   |           |
 | Day 9                            |  ☆☆   |           |
@@ -55,3 +55,5 @@ Day   -Part 1-   -Part 2-
 [go4]: 04-printingDepartment/go
 [rm5]: 05-cafeteria/README.md
 [go5]: 05-cafeteria/go
+[rm6]: 06-trashCompactor/README.md
+[go6]: 06-trashCompactor/go

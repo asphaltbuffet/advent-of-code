@@ -1,0 +1,28 @@
+{
+  "id": "2025-06",
+  "title": "Trash Compactor",
+  "year": 2025,
+  "day": 6,
+  "url": "https://adventofcode.com/2025/day/6",
+  "data": {
+    "inputFile": "input.txt",
+    "testCases": {
+      "one": [
+        {
+          "input": "123 328  51 64 \n 45 64  387 23 \n  6 98  215 314\n*   +   *   +  ",
+          "expected": "4277556"
+        }
+      ],
+      "two": [
+        {
+          "input": "123 328  51 64 \n 45 64  387 23 \n  6 98  215 314\n*   +   *   +  ",
+          "expected": "3263827"
+        }
+      ]
+    },
+    "answers": {
+      "a": "6378679666679",
+      "b": "11494432585168"
+    }
+  }
+}
