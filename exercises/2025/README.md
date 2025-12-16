@@ -8,8 +8,8 @@
 | -------------------------------- | :---: | --------- |
 | [Day 1: Secret Entrance][rm1]    |  ⭐⭐ | [][go1]  |
 | [Day 2: Gift Shop][rm2]          |  ⭐⭐ | [][go2]  |
-| [Day 3: Lobby][rm3]              |  ☆☆   | [Go][go3] |
-| Day 4                            |  ☆☆   |           |
+| [Day 3: Lobby][rm3]              |  ⭐⭐ | [Go][go3] |
+| [Day 4: Printing Department][rm4]|  ⭐⭐ | [Go][go4] |
 | Day 5                            |  ☆☆   |           |
 | Day 6                            |  ☆☆   |           |
 | Day 7                            |  ☆☆   |           |
@@ -51,3 +51,5 @@ Day   -Part 1-   -Part 2-
 [go2]: 02-giftShop/go
 [rm3]: 03-lobby/README.md
 [go3]: 03-lobby/go
+[rm4]: 04-printingDepartment/README.md
+[go4]: 04-printingDepartment/go
