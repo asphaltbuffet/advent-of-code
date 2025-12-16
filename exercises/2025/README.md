@@ -12,7 +12,7 @@
 | [Day 4: Printing Department][rm4]|  ⭐⭐ | [Go][go4] |
 | [Day 5: Cafeteria][rm5]          |  ⭐⭐ | [Go][go5] |
 | [Day 6: Trash Compactor][rm6]    |  ⭐⭐ | [Go][go6] |
-| Day 7                            |  ☆☆   |           |
+| [Day 7: Laboratories][rm7]       |  ☆☆   | [Go][go7] |
 | Day 8                            |  ☆☆   |           |
 | Day 9                            |  ☆☆   |           |
 | Day 10                           |  ☆☆   |           |
@@ -57,3 +57,5 @@ Day   -Part 1-   -Part 2-
 [go5]: 05-cafeteria/go
 [rm6]: 06-trashCompactor/README.md
 [go6]: 06-trashCompactor/go
+[rm7]: 07-laboratories/README.md
+[go7]: 07-laboratories/go
