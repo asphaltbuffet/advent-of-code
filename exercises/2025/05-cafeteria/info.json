@@ -1,0 +1,28 @@
+{
+  "id": "2025-05",
+  "title": "Cafeteria",
+  "year": 2025,
+  "day": 5,
+  "url": "https://adventofcode.com/2025/day/5",
+  "data": {
+    "inputFile": "input.txt",
+    "testCases": {
+      "one": [
+        {
+          "input": "3-5\n10-14\n16-20\n12-18\n\n1\n5\n8\n11\n17\n32",
+          "expected": "3"
+        }
+      ],
+      "two": [
+        {
+          "input": "3-5\n10-14\n16-20\n12-18\n\n1\n5\n8\n11\n17\n32",
+          "expected": "14"
+        }
+      ]
+    },
+    "answers": {
+      "a": "848",
+      "b": "334714395325710"
+    }
+  }
+}
