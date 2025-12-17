@@ -1,8 +1,6 @@
 package exercises
 
 import (
-	"fmt"
-
 	"github.com/asphaltbuffet/advent-of-code/internal/common"
 )
 
@@ -18,5 +16,5 @@ func (e Exercise) One(instr string) (any, error) {
 
 // Two returns the answer to the second part of the exercise.
 func (e Exercise) Two(instr string) (any, error) {
-	return nil, fmt.Errorf("part 2 not implemented")
+	return CountTimelines(instr), nil
 }

@@ -8,7 +8,7 @@ func CountSplits(input string) int {
 	var splits int
 
 	lines := strings.Split(input, "\n")
-	beams := make(map[int]bool, len(lines[0])+2)
+	beams := make(map[int]bool, len(lines[0]))
 
 	// find start
 	for i, c := range lines[0] {
@@ -36,4 +36,39 @@ func CountSplits(input string) int {
 	}
 
 	return splits
+}
+
+func CountTimelines(input string) int {
+	lines := strings.Split(input, "\n")
+	beams := make(map[int]int, len(lines[0]))
+
+	// find start
+	for i, c := range lines[0] {
+		if c == 'S' {
+			beams[i]++
+			break
+		}
+	}
+
+	for _, row := range lines[1:] {
+		for x := 0; x < len(row); x++ {
+			if beams[x] == 0 {
+				continue
+			}
+
+			if row[x] == '^' {
+				beams[x-1] += beams[x]
+				beams[x+1] += beams[x]
+				beams[x] = 0
+				x++
+			}
+		}
+	}
+
+	var tl int
+	for _, v := range beams {
+		tl += v
+	}
+
+	return tl
 }
