@@ -116,7 +116,36 @@ func (jj Junctions) CreateCircuits(wires int) []int {
 	// fmt.Println(sizes)
 	slices.Sort(sizes)
 	slices.Reverse(sizes)
-	// fmt.Println(sizes)
 
 	return sizes
+}
+
+func (jj Junctions) EndCircuits() int {
+	// get shortest <wires> distances
+	dists := jj.AllDists()
+
+	// merge_sets for number of wires
+	parents := make(map[int]int, len(jj))
+	for i := range jj {
+		parents[i] = i
+	}
+
+	connections := 0
+	for _, d := range dists {
+		a := find_set(parents, d.A)
+		b := find_set(parents, d.B)
+
+		if a != b {
+			connections++
+
+			merge_sets(parents, d.A, d.B)
+
+			if connections == len(jj)-1 {
+				return jj[d.A].X * jj[d.B].X
+			}
+		}
+	}
+
+	// we shouldn't get here
+	return -1
 }
