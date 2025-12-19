@@ -5,6 +5,8 @@ import (
 	"slices"
 	"strconv"
 	"strings"
+
+	dsu "github.com/arunksaha/gdsu/compact"
 )
 
 type Vector struct {
@@ -13,11 +15,18 @@ type Vector struct {
 	Z int
 }
 
+type Distance struct {
+	A int
+	B int
+	D int
+}
+
 type Junctions []Vector
 
 func NewJunctions(s string) (*Junctions, error) {
-	vv := Junctions{}
-	for _, l := range strings.Split(s, "\n") {
+	lines := strings.Split(s, "\n")
+	vv := make(Junctions, len(lines))
+	for i, l := range lines {
 		tokens := strings.Split(l, ",")
 
 		x, err := strconv.Atoi(tokens[0])
@@ -33,7 +42,7 @@ func NewJunctions(s string) (*Junctions, error) {
 			return nil, err
 		}
 
-		vv = append(vv, Vector{X: x, Y: y, Z: z})
+		vv[i] = Vector{X: x, Y: y, Z: z}
 	}
 
 	return &vv, nil
@@ -56,33 +65,16 @@ func pow(a, b int) int {
 	return n
 }
 
-func find_set(parent map[int]int, v int) int {
-	if v == parent[v] {
-		return v
-	}
-
-	parent[v] = find_set(parent, parent[v])
-	return parent[v]
-}
-
-func merge_sets(parent map[int]int, a, b int) {
-	parent[find_set(parent, parent[b])] = find_set(parent, a)
-}
-
-type Distance struct {
-	A int
-	B int
-	D int
-}
-
 func (jj Junctions) AllDists() []Distance {
 	dists := []Distance{}
 	for i, a := range jj {
-		for j, b := range jj {
-			if i < j {
-				d := Dist(a, b)
-				dists = append(dists, Distance{A: i, B: j, D: d})
+		for j, b := range slices.Backward(jj) {
+			if i == j {
+				break
 			}
+
+			d := Dist(a, b)
+			dists = append(dists, Distance{A: i, B: j, D: d})
 		}
 	}
 
@@ -97,48 +89,36 @@ func (jj Junctions) CreateCircuits(wires int) []int {
 	// get shortest <wires> distances
 	dists := jj.AllDists()
 
-	// merge_sets for number of wires
-	parents := make(map[int]int, len(jj))
-	for i := range jj {
-		parents[i] = i
-	}
+	ds := dsu.New(len(jj))
 
 	for _, d := range dists[:wires] {
-		merge_sets(parents, d.A, d.B)
+		ds.Union(d.A, d.B)
 	}
 
 	// determine sizes of all sets (circuits)
 	sizes := make([]int, len(jj))
 	for i := range jj {
-		sizes[find_set(parents, i)] += 1
+		sizes[ds.Find(i)] += 1
 	}
 
-	// fmt.Println(sizes)
-	slices.Sort(sizes)
-	slices.Reverse(sizes)
+	slices.SortFunc(sizes, func(a, b int) int {
+		return cmp.Compare(b, a)
+	})
 
-	return sizes
+	// return 3 largest sizes
+	return sizes[:3]
 }
 
 func (jj Junctions) EndCircuits() int {
 	// get shortest <wires> distances
 	dists := jj.AllDists()
 
-	// merge_sets for number of wires
-	parents := make(map[int]int, len(jj))
-	for i := range jj {
-		parents[i] = i
-	}
+	ds := dsu.New(len(jj))
 
 	connections := 0
 	for _, d := range dists {
-		a := find_set(parents, d.A)
-		b := find_set(parents, d.B)
-
-		if a != b {
+		if ds.Union(d.A, d.B) {
 			connections++
-
-			merge_sets(parents, d.A, d.B)
 
 			if connections == len(jj)-1 {
 				return jj[d.A].X * jj[d.B].X

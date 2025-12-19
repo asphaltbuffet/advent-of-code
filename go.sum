@@ -1,3 +1,5 @@
+github.com/arunksaha/gdsu v0.1.1 h1:5hGqA8Rx4lFZ2yWFBTA/5Sa16xr+EXTgc497IuqoT1w=
+github.com/arunksaha/gdsu v0.1.1/go.mod h1:HBbw4ytX5tJLuXPDAnjge80umcbG7Ma/gvAnqFwtCik=
 github.com/asphaltbuffet/elf v0.2.0 h1:M38soM6XTzoTnfYFYCbtr/Uv6hGh/UYZ6metJCXK4ro=
 github.com/asphaltbuffet/elf v0.2.0/go.mod h1:Z+LMoIVq6eBcgYK5wO/Iv8hCIv6xYeC2V43ogbrq+Og=
 github.com/aymanbagabas/go-osc52/v2 v2.0.1 h1:HwpRHbFMcZLEVr42D4p7XBqjyuxQH5SMiErDT4WkJ2k=
