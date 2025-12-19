@@ -13,12 +13,25 @@ type Exercise struct {
 
 // One returns the answer to the first part of the exercise.
 func (e Exercise) One(instr string) (any, error) {
-	points := ParsePoints(instr)
+	f, _ := NewFloor(instr)
 
-	return BiggestRect(points), nil
+	return f.BiggestRect(), nil
 }
 
 // Two returns the answer to the second part of the exercise.
+// LOW: 123274025
+// HIGH: 4653414735
+// HIGH: 4455008748
 func (e Exercise) Two(instr string) (any, error) {
-	return nil, fmt.Errorf("part 2 not implemented")
+	defer func() {
+		if r := recover(); r != nil {
+			fmt.Println("panic: ", r)
+		}
+	}()
+
+	floor, _ := NewFloor(instr)
+
+	bfr := floor.BoundedRect()
+
+	return bfr, nil
 }
