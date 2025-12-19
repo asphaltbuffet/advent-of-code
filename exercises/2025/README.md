@@ -14,7 +14,7 @@
 | [Day 6: Trash Compactor][rm6]    |  ⭐⭐ | [Go][go6] |
 | [Day 7: Laboratories][rm7]       |  ⭐⭐ | [Go][go7] |
 | [Day 8: Playground][rm8]         |  ⭐⭐ | [Go][go8] |
-| Day 9                            |  ☆☆   |           |
+| [Day 9: Movie Theater][rm9]      |  ☆☆   | [Go][go9] |
 | Day 10                           |  ☆☆   |           |
 | Day 11                           |  ☆☆   |           |
 | Day 12                           |  ☆☆   |           |
@@ -61,3 +61,5 @@ Day   -Part 1-   -Part 2-
 [go7]: 07-laboratories/go
 [rm8]: 08-playground/README.md
 [go8]: 08-playground/go
+[rm9]: 09-movieTheater/README.md
+[go9]: 09-movieTheater/go
