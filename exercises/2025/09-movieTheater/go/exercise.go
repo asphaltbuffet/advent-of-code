@@ -13,7 +13,9 @@ type Exercise struct {
 
 // One returns the answer to the first part of the exercise.
 func (e Exercise) One(instr string) (any, error) {
-	return nil, fmt.Errorf("part 1 not implemented")
+	points := ParsePoints(instr)
+
+	return BiggestRect(points), nil
 }
 
 // Two returns the answer to the second part of the exercise.
