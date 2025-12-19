@@ -15,7 +15,15 @@
 ## Go
 
 ```text
-< section intentionally left blank >
+──────────────────────────────────────────
+           ADVENT OF CODE 2025            
+            Day 8: Playground             
+──────────────────────────────────────────
+Solving (Go)...
+  1.1: PASS             86.143ms
+      ⤷ 352584
+  2.1: PASS             81.296ms
+      ⤷ 9617397716
 ```
 
 ## Python

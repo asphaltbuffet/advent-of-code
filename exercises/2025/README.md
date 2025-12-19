@@ -13,7 +13,7 @@
 | [Day 5: Cafeteria][rm5]          |  ⭐⭐ | [Go][go5] |
 | [Day 6: Trash Compactor][rm6]    |  ⭐⭐ | [Go][go6] |
 | [Day 7: Laboratories][rm7]       |  ⭐⭐ | [Go][go7] |
-| [Day 8: Playground][rm8]         |  ☆☆   | [Go][go8] |
+| [Day 8: Playground][rm8]         |  ⭐⭐ | [Go][go8] |
 | Day 9                            |  ☆☆   |           |
 | Day 10                           |  ☆☆   |           |
 | Day 11                           |  ☆☆   |           |
