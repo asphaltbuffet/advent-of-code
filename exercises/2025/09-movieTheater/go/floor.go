@@ -1,7 +1,6 @@
 package exercises
 
 import (
-	"math"
 	"slices"
 	"strconv"
 	"strings"
@@ -12,28 +11,16 @@ type Point struct {
 	Y int
 }
 
-type Line struct {
-	P1 Point
-	P2 Point
-}
-
 type Rect []Point
 
 type Floor struct {
-	Min Point
-	Max Point
-
-	points   []Point
-	segments []Line
-	Horiz    []*Line
-	Vert     []*Line
+	points []Point
 }
 
 func NewFloor(s string) (*Floor, error) {
 	lines := strings.Split(s, "\n")
 
 	pp := make([]Point, len(lines))
-	minP, maxP := Point{math.MaxInt, math.MaxInt}, Point{0, 0}
 
 	for i, l := range lines {
 		tokens := strings.Split(l, ",")
@@ -48,30 +35,11 @@ func NewFloor(s string) (*Floor, error) {
 		}
 
 		pp[i] = Point{X: x, Y: y}
-		minP.X = min(minP.X, x)
-		minP.Y = min(minP.Y, y)
-		maxP.X = max(maxP.X, x)
-		maxP.Y = max(maxP.Y, y)
 	}
 
 	return &Floor{
-		points:   pp,
-		segments: getLines(pp),
-		Min:      minP,
-		Max:      maxP,
+		points: pp,
 	}, nil
-}
-
-func getLines(pp []Point) []Line {
-	lines := []Line{}
-
-	for i := 1; i <= len(pp); i++ {
-		from := pp[i-1]
-		to := pp[i%len(pp)]
-		lines = append(lines, Line{from, to})
-	}
-
-	return lines
 }
 
 func abs(a int) int {

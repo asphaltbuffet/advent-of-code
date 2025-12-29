@@ -15,7 +15,18 @@
 ## Go
 
 ```text
-< section intentionally left blank >
+──────────────────────────────────────────
+           ADVENT OF CODE 2025            
+           Day 9: Movie Theater           
+──────────────────────────────────────────
+Testing (Go)...
+  1.1: PASS                  3µs
+  2.1: PASS                  6µs
+Solving (Go)...
+  1.1: PASS                378µs
+      ⤷ 4781546175
+  2.1: PASS            203.018ms
+      ⤷ 1573359081
 ```
 
 ## Python
