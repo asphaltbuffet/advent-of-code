@@ -23,14 +23,12 @@ func ParseMachines(s string) []*Machine {
 
 		lights := lightsToInt(tok[0])
 		btns := buttonsToInts(tok[1 : len(tok)-1])
-
-		// fmt.Println("light:", lights)
-		// fmt.Println("buttons:", btns)
+		jolt := joltToInts(tok[len(tok)-1])
 
 		mm[i] = &Machine{
 			Lights:  lights,
 			Buttons: btns,
-			Joltage: []int{},
+			Joltage: jolt,
 		}
 	}
 
@@ -71,6 +69,18 @@ func buttonsToInts(s []string) []int {
 	}
 
 	return buttons
+}
+
+func joltToInts(s string) []int {
+	jolts := strings.Split(strings.Trim(s, "{}"), ",")
+	jj := make([]int, len(jolts))
+
+	for i, j := range jolts {
+		n, _ := strconv.Atoi(j)
+		jj[i] = n
+	}
+
+	return jj
 }
 
 func reverse(s string) string {
@@ -130,4 +140,56 @@ func (m *Machine) GetButtonPresses() int {
 	}
 
 	return -1
+}
+
+func minPresses(buttons [][]int, joltages []int, memo map[string]int) int {
+	key := fmt.Sprint(joltages)
+	if v, ok := memo[key]; ok {
+		return v
+	}
+
+	bCount, jCount := len(buttons), len(joltages)
+	limit := 1 << bCount
+	lowest := -1
+
+	for mask := range limit {
+		remainder := make([]int, jCount)
+		copy(remainder, joltages)
+		costPhase1, poss := 0, true
+
+		for b := range bCount {
+			if (mask & (1 << b)) != 0 {
+				costPhase1++
+				for i := range jCount {
+					remainder[i] -= buttons[b][i]
+				}
+			}
+		}
+
+		for _, r := range remainder {
+			if r < 0 || r%2 != 0 {
+				poss = false
+				break
+			}
+		}
+
+		if poss {
+			nextTarget := make([]int, jCount)
+			for i := range jCount {
+				nextTarget[i] = remainder[i] / 2
+			}
+
+			res := minPresses(buttons, nextTarget, memo)
+			if res != -1 {
+				totalCost := costPhase1 + 2*res
+				if lowest == -1 || totalCost < lowest {
+					lowest = totalCost
+				}
+			}
+		}
+	}
+
+	memo[key] = lowest
+
+	return lowest
 }
