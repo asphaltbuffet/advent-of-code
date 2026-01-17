@@ -9,8 +9,8 @@
     "testCases": {
       "one": [
         {
-          "input": "",
-          "expected": ""
+          "input": "aaa: you hhh\nyou: bbb ccc\nbbb: ddd eee\nccc: ddd eee fff\nddd: ggg\neee: out\nfff: out\nggg: out\nhhh: ccc fff iii\niii: out",
+          "expected": "5"
         }
       ],
       "two": [
@@ -21,7 +21,7 @@
       ]
     },
     "answers": {
-      "a": "",
+      "a": "470",
       "b": ""
     }
   }

@@ -15,8 +15,8 @@
 | [Day 7: Laboratories][rm7]       |  ⭐⭐ | [Go][go7] |
 | [Day 8: Playground][rm8]         |  ⭐⭐ | [Go][go8] |
 | [Day 9: Movie Theater][rm9]      |  ⭐⭐ | [Go][go9] |
-| [Day 10: Factory][rm10]          |  ☆☆   | [Go][go10]|
-| Day 11                           |  ☆☆   |           |
+| [Day 10: Factory][rm10]          |  ⭐⭐ | [Go][go10]|
+| [Day 11: Reactor][rm11]          |  ☆☆   | [Go][go11]|
 | Day 12                           |  ☆☆   |           |
 | Day 13                           |  ☆☆   |           |
 | Day 14                           |  ☆☆   |           |
