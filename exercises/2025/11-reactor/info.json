@@ -15,14 +15,14 @@
       ],
       "two": [
         {
-          "input": "",
-          "expected": ""
+          "input": "svr: aaa bbb\naaa: fft\nfft: ccc\nbbb: tty\ntty: ccc\nccc: ddd eee\nddd: hub\nhub: fff\neee: dac\ndac: fff\nfff: ggg hhh\nggg: out\nhhh: out",
+          "expected": "2"
         }
       ]
     },
     "answers": {
       "a": "470",
-      "b": ""
+      "b": "384151614084875"
     }
   }
 }

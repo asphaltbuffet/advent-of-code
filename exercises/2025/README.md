@@ -16,21 +16,8 @@
 | [Day 8: Playground][rm8]         |  ⭐⭐ | [Go][go8] |
 | [Day 9: Movie Theater][rm9]      |  ⭐⭐ | [Go][go9] |
 | [Day 10: Factory][rm10]          |  ⭐⭐ | [Go][go10]|
-| [Day 11: Reactor][rm11]          |  ☆☆   | [Go][go11]|
+| [Day 11: Reactor][rm11]          |  ⭐⭐ | [Go][go11]|
 | Day 12                           |  ☆☆   |           |
-| Day 13                           |  ☆☆   |           |
-| Day 14                           |  ☆☆   |           |
-| Day 15                           |  ☆☆   |           |
-| Day 16                           |  ☆☆   |           |
-| Day 17                           |  ☆☆   |           |
-| Day 18                           |  ☆☆   |           |
-| Day 19                           |  ☆☆   |           |
-| Day 20                           |  ☆☆   |           |
-| Day 21                           |  ☆☆   |           |
-| Day 22                           |  ☆☆   |           |
-| Day 23                           |  ☆☆   |           |
-| Day 24                           |  ☆☆   |           |
-| Day 25                           |  ☆☆   |           |
 
 ## 2025 Run Times
 

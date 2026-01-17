@@ -15,7 +15,18 @@
 ## Go
 
 ```text
-< section intentionally left blank >
+──────────────────────────────────────────
+           ADVENT OF CODE 2025            
+             Day 11: Reactor              
+──────────────────────────────────────────
+Testing (Go)...
+  1.1: PASS                 18µs
+  2.1: PASS                 22µs
+Solving (Go)...
+  1.1: PASS                180µs
+      ⤷ 470
+  2.1: PASS              1.836ms
+      ⤷ 384151614084875
 ```
 
 ## Python
