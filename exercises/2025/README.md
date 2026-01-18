@@ -17,7 +17,7 @@
 | [Day 9: Movie Theater][rm9]         |  ⭐⭐ | [Go][go9] |
 | [Day 10: Factory][rm10]             |  ⭐⭐ | [Go][go10]|
 | [Day 11: Reactor][rm11]             |  ⭐⭐ | [Go][go11]|
-| [Day 12: Christmas Tree Farm][rm12] |  ☆☆   | [Go][go12]|
+| [Day 12: Christmas Tree Farm][rm12] |  ⭐⭐ | [Go][go12]|
 
 ## 2025 Run Times
 
@@ -27,6 +27,17 @@
 
 ```text
 Day   -Part 1-   -Part 2-
+ 12       >24h       >24h
+ 11       >24h       >24h
+ 10       >24h       >24h
+  9       >24h       >24h
+  8       >24h       >24h
+  7       >24h       >24h
+  6       >24h       >24h
+  5       >24h       >24h
+  4       >24h       >24h
+  3       >24h       >24h
+  2       >24h       >24h
   1   09:21:37   22:15:45
 ```
 

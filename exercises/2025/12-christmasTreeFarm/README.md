@@ -15,7 +15,16 @@
 ## Go
 
 ```text
-< section intentionally left blank >
+──────────────────────────────────────────
+           ADVENT OF CODE 2025            
+       Day 12: Christmas Tree Farm        
+──────────────────────────────────────────
+Testing (Go)...
+  1.1: FAIL 
+      ⤷ got "3", but expected "2"
+Solving (Go)...
+  1.1: PASS              4.241ms
+      ⤷ 474
 ```
 
 ## Python
