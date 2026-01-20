@@ -25,6 +25,7 @@ require (
 )
 
 require (
+	github.com/arunksaha/gdsu v0.1.1
 	github.com/asphaltbuffet/elf v0.2.0
 	github.com/caarlos0/log v0.4.6
 	github.com/dominikbraun/graph v0.23.0

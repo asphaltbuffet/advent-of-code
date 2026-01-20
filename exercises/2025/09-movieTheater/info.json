@@ -1,0 +1,28 @@
+{
+  "id": "2025-09",
+  "title": "Movie Theater",
+  "year": 2025,
+  "day": 9,
+  "url": "https://adventofcode.com/2025/day/9",
+  "data": {
+    "inputFile": "input.txt",
+    "testCases": {
+      "one": [
+        {
+          "input": "7,1\n11,1\n11,7\n9,7\n9,5\n2,5\n2,3\n7,3",
+          "expected": "50"
+        }
+      ],
+      "two": [
+        {
+          "input": "7,1\n11,1\n11,7\n9,7\n9,5\n2,5\n2,3\n7,3",
+          "expected": "24"
+        }
+      ]
+    },
+    "answers": {
+      "a": "4781546175",
+      "b": "1573359081"
+    }
+  }
+}

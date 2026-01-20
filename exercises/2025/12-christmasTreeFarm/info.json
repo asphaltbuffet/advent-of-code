@@ -1,0 +1,22 @@
+{
+  "id": "2025-12",
+  "title": "Christmas Tree Farm",
+  "year": 2025,
+  "day": 12,
+  "url": "https://adventofcode.com/2025/day/12",
+  "data": {
+    "inputFile": "input.txt",
+    "testCases": {
+      "one": [
+        {
+          "input": "0:\n###\n##.\n##.\n\n1:\n###\n##.\n.##\n\n2:\n.##\n###\n##.\n\n3:\n##.\n###\n##.\n\n4:\n###\n#..\n###\n\n5:\n###\n.#.\n###\n\n4x4: 0 0 0 0 2 0\n12x5: 1 0 1 0 2 2\n12x5: 1 0 1 0 3 2",
+          "expected": "2"
+        }
+      ]
+    },
+    "answers": {
+      "a": "474",
+      "b": "0"
+    }
+  }
+}
