@@ -1,0 +1,28 @@
+{
+  "id": "2015-15",
+  "title": "Science for Hungry People",
+  "year": 2015,
+  "day": 15,
+  "url": "https://adventofcode.com/2015/day/15",
+  "data": {
+    "inputFile": "input.txt",
+    "testCases": {
+      "one": [
+        {
+          "input": "Butterscotch: capacity -1, durability -2, flavor 6, texture 3, calories 8\nCinnamon: capacity 2, durability 3, flavor -2, texture -1, calories 3",
+          "expected": "62842880"
+        }
+      ],
+      "two": [
+        {
+          "input": "Butterscotch: capacity -1, durability -2, flavor 6, texture 3, calories 8\nCinnamon: capacity 2, durability 3, flavor -2, texture -1, calories 3",
+          "expected": "57600000"
+        }
+      ]
+    },
+    "answers": {
+      "a": "21367368",
+      "b": "1766400"
+    }
+  }
+}
