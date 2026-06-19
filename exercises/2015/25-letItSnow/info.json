@@ -1,0 +1,27 @@
+{
+  "id": "2015-25",
+  "title": "Let It Snow",
+  "year": 2015,
+  "day": 25,
+  "url": "https://adventofcode.com/2015/day/25",
+  "data": {
+    "inputFile": "input.txt",
+    "testCases": {
+      "one": [
+        {
+          "input": "Enter the code at row 6, column 6.",
+          "expected": "27995004"
+        },
+        {
+          "input": "Enter the code at row 3, column 4.",
+          "expected": "7981243"
+        }
+      ],
+      "two": []
+    },
+    "answers": {
+      "a": "8997277",
+      "b": ""
+    }
+  }
+}
