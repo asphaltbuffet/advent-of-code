@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__plugin_claude-code-home-manager_serena__initial_instructions",
+      "WebSearch",
+      "WebFetch(domain:github.com)",
+      "mcp__plugin_claude-code-home-manager_serena__replace_content",
+      "Bash(../elf/dist/elf test *)"
+    ]
+  }
+}
