@@ -1,0 +1,28 @@
+{
+  "id": "2015-17",
+  "title": "No Such Thing as Too Much",
+  "year": 2015,
+  "day": 17,
+  "url": "https://adventofcode.com/2015/day/17",
+  "data": {
+    "inputFile": "input.txt",
+    "testCases": {
+      "one": [
+        {
+          "input": "20\n15\n10\n5\n5",
+          "expected": "4"
+        }
+      ],
+      "two": [
+        {
+          "input": "20\n15\n10\n5\n5",
+          "expected": "3"
+        }
+      ]
+    },
+    "answers": {
+      "a": "654",
+      "b": "57"
+    }
+  }
+}
