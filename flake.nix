@@ -9,6 +9,10 @@
       url = "github:nix-community/fenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    elf = {
+      url = "github:asphaltbuffet/elf/v0.4.1";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -16,6 +20,7 @@
     flake-utils,
     nur,
     fenix,
+    elf,
     ...
   }:
     flake-utils.lib.eachDefaultSystem (
@@ -45,10 +50,12 @@
             uv
             nodejs
             gh
+            elf.packages.${system}.default
 
             go
             python3
             gfortran
+            (lua5_2.withPackages (ps: [ps.dkjson]))
 
             rustToolchain
             fenix.packages.${system}.rust-analyzer
