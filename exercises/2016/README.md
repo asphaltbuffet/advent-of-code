@@ -23,7 +23,7 @@
 | [Day 15: Timing is Everything](15-timingIsEverything/README.md) |  ★ ★  | [Go](15-timingIsEverything/go) |
 | [Day 16: Dragon Checksum](16-dragonChecksum/README.md)         |  ★ ★  | [Go](16-dragonChecksum/go)    |
 | [Day 17: Two Steps Forward](17-twoStepsForward/README.md)      |  ★ ★  | [Go](17-twoStepsForward/go)   |
-| 18                                                             |  ☆ ☆  |                               |
+| [Day 18: Like a Rogue](18-likeARogue/README.md)                |  ★ ★  | [Go](18-likeARogue/go)        |
 | 19                                                             |  ☆ ☆  |                               |
 | 20                                                             |  ☆ ☆  |                               |
 | 21                                                             |  ☆ ☆  |                               |
