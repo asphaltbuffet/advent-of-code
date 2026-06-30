@@ -1,0 +1,18 @@
+{
+  "id": "2016-22",
+  "title": "Grid Computing",
+  "year": 2016,
+  "day": 22,
+  "url": "https://adventofcode.com/2016/day/22",
+  "data": {
+    "inputFile": "input.txt",
+    "testCases": {
+      "one": [],
+      "two": []
+    },
+    "answers": {
+      "a": "892",
+      "b": "227"
+    }
+  }
+}

@@ -27,7 +27,7 @@
 | [Day 19: An Elephant Named Joseph](19-anElephantNamedJoseph/README.md) |  ★ ★  | [Go](19-anElephantNamedJoseph/go) |
 | [Day 20: Firewall Rules](20-firewallRules/README.md)           |  ★ ★  | [Go](20-firewallRules/go)     |
 | [Day 21: Scrambled Letters and Hash](21-scrambledLettersAndHash/README.md) |  ★ ★  | [Go](21-scrambledLettersAndHash/go) |
-| 22                                                             |  ☆ ☆  |                               |
+| [Day 22: Grid Computing](22-gridComputing/README.md)           |  ★ ★  | [Go](22-gridComputing/go)     |
 | 23                                                             |  ☆ ☆  |                               |
 | 24                                                             |  ☆ ☆  |                               |
 | 25                                                             |  ☆ ☆  |                               |
