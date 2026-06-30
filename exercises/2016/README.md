@@ -9,7 +9,7 @@
 | [Day 1: No Time For A Taxicab](01-noTimeForATaxicab/README.md) |  ★ ★  | [Go](01-noTimeForATaxicab/go) |
 | [Day 2: Bathroom Security](02-bathroomSecurity/README.md)      |  ★ ★  | [Go](02-bathroomSecurity/go)  |
 | [Day 3: Squares With Three Sides](03-squaresWithThreeSides/README.md) |  ★ ★  | [Go](03-squaresWithThreeSides/go) |
-| 4                                                              |  ☆ ☆  |                               |
+| [Day 4: Security Through Obscurity](04-securityThroughObscurity/README.md) |  ★ ★  | [Go](04-securityThroughObscurity/go) |
 | 5                                                              |  ☆ ☆  |                               |
 | 6                                                              |  ☆ ☆  |                               |
 | 7                                                              |  ☆ ☆  |                               |

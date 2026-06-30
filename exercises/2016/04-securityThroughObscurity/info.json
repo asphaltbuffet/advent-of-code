@@ -1,0 +1,23 @@
+{
+  "id": "2016-04",
+  "title": "Security Through Obscurity",
+  "year": 2016,
+  "day": 4,
+  "url": "https://adventofcode.com/2016/day/4",
+  "data": {
+    "inputFile": "input.txt",
+    "testCases": {
+      "one": [
+        {
+          "input": "aaaaa-bbb-z-y-x-123[abxyz]\na-b-c-d-e-f-g-h-987[abcde]\nnot-a-real-room-404[oarel]\ntotally-real-room-200[decoy]",
+          "expected": "1514"
+        }
+      ],
+      "two": []
+    },
+    "answers": {
+      "a": "278221",
+      "b": "267"
+    }
+  }
+}
