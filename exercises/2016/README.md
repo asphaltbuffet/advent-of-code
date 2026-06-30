@@ -10,7 +10,7 @@
 | [Day 2: Bathroom Security](02-bathroomSecurity/README.md)      |  ★ ★  | [Go](02-bathroomSecurity/go)  |
 | [Day 3: Squares With Three Sides](03-squaresWithThreeSides/README.md) |  ★ ★  | [Go](03-squaresWithThreeSides/go) |
 | [Day 4: Security Through Obscurity](04-securityThroughObscurity/README.md) |  ★ ★  | [Go](04-securityThroughObscurity/go) |
-| 5                                                              |  ☆ ☆  |                               |
+| [Day 5: How About a Nice Game of Chess?](05-howAboutANiceGameOfChess/README.md) |  ★ ★  | [Go](05-howAboutANiceGameOfChess/go) |
 | 6                                                              |  ☆ ☆  |                               |
 | 7                                                              |  ☆ ☆  |                               |
 | 8                                                              |  ☆ ☆  |                               |
