@@ -19,7 +19,7 @@
 | [Day 11: Radioisotope Thermoelectric Generators](11-radioisotopeThermoelectricGenerators/README.md) |  ★ ★  | [Go](11-radioisotopeThermoelectricGenerators/go) |
 | [Day 12: Leonardo's Monorail](12-leonardosMonorail/README.md)  |  ★ ★  | [Go](12-leonardosMonorail/go) |
 | [Day 13: A Maze of Twisty Little Cubicles](13-aMazeOfTwistyLittleCubicles/README.md) |  ★ ★  | [Go](13-aMazeOfTwistyLittleCubicles/go) |
-| 14                                                             |  ☆ ☆  |                               |
+| [Day 14: One-Time Pad](14-one-TimePad/README.md)               |  ★ ★  | [Go](14-one-TimePad/go)       |
 | 15                                                             |  ☆ ☆  |                               |
 | 16                                                             |  ☆ ☆  |                               |
 | 17                                                             |  ☆ ☆  |                               |
