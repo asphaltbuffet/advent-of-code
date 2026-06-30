@@ -17,7 +17,7 @@
 | [Day 9: Explosives in Cyberspace](09-explosivesInCyberspace/README.md) |  ★ ★  | [Go](09-explosivesInCyberspace/go) |
 | [Day 10: Balance Bots](10-balanceBots/README.md)               |  ★ ★  | [Go](10-balanceBots/go)       |
 | [Day 11: Radioisotope Thermoelectric Generators](11-radioisotopeThermoelectricGenerators/README.md) |  ★ ★  | [Go](11-radioisotopeThermoelectricGenerators/go) |
-| 12                                                             |  ☆ ☆  |                               |
+| [Day 12: Leonardo's Monorail](12-leonardosMonorail/README.md)  |  ★ ★  | [Go](12-leonardosMonorail/go) |
 | 13                                                             |  ☆ ☆  |                               |
 | 14                                                             |  ☆ ☆  |                               |
 | 15                                                             |  ☆ ☆  |                               |
