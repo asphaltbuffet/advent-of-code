@@ -1,0 +1,28 @@
+{
+  "id": "2016-19",
+  "title": "An Elephant Named Joseph",
+  "year": 2016,
+  "day": 19,
+  "url": "https://adventofcode.com/2016/day/19",
+  "data": {
+    "inputFile": "input.txt",
+    "testCases": {
+      "one": [
+        {
+          "input": "5",
+          "expected": "3"
+        }
+      ],
+      "two": [
+        {
+          "input": "5",
+          "expected": "2"
+        }
+      ]
+    },
+    "answers": {
+      "a": "1834903",
+      "b": "1420280"
+    }
+  }
+}
