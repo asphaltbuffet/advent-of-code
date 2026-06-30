@@ -14,7 +14,7 @@
 | [Day 6: Signals and Noise](06-signalsAndNoise/README.md)       |  ★ ★  | [Go](06-signalsAndNoise/go)   |
 | [Day 7: Internet Protocol Version 7](07-internetProtocolVersion7/README.md) |  ★ ★  | [Go](07-internetProtocolVersion7/go) |
 | [Day 8: Two-Factor Authentication](08-two-FactorAuthentication/README.md) |  ★ ★  | [Go](08-two-FactorAuthentication/go) |
-| 9                                                              |  ☆ ☆  |                               |
+| [Day 9: Explosives in Cyberspace](09-explosivesInCyberspace/README.md) |  ★ ★  | [Go](09-explosivesInCyberspace/go) |
 | 10                                                             |  ☆ ☆  |                               |
 | 11                                                             |  ☆ ☆  |                               |
 | 12                                                             |  ☆ ☆  |                               |
