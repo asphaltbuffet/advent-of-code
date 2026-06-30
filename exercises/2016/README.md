@@ -22,7 +22,7 @@
 | [Day 14: One-Time Pad](14-one-TimePad/README.md)               |  ★ ★  | [Go](14-one-TimePad/go)       |
 | [Day 15: Timing is Everything](15-timingIsEverything/README.md) |  ★ ★  | [Go](15-timingIsEverything/go) |
 | [Day 16: Dragon Checksum](16-dragonChecksum/README.md)         |  ★ ★  | [Go](16-dragonChecksum/go)    |
-| 17                                                             |  ☆ ☆  |                               |
+| [Day 17: Two Steps Forward](17-twoStepsForward/README.md)      |  ★ ★  | [Go](17-twoStepsForward/go)   |
 | 18                                                             |  ☆ ☆  |                               |
 | 19                                                             |  ☆ ☆  |                               |
 | 20                                                             |  ☆ ☆  |                               |
