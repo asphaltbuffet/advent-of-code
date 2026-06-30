@@ -9,7 +9,9 @@
       "mcp__plugin_claude-code-home-manager_serena__replace_symbol_body",
       "mcp__plugin_claude-code-home-manager_serena__get_symbols_overview",
       "Bash(elf test *)",
-      "Bash(elf solve *)"
+      "Bash(elf solve *)",
+      "WebFetch(domain:adventofcode.com)",
+      "mcp__plugin_claude-code-home-manager_serena__find_symbol"
     ]
   }
 }
