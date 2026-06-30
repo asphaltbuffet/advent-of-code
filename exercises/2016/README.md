@@ -13,7 +13,7 @@
 | [Day 5: How About a Nice Game of Chess?](05-howAboutANiceGameOfChess/README.md) |  ★ ★  | [Go](05-howAboutANiceGameOfChess/go) |
 | [Day 6: Signals and Noise](06-signalsAndNoise/README.md)       |  ★ ★  | [Go](06-signalsAndNoise/go)   |
 | [Day 7: Internet Protocol Version 7](07-internetProtocolVersion7/README.md) |  ★ ★  | [Go](07-internetProtocolVersion7/go) |
-| 8                                                              |  ☆ ☆  |                               |
+| [Day 8: Two-Factor Authentication](08-two-FactorAuthentication/README.md) |  ★ ★  | [Go](08-two-FactorAuthentication/go) |
 | 9                                                              |  ☆ ☆  |                               |
 | 10                                                             |  ☆ ☆  |                               |
 | 11                                                             |  ☆ ☆  |                               |
