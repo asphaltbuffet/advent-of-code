@@ -26,7 +26,7 @@
 | [Day 18: Like a Rogue](18-likeARogue/README.md)                |  ★ ★  | [Go](18-likeARogue/go)        |
 | [Day 19: An Elephant Named Joseph](19-anElephantNamedJoseph/README.md) |  ★ ★  | [Go](19-anElephantNamedJoseph/go) |
 | [Day 20: Firewall Rules](20-firewallRules/README.md)           |  ★ ★  | [Go](20-firewallRules/go)     |
-| 21                                                             |  ☆ ☆  |                               |
+| [Day 21: Scrambled Letters and Hash](21-scrambledLettersAndHash/README.md) |  ★ ★  | [Go](21-scrambledLettersAndHash/go) |
 | 22                                                             |  ☆ ☆  |                               |
 | 23                                                             |  ☆ ☆  |                               |
 | 24                                                             |  ☆ ☆  |                               |
