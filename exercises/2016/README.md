@@ -12,7 +12,7 @@
 | [Day 4: Security Through Obscurity](04-securityThroughObscurity/README.md) |  ★ ★  | [Go](04-securityThroughObscurity/go) |
 | [Day 5: How About a Nice Game of Chess?](05-howAboutANiceGameOfChess/README.md) |  ★ ★  | [Go](05-howAboutANiceGameOfChess/go) |
 | [Day 6: Signals and Noise](06-signalsAndNoise/README.md)       |  ★ ★  | [Go](06-signalsAndNoise/go)   |
-| 7                                                              |  ☆ ☆  |                               |
+| [Day 7: Internet Protocol Version 7](07-internetProtocolVersion7/README.md) |  ★ ★  | [Go](07-internetProtocolVersion7/go) |
 | 8                                                              |  ☆ ☆  |                               |
 | 9                                                              |  ☆ ☆  |                               |
 | 10                                                             |  ☆ ☆  |                               |
