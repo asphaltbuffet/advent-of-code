@@ -7,7 +7,7 @@
 | Exercise                                                       | Stars | Solutions                     |
 |----------------------------------------------------------------|:-----:|-------------------------------|
 | [Day 1: No Time For A Taxicab](01-noTimeForATaxicab/README.md) |  ★ ★  | [Go](01-noTimeForATaxicab/go) |
-| 2                                                              |  ☆ ☆  |                               |
+| [Day 2: Bathroom Security](02-bathroomSecurity/README.md)      |  ★ ★  | [Go](02-bathroomSecurity/go)  |
 | 3                                                              |  ☆ ☆  |                               |
 | 4                                                              |  ☆ ☆  |                               |
 | 5                                                              |  ☆ ☆  |                               |
