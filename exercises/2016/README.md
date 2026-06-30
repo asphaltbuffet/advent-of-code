@@ -18,7 +18,7 @@
 | [Day 10: Balance Bots](10-balanceBots/README.md)               |  ★ ★  | [Go](10-balanceBots/go)       |
 | [Day 11: Radioisotope Thermoelectric Generators](11-radioisotopeThermoelectricGenerators/README.md) |  ★ ★  | [Go](11-radioisotopeThermoelectricGenerators/go) |
 | [Day 12: Leonardo's Monorail](12-leonardosMonorail/README.md)  |  ★ ★  | [Go](12-leonardosMonorail/go) |
-| 13                                                             |  ☆ ☆  |                               |
+| [Day 13: A Maze of Twisty Little Cubicles](13-aMazeOfTwistyLittleCubicles/README.md) |  ★ ★  | [Go](13-aMazeOfTwistyLittleCubicles/go) |
 | 14                                                             |  ☆ ☆  |                               |
 | 15                                                             |  ☆ ☆  |                               |
 | 16                                                             |  ☆ ☆  |                               |
