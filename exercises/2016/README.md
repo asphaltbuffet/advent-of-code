@@ -28,7 +28,7 @@
 | [Day 20: Firewall Rules](20-firewallRules/README.md)           |  ★ ★  | [Go](20-firewallRules/go)     |
 | [Day 21: Scrambled Letters and Hash](21-scrambledLettersAndHash/README.md) |  ★ ★  | [Go](21-scrambledLettersAndHash/go) |
 | [Day 22: Grid Computing](22-gridComputing/README.md)           |  ★ ★  | [Go](22-gridComputing/go)     |
-| 23                                                             |  ☆ ☆  |                               |
+| [Day 23: Safe Cracking](23-safeCracking/README.md)             |  ★ ★  | [Go](23-safeCracking/go)      |
 | 24                                                             |  ☆ ☆  |                               |
 | 25                                                             |  ☆ ☆  |                               |
 
