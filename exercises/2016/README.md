@@ -25,7 +25,7 @@
 | [Day 17: Two Steps Forward](17-twoStepsForward/README.md)      |  ★ ★  | [Go](17-twoStepsForward/go)   |
 | [Day 18: Like a Rogue](18-likeARogue/README.md)                |  ★ ★  | [Go](18-likeARogue/go)        |
 | [Day 19: An Elephant Named Joseph](19-anElephantNamedJoseph/README.md) |  ★ ★  | [Go](19-anElephantNamedJoseph/go) |
-| 20                                                             |  ☆ ☆  |                               |
+| [Day 20: Firewall Rules](20-firewallRules/README.md)           |  ★ ★  | [Go](20-firewallRules/go)     |
 | 21                                                             |  ☆ ☆  |                               |
 | 22                                                             |  ☆ ☆  |                               |
 | 23                                                             |  ☆ ☆  |                               |
