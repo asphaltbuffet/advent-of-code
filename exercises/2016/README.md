@@ -11,7 +11,7 @@
 | [Day 3: Squares With Three Sides](03-squaresWithThreeSides/README.md) |  ★ ★  | [Go](03-squaresWithThreeSides/go) |
 | [Day 4: Security Through Obscurity](04-securityThroughObscurity/README.md) |  ★ ★  | [Go](04-securityThroughObscurity/go) |
 | [Day 5: How About a Nice Game of Chess?](05-howAboutANiceGameOfChess/README.md) |  ★ ★  | [Go](05-howAboutANiceGameOfChess/go) |
-| 6                                                              |  ☆ ☆  |                               |
+| [Day 6: Signals and Noise](06-signalsAndNoise/README.md)       |  ★ ★  | [Go](06-signalsAndNoise/go)   |
 | 7                                                              |  ☆ ☆  |                               |
 | 8                                                              |  ☆ ☆  |                               |
 | 9                                                              |  ☆ ☆  |                               |

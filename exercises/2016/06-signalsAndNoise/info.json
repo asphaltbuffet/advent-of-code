@@ -1,0 +1,28 @@
+{
+  "id": "2016-06",
+  "title": "Signals and Noise",
+  "year": 2016,
+  "day": 6,
+  "url": "https://adventofcode.com/2016/day/6",
+  "data": {
+    "inputFile": "input.txt",
+    "testCases": {
+      "one": [
+        {
+          "input": "eedadn\ndrvtee\neandsr\nraavrd\natevrs\ntsrnev\nsdttsa\nrasrtv\nnssdts\nntnada\nsvetve\ntesnvt\nvntsnd\nvrdear\ndvrsen\nenarar",
+          "expected": "easter"
+        }
+      ],
+      "two": [
+        {
+          "input": "eedadn\ndrvtee\neandsr\nraavrd\natevrs\ntsrnev\nsdttsa\nrasrtv\nnssdts\nntnada\nsvetve\ntesnvt\nvntsnd\nvrdear\ndvrsen\nenarar",
+          "expected": "advent"
+        }
+      ]
+    },
+    "answers": {
+      "a": "gyvwpxaz",
+      "b": "jucfoary"
+    }
+  }
+}
