@@ -1,0 +1,28 @@
+{
+  "id": "2024-03",
+  "title": "Mull It Over",
+  "year": 2024,
+  "day": 3,
+  "url": "https://adventofcode.com/2024/day/3",
+  "data": {
+    "inputFile": "input.txt",
+    "testCases": {
+      "one": [
+        {
+          "input": "xmul(2,4)%&mul[3,7]!@^do_not_mul(5,5)+mul(32,64]then(mul(11,8)mul(8,5))",
+          "expected": "161"
+        }
+      ],
+      "two": [
+        {
+          "input": "xmul(2,4)&mul[3,7]!^don't()_mul(5,5)+mul(32,64](mul(11,8)undo()?mul(8,5))",
+          "expected": "48"
+        }
+      ]
+    },
+    "answers": {
+      "a": "166630675",
+      "b": "93465710"
+    }
+  }
+}

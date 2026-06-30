@@ -1,0 +1,18 @@
+{
+  "id": "2015-16",
+  "title": "Aunt Sue",
+  "year": 2015,
+  "day": 16,
+  "url": "https://adventofcode.com/2015/day/16",
+  "data": {
+    "inputFile": "input.txt",
+    "testCases": {
+      "one": [],
+      "two": []
+    },
+    "answers": {
+      "a": "103",
+      "b": "405"
+    }
+  }
+}

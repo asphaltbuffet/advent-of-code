@@ -1,0 +1,18 @@
+{
+  "id": "2015-10",
+  "title": "Elves Look, Elves Say",
+  "year": 2015,
+  "day": 10,
+  "url": "https://adventofcode.com/2015/day/10",
+  "data": {
+    "inputFile": "input.txt",
+    "testCases": {
+      "one": [],
+      "two": []
+    },
+    "answers": {
+      "a": "252594",
+      "b": "3579328"
+    }
+  }
+}

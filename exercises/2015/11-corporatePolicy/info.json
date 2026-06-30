@@ -1,0 +1,36 @@
+{
+  "id": "2015-11",
+  "title": "Corporate Policy",
+  "year": 2015,
+  "day": 11,
+  "url": "https://adventofcode.com/2015/day/11",
+  "data": {
+    "inputFile": "input.txt",
+    "testCases": {
+      "one": [
+        {
+          "input": "abcdefgh",
+          "expected": "abcdffaa"
+        },
+        {
+          "input": "ghijklmn",
+          "expected": "ghjaabcc"
+        }
+      ],
+      "two": [
+        {
+          "input": "abcdefgh",
+          "expected": "abcdffbb"
+        },
+        {
+          "input": "ghijklmn",
+          "expected": "ghjbbcdd"
+        }
+      ]
+    },
+    "answers": {
+      "a": "hxbxxyzz",
+      "b": "hxcaabcc"
+    }
+  }
+}

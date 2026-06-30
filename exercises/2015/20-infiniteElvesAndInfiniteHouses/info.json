@@ -1,0 +1,36 @@
+{
+  "id": "2015-20",
+  "title": "Infinite Elves and Infinite Houses",
+  "year": 2015,
+  "day": 20,
+  "url": "https://adventofcode.com/2015/day/20",
+  "data": {
+    "inputFile": "input.txt",
+    "testCases": {
+      "one": [
+        {
+          "input": "150",
+          "expected": "8"
+        },
+        {
+          "input": "1000",
+          "expected": "48"
+        }
+      ],
+      "two": [
+        {
+          "input": "150",
+          "expected": "8"
+        },
+        {
+          "input": "1000",
+          "expected": "36"
+        }
+      ]
+    },
+    "answers": {
+      "a": "786240",
+      "b": "831600"
+    }
+  }
+}

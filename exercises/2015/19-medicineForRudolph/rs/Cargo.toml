@@ -1,0 +1,22 @@
+# Cargo manifest for Advent of Code 2015 day 19.
+#
+# The crate name is pinned to "solution" so elf's runner can find the built
+# binary at a fixed path (target/release/solution) regardless of year/day.
+# Add any dependencies you need (e.g. regex, itertools) under [dependencies];
+# elf's harness in src/main.rs is dependency-free and won't conflict.
+
+[package]
+name = "solution"
+version = "0.1.0"
+edition = "2021"
+
+# elf renders its harness wrapper to src/runtime-wrapper.rs (a fixed name); that
+# file is the crate's entrypoint and pulls in your code via `mod solution;`.
+[[bin]]
+name = "solution"
+path = "src/runtime-wrapper.rs"
+
+[dependencies]
+
+[profile.release]
+opt-level = 3

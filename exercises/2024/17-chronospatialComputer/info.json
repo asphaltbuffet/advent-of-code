@@ -1,0 +1,28 @@
+{
+  "id": "2024-17",
+  "title": "Chronospatial Computer",
+  "year": 2024,
+  "day": 17,
+  "url": "https://adventofcode.com/2024/day/17",
+  "data": {
+    "inputFile": "input.txt",
+    "testCases": {
+      "one": [
+        {
+          "input": "Register A: 729\nRegister B: 0\nRegister C: 0\n\nProgram: 0,1,5,4,3,0",
+          "expected": "4,6,3,5,6,3,5,2,1,0"
+        }
+      ],
+      "two": [
+        {
+          "input": "Register A: 2024\nRegister B: 0\nRegister C: 0\n\nProgram: 0,3,5,4,3,0",
+          "expected": "117440"
+        }
+      ]
+    },
+    "answers": {
+      "a": "3,1,4,3,1,7,1,6,3",
+      "b": "37221270076916"
+    }
+  }
+}

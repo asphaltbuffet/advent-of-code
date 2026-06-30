@@ -7,6 +7,10 @@
     "url": "https://adventofcode.com/2015/day/4",
     "data": {
         "inputFile": "input.txt",
+        "answers": {
+            "a": "117946",
+            "b": "3938038"
+        },
         "testCases": {
             "one": [
                 {
@@ -18,12 +22,7 @@
                     "expected": "1048970"
                 }
             ],
-            "two": [
-                {
-                    "input": "",
-                    "expected": ""
-                }
-            ]
+            "two": []
         }
     }
 }

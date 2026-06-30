@@ -225,3 +225,4 @@ tracks/**/.exercism/
 elf.toml
 
 **/ben.answers.toml
+.direnv/
