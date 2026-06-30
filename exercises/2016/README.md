@@ -16,7 +16,7 @@
 | [Day 8: Two-Factor Authentication](08-two-FactorAuthentication/README.md) |  ★ ★  | [Go](08-two-FactorAuthentication/go) |
 | [Day 9: Explosives in Cyberspace](09-explosivesInCyberspace/README.md) |  ★ ★  | [Go](09-explosivesInCyberspace/go) |
 | [Day 10: Balance Bots](10-balanceBots/README.md)               |  ★ ★  | [Go](10-balanceBots/go)       |
-| 11                                                             |  ☆ ☆  |                               |
+| [Day 11: Radioisotope Thermoelectric Generators](11-radioisotopeThermoelectricGenerators/README.md) |  ★ ★  | [Go](11-radioisotopeThermoelectricGenerators/go) |
 | 12                                                             |  ☆ ☆  |                               |
 | 13                                                             |  ☆ ☆  |                               |
 | 14                                                             |  ☆ ☆  |                               |

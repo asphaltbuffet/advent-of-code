@@ -1,0 +1,23 @@
+{
+  "id": "2016-11",
+  "title": "Radioisotope Thermoelectric Generators",
+  "year": 2016,
+  "day": 11,
+  "url": "https://adventofcode.com/2016/day/11",
+  "data": {
+    "inputFile": "input.txt",
+    "testCases": {
+      "one": [
+        {
+          "input": "The first floor contains a hydrogen-compatible microchip and a lithium-compatible microchip.\nThe second floor contains a hydrogen generator.\nThe third floor contains a lithium generator.\nThe fourth floor contains nothing relevant.",
+          "expected": "11"
+        }
+      ],
+      "two": []
+    },
+    "answers": {
+      "a": "37",
+      "b": "61"
+    }
+  }
+}
