@@ -1,20 +1,26 @@
 # [Day 19: Not Enough Minerals](https://adventofcode.com/2022/day/19)
 
-<!-- [Day 19: Not Enough Minerals](19-notEnoughMinerals) -->
+## Notes
 
-aka, I think I found the slowest way to do this...
+For each blueprint, find the most geodes obtainable in the time limit. The search
+is a branch-and-bound DFS that branches on *which robot to build next*,
+fast-forwarding to the minute that robot becomes affordable rather than stepping
+one minute at a time. Two prunes keep it fast: never build more of a robot than
+the most expensive recipe can consume per minute, and abandon a branch whose
+optimistic upper bound (a geode robot every remaining minute) can't beat the best
+result found so far. This replaced a per-minute search with a useless state-hash
+memo (Part Two ≈47s → sub-100ms).
 
 ## Go
 
 ```text
-2022-19 Not Enough Minerals (Golang)
+────────────────────────────────────────
+─   2022 Day 19: Not Enough Minerals   ─
+────────────────────────────────────────
 
-Running...
-
-Test 1.0: pass in 1.2 s
-Test 2.0: pass in 241.3 s
-Part 1: 960 in 6.2 s
-Part 2: 2040 in 42.6 s
+Solving (Go)…
+1.0:  PASS            40.633ms
+2.0:  PASS            88.526ms
 ```
 
 ### Benchmark Notes
@@ -41,12 +47,6 @@ Parse-8   7.000 ± 0%   101.000 ± 0%  +1342.86% (p=0.000 n=15)
 
 It's slower, uses more memory, and allocates that memory more often. Regex is **not** the better solution here.
 
-## Python
+## Run Times
 
-```text
-    < section intentionally left blank >
-```
-
-## 2022 Run Times
-
-![2022 exercise run-time graphs](../run-times.png)
+![Day 19 run-time graphs](run-times.png)

@@ -28,7 +28,8 @@ func (c Exercise) One(instr string) (any, error) {
 
 	for _, bp := range blueprints {
 		st := newState(*bp)
-		geodesMade := st.calcMostGeodes(0, map[string]int{}, 24, 24)
+		best := 0
+		geodesMade := st.calcMostGeodes(0, 24, &best)
 		sum += st.blueprint.id * geodesMade
 	}
 
@@ -63,7 +64,8 @@ func (c Exercise) Two(instr string) (any, error) {
 			defer wg.Done()
 
 			ns := newState(*bp)
-			geodesMade := ns.calcMostGeodes(0, map[string]int{}, 32, 32)
+			best := 0
+			geodesMade := ns.calcMostGeodes(0, 32, &best)
 			// fmt.Printf("id=%d, made=%d", bp.id, geodesMade)
 			resultChan <- geodesMade
 		}(bp)
@@ -108,19 +110,6 @@ func newState(blueprint blueprint) state {
 	}
 }
 
-func (s *state) hash(time int) string {
-	return fmt.Sprintf("%d%d%d%d%d%d%d%d%d",
-		time,
-		s.ore,
-		s.clay,
-		s.obsidian,
-		s.geode,
-		s.oreRobots,
-		s.clayRobots,
-		s.obsidianRobots,
-		s.geodeRobots)
-}
-
 func (s *state) copy() state {
 	return state{
 		blueprint:      s.blueprint,
@@ -135,93 +124,94 @@ func (s *state) copy() state {
 	}
 }
 
-func (s *state) calcMostGeodes(time int, seenStates map[string]int, totalTime int, earliestGeode int) int {
-	if time == totalTime {
-		return s.geode
+// calcMostGeodes runs a branch-and-bound DFS over "which robot to build next".
+// Rather than branching every minute, each branch fast-forwards to the minute a
+// chosen robot becomes affordable and builds it — far fewer nodes. best is the
+// running maximum shared across the search so an optimistic bound can prune.
+func (s *state) calcMostGeodes(time, totalTime int, best *int) int {
+	remaining := totalTime - time
+
+	// If we build nothing more, current geode robots run out the clock.
+	finalGeodes := s.geode + s.geodeRobots*remaining
+	if finalGeodes > *best {
+		*best = finalGeodes
 	}
 
-	h := s.hash(time)
-	if v, ok := seenStates[h]; ok {
-		return v
+	// Optimistic bound: if we could build a geode robot every remaining minute,
+	// how many geodes could we finish with? If that can't beat best, abandon.
+	upper := s.geode + s.geodeRobots*remaining + remaining*(remaining-1)/2
+	if upper <= *best {
+		return *best
 	}
 
-	if s.geode == 0 && time > earliestGeode {
-		return 0
-	}
+	// Building more of a robot than the max per-minute demand for its output
+	// never helps, so cap each type at the highest consumer's cost.
+	maxOre := maxInt(maxInt(s.oreForOreRobot, s.oreForClayRobot), maxInt(s.oreForObsidianRobot, s.oreForGeodeRobot))
 
-	mostGeodes := s.geode
+	mostGeodes := finalGeodes
 
-	if s.ore >= s.oreForGeodeRobot && s.obsidian >= s.obsidianForGeodeRobot {
-		// make geode robots
-		cp := s.copy()
-
-		cp.farm()
-		cp.makeGeodeRobot()
-
-		if cp.geodeRobots == 1 {
-			if time+1 < earliestGeode {
-				earliestGeode = time + 1
+	try := func(build func(*state), need func(*state) bool, cost func(*state) (int, int, int)) {
+		if !need(s) {
+			return
+		}
+		// Minutes to wait until this robot is affordable given current robots.
+		oreC, clayC, obsC := cost(s)
+		wait := 0
+		wait = maxInt(wait, ceilDiv(oreC-s.ore, s.oreRobots))
+		if clayC > 0 {
+			if s.clayRobots == 0 {
+				return
 			}
+			wait = maxInt(wait, ceilDiv(clayC-s.clay, s.clayRobots))
 		}
-
-		curMostGeodes := cp.calcMostGeodes(time+1, seenStates, totalTime, earliestGeode)
-		if curMostGeodes > mostGeodes {
-			mostGeodes = curMostGeodes
+		if obsC > 0 {
+			if s.obsidianRobots == 0 {
+				return
+			}
+			wait = maxInt(wait, ceilDiv(obsC-s.obsidian, s.obsidianRobots))
 		}
-
-		seenStates[h] = mostGeodes
-
-		return mostGeodes
-	}
-
-	if time <= totalTime-16 && s.oreRobots < s.oreForObsidianRobot*2 && s.ore >= s.oreForOreRobot {
-		// make ore robot
+		build2 := wait + 1 // minutes until robot is producing
+		if build2 >= remaining {
+			return // no time left to benefit from this robot
+		}
 		cp := s.copy()
-		cp.farm()
-		cp.makeOreRobot()
-
-		curMostGeodes := cp.calcMostGeodes(time+1, seenStates, totalTime, earliestGeode)
-		if curMostGeodes > mostGeodes {
-			mostGeodes = curMostGeodes
+		for i := 0; i < build2; i++ {
+			cp.farm()
 		}
+		build(&cp)
+		mostGeodes = maxInt(mostGeodes, cp.calcMostGeodes(time+build2, totalTime, best))
 	}
 
-	if time <= totalTime-8 && s.clayRobots < s.clayForObsidianRobot && s.ore >= s.oreForClayRobot {
-		// make clay robot
-		cp := s.copy()
-		cp.farm()
-		cp.makeClayRobot()
-
-		curMostGeodes := cp.calcMostGeodes(time+1, seenStates, totalTime, earliestGeode)
-		if curMostGeodes > mostGeodes {
-			mostGeodes = curMostGeodes
-		}
-	}
-
-	if time <= totalTime-4 && s.obsidianRobots < s.obsidianForGeodeRobot && s.ore >= s.oreForObsidianRobot && s.clay >= s.clayForObsidianRobot {
-		// make obsidian robot
-		cp := s.copy()
-		cp.farm()
-		cp.makeObsidianRobot()
-
-		curMostGeodes := cp.calcMostGeodes(time+1, seenStates, totalTime, earliestGeode)
-		if curMostGeodes > mostGeodes {
-			mostGeodes = curMostGeodes
-		}
-	}
-
-	// or no factory production this minute
-	cp := s.copy()
-	cp.farm()
-
-	curMostGeodes := cp.calcMostGeodes(time+1, seenStates, totalTime, earliestGeode)
-	if curMostGeodes > mostGeodes {
-		mostGeodes = curMostGeodes
-	}
-
-	seenStates[h] = mostGeodes
+	// Geode first so best tightens quickly for the bound above.
+	try((*state).makeGeodeRobot,
+		func(*state) bool { return true },
+		func(s *state) (int, int, int) { return s.oreForGeodeRobot, 0, s.obsidianForGeodeRobot })
+	try((*state).makeObsidianRobot,
+		func(s *state) bool { return s.obsidianRobots < s.obsidianForGeodeRobot },
+		func(s *state) (int, int, int) { return s.oreForObsidianRobot, s.clayForObsidianRobot, 0 })
+	try((*state).makeClayRobot,
+		func(s *state) bool { return s.clayRobots < s.clayForObsidianRobot },
+		func(s *state) (int, int, int) { return s.oreForClayRobot, 0, 0 })
+	try((*state).makeOreRobot,
+		func(s *state) bool { return s.oreRobots < maxOre },
+		func(s *state) (int, int, int) { return s.oreForOreRobot, 0, 0 })
 
 	return mostGeodes
+}
+
+// ceilDiv returns ceil(a/b) for b > 0, clamped to 0 for non-positive a.
+func ceilDiv(a, b int) int {
+	if a <= 0 {
+		return 0
+	}
+	return (a + b - 1) / b
+}
+
+func maxInt(a, b int) int {
+	if a > b {
+		return a
+	}
+	return b
 }
 
 func parse(input string) ([]*blueprint, error) {
