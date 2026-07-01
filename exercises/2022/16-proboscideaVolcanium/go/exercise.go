@@ -37,6 +37,7 @@ func parse(input string) (map[string]valve, error) {
 	}
 
 	valves = map[string]valve{}
+	nonZero = nil
 
 	for _, line := range strings.Split(input, "\n") {
 		var name string
@@ -144,38 +145,47 @@ func (e Exercise) Two(instr string) (any, error) {
 
 	sequences := getSequences("AA", 26, Sequence{0, make(map[string]bool)})
 
-	max := 0
+	// Assign each openable valve a bit position so a visited-set becomes an
+	// integer mask; overlap tests are then a single bitwise AND.
+	bit := make(map[string]uint, len(nonZero))
+	for i, v := range nonZero {
+		bit[v] = uint(i)
+	}
 
-	for i := 0; i < len(sequences)-1; i++ {
-		me := sequences[i]
-		if len(me.visited) == 0 {
-			continue
+	// Collapse the many partial paths down to the best flow achievable for each
+	// distinct set of opened valves. Two disjoint sets (me + elephant) never
+	// share a valve, so we only ever need the strongest path per set.
+	best := make(map[uint64]int, len(sequences))
+	for _, s := range sequences {
+		var mask uint64
+		for v := range s.visited {
+			mask |= 1 << bit[v]
 		}
+		if s.flow > best[mask] {
+			best[mask] = s.flow
+		}
+	}
 
-		for j := i + 1; j < len(sequences); j++ {
-			elephant := sequences[j]
-			if len(elephant.visited) == 0 {
+	// Pair every distinct set with every other; keep the best disjoint pair.
+	masks := make([]uint64, 0, len(best))
+	for m := range best {
+		masks = append(masks, m)
+	}
+
+	maxFlow := 0
+	for i := 0; i < len(masks); i++ {
+		mi, fi := masks[i], best[masks[i]]
+		for j := i; j < len(masks); j++ {
+			if mi&masks[j] != 0 {
 				continue
 			}
-
-			combinedFlow := me.flow + elephant.flow
-
-			if combinedFlow > max && hasNoOverlap(me.visited, elephant.visited) {
-				max = combinedFlow
+			if f := fi + best[masks[j]]; f > maxFlow {
+				maxFlow = f
 			}
 		}
 	}
 
-	return max, nil
-}
-
-func hasNoOverlap(m1, m2 map[string]bool) bool {
-	for key := range m1 {
-		if m2[key] {
-			return false
-		}
-	}
-	return true
+	return maxFlow, nil
 }
 
 func (s Sequence) copy() Sequence {
