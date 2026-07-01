@@ -1,36 +1,33 @@
 # [Day 22: Monkey Map](https://adventofcode.com/2022/day/22)
 
-<!-- These are helper text to make formatting the yearly readme consistent and easier...
+## Notes
 
-[Day 22: Monkey Map][rm22]
-[Go][g22]
-[Python][p22]
-
-[rm22]: 22-monkeyMap/README.md
-[g22]: 22-monkeyMap/go
-[p22]: 22-monkeyMap/py
-
--->
+Follow a path of moves and turns across a board with a hole-y, cross-shaped
+layout. Part One wraps at edges within the flat map; Part Two folds the board
+into a cube, so walking off one face's edge arrives on the correct edge of the
+adjacent face (with the appropriate rotation).
 
 ## Go
 
 ```text
-2022-22 Monkey Map (Golang)
+────────────────────────────────────────
+─       2022 Day 22: Monkey Map        ─
+────────────────────────────────────────
 
-Running...
-
-Test 1.0: pass in 36.9 µs
-Test 2.0: pass in 20 ms
-Part 1: 103224 in 4.3 ms
-Part 2: 189097 in 924 ms
+Solving (Go)…
+1.0:  PASS             3.709ms
+2.0:  PASS           722.840ms
 ```
 
-## Python
+## Visualization
 
-```text
-    < section intentionally left blank >
-```
+The board — the unfolded cube net — with each of the six blockSize×blockSize
+faces given its own hue, so the distinctive staircase fold pattern is obvious.
+Open tiles are bright, walls are darkened within their face's color, and the
+starting tile is marked white. This is the geometry part two treats as a cube.
 
-## 2022 Run Times
+![Monkey Map cube net](monkey-map.png)
 
-![2022 exercise run-time graphs](../run-times.png)
+## Run Times
+
+![Day 22 run-time graphs](run-times.png)
