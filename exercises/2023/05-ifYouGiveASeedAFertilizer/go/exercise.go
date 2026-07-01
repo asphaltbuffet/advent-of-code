@@ -29,33 +29,28 @@ func (e Exercise) One(instr string) (any, error) {
 	return min, nil
 }
 
-// Two returns the answer to the second part of the exercise.
+// Two returns the answer to the second part of the exercise. Seeds are handled
+// as intervals mapped through each layer rather than enumerated individually,
+// so billion-wide ranges resolve in microseconds.
 func (e Exercise) Two(instr string) (any, error) {
 	sections := strings.Split(instr, "\n\n")
 
 	seedRng := parseSeedRange(sections[0])
-	// fmt.Println("seed ranges: ", len(seedRng))
-
 	maps := parseAllMaps(sections[1:])
 
-	min := math.MaxInt64
-
+	seeds := make([]interval, 0, len(seedRng))
 	for _, sr := range seedRng {
-		seeds := make([]int, 0, sr.Range)
-		for i := sr.Start; i < sr.Start+sr.Range; i++ {
-			seeds = append(seeds, i)
-		}
+		seeds = append(seeds, interval{sr.Start, sr.Start + sr.Range})
+	}
 
-		locations := getLocations(maps, seeds)
+	locations := mapRangesToLocation(maps, seeds)
 
-		subMin := slices.Min(locations)
-
-		// fmt.Printf("range %d => min: %d, subMin: %d\n", i, min, subMin)
-
-		if subMin < min {
-			min = subMin
+	best := math.MaxInt64
+	for _, iv := range locations {
+		if iv.start < best {
+			best = iv.start
 		}
 	}
 
-	return min, nil
+	return best, nil
 }
