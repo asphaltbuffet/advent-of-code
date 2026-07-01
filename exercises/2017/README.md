@@ -7,7 +7,7 @@
 | Exercise                                              | Stars | Solutions                   |
 |-------------------------------------------------------|:-----:|-----------------------------|
 | [Day 1: Inverse Captcha](01-inverseCaptcha/README.md) |  ★ ★  | [Go](01-inverseCaptcha/go) |
-| 2                                                     |  ☆ ☆  |                             |
+| [Day 2: Corruption Checksum](02-corruptionChecksum/README.md) |  ★ ★  | [Go](02-corruptionChecksum/go) |
 | 3                                                     |  ☆ ☆  |                             |
 | 4                                                     |  ☆ ☆  |                             |
 | 5                                                     |  ☆ ☆  |                             |
