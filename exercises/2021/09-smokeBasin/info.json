@@ -1,0 +1,28 @@
+{
+  "id": "2021-09",
+  "title": "Smoke Basin",
+  "year": 2021,
+  "day": 9,
+  "url": "https://adventofcode.com/2021/day/9",
+  "data": {
+    "inputFile": "input.txt",
+    "testCases": {
+      "one": [
+        {
+          "input": "2199943210\n3987894921\n9856789892\n8767896789\n9899965678",
+          "expected": "15"
+        }
+      ],
+      "two": [
+        {
+          "input": "2199943210\n3987894921\n9856789892\n8767896789\n9899965678",
+          "expected": "1134"
+        }
+      ]
+    },
+    "answers": {
+      "a": "570",
+      "b": "899392"
+    }
+  }
+}
