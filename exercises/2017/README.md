@@ -18,7 +18,7 @@
 | [Day 10: Knot Hash](10-knotHash/README.md) |  ★ ★  | [Go](10-knotHash/go) |
 | [Day 11: Hex Ed](11-hexEd/README.md) |  ★ ★  | [Go](11-hexEd/go) |
 | [Day 12: Digital Plumber](12-digitalPlumber/README.md) |  ★ ★  | [Go](12-digitalPlumber/go) |
-| 13                                                    |  ☆ ☆  |                             |
+| [Day 13: Packet Scanners](13-packetScanners/README.md) |  ★ ★  | [Go](13-packetScanners/go) |
 | 14                                                    |  ☆ ☆  |                             |
 | 15                                                    |  ☆ ☆  |                             |
 | 16                                                    |  ☆ ☆  |                             |
