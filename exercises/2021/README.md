@@ -12,7 +12,7 @@
 | [Day 4: Giant Squid](04-giantSquid/README.md) |  ★ ★  | [Go](04-giantSquid/go)                             |
 | [Day 5: Hydrothermal Venture](05-hydrothermalVenture/README.md) |  ★ ★  | [Go](05-hydrothermalVenture/go)                    |
 | [Day 6: Lanternfish](06-lanternfish/README.md) |  ★ ★  | [Go](06-lanternfish/go)                            |
-| 7                                             |  ☆ ☆  |                                                    |
+| [Day 7: The Treachery of Whales](07-theTreacheryOfWhales/README.md) |  ★ ★  | [Go](07-theTreacheryOfWhales/go)                   |
 | 8                                             |  ☆ ☆  |                                                    |
 | 9                                             |  ☆ ☆  |                                                    |
 | 10                                            |  ☆ ☆  |                                                    |
