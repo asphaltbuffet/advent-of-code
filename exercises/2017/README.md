@@ -12,7 +12,7 @@
 | [Day 4: High-Entropy Passphrases](04-high-EntropyPassphrases/README.md) |  ★ ★  | [Go](04-high-EntropyPassphrases/go) |
 | [Day 5: A Maze of Twisty Trampolines, All Alike](05-aMazeOfTwistyTrampolinesAllAlike/README.md) |  ★ ★  | [Go](05-aMazeOfTwistyTrampolinesAllAlike/go) |
 | [Day 6: Memory Reallocation](06-memoryReallocation/README.md) |  ★ ★  | [Go](06-memoryReallocation/go) |
-| 7                                                     |  ☆ ☆  |                             |
+| [Day 7: Recursive Circus](07-recursiveCircus/README.md) |  ★ ★  | [Go](07-recursiveCircus/go) |
 | 8                                                     |  ☆ ☆  |                             |
 | 9                                                     |  ☆ ☆  |                             |
 | 10                                                    |  ☆ ☆  |                             |
