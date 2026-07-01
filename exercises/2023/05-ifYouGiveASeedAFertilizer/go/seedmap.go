@@ -170,3 +170,61 @@ func translate(m *SeedMap, seed int) int {
 
 	return seed
 }
+
+// interval is a half-open range [start, end) of category values.
+type interval struct{ start, end int }
+
+// translateRanges pushes a set of intervals through one map, splitting each
+// interval at the map's offset boundaries so every piece is shifted as a whole.
+// This is what turns Part Two from a per-seed brute force into a handful of
+// interval operations.
+func translateRanges(m *SeedMap, in []interval) []interval {
+	if m == nil {
+		return in
+	}
+
+	var out []interval
+	// Work list of intervals still to be matched against offsets.
+	work := append([]interval(nil), in...)
+
+	for len(work) > 0 {
+		iv := work[len(work)-1]
+		work = work[:len(work)-1]
+
+		mapped := false
+		for _, off := range m.Offsets {
+			os, oe := off.Source, off.Source+off.Range
+			// Overlap of iv with this offset's source range.
+			lo, hi := max(iv.start, os), min(iv.end, oe)
+			if lo >= hi {
+				continue
+			}
+			shift := off.Dest - off.Source
+			out = append(out, interval{lo + shift, hi + shift})
+			// Re-queue the unmatched left/right remainders.
+			if iv.start < lo {
+				work = append(work, interval{iv.start, lo})
+			}
+			if hi < iv.end {
+				work = append(work, interval{hi, iv.end})
+			}
+			mapped = true
+			break
+		}
+		if !mapped {
+			out = append(out, iv) // identity — no offset covered it
+		}
+	}
+	return out
+}
+
+// mapRangesToLocation runs the intervals through the full pipeline in order.
+func mapRangesToLocation(maps map[Category]*SeedMap, in []interval) []interval {
+	for _, cat := range []Category{
+		SeedCategory, SoilCategory, FertCategory, WaterCategory,
+		LightCategory, TempCategory, HumidCategory,
+	} {
+		in = translateRanges(maps[cat], in)
+	}
+	return in
+}

@@ -2,35 +2,26 @@
 
 <!-- These are helper text to make formatting the yearly readme consistent and easier...
 
-[Day 5: If You Give A Seed A Fertilizer][rm5]
-[Go][go5]
-[Python][py5]
+[Day 5: If You Give A Seed A Fertilizer][rm05]
+[Go][go05]
 
-[rm5]: exercises/2023/05-ifYouGiveASeedAFertilizer/README.md
-[go5]: exercises/2023/05-ifYouGiveASeedAFertilizer/go
-[py5]: exercises/2023/05-ifYouGiveASeedAFertilizer/py
+[rm05]: 05-ifYouGiveASeedAFertilizer/README.md
+[go05]: 05-ifYouGiveASeedAFertilizer/go
 
 -->
 
 ## Go
 
 ```text
- ──────────────────────────────────────
- ADVENT OF CODE 2023
- Day 5: If You Give A Seed A Fertilizer
- ──────────────────────────────────────
-  Test 1.1: PASS in 89.2 µs
-  Test 2.1: PASS in 97 µs
-    Part 1: 251346198 405.6 µs
-    Part 2: 72263011 470.9 s
+────────────────────────────────────────
+─   2023 Day 5: If You Give A Seed A   ─
+─              Fertilizer              ─
+────────────────────────────────────────
+Solving (Go)…
+1.0:  PASS             2.034ms
+2.0:  PASS             1.230ms
 ```
 
-## Python
+## Run Times
 
-```text
-< section intentionally left blank >
-```
-
-## 2023 Run Times
-
-![2023 exercise run-time graphs](../run-times.png)
+![Day 5 run-time graphs](run-times.png)
