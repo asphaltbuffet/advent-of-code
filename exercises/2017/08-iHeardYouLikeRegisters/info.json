@@ -1,0 +1,28 @@
+{
+  "id": "2017-08",
+  "title": "I Heard You Like Registers",
+  "year": 2017,
+  "day": 8,
+  "url": "https://adventofcode.com/2017/day/8",
+  "data": {
+    "inputFile": "input.txt",
+    "testCases": {
+      "one": [
+        {
+          "input": "b inc 5 if a > 1\na inc 1 if b < 5\nc dec -10 if a >= 1\nc inc -20 if c == 10",
+          "expected": "1"
+        }
+      ],
+      "two": [
+        {
+          "input": "b inc 5 if a > 1\na inc 1 if b < 5\nc dec -10 if a >= 1\nc inc -20 if c == 10",
+          "expected": "10"
+        }
+      ]
+    },
+    "answers": {
+      "a": "5102",
+      "b": "6056"
+    }
+  }
+}
