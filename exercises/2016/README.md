@@ -29,7 +29,7 @@
 | [Day 21: Scrambled Letters and Hash](21-scrambledLettersAndHash/README.md) |  ★ ★  | [Go](21-scrambledLettersAndHash/go) |
 | [Day 22: Grid Computing](22-gridComputing/README.md)           |  ★ ★  | [Go](22-gridComputing/go)     |
 | [Day 23: Safe Cracking](23-safeCracking/README.md)             |  ★ ★  | [Go](23-safeCracking/go)      |
-| 24                                                             |  ☆ ☆  |                               |
+| [Day 24: Air Duct Spelunking](24-airDuctSpelunking/README.md)  |  ★ ★  | [Go](24-airDuctSpelunking/go) |
 | 25                                                             |  ☆ ☆  |                               |
 
 ## 2016 Run Times
