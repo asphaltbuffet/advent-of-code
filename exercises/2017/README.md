@@ -20,7 +20,7 @@
 | [Day 12: Digital Plumber](12-digitalPlumber/README.md) |  ★ ★  | [Go](12-digitalPlumber/go) |
 | [Day 13: Packet Scanners](13-packetScanners/README.md) |  ★ ★  | [Go](13-packetScanners/go) |
 | [Day 14: Disk Defragmentation](14-diskDefragmentation/README.md) |  ★ ★  | [Go](14-diskDefragmentation/go) |
-| 15                                                    |  ☆ ☆  |                             |
+| [Day 15: Dueling Generators](15-duelingGenerators/README.md) |  ★ ★  | [Go](15-duelingGenerators/go) |
 | 16                                                    |  ☆ ☆  |                             |
 | 17                                                    |  ☆ ☆  |                             |
 | 18                                                    |  ☆ ☆  |                             |
