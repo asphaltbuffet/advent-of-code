@@ -30,7 +30,7 @@
 | [Day 22: Grid Computing](22-gridComputing/README.md)           |  ★ ★  | [Go](22-gridComputing/go)     |
 | [Day 23: Safe Cracking](23-safeCracking/README.md)             |  ★ ★  | [Go](23-safeCracking/go)      |
 | [Day 24: Air Duct Spelunking](24-airDuctSpelunking/README.md)  |  ★ ★  | [Go](24-airDuctSpelunking/go) |
-| 25                                                             |  ☆ ☆  |                               |
+| [Day 25: Clock Signal](25-clockSignal/README.md)               |  ★ ★  | [Go](25-clockSignal/go)       |
 
 ## 2016 Run Times
 
