@@ -13,7 +13,7 @@
 | [Day 5: Hydrothermal Venture](05-hydrothermalVenture/README.md) |  ★ ★  | [Go](05-hydrothermalVenture/go)                    |
 | [Day 6: Lanternfish](06-lanternfish/README.md) |  ★ ★  | [Go](06-lanternfish/go)                            |
 | [Day 7: The Treachery of Whales](07-theTreacheryOfWhales/README.md) |  ★ ★  | [Go](07-theTreacheryOfWhales/go)                   |
-| 8                                             |  ☆ ☆  |                                                    |
+| [Day 8: Seven Segment Search](08-sevenSegmentSearch/README.md) |  ★ ★  | [Go](08-sevenSegmentSearch/go)                     |
 | 9                                             |  ☆ ☆  |                                                    |
 | 10                                            |  ☆ ☆  |                                                    |
 | 11                                            |  ☆ ☆  |                                                    |
