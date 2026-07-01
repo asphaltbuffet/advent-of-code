@@ -9,7 +9,7 @@
 | [Day 1: Sonar Sweep](01-sonarSweep/README.md) |  ★ ★  | [Go](01-sonarSweep/go), [Python](01-sonarSweep/py) |
 | [Day 2: Dive!](02-dive/README.md)             |  ★ ★  | [Go](02-dive/go)                                   |
 | [Day 3: Binary Diagnostic](03-binaryDiagnostic/README.md) |  ★ ★  | [Go](03-binaryDiagnostic/go)                       |
-| 4                                             |  ☆ ☆  |                                                    |
+| [Day 4: Giant Squid](04-giantSquid/README.md) |  ★ ★  | [Go](04-giantSquid/go)                             |
 | 5                                             |  ☆ ☆  |                                                    |
 | 6                                             |  ☆ ☆  |                                                    |
 | 7                                             |  ☆ ☆  |                                                    |
