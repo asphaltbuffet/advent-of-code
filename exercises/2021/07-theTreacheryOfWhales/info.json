@@ -1,0 +1,28 @@
+{
+  "id": "2021-07",
+  "title": "The Treachery of Whales",
+  "year": 2021,
+  "day": 7,
+  "url": "https://adventofcode.com/2021/day/7",
+  "data": {
+    "inputFile": "input.txt",
+    "testCases": {
+      "one": [
+        {
+          "input": "16,1,2,0,4,2,7,1,2,14",
+          "expected": "37"
+        }
+      ],
+      "two": [
+        {
+          "input": "16,1,2,0,4,2,7,1,2,14",
+          "expected": "168"
+        }
+      ]
+    },
+    "answers": {
+      "a": "333755",
+      "b": "94017638"
+    }
+  }
+}
