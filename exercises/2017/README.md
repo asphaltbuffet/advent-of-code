@@ -9,7 +9,7 @@
 | [Day 1: Inverse Captcha](01-inverseCaptcha/README.md) |  ★ ★  | [Go](01-inverseCaptcha/go) |
 | [Day 2: Corruption Checksum](02-corruptionChecksum/README.md) |  ★ ★  | [Go](02-corruptionChecksum/go) |
 | [Day 3: Spiral Memory](03-spiralMemory/README.md) |  ★ ★  | [Go](03-spiralMemory/go) |
-| 4                                                     |  ☆ ☆  |                             |
+| [Day 4: High-Entropy Passphrases](04-high-EntropyPassphrases/README.md) |  ★ ★  | [Go](04-high-EntropyPassphrases/go) |
 | 5                                                     |  ☆ ☆  |                             |
 | 6                                                     |  ☆ ☆  |                             |
 | 7                                                     |  ☆ ☆  |                             |
