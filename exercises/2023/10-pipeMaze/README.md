@@ -4,46 +4,31 @@
 
 [Day 10: Pipe Maze][rm10]
 [Go][go10]
-[Python][py10]
 
 [rm10]: 10-pipeMaze/README.md
 [go10]: 10-pipeMaze/go
-[py10]: 10-pipeMaze/py
 
 -->
 
 ## Go
 
 ```text
- ───────────────────
- ADVENT OF CODE 2023
- Day 10: Pipe Maze
- ───────────────────
-  Test 1.1: PASS in 18 µs
-  Test 1.2: PASS in 11.8 µs
-  Test 2.1: PASS in 54.1 µs
-  Test 2.2: PASS in 60.5 µs
-  Test 2.3: PASS in 91.4 µs
-    Part 1: 6942 7.9 ms
-    Part 2: 297 156.4 ms
+────────────────────────────────────────
+─        2023 Day 10: Pipe Maze        ─
+────────────────────────────────────────
+Solving (Go)…
+1.0:  PASS            12.954ms
+2.0:  PASS           228.745ms
 ```
 
-## Python
+## Visualization
 
-```text
-< section intentionally left blank >
-```
+The main loop traced through the maze (teal), starting from `S` (red), with the
+tiles it encloses — the Part Two answer, found by a winding-number test — filled
+in orange. Everything outside the loop is left dark.
 
-## Visualizations
+![Pipe Maze loop and enclosed area](pipe-maze.png)
 
-### Part 1
+## Run Times
 
-![part1](part1.png)
-
-### Part 2
-
-![part2](part2.png)
-
-## 2023 Run Times
-
-![2023 exercise run-time graphs](../run-times.png)
+![Day 10 run-time graphs](run-times.png)
