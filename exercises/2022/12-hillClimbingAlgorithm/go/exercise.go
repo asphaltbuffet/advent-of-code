@@ -1,14 +1,10 @@
 package exercises
 
 import (
-	"errors"
 	"fmt"
 	"strings"
 
 	"github.com/asphaltbuffet/advent-of-code/internal/common"
-
-	"github.com/dominikbraun/graph"
-	"github.com/fatih/color"
 )
 
 // Exercise for Advent of Code 2022 day 12
@@ -21,58 +17,99 @@ type Exercise struct {
 // answer: 330
 func (c Exercise) One(instr string) (any, error) {
 	data := strings.Split(instr, "\n")
-	g, startPoint, endPoint, err := PopulateFromInput(data)
-	if err != nil {
-		return nil, fmt.Errorf("populating from input: %w", err)
+
+	_, startDist, _ := bfsFromEnd(data)
+	if startDist < 0 {
+		return nil, fmt.Errorf("no path from start to end")
 	}
 
-	// calculate the shortest path
-	path, _ := graph.ShortestPath(g, startPoint, endPoint)
-
-	// PrintPath(path, data)
-	//
-	// file, _ := os.Create("./mapGraph1.gv")
-	// err = draw.DOT(g, file)
-	// if err != nil {
-	// 	return fmt.Sprintf("error: %v\n", err)
-	// }
-
-	return len(path) - 1, nil // number of steps is one less than the number of locations in the path.
+	return startDist, nil
 }
 
 // Two returns the answer to the second part of the exercise.
 // answer: 321
 func (c Exercise) Two(instr string) (any, error) {
 	data := strings.Split(instr, "\n")
-	g, _, endPoint, err := PopulateFromInput(data)
-	if err != nil {
-		return nil, fmt.Errorf("populating from input: %w", err)
+
+	_, _, minFromLow := bfsFromEnd(data)
+	if minFromLow < 0 {
+		return nil, fmt.Errorf("no path from any low point to end")
 	}
 
-	minY := len(data) - 1
-	minPath := len(data) * len(data[0])
+	return minFromLow, nil
+}
 
-	for j := 0; j < len(data); j++ {
-		for i := 0; i < len(data[0]); i++ {
-			v, err := g.Vertex(Point{X: i, Y: minY - j})
-			if err != nil {
-				return nil, fmt.Errorf("getting vertex at %v: %w", Point{X: i, Y: minY - j}, err)
+// bfsFromEnd does a single breadth-first search outward from the end tile. The
+// climb rule (a step may rise at most one level) is inverted: traveling
+// backwards from the end, a move to a neighbor is legal when that neighbor is
+// at most one level *below* the current tile. One pass yields the step count to
+// the end for every reachable tile, so both parts read straight off it:
+//   - startDist: distance from the 'S' tile (part one)
+//   - minFromLow: minimum distance over all elevation-'a' tiles (part two)
+// Any value is -1 when no path exists.
+func bfsFromEnd(data []string) (dist [][]int, startDist, minFromLow int) {
+	rows := len(data)
+	cols := len(data[0])
+
+	heights := make([][]int, rows)
+	dist = make([][]int, rows)
+	var endPos [2]int
+	var startPos [2]int
+
+	for r := 0; r < rows; r++ {
+		heights[r] = make([]int, cols)
+		dist[r] = make([]int, cols)
+		for cc := 0; cc < cols; cc++ {
+			ch := rune(data[r][cc])
+			heights[r][cc] = GetHeight(ch)
+			dist[r][cc] = -1
+			switch ch {
+			case end:
+				endPos = [2]int{r, cc}
+			case start:
+				startPos = [2]int{r, cc}
 			}
+		}
+	}
 
-			if v.Height == 0 {
-				path, err := graph.ShortestPath(g, v.Coord, endPoint)
-				if err != nil {
-					continue // no path from here
-				}
+	dist[endPos[0]][endPos[1]] = 0
+	queue := [][2]int{endPos}
+	dirs := [4][2]int{{-1, 0}, {1, 0}, {0, -1}, {0, 1}}
 
-				if len(path)-1 < minPath {
-					minPath = len(path) - 1
+	for len(queue) > 0 {
+		cur := queue[0]
+		queue = queue[1:]
+		r, cc := cur[0], cur[1]
+
+		for _, d := range dirs {
+			nr, nc := r+d[0], cc+d[1]
+			if nr < 0 || nr >= rows || nc < 0 || nc >= cols || dist[nr][nc] != -1 {
+				continue
+			}
+			// Reverse climb rule: stepping from neighbor -> current is legal
+			// forward when heights[cur] - heights[neighbor] <= 1.
+			if heights[r][cc]-heights[nr][nc] > 1 {
+				continue
+			}
+			dist[nr][nc] = dist[r][cc] + 1
+			queue = append(queue, [2]int{nr, nc})
+		}
+	}
+
+	startDist = dist[startPos[0]][startPos[1]]
+
+	minFromLow = -1
+	for r := 0; r < rows; r++ {
+		for cc := 0; cc < cols; cc++ {
+			if heights[r][cc] == 0 && dist[r][cc] >= 0 {
+				if minFromLow < 0 || dist[r][cc] < minFromLow {
+					minFromLow = dist[r][cc]
 				}
 			}
 		}
 	}
 
-	return minPath, nil
+	return dist, startDist, minFromLow
 }
 
 const (
@@ -81,98 +118,6 @@ const (
 	start   = 'S'
 	end     = 'E'
 )
-
-// Point is an X, Y coordinate.
-type Point struct {
-	X int
-	Y int
-}
-
-// Location is a set of coordinates on the map with a height.
-type Location struct {
-	Coord  Point
-	Height int
-}
-
-func locationHash(l Location) Point {
-	return l.Coord
-}
-
-// PopulateFromInput populates the graph with the input data and sets up possible travel between points.
-func PopulateFromInput(data []string) (graph.Graph[Point, Location], Point, Point, error) {
-	var sPoint, ePoint Point
-
-	dimY := len(data) - 1
-
-	g := graph.New(locationHash, graph.Directed(), graph.Weighted())
-
-	// parse the input
-	for row, line := range data {
-		// parse the line
-		for col, c := range line {
-			cur := Location{Point{X: col, Y: dimY - row}, GetHeight(c)}
-
-			switch c {
-			case start:
-				sPoint = cur.Coord
-
-			case end:
-				ePoint = cur.Coord
-			}
-
-			err := g.AddVertex(cur, graph.VertexAttribute("label", string(c)))
-			if err != nil {
-				return nil, Point{}, Point{}, fmt.Errorf("adding location vertex: %w", err)
-			}
-
-			// add travel connectivity to the vertex above
-			tgt, err := g.Vertex(Point{X: col, Y: dimY - row + 1})
-
-			switch {
-			case errors.Is(err, graph.ErrVertexNotFound):
-				// no vertex above
-
-			case err != nil:
-				return nil, Point{}, Point{}, fmt.Errorf("getting vertex at %v: %w", Point{X: col, Y: dimY - row + 1}, err)
-
-			default:
-				setTravelEdges(g, cur, tgt)
-			}
-
-			// add travel connectivity to the vertex left
-			tgt, err = g.Vertex(Point{X: col - 1, Y: dimY - row})
-
-			switch {
-			case errors.Is(err, graph.ErrVertexNotFound):
-				// no vertex above
-
-			case err != nil:
-				return nil, Point{}, Point{}, fmt.Errorf("getting vertex at %v: %w", Point{X: col - 1, Y: dimY - row}, err)
-
-			default:
-				setTravelEdges(g, cur, tgt)
-			}
-		}
-	}
-
-	return g, sPoint, ePoint, nil
-}
-
-func setTravelEdges(g graph.Graph[Point, Location], srcLoc, tgtLoc Location) {
-	diff := srcLoc.Height - tgtLoc.Height
-
-	switch {
-	case diff > 1: // steep downward; can only travel down to target
-		_ = g.AddEdge(srcLoc.Coord, tgtLoc.Coord, graph.EdgeWeight(1))
-
-	case diff < -1: // steep upward; can only travel up to target
-		_ = g.AddEdge(tgtLoc.Coord, srcLoc.Coord, graph.EdgeWeight(1))
-
-	default: // +/- 1 change or level; can travel both ways
-		_ = g.AddEdge(srcLoc.Coord, tgtLoc.Coord, graph.EdgeWeight(1))
-		_ = g.AddEdge(tgtLoc.Coord, srcLoc.Coord, graph.EdgeWeight(1))
-	}
-}
 
 // GetHeight calculates the height of of a map location. a = 0 -> z = 25.
 func GetHeight(c rune) int {
@@ -188,29 +133,3 @@ func GetHeight(c rune) int {
 	}
 }
 
-// PrintPath prints the path on the map.
-func PrintPath(path []Point, data []string) {
-	pMap := make(map[Point]bool)
-
-	for _, p := range path {
-		pMap[p] = true
-	}
-
-	fmt.Println("Map with path:")
-
-	// red := color.New(color.FgRed).SprintFunc()
-
-	for j, line := range data {
-		for i, s := range strings.Split(line, "") {
-			if pMap[Point{X: i, Y: j}] {
-				color.Set(color.FgHiRed, color.Bold)
-				fmt.Printf("%s", s)
-				color.Unset()
-			} else {
-				fmt.Printf("%s", s)
-			}
-		}
-
-		fmt.Println()
-	}
-}
