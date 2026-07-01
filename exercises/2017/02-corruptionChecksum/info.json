@@ -1,0 +1,28 @@
+{
+  "id": "2017-02",
+  "title": "Corruption Checksum",
+  "year": 2017,
+  "day": 2,
+  "url": "https://adventofcode.com/2017/day/2",
+  "data": {
+    "inputFile": "input.txt",
+    "testCases": {
+      "one": [
+        {
+          "input": "5 1 9 5\n7 5 3\n2 4 6 8",
+          "expected": "18"
+        }
+      ],
+      "two": [
+        {
+          "input": "5 9 2 8\n9 4 7 3\n3 8 6 5",
+          "expected": "9"
+        }
+      ]
+    },
+    "answers": {
+      "a": "37923",
+      "b": "263"
+    }
+  }
+}
