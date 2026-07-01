@@ -16,7 +16,7 @@
 | [Day 8: Seven Segment Search](08-sevenSegmentSearch/README.md) |  ★ ★  | [Go](08-sevenSegmentSearch/go)                     |
 | [Day 9: Smoke Basin](09-smokeBasin/README.md) |  ★ ★  | [Go](09-smokeBasin/go)                             |
 | [Day 10: Syntax Scoring](10-syntaxScoring/README.md) |  ★ ★  | [Go](10-syntaxScoring/go)                          |
-| 11                                            |  ☆ ☆  |                                                    |
+| [Day 11: Dumbo Octopus](11-dumboOctopus/README.md) |  ★ ★  | [Go](11-dumboOctopus/go)                           |
 | 12                                            |  ☆ ☆  |                                                    |
 | 13                                            |  ☆ ☆  |                                                    |
 | 14                                            |  ☆ ☆  |                                                    |
