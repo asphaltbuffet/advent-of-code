@@ -208,7 +208,6 @@ func (d *Day10) Draw() string {
 	)
 
 	sb := strings.Builder{}
-	sb.WriteString("\n") // start on a new line
 
 	x := 1
 
@@ -227,7 +226,7 @@ func (d *Day10) Draw() string {
 		}
 	}
 
-	return sb.String()
+	return strings.TrimRight(sb.String(), "\n")
 }
 
 func abs(x int) int {
