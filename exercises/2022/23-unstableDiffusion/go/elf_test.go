@@ -158,7 +158,7 @@ func Test_resetElfCoords(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got := updateElfLocations(tt.args.plannedMoves, tt.args.targetingCoord)
+			got, _ := updateElfLocations(tt.args.plannedMoves, tt.args.targetingCoord)
 
 			assert.Equal(t, tt.want, got)
 		})

@@ -1,36 +1,35 @@
 # [Day 23: Unstable Diffusion](https://adventofcode.com/2022/day/23)
 
-<!-- These are helper text to make formatting the yearly readme consistent and easier...
+## Notes
 
-[Day 23: Unstable Diffusion][rm23]
-[Go][g23]
-[Python][p23]
-
-[rm23]: 23-unstableDiffusion/README.md
-[g23]: 23-unstableDiffusion/go
-[p23]: 23-unstableDiffusion/py
-
--->
+Elves spread out by a proposal rule: each round every elf proposes a move, and
+only elves whose proposal is unique actually move; the checked directions rotate
+each round. Part One measures the bounding-rectangle emptiness after 10 rounds.
+Part Two runs until nobody moves — detected directly from a "did any elf move
+this round?" flag, which replaced hashing the whole board with SHA-1 each round
+(≈4s → ≈1.4s).
 
 ## Go
 
 ```text
-2022-23 Unstable Diffusion (Golang)
+────────────────────────────────────────
+─   2022 Day 23: Unstable Diffusion    ─
+────────────────────────────────────────
 
-Running...
-
-Test 1.0: pass in 161 µs
-Test 2.0: pass in 593.7 µs
-Part 1: 4034 in 23.9 ms
-Part 2: 960 in 3 s
+Solving (Go)…
+1.0:  PASS              0.019s
+2.0:  PASS              1.398s
 ```
 
-## Python
+## Visualization
 
-```text
-    < section intentionally left blank >
-```
+The elves spreading out, one frame per round (GIF). Starting from the packed
+initial clump, each elf is colored by its distance from the center of mass, so
+the outward "boiling" diffusion reads as warm core to cool fringe. The animation
+runs through the early spread where the motion is most dramatic.
 
-## 2022 Run Times
+![Unstable Diffusion spread](unstable-diffusion.gif)
 
-![2022 exercise run-time graphs](../run-times.png)
+## Run Times
+
+![Day 23 run-time graphs](run-times.png)

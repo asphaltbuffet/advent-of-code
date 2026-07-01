@@ -43,22 +43,19 @@ var orthagonals = []point{
 
 func diffuse(elfLocations map[point]string, part int) (int, error) {
 	startDirection := 0
-	prevState := ""
 	round := 1
 
 	for (part == 1 && round <= 10) || part == 2 {
 		plannedMoves, targetCounts := planElfMoves(elfLocations, startDirection)
-		elfLocations = updateElfLocations(plannedMoves, targetCounts)
+
+		var moved bool
+		elfLocations, moved = updateElfLocations(plannedMoves, targetCounts)
 		startDirection++
 
-		if part == 2 { // hash the state
-			curState := hashState(elfLocations)
-
-			if prevState == curState {
-				return round, nil
-			}
-
-			prevState = curState
+		// Part two: the first round in which no elf moves is the answer. This is
+		// cheaper and exact compared with hashing the whole board each round.
+		if part == 2 && !moved {
+			return round, nil
 		}
 
 		round++
@@ -166,9 +163,10 @@ func hasAdjascent(elfLocations map[point]string, p point) bool {
 	return false
 }
 
-func updateElfLocations(plannedMoves map[point]point, targets map[point]int) map[point]string {
+func updateElfLocations(plannedMoves map[point]point, targets map[point]int) (map[point]string, bool) {
 	// reset map, but only if elves are not blocked...
 	elfLocations := make(map[point]string)
+	moved := false
 
 	for start, end := range plannedMoves {
 		if targets[end] > 1 {
@@ -177,8 +175,11 @@ func updateElfLocations(plannedMoves map[point]point, targets map[point]int) map
 		} else {
 			// move
 			elfLocations[end] = "#"
+			if end != start {
+				moved = true
+			}
 		}
 	}
 
-	return elfLocations
+	return elfLocations, moved
 }
