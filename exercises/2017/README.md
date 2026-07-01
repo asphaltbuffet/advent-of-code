@@ -10,7 +10,7 @@
 | [Day 2: Corruption Checksum](02-corruptionChecksum/README.md) |  ★ ★  | [Go](02-corruptionChecksum/go) |
 | [Day 3: Spiral Memory](03-spiralMemory/README.md) |  ★ ★  | [Go](03-spiralMemory/go) |
 | [Day 4: High-Entropy Passphrases](04-high-EntropyPassphrases/README.md) |  ★ ★  | [Go](04-high-EntropyPassphrases/go) |
-| 5                                                     |  ☆ ☆  |                             |
+| [Day 5: A Maze of Twisty Trampolines, All Alike](05-aMazeOfTwistyTrampolinesAllAlike/README.md) |  ★ ★  | [Go](05-aMazeOfTwistyTrampolinesAllAlike/go) |
 | 6                                                     |  ☆ ☆  |                             |
 | 7                                                     |  ☆ ☆  |                             |
 | 8                                                     |  ☆ ☆  |                             |
