@@ -4,39 +4,39 @@
 
 [Day 16: The Floor Will Be Lava][rm16]
 [Go][go16]
-[Python][py16]
 
 [rm16]: 16-theFloorWillBeLava/README.md
 [go16]: 16-theFloorWillBeLava/go
-[py16]: 16-theFloorWillBeLava/py
 
 -->
+
+## Notes
+
+Each of the ~440 edge entry points is an independent beam simulation, so Part
+Two fans them out across `GOMAXPROCS` worker goroutines and takes the maximum
+energized count.
 
 ## Go
 
 ```text
-──────────────────────────────────────────
-           ADVENT OF CODE 2023            
-      Day 16: The Floor Will Be Lava      
-──────────────────────────────────────────
-          
-Testing...
-  1.1: PASS              0.07 ms
-  2.1: PASS              2.48 ms
-          
-Solving...
-    1: PASS             13.97 ms
-      ⤷ 6855
-    2: PASS           4667.31 ms
-      ⤷ 7513
+────────────────────────────────────────
+─ 2023 Day 16: The Floor Will Be Lava  ─
+────────────────────────────────────────
+Solving (Go)…
+1.0:  PASS              0.016s
+2.0:  PASS              1.717s
 ```
 
-## Python
+## Visualization
 
-```text
-< section intentionally left blank >
-```
+The contraption energized by the strongest Part Two start beam. Tiles the beam
+reaches glow gold; the dark cells are floor it never touches, and the blue-grey
+specks are mirrors and splitters (brightened where the beam passes through
+them). The dense grid of light traces how the `|` and `-` splitters fan the beam
+across the whole floor.
 
-## 2023 Run Times
+![The Floor Will Be Lava energized map](floor-will-be-lava.png)
 
-![2023 exercise run-time graphs](../run-times.png)
+## Run Times
+
+![Day 16 run-time graphs](run-times.png)
