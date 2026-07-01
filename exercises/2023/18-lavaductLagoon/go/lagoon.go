@@ -191,6 +191,24 @@ func (p Point) Add(p2 Point) Point {
 	return Point{p.X + p2.X, p.Y + p2.Y}
 }
 
+// digArea returns the number of cubic metres the trench encloses, counting the
+// trench itself. It walks the raw corner vertices (no width offset), then
+// combines the shoelace area with Pick's theorem: the total lattice points are
+// interior + boundary = area + perimeter/2 + 1. This is exact for both the
+// small Part One plans and the enormous hex-decoded Part Two plans.
+func digArea(steps Steps) int {
+	cur := Point{0, 0}
+	verts := []Point{cur}
+	perimeter := 0
+	for _, s := range steps {
+		d := Move[s.Direction]
+		cur = Point{cur.X + d.X*s.Distance, cur.Y + d.Y*s.Distance}
+		verts = append(verts, cur)
+		perimeter += s.Distance
+	}
+	return shoelace(verts) + perimeter/2 + 1
+}
+
 func shoelace(points []Point) int {
 	n := len(points)
 

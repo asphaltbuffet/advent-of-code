@@ -4,39 +4,39 @@
 
 [Day 18: Lavaduct Lagoon][rm18]
 [Go][go18]
-[Python][py18]
 
 [rm18]: 18-lavaductLagoon/README.md
 [go18]: 18-lavaductLagoon/go
-[py18]: 18-lavaductLagoon/py
 
 -->
+
+## Notes
+
+Both parts compute the dug-out volume with the shoelace formula over the raw
+corner vertices plus Pick's theorem: `area = shoelace + perimeter/2 + 1`. This
+counts the trench itself exactly and handles the enormous hex-decoded Part Two
+plan without rasterising anything.
 
 ## Go
 
 ```text
-──────────────────────────────────────────
-           ADVENT OF CODE 2023            
-         Day 18: Lavaduct Lagoon          
-──────────────────────────────────────────
-          
-Testing...
-  1.1: PASS              0.02 ms
-  2.1: PASS              0.01 ms
-          
-Solving...
-    1: PASS              0.48 ms
-      ⤷ 47045
-    2: PASS              0.37 ms
-      ⤷ 147839570293376
+────────────────────────────────────────
+─     2023 Day 18: Lavaduct Lagoon     ─
+────────────────────────────────────────
+Solving (Go)…
+1.0:  PASS           281.678µs
+2.0:  PASS           232.910µs
 ```
 
-## Python
+## Visualization
 
-```text
-< section intentionally left blank >
-```
+The Part One dig plan: the trench boundary (gold) enclosing the excavated lagoon
+(brown), filled by a scanline point-in-polygon test. Part Two's hex plan
+encloses trillions of cubic metres, far too large to raster, so the picture uses
+the Part One dig.
 
-## 2023 Run Times
+![Lavaduct Lagoon dig plan](lavaduct-lagoon.png)
 
-![2023 exercise run-time graphs](../run-times.png)
+## Run Times
+
+![Day 18 run-time graphs](run-times.png)
