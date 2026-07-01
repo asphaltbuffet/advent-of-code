@@ -30,7 +30,7 @@
 | [Day 22: Sporifica Virus](22-sporificaVirus/README.md) |  ★ ★  | [Go](22-sporificaVirus/go) |
 | [Day 23: Coprocessor Conflagration](23-coprocessorConflagration/README.md) |  ★ ★  | [Go](23-coprocessorConflagration/go) |
 | [Day 24: Electromagnetic Moat](24-electromagneticMoat/README.md) |  ★ ★  | [Go](24-electromagneticMoat/go) |
-| 25                                                    |  ☆ ☆  |                             |
+| [Day 25: The Halting Problem](25-theHaltingProblem/README.md) |  ★ ★  | [Go](25-theHaltingProblem/go) |
 
 ## 2017 Run Times
 
