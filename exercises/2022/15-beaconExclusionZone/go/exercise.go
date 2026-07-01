@@ -3,6 +3,7 @@ package exercises
 import (
 	"fmt"
 	"image"
+	"sort"
 	"strings"
 
 	"github.com/asphaltbuffet/advent-of-code/internal/common"
@@ -44,26 +45,53 @@ func (c Exercise) One(instr string) (any, error) {
 		y = TargetY
 	}
 
-	seen := map[image.Point]bool{}
-
+	// Each sensor covers a contiguous [left,right] span on row y. Collect and
+	// merge those spans instead of enumerating individual cells.
+	type span struct{ lo, hi int }
+	spans := make([]span, 0, len(sensors))
 	for _, s := range sensors {
-		viewRange := s.Dist - abs(s.Location.Y-y)
+		reach := s.Dist - abs(s.Location.Y-y)
+		if reach < 0 {
+			continue
+		}
+		spans = append(spans, span{s.Location.X - reach, s.Location.X + reach})
+	}
 
-		// fmt.Printf("Sensor at %v can see %d points\n", s.Location, viewRange*2+1)
-		if viewRange > 0 {
-			for i := 0; i <= viewRange; i++ {
-				seen[image.Point{X: s.Location.X - i, Y: y}] = true
-				seen[image.Point{X: s.Location.X + i, Y: y}] = true
+	sort.Slice(spans, func(i, j int) bool { return spans[i].lo < spans[j].lo })
+
+	// Sum the width of the merged spans (count of covered x positions).
+	covered := 0
+	curLo, curHi := spans[0].lo, spans[0].hi
+	merged := make([]span, 0, len(spans))
+	for _, sp := range spans[1:] {
+		if sp.lo > curHi+1 {
+			covered += curHi - curLo + 1
+			merged = append(merged, span{curLo, curHi})
+			curLo, curHi = sp.lo, sp.hi
+			continue
+		}
+		if sp.hi > curHi {
+			curHi = sp.hi
+		}
+	}
+	covered += curHi - curLo + 1
+	merged = append(merged, span{curLo, curHi})
+
+	// A beacon sitting on row y occupies a covered cell but is not "no beacon".
+	beacons := map[int]bool{}
+	for _, s := range sensors {
+		if s.Beacon.Y != y {
+			continue
+		}
+		for _, m := range merged {
+			if s.Beacon.X >= m.lo && s.Beacon.X <= m.hi {
+				beacons[s.Beacon.X] = true
+				break
 			}
 		}
 	}
 
-	// remove any beacons from the seen coordinates
-	for _, s := range sensors {
-		delete(seen, s.Beacon)
-	}
-
-	return len(seen), nil
+	return covered - len(beacons), nil
 }
 
 // Two returns the answer to the second part of the exercise.
