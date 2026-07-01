@@ -15,7 +15,7 @@
 | [Day 7: The Treachery of Whales](07-theTreacheryOfWhales/README.md) |  ★ ★  | [Go](07-theTreacheryOfWhales/go)                   |
 | [Day 8: Seven Segment Search](08-sevenSegmentSearch/README.md) |  ★ ★  | [Go](08-sevenSegmentSearch/go)                     |
 | [Day 9: Smoke Basin](09-smokeBasin/README.md) |  ★ ★  | [Go](09-smokeBasin/go)                             |
-| 10                                            |  ☆ ☆  |                                                    |
+| [Day 10: Syntax Scoring](10-syntaxScoring/README.md) |  ★ ★  | [Go](10-syntaxScoring/go)                          |
 | 11                                            |  ☆ ☆  |                                                    |
 | 12                                            |  ☆ ☆  |                                                    |
 | 13                                            |  ☆ ☆  |                                                    |
