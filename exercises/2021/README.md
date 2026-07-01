@@ -22,7 +22,7 @@
 | [Day 14: Extended Polymerization](14-extendedPolymerization/README.md) |  ★ ★  | [Go](14-extendedPolymerization/go)                 |
 | [Day 15: Chiton](15-chiton/README.md)         |  ★ ★  | [Go](15-chiton/go)                                 |
 | [Day 16: Packet Decoder](16-packetDecoder/README.md) |  ★ ★  | [Go](16-packetDecoder/go)                          |
-| 17                                            |  ☆ ☆  |                                                    |
+| [Day 17: Trick Shot](17-trickShot/README.md)  |  ★ ★  | [Go](17-trickShot/go)                              |
 | 18                                            |  ☆ ☆  |                                                    |
 | 19                                            |  ☆ ☆  |                                                    |
 | 20                                            |  ☆ ☆  |                                                    |
