@@ -4,39 +4,32 @@
 
 [Day 22: Sand Slabs][rm22]
 [Go][go22]
-[Python][py22]
 
 [rm22]: 22-sandSlabs/README.md
 [go22]: 22-sandSlabs/go
-[py22]: 22-sandSlabs/py
 
 -->
 
 ## Go
 
 ```text
-──────────────────────────────────────────
-           ADVENT OF CODE 2023            
-            Day 22: Sand Slabs            
-──────────────────────────────────────────
-          
-Testing...
-  1.1: PASS              0.04 ms
-  2.1: PASS              0.15 ms
-          
-Solving...
-    1: PASS            323.66 ms
-      ⤷ 461
-    2: PASS            331.37 ms
-      ⤷ 74074
+────────────────────────────────────────
+─       2023 Day 22: Sand Slabs        ─
+────────────────────────────────────────
+Solving (Go)…
+1.0:  PASS           304.984ms
+2.0:  PASS           296.814ms
 ```
 
-## Python
+## Visualization
 
-```text
-< section intentionally left blank >
-```
+The settled brick pile in the two side elevations the puzzle uses: looking down
+the y axis (x vs z, left) and down the x axis (y vs z, right). Each brick keeps a
+stable colour across both views, so the packed tower structure after everything
+falls is visible from either side.
 
-## 2023 Run Times
+![Sand Slabs settled pile](sand-slabs.png)
 
-![2023 exercise run-time graphs](../run-times.png)
+## Run Times
+
+![Day 22 run-time graphs](run-times.png)
