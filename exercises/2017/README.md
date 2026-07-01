@@ -25,7 +25,7 @@
 | [Day 17: Spinlock](17-spinlock/README.md) |  ★ ★  | [Go](17-spinlock/go) |
 | [Day 18: Duet](18-duet/README.md) |  ★ ★  | [Go](18-duet/go) |
 | [Day 19: A Series of Tubes](19-aSeriesOfTubes/README.md) |  ★ ★  | [Go](19-aSeriesOfTubes/go) |
-| 20                                                    |  ☆ ☆  |                             |
+| [Day 20: Particle Swarm](20-particleSwarm/README.md) |  ★ ★  | [Go](20-particleSwarm/go) |
 | 21                                                    |  ☆ ☆  |                             |
 | 22                                                    |  ☆ ☆  |                             |
 | 23                                                    |  ☆ ☆  |                             |
