@@ -10,7 +10,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     elf = {
-      url = "github:asphaltbuffet/elf/v0.4.3";
+      url = "github:asphaltbuffet/elf/v0.4.4";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
