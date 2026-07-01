@@ -15,7 +15,7 @@
 | [Day 7: Recursive Circus](07-recursiveCircus/README.md) |  ★ ★  | [Go](07-recursiveCircus/go) |
 | [Day 8: I Heard You Like Registers](08-iHeardYouLikeRegisters/README.md) |  ★ ★  | [Go](08-iHeardYouLikeRegisters/go) |
 | [Day 9: Stream Processing](09-streamProcessing/README.md) |  ★ ★  | [Go](09-streamProcessing/go) |
-| 10                                                    |  ☆ ☆  |                             |
+| [Day 10: Knot Hash](10-knotHash/README.md) |  ★ ★  | [Go](10-knotHash/go) |
 | 11                                                    |  ☆ ☆  |                             |
 | 12                                                    |  ☆ ☆  |                             |
 | 13                                                    |  ☆ ☆  |                             |

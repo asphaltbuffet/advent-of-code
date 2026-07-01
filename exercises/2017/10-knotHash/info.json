@@ -1,0 +1,36 @@
+{
+  "id": "2017-10",
+  "title": "Knot Hash",
+  "year": 2017,
+  "day": 10,
+  "url": "https://adventofcode.com/2017/day/10",
+  "data": {
+    "inputFile": "input.txt",
+    "testCases": {
+      "one": [
+        {
+          "input": "3,4,1,5",
+          "expected": "12"
+        }
+      ],
+      "two": [
+        {
+          "input": "AoC 2017",
+          "expected": "33efeb34ea91902bb2f59c9920caa6cd"
+        },
+        {
+          "input": "1,2,3",
+          "expected": "3efbe78a8d82f29979031a4aa0b16a9d"
+        },
+        {
+          "input": "1,2,4",
+          "expected": "63960835bcdc130f0b66d7ff4f6a5a8e"
+        }
+      ]
+    },
+    "answers": {
+      "a": "52070",
+      "b": "7f94112db4e32e19cf6502073c66f9bb"
+    }
+  }
+}
