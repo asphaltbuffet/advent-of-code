@@ -9,16 +9,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1782784037,
-        "narHash": "sha256-DbObxf9w9iOUmwQfqWtTytYtllDCrL+VbD8yaKAU4cc=",
+        "lastModified": 1782874637,
+        "narHash": "sha256-IHcl9f7Z55OSV7GoxAUcyOeV91CJsamEuU+KbrS5drs=",
         "owner": "asphaltbuffet",
         "repo": "elf",
-        "rev": "d189d91ffafd33feca715ca31d696d0f9b50d8e6",
+        "rev": "cd98bb8bd6b6a82378504336566c7a860c43c2bb",
         "type": "github"
       },
       "original": {
         "owner": "asphaltbuffet",
-        "ref": "v0.4.3",
+        "ref": "v0.4.4",
         "repo": "elf",
         "type": "github"
       }
