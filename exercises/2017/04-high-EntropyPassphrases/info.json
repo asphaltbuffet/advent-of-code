@@ -1,0 +1,28 @@
+{
+  "id": "2017-04",
+  "title": "High-Entropy Passphrases",
+  "year": 2017,
+  "day": 4,
+  "url": "https://adventofcode.com/2017/day/4",
+  "data": {
+    "inputFile": "input.txt",
+    "testCases": {
+      "one": [
+        {
+          "input": "aa bb cc dd ee\naa bb cc dd aa\naa bb cc dd aaa",
+          "expected": "2"
+        }
+      ],
+      "two": [
+        {
+          "input": "abcde fghij\nabcde xyz ecdab\na ab abc abd abf abj\niiii oiii ooii oooi oooo\noiii ioii iioi iiio",
+          "expected": "3"
+        }
+      ]
+    },
+    "answers": {
+      "a": "477",
+      "b": "167"
+    }
+  }
+}
