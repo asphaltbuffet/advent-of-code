@@ -4,39 +4,37 @@
 
 [Day 14: Parabolic Reflector Dish][rm14]
 [Go][go14]
-[Python][py14]
 
 [rm14]: 14-parabolicReflectorDish/README.md
 [go14]: 14-parabolicReflectorDish/go
-[py14]: 14-parabolicReflectorDish/py
 
 -->
+
+## Notes
+
+Part Two runs the billion spin cycles by hashing each grid state to detect the
+repeating cycle, then fast-forwarding whole cycles to the target index.
 
 ## Go
 
 ```text
-──────────────────────────────────────────
-           ADVENT OF CODE 2023
-     Day 14: Parabolic Reflector Dish
-──────────────────────────────────────────
-
-Testing...
-  1.1: PASS              0.00 ms
-  2.1: PASS              0.09 ms
-
-Solving...
-    1: PASS              0.11 ms
-      ⤷ 107053
-    2: PASS             49.81 ms
-      ⤷ 88371
+────────────────────────────────────────
+─2023 Day 14: Parabolic Reflector Dish ─
+────────────────────────────────────────
+Solving (Go)…
+1.0:  PASS             0.124ms
+2.0:  PASS            69.364ms
 ```
 
-## Python
+## Visualization
 
-```text
-< section intentionally left blank >
-```
+The spin cycle animated (GIF): each frame is one full N→W→S→E spin. The round
+rocks (gold) roll and pile against the fixed cube rocks (slate), starting from
+the scattered initial layout and settling into the repeating steady state that
+the cycle-detection exploits.
 
-## 2023 Run Times
+![Parabolic Reflector Dish spin cycle](reflector-dish.gif)
 
-![2023 exercise run-time graphs](../run-times.png)
+## Run Times
+
+![Day 14 run-time graphs](run-times.png)
