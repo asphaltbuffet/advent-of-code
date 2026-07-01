@@ -20,7 +20,7 @@
 | [Day 12: Passage Pathing](12-passagePathing/README.md) |  ★ ★  | [Go](12-passagePathing/go)                         |
 | [Day 13: Transparent Origami](13-transparentOrigami/README.md) |  ★ ★  | [Go](13-transparentOrigami/go)                     |
 | [Day 14: Extended Polymerization](14-extendedPolymerization/README.md) |  ★ ★  | [Go](14-extendedPolymerization/go)                 |
-| 15                                            |  ☆ ☆  |                                                    |
+| [Day 15: Chiton](15-chiton/README.md)         |  ★ ★  | [Go](15-chiton/go)                                 |
 | 16                                            |  ☆ ☆  |                                                    |
 | 17                                            |  ☆ ☆  |                                                    |
 | 18                                            |  ☆ ☆  |                                                    |
