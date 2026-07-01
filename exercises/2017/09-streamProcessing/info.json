@@ -1,0 +1,72 @@
+{
+  "id": "2017-09",
+  "title": "Stream Processing",
+  "year": 2017,
+  "day": 9,
+  "url": "https://adventofcode.com/2017/day/9",
+  "data": {
+    "inputFile": "input.txt",
+    "testCases": {
+      "one": [
+        {
+          "input": "{}",
+          "expected": "1"
+        },
+        {
+          "input": "{{{}}}",
+          "expected": "6"
+        },
+        {
+          "input": "{{},{}}",
+          "expected": "5"
+        },
+        {
+          "input": "{{{},{},{{}}}}",
+          "expected": "16"
+        },
+        {
+          "input": "{<a>,<a>,<a>,<a>}",
+          "expected": "1"
+        },
+        {
+          "input": "{{<!!>},{<!!>},{<!!>},{<!!>}}",
+          "expected": "9"
+        },
+        {
+          "input": "{{<a!>},{<a!>},{<a!>},{<ab>}}",
+          "expected": "3"
+        }
+      ],
+      "two": [
+        {
+          "input": "<>",
+          "expected": "0"
+        },
+        {
+          "input": "<random characters>",
+          "expected": "17"
+        },
+        {
+          "input": "<<<<>",
+          "expected": "3"
+        },
+        {
+          "input": "<{!>}>",
+          "expected": "2"
+        },
+        {
+          "input": "<!!!>>",
+          "expected": "0"
+        },
+        {
+          "input": "<{o\"i!a,<{i<a>",
+          "expected": "10"
+        }
+      ]
+    },
+    "answers": {
+      "a": "16827",
+      "b": "7298"
+    }
+  }
+}
