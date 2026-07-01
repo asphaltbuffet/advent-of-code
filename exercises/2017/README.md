@@ -8,7 +8,7 @@
 |-------------------------------------------------------|:-----:|-----------------------------|
 | [Day 1: Inverse Captcha](01-inverseCaptcha/README.md) |  ★ ★  | [Go](01-inverseCaptcha/go) |
 | [Day 2: Corruption Checksum](02-corruptionChecksum/README.md) |  ★ ★  | [Go](02-corruptionChecksum/go) |
-| 3                                                     |  ☆ ☆  |                             |
+| [Day 3: Spiral Memory](03-spiralMemory/README.md) |  ★ ★  | [Go](03-spiralMemory/go) |
 | 4                                                     |  ☆ ☆  |                             |
 | 5                                                     |  ☆ ☆  |                             |
 | 6                                                     |  ☆ ☆  |                             |
