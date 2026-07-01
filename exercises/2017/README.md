@@ -14,7 +14,7 @@
 | [Day 6: Memory Reallocation](06-memoryReallocation/README.md) |  ★ ★  | [Go](06-memoryReallocation/go) |
 | [Day 7: Recursive Circus](07-recursiveCircus/README.md) |  ★ ★  | [Go](07-recursiveCircus/go) |
 | [Day 8: I Heard You Like Registers](08-iHeardYouLikeRegisters/README.md) |  ★ ★  | [Go](08-iHeardYouLikeRegisters/go) |
-| 9                                                     |  ☆ ☆  |                             |
+| [Day 9: Stream Processing](09-streamProcessing/README.md) |  ★ ★  | [Go](09-streamProcessing/go) |
 | 10                                                    |  ☆ ☆  |                             |
 | 11                                                    |  ☆ ☆  |                             |
 | 12                                                    |  ☆ ☆  |                             |
