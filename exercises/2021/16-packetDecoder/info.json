@@ -1,0 +1,28 @@
+{
+  "id": "2021-16",
+  "title": "Packet Decoder",
+  "year": 2021,
+  "day": 16,
+  "url": "https://adventofcode.com/2021/day/16",
+  "data": {
+    "inputFile": "input.txt",
+    "testCases": {
+      "one": [
+        {
+          "input": "8A004A801A8002F478",
+          "expected": "16"
+        }
+      ],
+      "two": [
+        {
+          "input": "9C0141080250320F1802104A08",
+          "expected": "1"
+        }
+      ]
+    },
+    "answers": {
+      "a": "843",
+      "b": "5390807940351"
+    }
+  }
+}
