@@ -8,7 +8,7 @@
 |-----------------------------------------------|:-----:|----------------------------------------------------|
 | [Day 1: Sonar Sweep](01-sonarSweep/README.md) |  ★ ★  | [Go](01-sonarSweep/go), [Python](01-sonarSweep/py) |
 | [Day 2: Dive!](02-dive/README.md)             |  ★ ★  | [Go](02-dive/go)                                   |
-| 3                                             |  ☆ ☆  |                                                    |
+| [Day 3: Binary Diagnostic](03-binaryDiagnostic/README.md) |  ★ ★  | [Go](03-binaryDiagnostic/go)                       |
 | 4                                             |  ☆ ☆  |                                                    |
 | 5                                             |  ☆ ☆  |                                                    |
 | 6                                             |  ☆ ☆  |                                                    |
