@@ -83,19 +83,62 @@ func (r *Record) countCombinations() (int, error) {
 		return -1, fmt.Errorf("no contiguous values provided")
 	}
 
-	// determine how much 'd' we need (max)
-	var needed int
-	for _, size := range r.Checksum {
-		needed += size
+	// Standard springs DP: recurse on (position in condition, group index),
+	// consuming one group of damaged springs or one operational spring at a
+	// time. Memoised on those two small integers, this is linear in the record
+	// length times the number of groups — no regex or string rebuilding.
+	memo := map[[2]int]int{}
+	var count func(pos, grp int) int
+	count = func(pos, grp int) int {
+		if pos == len(r.Condition) {
+			if grp == len(r.Checksum) {
+				return 1 // all groups placed, nothing left
+			}
+			return 0
+		}
+		key := [2]int{pos, grp}
+		if v, ok := memo[key]; ok {
+			return v
+		}
+
+		var total int
+		c := r.Condition[pos]
+
+		// Treat this cell as operational ('.'): skip it.
+		if c == '.' || c == 'u' {
+			total += count(pos+1, grp)
+		}
+
+		// Treat this cell as the start of the next damaged group ('#').
+		if (c == 'd' || c == 'u') && grp < len(r.Checksum) {
+			size := r.Checksum[grp]
+			end := pos + size
+			if end <= len(r.Condition) && noOperational(r.Condition, pos, end) &&
+				(end == len(r.Condition) || r.Condition[end] != 'd') {
+				if end == len(r.Condition) {
+					total += count(end, grp+1)
+				} else {
+					total += count(end+1, grp+1) // consume the separator
+				}
+			}
+		}
+
+		memo[key] = total
+		return total
 	}
 
-	re, err := generateRegex(r.Checksum)
-	if err != nil {
-		return -1, err
-	}
+	return count(0, 0), nil
+}
 
-	memo := make(map[string]int)
-	return countHelper(r.Condition, needed, re, memo), nil
+// noOperational reports whether Condition[start:end] contains no operational
+// ('.') cells, i.e. every cell can be damaged.
+func noOperational(cond string, start, end int) bool {
+	for i := start; i < end; i++ {
+		if cond[i] == '.' {
+			return false
+		}
+	}
+	return true
 }
 
 func countHelper(s string, n int, re *regexp.Regexp, memo map[string]int) int {
