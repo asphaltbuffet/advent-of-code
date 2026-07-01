@@ -1,0 +1,28 @@
+{
+  "id": "2017-22",
+  "title": "Sporifica Virus",
+  "year": 2017,
+  "day": 22,
+  "url": "https://adventofcode.com/2017/day/22",
+  "data": {
+    "inputFile": "input.txt",
+    "testCases": {
+      "one": [
+        {
+          "input": "..#\n#..\n...",
+          "expected": "5587"
+        }
+      ],
+      "two": [
+        {
+          "input": "..#\n#..\n...",
+          "expected": "2511944"
+        }
+      ]
+    },
+    "answers": {
+      "a": "5460",
+      "b": "2511702"
+    }
+  }
+}

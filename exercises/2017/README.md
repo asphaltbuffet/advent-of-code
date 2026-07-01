@@ -27,7 +27,7 @@
 | [Day 19: A Series of Tubes](19-aSeriesOfTubes/README.md) |  ★ ★  | [Go](19-aSeriesOfTubes/go) |
 | [Day 20: Particle Swarm](20-particleSwarm/README.md) |  ★ ★  | [Go](20-particleSwarm/go) |
 | [Day 21: Fractal Art](21-fractalArt/README.md) |  ★ ★  | [Go](21-fractalArt/go) |
-| 22                                                    |  ☆ ☆  |                             |
+| [Day 22: Sporifica Virus](22-sporificaVirus/README.md) |  ★ ★  | [Go](22-sporificaVirus/go) |
 | 23                                                    |  ☆ ☆  |                             |
 | 24                                                    |  ☆ ☆  |                             |
 | 25                                                    |  ☆ ☆  |                             |
