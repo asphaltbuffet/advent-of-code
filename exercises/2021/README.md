@@ -10,7 +10,7 @@
 | [Day 2: Dive!](02-dive/README.md)             |  ★ ★  | [Go](02-dive/go)                                   |
 | [Day 3: Binary Diagnostic](03-binaryDiagnostic/README.md) |  ★ ★  | [Go](03-binaryDiagnostic/go)                       |
 | [Day 4: Giant Squid](04-giantSquid/README.md) |  ★ ★  | [Go](04-giantSquid/go)                             |
-| 5                                             |  ☆ ☆  |                                                    |
+| [Day 5: Hydrothermal Venture](05-hydrothermalVenture/README.md) |  ★ ★  | [Go](05-hydrothermalVenture/go)                    |
 | 6                                             |  ☆ ☆  |                                                    |
 | 7                                             |  ☆ ☆  |                                                    |
 | 8                                             |  ☆ ☆  |                                                    |
