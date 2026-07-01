@@ -21,7 +21,7 @@
 | [Day 13: Packet Scanners](13-packetScanners/README.md) |  ★ ★  | [Go](13-packetScanners/go) |
 | [Day 14: Disk Defragmentation](14-diskDefragmentation/README.md) |  ★ ★  | [Go](14-diskDefragmentation/go) |
 | [Day 15: Dueling Generators](15-duelingGenerators/README.md) |  ★ ★  | [Go](15-duelingGenerators/go) |
-| 16                                                    |  ☆ ☆  |                             |
+| [Day 16: Permutation Promenade](16-permutationPromenade/README.md) |  ★ ★  | [Go](16-permutationPromenade/go) |
 | 17                                                    |  ☆ ☆  |                             |
 | 18                                                    |  ☆ ☆  |                             |
 | 19                                                    |  ☆ ☆  |                             |
