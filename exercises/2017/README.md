@@ -29,7 +29,7 @@
 | [Day 21: Fractal Art](21-fractalArt/README.md) |  ★ ★  | [Go](21-fractalArt/go) |
 | [Day 22: Sporifica Virus](22-sporificaVirus/README.md) |  ★ ★  | [Go](22-sporificaVirus/go) |
 | [Day 23: Coprocessor Conflagration](23-coprocessorConflagration/README.md) |  ★ ★  | [Go](23-coprocessorConflagration/go) |
-| 24                                                    |  ☆ ☆  |                             |
+| [Day 24: Electromagnetic Moat](24-electromagneticMoat/README.md) |  ★ ★  | [Go](24-electromagneticMoat/go) |
 | 25                                                    |  ☆ ☆  |                             |
 
 ## 2017 Run Times
