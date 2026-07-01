@@ -17,7 +17,7 @@
 | [Day 9: Smoke Basin](09-smokeBasin/README.md) |  ★ ★  | [Go](09-smokeBasin/go)                             |
 | [Day 10: Syntax Scoring](10-syntaxScoring/README.md) |  ★ ★  | [Go](10-syntaxScoring/go)                          |
 | [Day 11: Dumbo Octopus](11-dumboOctopus/README.md) |  ★ ★  | [Go](11-dumboOctopus/go)                           |
-| 12                                            |  ☆ ☆  |                                                    |
+| [Day 12: Passage Pathing](12-passagePathing/README.md) |  ★ ★  | [Go](12-passagePathing/go)                         |
 | 13                                            |  ☆ ☆  |                                                    |
 | 14                                            |  ☆ ☆  |                                                    |
 | 15                                            |  ☆ ☆  |                                                    |
