@@ -1,36 +1,34 @@
 # [Day 24: Blizzard Basin](https://adventofcode.com/2022/day/24)
 
-<!-- These are helper text to make formatting the yearly readme consistent and easier...
+## Notes
 
-[Day 24: Blizzard Basin][rm24]
-[Go][g24]
-[Python][p24]
-
-[rm24]: 24-blizzardBasin/README.md
-[g24]: 24-blizzardBasin/go
-[p24]: 24-blizzardBasin/py
-
--->
+Cross a valley whose blizzards move on a fixed cycle, so the occupied cells at
+any minute are fully determined by `minute mod lcm(width,height)`. A BFS over
+(position, time) finds the fastest crossing. Part One is one crossing; Part Two
+is three (there and back and there again to fetch the snacks).
 
 ## Go
 
 ```text
-2022-24 Blizzard Basin (Golang)
+────────────────────────────────────────
+─     2022 Day 24: Blizzard Basin      ─
+────────────────────────────────────────
 
-Running...
-
-Test 1.0: pass in 91 µs
-Test 2.0: pass in 261.1 µs
-Part 1: 264 in 265.5 ms
-Part 2: 789 in 606.7 ms
+Solving (Go)…
+1.0:  PASS           196.224ms
+2.0:  PASS           529.172ms
 ```
 
-## Python
+## Visualization
 
-```text
-    < section intentionally left blank >
-```
+The blizzard field the expedition must thread, one frame per minute (GIF).
+Blizzards are color-coded by direction (→ red, ← blue, ↑ green, ↓ yellow), cells
+where two or more overlap are white, and the dark gaps are the only safe tiles to
+stand on. The entry and exit portals in the walls are marked. It runs for the
+duration of the first crossing.
 
-## 2022 Run Times
+![Blizzard Basin field](blizzard-basin.gif)
 
-![2022 exercise run-time graphs](../run-times.png)
+## Run Times
+
+![Day 24 run-time graphs](run-times.png)
