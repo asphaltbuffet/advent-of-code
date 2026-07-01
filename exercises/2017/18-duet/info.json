@@ -1,0 +1,28 @@
+{
+  "id": "2017-18",
+  "title": "Duet",
+  "year": 2017,
+  "day": 18,
+  "url": "https://adventofcode.com/2017/day/18",
+  "data": {
+    "inputFile": "input.txt",
+    "testCases": {
+      "one": [
+        {
+          "input": "set a 1\nadd a 2\nmul a a\nmod a 5\nsnd a\nset a 0\nrcv a\njgz a -1\nset a 1\njgz a -2",
+          "expected": "4"
+        }
+      ],
+      "two": [
+        {
+          "input": "snd 1\nsnd 2\nsnd p\nrcv a\nrcv b\nrcv c\nrcv d",
+          "expected": "3"
+        }
+      ]
+    },
+    "answers": {
+      "a": "8600",
+      "b": "7239"
+    }
+  }
+}

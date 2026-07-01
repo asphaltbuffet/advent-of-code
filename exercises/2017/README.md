@@ -23,7 +23,7 @@
 | [Day 15: Dueling Generators](15-duelingGenerators/README.md) |  ★ ★  | [Go](15-duelingGenerators/go) |
 | [Day 16: Permutation Promenade](16-permutationPromenade/README.md) |  ★ ★  | [Go](16-permutationPromenade/go) |
 | [Day 17: Spinlock](17-spinlock/README.md) |  ★ ★  | [Go](17-spinlock/go) |
-| 18                                                    |  ☆ ☆  |                             |
+| [Day 18: Duet](18-duet/README.md) |  ★ ★  | [Go](18-duet/go) |
 | 19                                                    |  ☆ ☆  |                             |
 | 20                                                    |  ☆ ☆  |                             |
 | 21                                                    |  ☆ ☆  |                             |
