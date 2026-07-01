@@ -6,7 +6,7 @@
 
 | Exercise                                              | Stars | Solutions                   |
 |-------------------------------------------------------|:-----:|-----------------------------|
-| [Day 1: Inverse Captcha](01-inverseCaptcha/README.md) |  ★ ★  | [Go](01-inverseCaptcha/go/) |
+| [Day 1: Inverse Captcha](01-inverseCaptcha/README.md) |  ★ ★  | [Go](01-inverseCaptcha/go) |
 | 2                                                     |  ☆ ☆  |                             |
 | 3                                                     |  ☆ ☆  |                             |
 | 4                                                     |  ☆ ☆  |                             |
