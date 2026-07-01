@@ -2,6 +2,11 @@ package exercises
 
 import (
 	"fmt"
+	"image"
+	"image/color"
+	"image/gif"
+	"os"
+	"path/filepath"
 	"strings"
 
 	"github.com/asphaltbuffet/advent-of-code/internal/common"
@@ -10,6 +15,73 @@ import (
 // Exercise for Advent of Code 2023 day 21.
 type Exercise struct {
 	common.BaseExercise
+}
+
+// Vis animates the reachable frontier spreading across the garden (GIF). Each
+// frame is the set of plots reachable in exactly that many steps — the wave the
+// step counter tracks — over the rocks (slate) with the start plot marked. The
+// alternating parity produces the characteristic growing diamond.
+func (e Exercise) Vis(input, outdir string) error {
+	tiles, start, dim, err := parseInput(input)
+	if err != nil {
+		return err
+	}
+
+	const steps = 64
+	q := []Point{start}
+	frontiers := [][]Point{append([]Point(nil), q...)}
+	for s := 0; s < steps; s++ {
+		q = walk(q, tiles, dim)
+		frontiers = append(frontiers, append([]Point(nil), q...))
+	}
+
+	const cell = 4
+	pal := color.Palette{
+		color.RGBA{0x0d, 0x0f, 0x18, 0xff}, // 0 garden
+		color.RGBA{0x2a, 0x30, 0x44, 0xff}, // 1 rock
+		color.RGBA{0x2f, 0xd0, 0x9a, 0xff}, // 2 reachable frontier
+		color.RGBA{0xff, 0x44, 0x55, 0xff}, // 3 start
+	}
+
+	anim := &gif.GIF{}
+	for fi, front := range frontiers {
+		img := image.NewPaletted(image.Rect(0, 0, dim*cell, dim*cell), pal)
+		// Base layer: rocks.
+		for y := 0; y < dim; y++ {
+			for x := 0; x < dim; x++ {
+				if tiles[Point{x, y}] == Rock {
+					fillCellIdx(img, x, y, cell, 1)
+				}
+			}
+		}
+		// Frontier on top.
+		for _, p := range front {
+			fillCellIdx(img, p.X, p.Y, cell, 2)
+		}
+		fillCellIdx(img, start.X, start.Y, cell, 3)
+
+		anim.Image = append(anim.Image, img)
+		delay := 8
+		if fi == 0 || fi == len(frontiers)-1 {
+			delay = 150
+		}
+		anim.Delay = append(anim.Delay, delay)
+	}
+
+	f, err := os.Create(filepath.Join(outdir, "step-counter.gif"))
+	if err != nil {
+		return err
+	}
+	defer f.Close()
+	return gif.EncodeAll(f, anim)
+}
+
+func fillCellIdx(img *image.Paletted, gx, gy, cell int, idx uint8) {
+	for dy := 0; dy < cell; dy++ {
+		for dx := 0; dx < cell; dx++ {
+			img.SetColorIndex(gx*cell+dx, gy*cell+dy, idx)
+		}
+	}
 }
 
 // One returns the answer to the first part of the exercise.

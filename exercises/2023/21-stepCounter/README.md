@@ -4,35 +4,39 @@
 
 [Day 21: Step Counter][rm21]
 [Go][go21]
-[Python][py21]
 
 [rm21]: 21-stepCounter/README.md
 [go21]: 21-stepCounter/go
-[py21]: 21-stepCounter/py
 
 -->
+
+## Notes
+
+Part Two exploits that the reachable count grows quadratically once the frontier
+clears the starting tile: BFS is run just far enough to sample the count at three
+step offsets one grid-width apart, then a quadratic is fitted and evaluated at
+the full 26 501 365-step target.
 
 ## Go
 
 ```text
-──────────────────────────────────────────
-           ADVENT OF CODE 2023            
-           Day 21: Step Counter           
-──────────────────────────────────────────
-          
-Solving...
-    1: PASS             53.90 ms
-      ⤷ 3689
-    2: PASS           9276.76 ms
-      ⤷ 610158187362102
+────────────────────────────────────────
+─      2023 Day 21: Step Counter       ─
+────────────────────────────────────────
+Solving (Go)…
+1.0:  PASS              0.040s
+2.0:  PASS              5.759s
 ```
 
-## Python
+## Visualization
 
-```text
-< section intentionally left blank >
-```
+The reachable frontier spreading across the garden over 64 steps (GIF). Each
+frame shows the plots reachable in exactly that many steps — teal over the rocks
+(slate), start marked red. The step parity means only every other tile lights up,
+producing the growing diamond the quadratic extrapolation is built on.
 
-## 2023 Run Times
+![Step Counter reachable diamond](step-counter.gif)
 
-![2023 exercise run-time graphs](../run-times.png)
+## Run Times
+
+![Day 21 run-time graphs](run-times.png)
