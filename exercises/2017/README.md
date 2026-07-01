@@ -16,7 +16,7 @@
 | [Day 8: I Heard You Like Registers](08-iHeardYouLikeRegisters/README.md) |  ★ ★  | [Go](08-iHeardYouLikeRegisters/go) |
 | [Day 9: Stream Processing](09-streamProcessing/README.md) |  ★ ★  | [Go](09-streamProcessing/go) |
 | [Day 10: Knot Hash](10-knotHash/README.md) |  ★ ★  | [Go](10-knotHash/go) |
-| 11                                                    |  ☆ ☆  |                             |
+| [Day 11: Hex Ed](11-hexEd/README.md) |  ★ ★  | [Go](11-hexEd/go) |
 | 12                                                    |  ☆ ☆  |                             |
 | 13                                                    |  ☆ ☆  |                             |
 | 14                                                    |  ☆ ☆  |                             |

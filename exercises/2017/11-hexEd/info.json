@@ -1,0 +1,35 @@
+{
+  "id": "2017-11",
+  "title": "Hex Ed",
+  "year": 2017,
+  "day": 11,
+  "url": "https://adventofcode.com/2017/day/11",
+  "data": {
+    "inputFile": "input.txt",
+    "testCases": {
+      "one": [
+        {
+          "input": "ne,ne,ne",
+          "expected": "3"
+        },
+        {
+          "input": "ne,ne,sw,sw",
+          "expected": "0"
+        },
+        {
+          "input": "ne,ne,s,s",
+          "expected": "2"
+        },
+        {
+          "input": "se,sw,se,sw,sw",
+          "expected": "3"
+        }
+      ],
+      "two": []
+    },
+    "answers": {
+      "a": "877",
+      "b": "1622"
+    }
+  }
+}
