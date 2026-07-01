@@ -19,7 +19,7 @@
 | [Day 11: Dumbo Octopus](11-dumboOctopus/README.md) |  ★ ★  | [Go](11-dumboOctopus/go)                           |
 | [Day 12: Passage Pathing](12-passagePathing/README.md) |  ★ ★  | [Go](12-passagePathing/go)                         |
 | [Day 13: Transparent Origami](13-transparentOrigami/README.md) |  ★ ★  | [Go](13-transparentOrigami/go)                     |
-| 14                                            |  ☆ ☆  |                                                    |
+| [Day 14: Extended Polymerization](14-extendedPolymerization/README.md) |  ★ ★  | [Go](14-extendedPolymerization/go)                 |
 | 15                                            |  ☆ ☆  |                                                    |
 | 16                                            |  ☆ ☆  |                                                    |
 | 17                                            |  ☆ ☆  |                                                    |

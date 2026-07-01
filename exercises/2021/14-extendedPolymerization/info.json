@@ -1,0 +1,28 @@
+{
+  "id": "2021-14",
+  "title": "Extended Polymerization",
+  "year": 2021,
+  "day": 14,
+  "url": "https://adventofcode.com/2021/day/14",
+  "data": {
+    "inputFile": "input.txt",
+    "testCases": {
+      "one": [
+        {
+          "input": "NNCB\n\nCH -> B\nHH -> N\nCB -> H\nNH -> C\nHB -> C\nHC -> B\nHN -> C\nNN -> C\nBH -> H\nNC -> B\nNB -> B\nBN -> B\nBB -> N\nBC -> B\nCC -> N\nCN -> C",
+          "expected": "1588"
+        }
+      ],
+      "two": [
+        {
+          "input": "NNCB\n\nCH -> B\nHH -> N\nCB -> H\nNH -> C\nHB -> C\nHC -> B\nHN -> C\nNN -> C\nBH -> H\nNC -> B\nNB -> B\nBN -> B\nBB -> N\nBC -> B\nCC -> N\nCN -> C",
+          "expected": "2188189693529"
+        }
+      ]
+    },
+    "answers": {
+      "a": "3259",
+      "b": "3459174981021"
+    }
+  }
+}
