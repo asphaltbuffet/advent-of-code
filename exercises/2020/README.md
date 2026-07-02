@@ -28,7 +28,7 @@
 | [Day 20: Jurassic Jigsaw][rm_20] |  ★ ★  | [Go][go_20] |
 | [Day 21: Allergen Assessment][rm_21] |  ★ ★  | [Go][go_21] |
 | [Day 22: Crab Combat][rm_22] |  ★ ★  | [Go][go_22] |
-| 23                           |  ☆ ☆  |            |
+| [Day 23: Crab Cups][rm_23] |  ★ ★  | [Go][go_23] |
 | 24                           |  ☆ ☆  |            |
 | 25                           |  ☆ ☆  |            |
 
@@ -76,6 +76,8 @@
 [go_21]: 21-allergenAssessment/go
 [rm_22]: 22-crabCombat/README.md
 [go_22]: 22-crabCombat/go
+[rm_23]: 23-crabCups/README.md
+[go_23]: 23-crabCups/go
 
 ## 2020 Run Times
 
