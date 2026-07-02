@@ -28,7 +28,7 @@
 | [Day 20: Trench Map](20-trenchMap/README.md)  |  ★ ★  | [Go](20-trenchMap/go)                              |
 | [Day 21: Dirac Dice](21-diracDice/README.md)  |  ★ ★  | [Go](21-diracDice/go)                              |
 | [Day 22: Reactor Reboot](22-reactorReboot/README.md) |  ★ ★  | [Go](22-reactorReboot/go)                          |
-| 23                                            |  ☆ ☆  |                                                    |
+| [Day 23: Amphipod](23-amphipod/README.md)     |  ★ ★  | [Go](23-amphipod/go)                               |
 | 24                                            |  ☆ ☆  |                                                    |
 | 25                                            |  ☆ ☆  |                                                    |
 
