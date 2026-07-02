@@ -22,7 +22,7 @@
 | [Day 14: Docking Data][rm_14] |  ★ ★  | [Go][go_14] |
 | [Day 15: Rambunctious Recitation][rm_15] |  ★ ★  | [Go][go_15] |
 | [Day 16: Ticket Translation][rm_16] |  ★ ★  | [Go][go_16] |
-| 17                           |  ☆ ☆  |            |
+| [Day 17: Conway Cubes][rm_17] |  ★ ★  | [Go][go_17] |
 | 18                           |  ☆ ☆  |            |
 | 19                           |  ☆ ☆  |            |
 | 20                           |  ☆ ☆  |            |
@@ -64,6 +64,8 @@
 [go_15]: 15-rambunctiousRecitation/go
 [rm_16]: 16-ticketTranslation/README.md
 [go_16]: 16-ticketTranslation/go
+[rm_17]: 17-conwayCubes/README.md
+[go_17]: 17-conwayCubes/go
 
 ## 2020 Run Times
 
