@@ -1,0 +1,28 @@
+{
+  "id": "2018-02",
+  "title": "Inventory Management System",
+  "year": 2018,
+  "day": 2,
+  "url": "https://adventofcode.com/2018/day/2",
+  "data": {
+    "inputFile": "input.txt",
+    "testCases": {
+      "one": [
+        {
+          "input": "abcdef\nbababc\nabbcde\nabcccd\naabcdd\nabcdee\nababab",
+          "expected": "12"
+        }
+      ],
+      "two": [
+        {
+          "input": "abcde\nfghij\nklmno\npqrst\nfguij\naxcye\nwvxyz",
+          "expected": "fgij"
+        }
+      ]
+    },
+    "answers": {
+      "a": "5727",
+      "b": "uwfmdjxyxlbgnrotcfpvswaqh"
+    }
+  }
+}

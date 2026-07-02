@@ -7,7 +7,7 @@
 | Exercise                                                      | Stars | Solutions                      |
 |---------------------------------------------------------------|:-----:|--------------------------------|
 | [Day 1: Chronal Calibration](01-chronalCalibration/README.md) |  ★ ★  | [Go](01-chronalCalibration/go) |
-| 2                                                             |  ☆ ☆  |                                |
+| [Day 2: Inventory Management System](02-inventoryManagementSystem/README.md) |  ★ ★  | [Go](02-inventoryManagementSystem/go) |
 | 3                                                             |  ☆ ☆  |                                |
 | 4                                                             |  ☆ ☆  |                                |
 | 5                                                             |  ☆ ☆  |                                |
