@@ -2,17 +2,24 @@
 
 <!-- [Day 1: Report Repair](01-reportRepair) -->
 
+## Notes
+
+Find the entries that sum to 2020 and return their product — two entries for
+Part One, three for Part Two. Rather than nested scans, each part uses a
+complement set: Part One is a single pass (for each `a`, was `2020 - a` seen?),
+and Part Two fixes the first entry and runs that same two-sum over the remainder,
+so the whole thing is O(n^2) with no wasted comparisons.
+
 ## Go
 
 ```text
-2020-1 Report Repair (Golang)
+────────────────────────────────────────
+─      2020 Day 1: Report Repair       ─
+────────────────────────────────────────
 
-Running...
-
-Test 1.0: pass in 1.8 µs
-Test 2.0: pass in 2.4 µs
-Part 1: 751776 in 9.6 µs
-Part 2: 42275090 in 62.2 µs
+Solving (Go)…
+1.0:  PASS            20.793µs
+2.0:  PASS           350.980µs
 ```
 
 ## Python
@@ -21,6 +28,17 @@ Part 2: 42275090 in 62.2 µs
     < section intentionally left blank >
 ```
 
-## 2020 Run Times
+## Visualization
 
-![2020 exercise run-time graphs](../run-times.png)
+Every expense entry plotted on a shared value axis, with the two sets that sum to
+2020 marked: the Part One pair and the Part Two triple, each in its own lane with
+connectors down to the axis and a label giving the sum and product. Background
+entries, pair, and triple use three colorblind-safe colors that also differ in
+brightness, and the marked entries are drawn larger, so the highlights read in
+grayscale as well as color.
+
+![Report Repair number line](report-repair.svg)
+
+## Run Times
+
+![Day 1 run-time graphs](run-times.png)

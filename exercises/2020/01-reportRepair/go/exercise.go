@@ -17,45 +17,42 @@ type Exercise struct {
 	common.BaseExercise
 }
 
-// One returns the answer to the first part of the exercise.
-// answer:
+// One finds the two entries summing to 2020 and returns their product.
 func (c Exercise) One(instr string) (any, error) {
 	entries, err := parse(instr)
 	if err != nil {
 		return nil, fmt.Errorf("parsing input: %w", err)
 	}
 
-	for i, a := range entries {
-		for _, b := range entries[i+1:] {
-			if a+b == targetSum {
-				return a * b, nil
-			}
+	// Complement lookup: for each entry, check whether 2020-entry was seen.
+	seen := make(map[int]bool, len(entries))
+	for _, a := range entries {
+		if seen[targetSum-a] {
+			return a * (targetSum - a), nil
 		}
+		seen[a] = true
 	}
 
 	return nil, fmt.Errorf("no answer found")
 }
 
-// Two returns the answer to the second part of the exercise.
-// answer:
+// Two finds the three entries summing to 2020 and returns their product.
 func (c Exercise) Two(instr string) (any, error) {
 	entries, err := parse(instr)
 	if err != nil {
 		return nil, fmt.Errorf("parsing input: %w", err)
 	}
 
+	// Fix the first entry, then use a complement set over the remainder so the
+	// inner search is linear: overall O(n^2).
 	for i, a := range entries {
+		need := targetSum - a
+		seen := make(map[int]bool, len(entries)-i)
 		for _, b := range entries[i+1:] {
-			// skip if a+b is already greater than 2020
-			if a+b >= targetSum {
-				continue
+			if b < need && seen[need-b] {
+				return a * b * (need - b), nil
 			}
-
-			for _, c := range entries[i+2:] {
-				if a+b+c == targetSum {
-					return a * b * c, nil
-				}
-			}
+			seen[b] = true
 		}
 	}
 
@@ -63,12 +60,13 @@ func (c Exercise) Two(instr string) (any, error) {
 }
 
 func parse(instr string) ([]int, error) {
-	entries := make([]int, 0, strings.Count(instr, "\n"))
+	lines := strings.Split(strings.TrimSpace(instr), "\n")
+	entries := make([]int, 0, len(lines))
 
-	for _, e := range strings.Split(instr, "\n") {
-		entry, err := strconv.Atoi(e)
+	for _, e := range lines {
+		entry, err := strconv.Atoi(strings.TrimSpace(e))
 		if err != nil {
-			return nil, fmt.Errorf("parsing entry: %w", err)
+			return nil, fmt.Errorf("parsing entry %q: %w", e, err)
 		}
 
 		entries = append(entries, entry)
