@@ -23,7 +23,7 @@
 | [Day 15: Chiton](15-chiton/README.md)         |  ★ ★  | [Go](15-chiton/go)                                 |
 | [Day 16: Packet Decoder](16-packetDecoder/README.md) |  ★ ★  | [Go](16-packetDecoder/go)                          |
 | [Day 17: Trick Shot](17-trickShot/README.md)  |  ★ ★  | [Go](17-trickShot/go)                              |
-| 18                                            |  ☆ ☆  |                                                    |
+| [Day 18: Snailfish](18-snailfish/README.md)   |  ★ ★  | [Go](18-snailfish/go)                              |
 | 19                                            |  ☆ ☆  |                                                    |
 | 20                                            |  ☆ ☆  |                                                    |
 | 21                                            |  ☆ ☆  |                                                    |
