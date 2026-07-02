@@ -15,7 +15,7 @@
 | [Day 7: Handy Haversacks][rm_7] |  ★ ★  | [Go][go_7] |
 | [Day 8: Handheld Halting][rm_8] |  ★ ★  | [Go][go_8] |
 | [Day 9: Encoding Error][rm_9] |  ★ ★  | [Go][go_9] |
-| 10                           |  ☆ ☆  |            |
+| [Day 10: Adapter Array][rm_10] |  ★ ★  | [Go][go_10] |
 | 11                           |  ☆ ☆  |            |
 | 12                           |  ☆ ☆  |            |
 | 13                           |  ☆ ☆  |            |
@@ -50,6 +50,8 @@
 [go_8]: 08-handheldHalting/go
 [rm_9]: 09-encodingError/README.md
 [go_9]: 09-encodingError/go
+[rm_10]: 10-adapterArray/README.md
+[go_10]: 10-adapterArray/go
 
 ## 2020 Run Times
 
