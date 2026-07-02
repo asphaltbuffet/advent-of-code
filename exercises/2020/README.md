@@ -9,7 +9,7 @@
 | [Day 1: Report Repair][rm_1] |  ★ ★  | [Go][go_1] |
 | [Day 2: Password Philosophy][rm_2] |  ★ ★  | [Go][go_2] |
 | [Day 3: Toboggan Trajectory][rm_3] |  ★ ★  | [Go][go_3] |
-| 4                            |  ☆ ☆  |            |
+| [Day 4: Passport Processing][rm_4] |  ★ ★  | [Go][go_4] |
 | 5                            |  ☆ ☆  |            |
 | 6                            |  ☆ ☆  |            |
 | 7                            |  ☆ ☆  |            |
@@ -38,6 +38,8 @@
 [go_2]: 02-passwordPhilosophy/go
 [rm_3]: 03-tobogganTrajectory/README.md
 [go_3]: 03-tobogganTrajectory/go
+[rm_4]: 04-passportProcessing/README.md
+[go_4]: 04-passportProcessing/go
 
 ## 2020 Run Times
 
