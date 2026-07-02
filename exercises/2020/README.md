@@ -7,7 +7,7 @@
 | Exercise                     | Stars | Solutions  |
 |------------------------------|:-----:|------------|
 | [Day 1: Report Repair][rm_1] |  ★ ★  | [Go][go_1] |
-| 2                            |  ☆ ☆  |            |
+| [Day 2: Password Philosophy][rm_2] |  ★ ★  | [Go][go_2] |
 | 3                            |  ☆ ☆  |            |
 | 4                            |  ☆ ☆  |            |
 | 5                            |  ☆ ☆  |            |
@@ -34,6 +34,8 @@
 
 [rm_1]: 01-reportRepair/README.md
 [go_1]: 01-reportRepair/go
+[rm_2]: 02-passwordPhilosophy/README.md
+[go_2]: 02-passwordPhilosophy/go
 
 ## 2020 Run Times
 
