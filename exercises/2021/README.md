@@ -25,7 +25,7 @@
 | [Day 17: Trick Shot](17-trickShot/README.md)  |  ★ ★  | [Go](17-trickShot/go)                              |
 | [Day 18: Snailfish](18-snailfish/README.md)   |  ★ ★  | [Go](18-snailfish/go)                              |
 | [Day 19: Beacon Scanner](19-beaconScanner/README.md) |  ★ ★  | [Go](19-beaconScanner/go)                          |
-| 20                                            |  ☆ ☆  |                                                    |
+| [Day 20: Trench Map](20-trenchMap/README.md)  |  ★ ★  | [Go](20-trenchMap/go)                              |
 | 21                                            |  ☆ ☆  |                                                    |
 | 22                                            |  ☆ ☆  |                                                    |
 | 23                                            |  ☆ ☆  |                                                    |
