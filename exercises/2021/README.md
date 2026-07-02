@@ -30,7 +30,7 @@
 | [Day 22: Reactor Reboot](22-reactorReboot/README.md) |  ★ ★  | [Go](22-reactorReboot/go)                          |
 | [Day 23: Amphipod](23-amphipod/README.md)     |  ★ ★  | [Go](23-amphipod/go)                               |
 | [Day 24: Arithmetic Logic Unit](24-arithmeticLogicUnit/README.md) |  ★ ★  | [Go](24-arithmeticLogicUnit/go)                    |
-| 25                                            |  ☆ ☆  |                                                    |
+| [Day 25: Sea Cucumber](25-seaCucumber/README.md) |  ★ ★  | [Go](25-seaCucumber/go)                            |
 
 ## 2021 Run Times
 
