@@ -8,7 +8,7 @@
 |---------------------------------------------------------------|:-----:|--------------------------------|
 | [Day 1: Chronal Calibration](01-chronalCalibration/README.md) |  ★ ★  | [Go](01-chronalCalibration/go) |
 | [Day 2: Inventory Management System](02-inventoryManagementSystem/README.md) |  ★ ★  | [Go](02-inventoryManagementSystem/go) |
-| 3                                                             |  ☆ ☆  |                                |
+| [Day 3: No Matter How You Slice It](03-noMatterHowYouSliceIt/README.md) |  ★ ★  | [Go](03-noMatterHowYouSliceIt/go) |
 | 4                                                             |  ☆ ☆  |                                |
 | 5                                                             |  ☆ ☆  |                                |
 | 6                                                             |  ☆ ☆  |                                |
