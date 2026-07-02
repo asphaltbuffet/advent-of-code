@@ -12,7 +12,7 @@
 | [Day 4: Passport Processing][rm_4] |  ★ ★  | [Go][go_4] |
 | [Day 5: Binary Boarding][rm_5] |  ★ ★  | [Go][go_5] |
 | [Day 6: Custom Customs][rm_6] |  ★ ★  | [Go][go_6] |
-| 7                            |  ☆ ☆  |            |
+| [Day 7: Handy Haversacks][rm_7] |  ★ ★  | [Go][go_7] |
 | 8                            |  ☆ ☆  |            |
 | 9                            |  ☆ ☆  |            |
 | 10                           |  ☆ ☆  |            |
@@ -44,6 +44,8 @@
 [go_5]: 05-binaryBoarding/go
 [rm_6]: 06-customCustoms/README.md
 [go_6]: 06-customCustoms/go
+[rm_7]: 07-handyHaversacks/README.md
+[go_7]: 07-handyHaversacks/go
 
 ## 2020 Run Times
 
