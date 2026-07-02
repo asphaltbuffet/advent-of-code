@@ -1,0 +1,28 @@
+{
+  "id": "2021-23",
+  "title": "Amphipod",
+  "year": 2021,
+  "day": 23,
+  "url": "https://adventofcode.com/2021/day/23",
+  "data": {
+    "inputFile": "input.txt",
+    "testCases": {
+      "one": [
+        {
+          "input": "#############\n#...........#\n###B#C#B#D###\n  #A#D#C#A#\n  #########",
+          "expected": "12521"
+        }
+      ],
+      "two": [
+        {
+          "input": "#############\n#...........#\n###B#C#B#D###\n  #D#C#B#A#\n  #D#B#A#C#\n  #A#D#C#A#\n  #########",
+          "expected": "44169"
+        }
+      ]
+    },
+    "answers": {
+      "a": "16508",
+      "b": "43626"
+    }
+  }
+}
