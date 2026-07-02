@@ -1,0 +1,23 @@
+{
+  "id": "2020-05",
+  "title": "Binary Boarding",
+  "year": 2020,
+  "day": 5,
+  "url": "https://adventofcode.com/2020/day/5",
+  "data": {
+    "inputFile": "input.txt",
+    "testCases": {
+      "one": [
+        {
+          "input": "BFFFBBFRRR\nFFFBBBFRRR\nBBFFBBFRLL",
+          "expected": "820"
+        }
+      ],
+      "two": []
+    },
+    "answers": {
+      "a": "850",
+      "b": "599"
+    }
+  }
+}

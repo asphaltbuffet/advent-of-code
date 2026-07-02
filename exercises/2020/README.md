@@ -10,7 +10,7 @@
 | [Day 2: Password Philosophy][rm_2] |  ★ ★  | [Go][go_2] |
 | [Day 3: Toboggan Trajectory][rm_3] |  ★ ★  | [Go][go_3] |
 | [Day 4: Passport Processing][rm_4] |  ★ ★  | [Go][go_4] |
-| 5                            |  ☆ ☆  |            |
+| [Day 5: Binary Boarding][rm_5] |  ★ ★  | [Go][go_5] |
 | 6                            |  ☆ ☆  |            |
 | 7                            |  ☆ ☆  |            |
 | 8                            |  ☆ ☆  |            |
@@ -40,6 +40,8 @@
 [go_3]: 03-tobogganTrajectory/go
 [rm_4]: 04-passportProcessing/README.md
 [go_4]: 04-passportProcessing/go
+[rm_5]: 05-binaryBoarding/README.md
+[go_5]: 05-binaryBoarding/go
 
 ## 2020 Run Times
 
