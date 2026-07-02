@@ -14,7 +14,7 @@
 | [Day 6: Custom Customs][rm_6] |  ★ ★  | [Go][go_6] |
 | [Day 7: Handy Haversacks][rm_7] |  ★ ★  | [Go][go_7] |
 | [Day 8: Handheld Halting][rm_8] |  ★ ★  | [Go][go_8] |
-| 9                            |  ☆ ☆  |            |
+| [Day 9: Encoding Error][rm_9] |  ★ ★  | [Go][go_9] |
 | 10                           |  ☆ ☆  |            |
 | 11                           |  ☆ ☆  |            |
 | 12                           |  ☆ ☆  |            |
@@ -48,6 +48,8 @@
 [go_7]: 07-handyHaversacks/go
 [rm_8]: 08-handheldHalting/README.md
 [go_8]: 08-handheldHalting/go
+[rm_9]: 09-encodingError/README.md
+[go_9]: 09-encodingError/go
 
 ## 2020 Run Times
 

@@ -1,0 +1,28 @@
+{
+  "id": "2020-09",
+  "title": "Encoding Error",
+  "year": 2020,
+  "day": 9,
+  "url": "https://adventofcode.com/2020/day/9",
+  "data": {
+    "inputFile": "input.txt",
+    "testCases": {
+      "one": [
+        {
+          "input": "35\n20\n15\n25\n47\n40\n62\n55\n65\n95\n102\n117\n150\n182\n127\n219\n299\n277\n309\n576",
+          "expected": "127"
+        }
+      ],
+      "two": [
+        {
+          "input": "35\n20\n15\n25\n47\n40\n62\n55\n65\n95\n102\n117\n150\n182\n127\n219\n299\n277\n309\n576",
+          "expected": "62"
+        }
+      ]
+    },
+    "answers": {
+      "a": "69316178",
+      "b": "9351526"
+    }
+  }
+}
