@@ -16,7 +16,7 @@
 | [Day 8: Handheld Halting][rm_8] |  ★ ★  | [Go][go_8] |
 | [Day 9: Encoding Error][rm_9] |  ★ ★  | [Go][go_9] |
 | [Day 10: Adapter Array][rm_10] |  ★ ★  | [Go][go_10] |
-| 11                           |  ☆ ☆  |            |
+| [Day 11: Seating System][rm_11] |  ★ ★  | [Go][go_11] |
 | 12                           |  ☆ ☆  |            |
 | 13                           |  ☆ ☆  |            |
 | 14                           |  ☆ ☆  |            |
@@ -52,6 +52,8 @@
 [go_9]: 09-encodingError/go
 [rm_10]: 10-adapterArray/README.md
 [go_10]: 10-adapterArray/go
+[rm_11]: 11-seatingSystem/README.md
+[go_11]: 11-seatingSystem/go
 
 ## 2020 Run Times
 
