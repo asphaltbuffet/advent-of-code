@@ -2,23 +2,26 @@
 
 <!-- [Day 1: Chronal Calibration](01-chronalCalibration) -->
 
+## Notes
+
+The device starts at frequency 0 and applies a list of signed changes.
+
+Part One is just the sum of every change. Part Two cycles through the list
+repeatedly, tracking every intermediate frequency in a set, and returns the first
+frequency reached twice. Because the list may need many passes before a repeat
+appears, the seen-set is the key: it turns an otherwise unbounded search into an
+O(reached) lookup, and the loop terminates the moment a duplicate is hit.
+
 ## Go
 
 ```text
-2018-1 Chronal Calibration (Golang)
+────────────────────────────────────────
+─   2018 Day 1: Chronal Calibration    ─
+────────────────────────────────────────
 
-Running...
-
-Test 1.0: pass in 1.6 µs
-Test 1.1: pass in 2.7 µs
-Test 1.2: pass in 2.3 µs
-Test 1.3: pass in 2.1 µs
-Test 2.0: pass in 2.5 µs
-Test 2.1: pass in 3 µs
-Test 2.2: pass in 9.3 µs
-Test 2.3: pass in 4.2 µs
-Part 1: 416 in 21.7 µs
-Part 2: 56752 in 27.0396 ms
+Solving (Go)…
+1.0:  PASS             0.074ms
+2.0:  PASS            22.611ms
 ```
 
 ## Python
@@ -27,6 +30,18 @@ Part 2: 56752 in 27.0396 ms
     < section intentionally left blank >
 ```
 
-## 2018 Run Times
+## Visualization
 
-![2018 exercise run-time graphs](../run-times.png)
+The space of frequencies the walk visits, as a coverage histogram along a number
+line. Each bar counts distinct frequencies visited in that band, so the near-solid
+region shows where the walk spends most of its time and the sparse right tail is
+the range only reached in later passes. The one value hit twice — the Part Two
+answer, 56752 — is marked with a tall pointer and its two step numbers (509, then
+138469, about 137 passes later). Part One (416) sits near the left. Roles are
+distinguished by marker shape and position, so the chart reads in grayscale.
+
+![Visited-frequency coverage](chronal-calibration.svg)
+
+## Run Times
+
+![Day 1 run-time graphs](run-times.png)
