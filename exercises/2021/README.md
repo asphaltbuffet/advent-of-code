@@ -26,7 +26,7 @@
 | [Day 18: Snailfish](18-snailfish/README.md)   |  ★ ★  | [Go](18-snailfish/go)                              |
 | [Day 19: Beacon Scanner](19-beaconScanner/README.md) |  ★ ★  | [Go](19-beaconScanner/go)                          |
 | [Day 20: Trench Map](20-trenchMap/README.md)  |  ★ ★  | [Go](20-trenchMap/go)                              |
-| 21                                            |  ☆ ☆  |                                                    |
+| [Day 21: Dirac Dice](21-diracDice/README.md)  |  ★ ★  | [Go](21-diracDice/go)                              |
 | 22                                            |  ☆ ☆  |                                                    |
 | 23                                            |  ☆ ☆  |                                                    |
 | 24                                            |  ☆ ☆  |                                                    |
