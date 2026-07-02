@@ -29,7 +29,7 @@
 | [Day 21: Allergen Assessment][rm_21] |  ★ ★  | [Go][go_21] |
 | [Day 22: Crab Combat][rm_22] |  ★ ★  | [Go][go_22] |
 | [Day 23: Crab Cups][rm_23] |  ★ ★  | [Go][go_23] |
-| 24                           |  ☆ ☆  |            |
+| [Day 24: Lobby Layout][rm_24] |  ★ ★  | [Go][go_24] |
 | 25                           |  ☆ ☆  |            |
 
 [rm_1]: 01-reportRepair/README.md
@@ -78,6 +78,8 @@
 [go_22]: 22-crabCombat/go
 [rm_23]: 23-crabCups/README.md
 [go_23]: 23-crabCups/go
+[rm_24]: 24-lobbyLayout/README.md
+[go_24]: 24-lobbyLayout/go
 
 ## 2020 Run Times
 
