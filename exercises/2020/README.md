@@ -25,7 +25,7 @@
 | [Day 17: Conway Cubes][rm_17] |  ★ ★  | [Go][go_17] |
 | [Day 18: Operation Order][rm_18] |  ★ ★  | [Go][go_18] |
 | [Day 19: Monster Messages][rm_19] |  ★ ★  | [Go][go_19] |
-| 20                           |  ☆ ☆  |            |
+| [Day 20: Jurassic Jigsaw][rm_20] |  ★ ★  | [Go][go_20] |
 | 21                           |  ☆ ☆  |            |
 | 22                           |  ☆ ☆  |            |
 | 23                           |  ☆ ☆  |            |
@@ -70,6 +70,8 @@
 [go_18]: 18-operationOrder/go
 [rm_19]: 19-monsterMessages/README.md
 [go_19]: 19-monsterMessages/go
+[rm_20]: 20-jurassicJigsaw/README.md
+[go_20]: 20-jurassicJigsaw/go
 
 ## 2020 Run Times
 
