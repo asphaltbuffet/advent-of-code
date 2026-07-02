@@ -13,7 +13,7 @@
 | [Day 5: Binary Boarding][rm_5] |  ★ ★  | [Go][go_5] |
 | [Day 6: Custom Customs][rm_6] |  ★ ★  | [Go][go_6] |
 | [Day 7: Handy Haversacks][rm_7] |  ★ ★  | [Go][go_7] |
-| 8                            |  ☆ ☆  |            |
+| [Day 8: Handheld Halting][rm_8] |  ★ ★  | [Go][go_8] |
 | 9                            |  ☆ ☆  |            |
 | 10                           |  ☆ ☆  |            |
 | 11                           |  ☆ ☆  |            |
@@ -46,6 +46,8 @@
 [go_6]: 06-customCustoms/go
 [rm_7]: 07-handyHaversacks/README.md
 [go_7]: 07-handyHaversacks/go
+[rm_8]: 08-handheldHalting/README.md
+[go_8]: 08-handheldHalting/go
 
 ## 2020 Run Times
 
