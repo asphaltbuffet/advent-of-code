@@ -24,7 +24,7 @@
 | [Day 16: Ticket Translation][rm_16] |  ★ ★  | [Go][go_16] |
 | [Day 17: Conway Cubes][rm_17] |  ★ ★  | [Go][go_17] |
 | [Day 18: Operation Order][rm_18] |  ★ ★  | [Go][go_18] |
-| 19                           |  ☆ ☆  |            |
+| [Day 19: Monster Messages][rm_19] |  ★ ★  | [Go][go_19] |
 | 20                           |  ☆ ☆  |            |
 | 21                           |  ☆ ☆  |            |
 | 22                           |  ☆ ☆  |            |
@@ -68,6 +68,8 @@
 [go_17]: 17-conwayCubes/go
 [rm_18]: 18-operationOrder/README.md
 [go_18]: 18-operationOrder/go
+[rm_19]: 19-monsterMessages/README.md
+[go_19]: 19-monsterMessages/go
 
 ## 2020 Run Times
 
