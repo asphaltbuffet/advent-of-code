@@ -1,0 +1,18 @@
+{
+  "id": "2021-24",
+  "title": "Arithmetic Logic Unit",
+  "year": 2021,
+  "day": 24,
+  "url": "https://adventofcode.com/2021/day/24",
+  "data": {
+    "inputFile": "input.txt",
+    "testCases": {
+      "one": [],
+      "two": []
+    },
+    "answers": {
+      "a": "99429795993929",
+      "b": "18113181571611"
+    }
+  }
+}
