@@ -17,7 +17,7 @@
 | [Day 9: Encoding Error][rm_9] |  ★ ★  | [Go][go_9] |
 | [Day 10: Adapter Array][rm_10] |  ★ ★  | [Go][go_10] |
 | [Day 11: Seating System][rm_11] |  ★ ★  | [Go][go_11] |
-| 12                           |  ☆ ☆  |            |
+| [Day 12: Rain Risk][rm_12] |  ★ ★  | [Go][go_12] |
 | 13                           |  ☆ ☆  |            |
 | 14                           |  ☆ ☆  |            |
 | 15                           |  ☆ ☆  |            |
@@ -54,6 +54,8 @@
 [go_10]: 10-adapterArray/go
 [rm_11]: 11-seatingSystem/README.md
 [go_11]: 11-seatingSystem/go
+[rm_12]: 12-rainRisk/README.md
+[go_12]: 12-rainRisk/go
 
 ## 2020 Run Times
 
