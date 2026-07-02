@@ -19,7 +19,7 @@
 | [Day 11: Seating System][rm_11] |  ★ ★  | [Go][go_11] |
 | [Day 12: Rain Risk][rm_12] |  ★ ★  | [Go][go_12] |
 | [Day 13: Shuttle Search][rm_13] |  ★ ★  | [Go][go_13] |
-| 14                           |  ☆ ☆  |            |
+| [Day 14: Docking Data][rm_14] |  ★ ★  | [Go][go_14] |
 | 15                           |  ☆ ☆  |            |
 | 16                           |  ☆ ☆  |            |
 | 17                           |  ☆ ☆  |            |
@@ -58,6 +58,8 @@
 [go_12]: 12-rainRisk/go
 [rm_13]: 13-shuttleSearch/README.md
 [go_13]: 13-shuttleSearch/go
+[rm_14]: 14-dockingData/README.md
+[go_14]: 14-dockingData/go
 
 ## 2020 Run Times
 
