@@ -20,7 +20,7 @@
 | [Day 12: Rain Risk][rm_12] |  ★ ★  | [Go][go_12] |
 | [Day 13: Shuttle Search][rm_13] |  ★ ★  | [Go][go_13] |
 | [Day 14: Docking Data][rm_14] |  ★ ★  | [Go][go_14] |
-| 15                           |  ☆ ☆  |            |
+| [Day 15: Rambunctious Recitation][rm_15] |  ★ ★  | [Go][go_15] |
 | 16                           |  ☆ ☆  |            |
 | 17                           |  ☆ ☆  |            |
 | 18                           |  ☆ ☆  |            |
@@ -60,6 +60,8 @@
 [go_13]: 13-shuttleSearch/go
 [rm_14]: 14-dockingData/README.md
 [go_14]: 14-dockingData/go
+[rm_15]: 15-rambunctiousRecitation/README.md
+[go_15]: 15-rambunctiousRecitation/go
 
 ## 2020 Run Times
 
