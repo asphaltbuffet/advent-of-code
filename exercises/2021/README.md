@@ -24,7 +24,7 @@
 | [Day 16: Packet Decoder](16-packetDecoder/README.md) |  ★ ★  | [Go](16-packetDecoder/go)                          |
 | [Day 17: Trick Shot](17-trickShot/README.md)  |  ★ ★  | [Go](17-trickShot/go)                              |
 | [Day 18: Snailfish](18-snailfish/README.md)   |  ★ ★  | [Go](18-snailfish/go)                              |
-| 19                                            |  ☆ ☆  |                                                    |
+| [Day 19: Beacon Scanner](19-beaconScanner/README.md) |  ★ ★  | [Go](19-beaconScanner/go)                          |
 | 20                                            |  ☆ ☆  |                                                    |
 | 21                                            |  ☆ ☆  |                                                    |
 | 22                                            |  ☆ ☆  |                                                    |
