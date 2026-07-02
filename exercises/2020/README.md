@@ -23,7 +23,7 @@
 | [Day 15: Rambunctious Recitation][rm_15] |  ★ ★  | [Go][go_15] |
 | [Day 16: Ticket Translation][rm_16] |  ★ ★  | [Go][go_16] |
 | [Day 17: Conway Cubes][rm_17] |  ★ ★  | [Go][go_17] |
-| 18                           |  ☆ ☆  |            |
+| [Day 18: Operation Order][rm_18] |  ★ ★  | [Go][go_18] |
 | 19                           |  ☆ ☆  |            |
 | 20                           |  ☆ ☆  |            |
 | 21                           |  ☆ ☆  |            |
@@ -66,6 +66,8 @@
 [go_16]: 16-ticketTranslation/go
 [rm_17]: 17-conwayCubes/README.md
 [go_17]: 17-conwayCubes/go
+[rm_18]: 18-operationOrder/README.md
+[go_18]: 18-operationOrder/go
 
 ## 2020 Run Times
 
