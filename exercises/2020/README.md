@@ -21,7 +21,7 @@
 | [Day 13: Shuttle Search][rm_13] |  ★ ★  | [Go][go_13] |
 | [Day 14: Docking Data][rm_14] |  ★ ★  | [Go][go_14] |
 | [Day 15: Rambunctious Recitation][rm_15] |  ★ ★  | [Go][go_15] |
-| 16                           |  ☆ ☆  |            |
+| [Day 16: Ticket Translation][rm_16] |  ★ ★  | [Go][go_16] |
 | 17                           |  ☆ ☆  |            |
 | 18                           |  ☆ ☆  |            |
 | 19                           |  ☆ ☆  |            |
@@ -62,6 +62,8 @@
 [go_14]: 14-dockingData/go
 [rm_15]: 15-rambunctiousRecitation/README.md
 [go_15]: 15-rambunctiousRecitation/go
+[rm_16]: 16-ticketTranslation/README.md
+[go_16]: 16-ticketTranslation/go
 
 ## 2020 Run Times
 
