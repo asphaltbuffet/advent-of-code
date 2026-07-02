@@ -1,0 +1,23 @@
+{
+  "id": "2020-25",
+  "title": "Combo Breaker",
+  "year": 2020,
+  "day": 25,
+  "url": "https://adventofcode.com/2020/day/25",
+  "data": {
+    "inputFile": "input.txt",
+    "testCases": {
+      "one": [
+        {
+          "input": "5764801\n17807724",
+          "expected": "14897079"
+        }
+      ],
+      "two": []
+    },
+    "answers": {
+      "a": "11288669",
+      "b": ""
+    }
+  }
+}
