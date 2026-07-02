@@ -1,0 +1,28 @@
+{
+  "id": "2020-14",
+  "title": "Docking Data",
+  "year": 2020,
+  "day": 14,
+  "url": "https://adventofcode.com/2020/day/14",
+  "data": {
+    "inputFile": "input.txt",
+    "testCases": {
+      "one": [
+        {
+          "input": "mask = XXXXXXXXXXXXXXXXXXXXXXXXXXXXX1XXXX0X\nmem[8] = 11\nmem[7] = 101\nmem[8] = 0",
+          "expected": "165"
+        }
+      ],
+      "two": [
+        {
+          "input": "mask = 000000000000000000000000000000X1001X\nmem[42] = 100\nmask = 00000000000000000000000000000000X0XX\nmem[26] = 1",
+          "expected": "208"
+        }
+      ]
+    },
+    "answers": {
+      "a": "10717676595607",
+      "b": "3974538275659"
+    }
+  }
+}
