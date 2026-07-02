@@ -26,7 +26,7 @@
 | [Day 18: Operation Order][rm_18] |  ★ ★  | [Go][go_18] |
 | [Day 19: Monster Messages][rm_19] |  ★ ★  | [Go][go_19] |
 | [Day 20: Jurassic Jigsaw][rm_20] |  ★ ★  | [Go][go_20] |
-| 21                           |  ☆ ☆  |            |
+| [Day 21: Allergen Assessment][rm_21] |  ★ ★  | [Go][go_21] |
 | 22                           |  ☆ ☆  |            |
 | 23                           |  ☆ ☆  |            |
 | 24                           |  ☆ ☆  |            |
@@ -72,6 +72,8 @@
 [go_19]: 19-monsterMessages/go
 [rm_20]: 20-jurassicJigsaw/README.md
 [go_20]: 20-jurassicJigsaw/go
+[rm_21]: 21-allergenAssessment/README.md
+[go_21]: 21-allergenAssessment/go
 
 ## 2020 Run Times
 
