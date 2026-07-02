@@ -18,7 +18,7 @@
 | [Day 10: Adapter Array][rm_10] |  ★ ★  | [Go][go_10] |
 | [Day 11: Seating System][rm_11] |  ★ ★  | [Go][go_11] |
 | [Day 12: Rain Risk][rm_12] |  ★ ★  | [Go][go_12] |
-| 13                           |  ☆ ☆  |            |
+| [Day 13: Shuttle Search][rm_13] |  ★ ★  | [Go][go_13] |
 | 14                           |  ☆ ☆  |            |
 | 15                           |  ☆ ☆  |            |
 | 16                           |  ☆ ☆  |            |
@@ -56,6 +56,8 @@
 [go_11]: 11-seatingSystem/go
 [rm_12]: 12-rainRisk/README.md
 [go_12]: 12-rainRisk/go
+[rm_13]: 13-shuttleSearch/README.md
+[go_13]: 13-shuttleSearch/go
 
 ## 2020 Run Times
 
