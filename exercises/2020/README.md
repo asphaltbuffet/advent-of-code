@@ -11,7 +11,7 @@
 | [Day 3: Toboggan Trajectory][rm_3] |  ★ ★  | [Go][go_3] |
 | [Day 4: Passport Processing][rm_4] |  ★ ★  | [Go][go_4] |
 | [Day 5: Binary Boarding][rm_5] |  ★ ★  | [Go][go_5] |
-| 6                            |  ☆ ☆  |            |
+| [Day 6: Custom Customs][rm_6] |  ★ ★  | [Go][go_6] |
 | 7                            |  ☆ ☆  |            |
 | 8                            |  ☆ ☆  |            |
 | 9                            |  ☆ ☆  |            |
@@ -42,6 +42,8 @@
 [go_4]: 04-passportProcessing/go
 [rm_5]: 05-binaryBoarding/README.md
 [go_5]: 05-binaryBoarding/go
+[rm_6]: 06-customCustoms/README.md
+[go_6]: 06-customCustoms/go
 
 ## 2020 Run Times
 
