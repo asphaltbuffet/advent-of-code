@@ -1,0 +1,28 @@
+{
+  "id": "2020-23",
+  "title": "Crab Cups",
+  "year": 2020,
+  "day": 23,
+  "url": "https://adventofcode.com/2020/day/23",
+  "data": {
+    "inputFile": "input.txt",
+    "testCases": {
+      "one": [
+        {
+          "input": "389125467",
+          "expected": "67384529"
+        }
+      ],
+      "two": [
+        {
+          "input": "389125467",
+          "expected": "149245887792"
+        }
+      ]
+    },
+    "answers": {
+      "a": "82934675",
+      "b": "474600314018"
+    }
+  }
+}
