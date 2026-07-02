@@ -27,7 +27,7 @@
 | [Day 19: Monster Messages][rm_19] |  ★ ★  | [Go][go_19] |
 | [Day 20: Jurassic Jigsaw][rm_20] |  ★ ★  | [Go][go_20] |
 | [Day 21: Allergen Assessment][rm_21] |  ★ ★  | [Go][go_21] |
-| 22                           |  ☆ ☆  |            |
+| [Day 22: Crab Combat][rm_22] |  ★ ★  | [Go][go_22] |
 | 23                           |  ☆ ☆  |            |
 | 24                           |  ☆ ☆  |            |
 | 25                           |  ☆ ☆  |            |
@@ -74,6 +74,8 @@
 [go_20]: 20-jurassicJigsaw/go
 [rm_21]: 21-allergenAssessment/README.md
 [go_21]: 21-allergenAssessment/go
+[rm_22]: 22-crabCombat/README.md
+[go_22]: 22-crabCombat/go
 
 ## 2020 Run Times
 
