@@ -60,8 +60,38 @@ geomean             15.07        11.21       -25.61%
 
 ## Python
 
+The winning hold times lie strictly between the roots of `h**2 - t*h + d`, so
+each race is O(1): `math.isqrt` on the discriminant gives the bounds, nudged to
+stay exact. Part one takes `math.prod` of the counts; part two strips the spaces
+to read one large race.
+
 ```text
-< section intentionally left blank >
+ ───────────────────
+ ADVENT OF CODE 2023
+ Day 6: Wait For It
+ ───────────────────
+
+Solving (Python)…
+1.0:  PASS            20.742µs
+2.0:  PASS            14.305µs
+```
+
+## Rust
+
+The same quadratic closed form: `sqrt` of the discriminant bounds the winning
+interval, refined by a couple of integer steps so no rounding slips through.
+Part one multiplies the per-race counts; part two joins the digits into a single
+race. Answered in single-digit microseconds.
+
+```text
+ ───────────────────
+ ADVENT OF CODE 2023
+ Day 6: Wait For It
+ ───────────────────
+
+Solving (Rust)…
+1.0:  PASS             1.592µs
+2.0:  PASS             2.009µs
 ```
 
 ## 2023 Run Times
