@@ -11,7 +11,9 @@
       "Bash(elf test *)",
       "Bash(elf solve *)",
       "WebFetch(domain:adventofcode.com)",
-      "mcp__plugin_claude-code-home-manager_serena__find_symbol"
+      "mcp__plugin_claude-code-home-manager_serena__find_symbol",
+      "Bash(elf benchmark *)",
+      "Bash(elf analyze *)"
     ]
   }
 }

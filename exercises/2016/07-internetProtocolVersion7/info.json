@@ -1,0 +1,28 @@
+{
+  "id": "2016-07",
+  "title": "Internet Protocol Version 7",
+  "year": 2016,
+  "day": 7,
+  "url": "https://adventofcode.com/2016/day/7",
+  "data": {
+    "inputFile": "input.txt",
+    "testCases": {
+      "one": [
+        {
+          "input": "abba[mnop]qrst\nabcd[bddb]xyyx\naaaa[qwer]tyui\nioxxoj[asdfgh]zxcvbn",
+          "expected": "2"
+        }
+      ],
+      "two": [
+        {
+          "input": "aba[bab]xyz\nxyx[xyx]xyx\naaa[kek]eke\nzazbz[bzb]cdb",
+          "expected": "3"
+        }
+      ]
+    },
+    "answers": {
+      "a": "115",
+      "b": "231"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "id": "2016-12",
+  "title": "Leonardo's Monorail",
+  "year": 2016,
+  "day": 12,
+  "url": "https://adventofcode.com/2016/day/12",
+  "data": {
+    "inputFile": "input.txt",
+    "testCases": {
+      "one": [
+        {
+          "input": "cpy 41 a\ninc a\ninc a\ndec a\njnz a 2\ndec a",
+          "expected": "42"
+        }
+      ],
+      "two": []
+    },
+    "answers": {
+      "a": "318003",
+      "b": "9227657"
+    }
+  }
+}

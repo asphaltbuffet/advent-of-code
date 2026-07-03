@@ -1,0 +1,28 @@
+{
+  "id": "2016-09",
+  "title": "Explosives in Cyberspace",
+  "year": 2016,
+  "day": 9,
+  "url": "https://adventofcode.com/2016/day/9",
+  "data": {
+    "inputFile": "input.txt",
+    "testCases": {
+      "one": [
+        {
+          "input": "X(8x2)(3x3)ABCY",
+          "expected": "18"
+        }
+      ],
+      "two": [
+        {
+          "input": "(25x3)(3x3)ABC(2x3)XY(5x2)PQRSTX(18x9)(3x2)TWO(5x7)SEVEN",
+          "expected": "445"
+        }
+      ]
+    },
+    "answers": {
+      "a": "150914",
+      "b": "11052855125"
+    }
+  }
+}

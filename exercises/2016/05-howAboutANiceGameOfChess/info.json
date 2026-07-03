@@ -1,0 +1,28 @@
+{
+  "id": "2016-05",
+  "title": "How About a Nice Game of Chess?",
+  "year": 2016,
+  "day": 5,
+  "url": "https://adventofcode.com/2016/day/5",
+  "data": {
+    "inputFile": "input.txt",
+    "testCases": {
+      "one": [
+        {
+          "input": "abc",
+          "expected": "18f47a30"
+        }
+      ],
+      "two": [
+        {
+          "input": "abc",
+          "expected": "05ace8e3"
+        }
+      ]
+    },
+    "answers": {
+      "a": "c6697b55",
+      "b": "8c35d1ab"
+    }
+  }
+}

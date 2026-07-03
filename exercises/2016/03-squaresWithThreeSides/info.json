@@ -1,0 +1,28 @@
+{
+  "id": "2016-03",
+  "title": "Squares With Three Sides",
+  "year": 2016,
+  "day": 3,
+  "url": "https://adventofcode.com/2016/day/3",
+  "data": {
+    "inputFile": "input.txt",
+    "testCases": {
+      "one": [
+        {
+          "input": "5 10 25\n3 4 5",
+          "expected": "1"
+        }
+      ],
+      "two": [
+        {
+          "input": "3 5 100\n4 5 100\n5 5 100",
+          "expected": "3"
+        }
+      ]
+    },
+    "answers": {
+      "a": "1032",
+      "b": "1838"
+    }
+  }
+}
