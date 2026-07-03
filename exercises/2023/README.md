@@ -27,7 +27,7 @@
 | [Day 19: Aplenty][rm19]                       |  ⭐⭐   | [Go][go19] · [Rust][rs19] · [Python][py19] |
 | [Day 20: Pulse Propagation][rm20]             |  ⭐⭐   | [Go][go20] · [Rust][rs20] · [Python][py20] |
 | [Day 21: Step Counter][rm21]                  |  ⭐⭐   | [Go][go21] · [Rust][rs21] · [Python][py21] |
-| [Day 22: Sand Slabs][rm22]                    |  ⭐⭐   | [Go][go22] |
+| [Day 22: Sand Slabs][rm22]                    |  ⭐⭐   | [Go][go22] · [Rust][rs22] · [Python][py22] |
 | [Day 23: A Long Walk][rm23]                   |  ⭐⭐   | [Go][go23] |
 | [Day 24: Never Tell Me The Odds][rm24]        |  ⭐⭐   | [Go][go24] |
 | [Day 25: Snowverload][rm25]                   |  ⭐⭐   | [Go][go25] |
@@ -156,6 +156,8 @@ Day       Time   Rank  Score       Time   Rank  Score
 [py21]: 21-stepCounter/py
 [rm22]: 22-sandSlabs/README.md
 [go22]: 22-sandSlabs/go
+[rs22]: 22-sandSlabs/rs
+[py22]: 22-sandSlabs/py
 [rm23]: 23-aLongWalk/README.md
 [go23]: 23-aLongWalk/go
 [rm24]: 24-neverTellMeTheOdds/README.md
