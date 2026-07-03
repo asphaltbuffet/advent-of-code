@@ -20,7 +20,7 @@
 | [Day 12: Subterranean Sustainability](12-subterraneanSustainability/README.md) |  ★ ★  | [Go](12-subterraneanSustainability/go) |
 | [Day 13: Mine Cart Madness](13-mineCartMadness/README.md) |  ★ ★  | [Go](13-mineCartMadness/go) |
 | [Day 14: Chocolate Charts](14-chocolateCharts/README.md) |  ★ ★  | [Go](14-chocolateCharts/go) |
-| 15                                                            |  ☆ ☆  |                                |
+| [Day 15: Beverage Bandits](15-beverageBandits/README.md) |  ★ ★  | [Go](15-beverageBandits/go) |
 | 16                                                            |  ☆ ☆  |                                |
 | 17                                                            |  ☆ ☆  |                                |
 | 18                                                            |  ☆ ☆  |                                |
