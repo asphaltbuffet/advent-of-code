@@ -26,7 +26,7 @@
 | [Day 18: Lavaduct Lagoon][rm18]               |  ⭐⭐   | [Go][go18] · [Rust][rs18] · [Python][py18] |
 | [Day 19: Aplenty][rm19]                       |  ⭐⭐   | [Go][go19] · [Rust][rs19] · [Python][py19] |
 | [Day 20: Pulse Propagation][rm20]             |  ⭐⭐   | [Go][go20] · [Rust][rs20] · [Python][py20] |
-| [Day 21: Step Counter][rm21]                  |  ⭐⭐   | [Go][go21] |
+| [Day 21: Step Counter][rm21]                  |  ⭐⭐   | [Go][go21] · [Rust][rs21] · [Python][py21] |
 | [Day 22: Sand Slabs][rm22]                    |  ⭐⭐   | [Go][go22] |
 | [Day 23: A Long Walk][rm23]                   |  ⭐⭐   | [Go][go23] |
 | [Day 24: Never Tell Me The Odds][rm24]        |  ⭐⭐   | [Go][go24] |
@@ -152,6 +152,8 @@ Day       Time   Rank  Score       Time   Rank  Score
 [py20]: 20-pulsePropagation/py
 [rm21]: 21-stepCounter/README.md
 [go21]: 21-stepCounter/go
+[rs21]: 21-stepCounter/rs
+[py21]: 21-stepCounter/py
 [rm22]: 22-sandSlabs/README.md
 [go22]: 22-sandSlabs/go
 [rm23]: 23-aLongWalk/README.md
