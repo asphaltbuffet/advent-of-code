@@ -18,7 +18,7 @@
 | [Day 10: The Stars Align](10-theStarsAlign/README.md) |  ★ ★  | [Go](10-theStarsAlign/go) · [Rust](10-theStarsAlign/rs) · [Python](10-theStarsAlign/py) |
 | [Day 11: Chronal Charge](11-chronalCharge/README.md) |  ★ ★  | [Go](11-chronalCharge/go) · [Rust](11-chronalCharge/rs) · [Python](11-chronalCharge/py) |
 | [Day 12: Subterranean Sustainability](12-subterraneanSustainability/README.md) |  ★ ★  | [Go](12-subterraneanSustainability/go) · [Rust](12-subterraneanSustainability/rs) · [Python](12-subterraneanSustainability/py) |
-| [Day 13: Mine Cart Madness](13-mineCartMadness/README.md) |  ★ ★  | [Go](13-mineCartMadness/go) |
+| [Day 13: Mine Cart Madness](13-mineCartMadness/README.md) |  ★ ★  | [Go](13-mineCartMadness/go) · [Rust](13-mineCartMadness/rs) · [Python](13-mineCartMadness/py) |
 | [Day 14: Chocolate Charts](14-chocolateCharts/README.md) |  ★ ★  | [Go](14-chocolateCharts/go) |
 | [Day 15: Beverage Bandits](15-beverageBandits/README.md) |  ★ ★  | [Go](15-beverageBandits/go) |
 | [Day 16: Chronal Classification](16-chronalClassification/README.md) |  ★ ★  | [Go](16-chronalClassification/go) |
