@@ -21,6 +21,37 @@ Solving (Go)…
 2.0:  PASS           296.814ms
 ```
 
+## Python
+
+Bricks are settled in z order using a `heights[(x,y)]` map of the topmost cell, so
+each drop is a lookup rather than a collision scan; that yields the support graph
+directly. Part one counts bricks that aren't a sole supporter; part two BFS-es the
+chain of bricks that fall once all their supporters have.
+
+```text
+────────────────────────────────────────
+─       2023 Day 22: Sand Slabs        ─
+────────────────────────────────────────
+Solving (Python)…
+1.0:  PASS             6.600ms
+2.0:  PASS            25.138ms
+```
+
+## Rust
+
+The same height-map settle and support graph over `Vec<HashSet>`, with the chain
+reaction using `is_subset` to test whether a brick has lost all its supporters.
+The map-based settle keeps both parts in the low tens of milliseconds.
+
+```text
+────────────────────────────────────────
+─       2023 Day 22: Sand Slabs        ─
+────────────────────────────────────────
+Solving (Rust)…
+1.0:  PASS             1.205ms
+2.0:  PASS            13.408ms
+```
+
 ## Visualization
 
 The settled brick pile in the two side elevations the puzzle uses: looking down
