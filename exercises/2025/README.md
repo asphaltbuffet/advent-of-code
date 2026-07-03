@@ -6,7 +6,7 @@
 
 | Title                               | Stars | Solutions |
 | ----------------------------------- | :---: | --------- |
-| [Day 1: Secret Entrance][rm1]       |  ⭐⭐ | [Go][go1] |
+| [Day 1: Secret Entrance][rm1]       |  ⭐⭐ | [Go][go1] · [Rust][rs1] · [Python][py1] |
 | [Day 2: Gift Shop][rm2]             |  ⭐⭐ | [Go][go2] |
 | [Day 3: Lobby][rm3]                 |  ⭐⭐ | [Go][go3] |
 | [Day 4: Printing Department][rm4]   |  ⭐⭐ | [Go][go4] |
@@ -45,6 +45,8 @@ Day   -Part 1-   -Part 2-
 
 [rm1]: 01-secretEntrance/README.md
 [go1]: 01-secretEntrance/go
+[rs1]: 01-secretEntrance/rs
+[py1]: 01-secretEntrance/py
 [rm2]: 02-giftShop/README.md
 [go2]: 02-giftShop/go
 [rm3]: 03-lobby/README.md
