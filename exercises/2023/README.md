@@ -11,7 +11,7 @@
 | [Day 3: Gear Ratios][rm3]                     |  ⭐⭐   | [Go][go3] · [Rust][rs3] · [Python][py3] |
 | [Day 4: Scratchcards][rm4]                    |  ⭐⭐   | [Go][go4] · [Rust][rs4] · [Python][py4] |
 | [Day 5: If You Give A Seed A Fertilizer][rm5] |  ⭐⭐   | [Go][go5] · [Rust][rs5] · [Python][py5] |
-| [Day 6: Wait For It][rm6]                     |  ⭐⭐   | [Go][go6]  |
+| [Day 6: Wait For It][rm6]                     |  ⭐⭐   | [Go][go6] · [Rust][rs6] · [Python][py6] |
 | [Day 7: Camel Cards][rm7]                     |  ⭐⭐   | [Go][go7]  |
 | [Day 8: Haunted Wasteland][rm8]               |  ⭐⭐   | [Go][go8]  |
 | [Day 9: Mirage Maintenance][rm9]              |  ⭐⭐   | [Go][go9]  |
@@ -92,6 +92,8 @@ Day       Time   Rank  Score       Time   Rank  Score
 [py5]: 05-ifYouGiveASeedAFertilizer/py
 [rm6]: 06-waitForIt/README.md
 [go6]: 06-waitForIt/go
+[rs6]: 06-waitForIt/rs
+[py6]: 06-waitForIt/py
 [rm7]: 07-camelCards/README.md
 [go7]: 07-camelCards/go
 [rm8]: 08-hauntedWasteland/README.md
