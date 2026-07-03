@@ -1,0 +1,31 @@
+{
+  "id": "2018-20",
+  "title": "A Regular Map",
+  "year": 2018,
+  "day": 20,
+  "url": "https://adventofcode.com/2018/day/20",
+  "data": {
+    "inputFile": "input.txt",
+    "testCases": {
+      "one": [
+        {
+          "input": "^WNE$",
+          "expected": "3"
+        },
+        {
+          "input": "^ENWWW(NEEE|SSE(EE|N))$",
+          "expected": "10"
+        },
+        {
+          "input": "^ENNWSWW(NEWS|)SSSEEN(WNSE|)EE(SWEN|)NNN$",
+          "expected": "18"
+        }
+      ],
+      "two": []
+    },
+    "answers": {
+      "a": "4108",
+      "b": "8366"
+    }
+  }
+}
