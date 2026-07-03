@@ -9,7 +9,7 @@
 | [Day 1: Secret Entrance][rm1]       |  ⭐⭐ | [Go][go1] · [Rust][rs1] · [Python][py1] |
 | [Day 2: Gift Shop][rm2]             |  ⭐⭐ | [Go][go2] · [Rust][rs2] · [Python][py2] |
 | [Day 3: Lobby][rm3]                 |  ⭐⭐ | [Go][go3] · [Rust][rs3] · [Python][py3] |
-| [Day 4: Printing Department][rm4]   |  ⭐⭐ | [Go][go4] |
+| [Day 4: Printing Department][rm4]   |  ⭐⭐ | [Go][go4] · [Rust][rs4] · [Python][py4] |
 | [Day 5: Cafeteria][rm5]             |  ⭐⭐ | [Go][go5] |
 | [Day 6: Trash Compactor][rm6]       |  ⭐⭐ | [Go][go6] |
 | [Day 7: Laboratories][rm7]          |  ⭐⭐ | [Go][go7] |
@@ -57,6 +57,8 @@ Day   -Part 1-   -Part 2-
 [py3]: 03-lobby/py
 [rm4]: 04-printingDepartment/README.md
 [go4]: 04-printingDepartment/go
+[rs4]: 04-printingDepartment/rs
+[py4]: 04-printingDepartment/py
 [rm5]: 05-cafeteria/README.md
 [go5]: 05-cafeteria/go
 [rm6]: 06-trashCompactor/README.md
