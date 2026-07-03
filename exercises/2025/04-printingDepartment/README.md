@@ -28,8 +28,36 @@ Solving (Go)...
 
 ## Python
 
+Rolls are stored as a coordinate `set`; a roll is accessible when fewer than four
+of its eight neighbors are occupied. Part two peels the floor in synchronous waves
+— each round removes every currently-accessible roll — until a fixed point.
+
 ```text
-< section intentionally left blank >
+──────────────────────────────────────────
+           ADVENT OF CODE 2025
+        Day 4: Printing Department
+──────────────────────────────────────────
+
+Solving (Python)…
+1.0:  PASS            28.282ms
+2.0:  PASS           443.514ms
+```
+
+## Rust
+
+The same coordinate `HashSet` and wave peeling. Because removal is monotone
+(it only lowers neighbor counts), the total is order-independent, so collecting
+each wave and then deleting it is safe.
+
+```text
+──────────────────────────────────────────
+           ADVENT OF CODE 2025
+        Day 4: Printing Department
+──────────────────────────────────────────
+
+Solving (Rust)…
+1.0:  PASS             2.716ms
+2.0:  PASS            54.546ms
 ```
 
 ## 2025 Run Times
