@@ -31,8 +31,37 @@ Solving (Go)...
 
 ## Python
 
+The vertices trace a rectilinear polygon. Part one takes the largest inclusive
+rectangle spanned by any vertex pair; part two keeps only rectangles that lie
+wholly inside — every corner on an edge or interior (on-segment and ray-cast
+tests), and no polygon edge crossing the interior.
+
 ```text
-< section intentionally left blank >
+──────────────────────────────────────────
+           ADVENT OF CODE 2025
+           Day 9: Movie Theater
+──────────────────────────────────────────
+
+Solving (Python)…
+1.0:  PASS             0.034s
+2.0:  PASS            20.485s
+```
+
+## Rust
+
+The same geometry over `i64` points, with native truncating division matching the
+reference's ray cast. The O(n³) validity search that costs Python ~20s finishes in
+a fraction of a second.
+
+```text
+──────────────────────────────────────────
+           ADVENT OF CODE 2025
+           Day 9: Movie Theater
+──────────────────────────────────────────
+
+Solving (Rust)…
+1.0:  PASS             0.159ms
+2.0:  PASS           224.796ms
 ```
 
 ## 2025 Run Times
