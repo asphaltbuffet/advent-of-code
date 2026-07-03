@@ -19,10 +19,6 @@ Collecting solutions to programming exercises.
 [![2023 Stars](https://img.shields.io/badge/2023_⭐-50-pink)](exercises/2023/README.md)
 [![2024 Stars](https://img.shields.io/badge/2024_⭐-0-green)](exercises/2024/README.md)
 
-## Project Euler
-
-TBD
-
 ## Exercism
 
 - [Go Track](tracks/go)
