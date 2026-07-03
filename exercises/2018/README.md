@@ -16,7 +16,7 @@
 | [Day 8: Memory Maneuver](08-memoryManeuver/README.md) |  ★ ★  | [Go](08-memoryManeuver/go) · [Rust](08-memoryManeuver/rs) · [Python](08-memoryManeuver/py) |
 | [Day 9: Marble Mania](09-marbleMania/README.md) |  ★ ★  | [Go](09-marbleMania/go) · [Rust](09-marbleMania/rs) · [Python](09-marbleMania/py) |
 | [Day 10: The Stars Align](10-theStarsAlign/README.md) |  ★ ★  | [Go](10-theStarsAlign/go) · [Rust](10-theStarsAlign/rs) · [Python](10-theStarsAlign/py) |
-| [Day 11: Chronal Charge](11-chronalCharge/README.md) |  ★ ★  | [Go](11-chronalCharge/go) |
+| [Day 11: Chronal Charge](11-chronalCharge/README.md) |  ★ ★  | [Go](11-chronalCharge/go) · [Rust](11-chronalCharge/rs) · [Python](11-chronalCharge/py) |
 | [Day 12: Subterranean Sustainability](12-subterraneanSustainability/README.md) |  ★ ★  | [Go](12-subterraneanSustainability/go) |
 | [Day 13: Mine Cart Madness](13-mineCartMadness/README.md) |  ★ ★  | [Go](13-mineCartMadness/go) |
 | [Day 14: Chocolate Charts](14-chocolateCharts/README.md) |  ★ ★  | [Go](14-chocolateCharts/go) |
