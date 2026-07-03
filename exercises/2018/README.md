@@ -7,7 +7,7 @@
 | Exercise                                                      | Stars | Solutions                      |
 |---------------------------------------------------------------|:-----:|--------------------------------|
 | [Day 1: Chronal Calibration](01-chronalCalibration/README.md) |  ★ ★  | [Go](01-chronalCalibration/go) · [Rust](01-chronalCalibration/rs) · [Python](01-chronalCalibration/py) |
-| [Day 2: Inventory Management System](02-inventoryManagementSystem/README.md) |  ★ ★  | [Go](02-inventoryManagementSystem/go) |
+| [Day 2: Inventory Management System](02-inventoryManagementSystem/README.md) |  ★ ★  | [Go](02-inventoryManagementSystem/go) · [Rust](02-inventoryManagementSystem/rs) · [Python](02-inventoryManagementSystem/py) |
 | [Day 3: No Matter How You Slice It](03-noMatterHowYouSliceIt/README.md) |  ★ ★  | [Go](03-noMatterHowYouSliceIt/go) |
 | [Day 4: Repose Record](04-reposeRecord/README.md) |  ★ ★  | [Go](04-reposeRecord/go) |
 | [Day 5: Alchemical Reduction](05-alchemicalReduction/README.md) |  ★ ★  | [Go](05-alchemicalReduction/go) |
