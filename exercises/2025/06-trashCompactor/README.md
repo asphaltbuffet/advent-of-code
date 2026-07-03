@@ -31,8 +31,36 @@ Solving (Go)...
 
 ## Python
 
+The same grid is read two ways. Part one treats whitespace-delimited tokens as a
+column table, combining each column's numbers by its operator. Part two reads
+digits stacked vertically in each character column, right to left, with operator
+columns delimiting problems.
+
 ```text
-< section intentionally left blank >
+──────────────────────────────────────────
+           ADVENT OF CODE 2025
+          Day 6: Trash Compactor
+──────────────────────────────────────────
+
+Solving (Python)…
+1.0:  PASS             1.002ms
+2.0:  PASS             2.677ms
+```
+
+## Rust
+
+The same two readings over byte slices, treating right-trimmed short rows as
+space-padded and building each vertical number arithmetically.
+
+```text
+──────────────────────────────────────────
+           ADVENT OF CODE 2025
+          Day 6: Trash Compactor
+──────────────────────────────────────────
+
+Solving (Rust)…
+1.0:  PASS           128.445µs
+2.0:  PASS            41.227µs
 ```
 
 ## 2025 Run Times
