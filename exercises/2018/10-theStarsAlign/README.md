@@ -1,6 +1,18 @@
 # [Day 10: The Stars Align](https://adventofcode.com/2018/day/10)
 
-<!-- [Day 10: The Stars Align](10-theStarsAlign) -->
+<!-- These are helper text to make formatting the yearly readme consistent and easier...
+
+[Day 10: The Stars Align][rm10]
+[Go][go10]
+[Rust][rs10]
+[Python][py10]
+
+[rm10]: 10-theStarsAlign/README.md
+[go10]: 10-theStarsAlign/go
+[rs10]: 10-theStarsAlign/rs
+[py10]: 10-theStarsAlign/py
+
+-->
 
 ## Notes
 
@@ -17,23 +29,53 @@ read than `#`).
 
 ## Go
 
+`converge` steps the extent forward one second at a time until it stops
+shrinking; `render` then paints that frame into a `[][]rune` grid and joins the
+rows with `\n` (solid `█` blocks read far more legibly than `#`).
+
 ```text
-█████   ██████  ██████  ██████   ████   █    █  █    █  ██████
-█    █  █       █            █  █    █  ██   █  █    █  █
-█    █  █       █            █  █       ██   █   █  █   █
-█    █  █       █           █   █       █ █  █   █  █   █
-█████   █████   █████      █    █       █ █  █    ██    █████
-█    █  █       █         █     █       █  █ █    ██    █
-█    █  █       █        █      █       █  █ █   █  █   █
-█    █  █       █       █       █       █   ██   █  █   █
-█    █  █       █       █       █    █  █   ██  █    █  █
-█████   █       █       ██████   ████   █    █  █    █  ██████
+────────────────────────────────────────
+─     2018 Day 10: The Stars Align     ─
+────────────────────────────────────────
+
+Solving (Go)…
+1.0:  PASS            16.234ms
+2.0:  PASS            16.117ms
+```
+
+## Rust
+
+Points are a plain `Star` struct in a `Vec`; parsing splits each line on any
+non-digit (keeping `-`) to pull the four signed integers, so no regex crate is
+needed. `converge` and `render` share the same single-pass bounding-box scan,
+and the grid is a `Vec<Vec<char>>` whose rows are collected into `String`s and
+joined with `\n`.
+
+```text
+────────────────────────────────────────
+─     2018 Day 10: The Stars Align     ─
+────────────────────────────────────────
+
+Solving (Rust)…
+1.0:  PASS            21.900ms
+2.0:  PASS            21.101ms
 ```
 
 ## Python
 
+positions and velocities are two NumPy arrays, so advancing every point to time
+`t` is a single `pos + vel * t` and the bounding box is `min`/`max` along the
+axes. `converge` walks the extent to its minimum; `render` stamps the lit cells
+into a `full((h, w), " ")` char grid by fancy-indexing and joins the rows.
+
 ```text
-    < section intentionally left blank >
+────────────────────────────────────────
+─     2018 Day 10: The Stars Align     ─
+────────────────────────────────────────
+
+Solving (Python)…
+1.0:  PASS           845.396ms
+2.0:  PASS           809.949ms
 ```
 
 ## Visualization
