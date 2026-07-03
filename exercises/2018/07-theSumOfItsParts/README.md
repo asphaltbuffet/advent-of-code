@@ -1,6 +1,18 @@
 # [Day 7: The Sum of Its Parts](https://adventofcode.com/2018/day/7)
 
-<!-- [Day 7: The Sum of Its Parts](07-theSumOfItsParts) -->
+<!-- These are helper text to make formatting the yearly readme consistent and easier...
+
+[Day 7: The Sum of Its Parts][rm7]
+[Go][go7]
+[Rust][rs7]
+[Python][py7]
+
+[rm7]: 07-theSumOfItsParts/README.md
+[go7]: 07-theSumOfItsParts/go
+[rs7]: 07-theSumOfItsParts/rs
+[py7]: 07-theSumOfItsParts/py
+
+-->
 
 ## Notes
 
@@ -28,14 +40,47 @@ than hardcoded.
 ────────────────────────────────────────
 
 Solving (Go)…
-1.0:  PASS             0.156ms
-2.0:  PASS             1.659ms
+1.0:  PASS             0.210ms
+2.0:  PASS             2.042ms
+```
+
+## Rust
+
+Parses lines by fixed byte offsets and stores prerequisites in a
+`BTreeMap<u8, BTreeSet<u8>>`, so both parts iterate steps already in alphabetical
+order and readiness is a single `prereqs.is_subset(&done)` check — the first ready
+step in iteration order is the lexicographic pick with no extra sort. Part Two
+drives the clock with `for t in 0..`, retiring finished steps via
+`in_progress.retain`, and selects the worker/base regime (2 workers / base 0 for
+the six-step example, 5 workers / base 60 for the real input) from the step count.
+
+```text
+────────────────────────────────────────
+─   2018 Day 7: The Sum of Its Parts   ─
+────────────────────────────────────────
+
+Solving (Rust)…
+1.0:  PASS            59.117µs
+2.0:  PASS           867.429µs
 ```
 
 ## Python
 
+A plain `dict[str, set[str]]` of prerequisites feeds a one-line
+`sorted(... if pre <= done)` to pick the next ready step, so the lexicographic
+topological sort reads directly from the set-subset test. Part Two runs the same
+second-by-second simulation, retiring finished steps then filling idle workers, and
+chooses 2 workers / base 0 for the example versus 5 workers / base 60 for the real
+input by the number of distinct steps.
+
 ```text
-    < section intentionally left blank >
+────────────────────────────────────────
+─   2018 Day 7: The Sum of Its Parts   ─
+────────────────────────────────────────
+
+Solving (Python)…
+1.0:  PASS             0.282ms
+2.0:  PASS             3.982ms
 ```
 
 ## Visualization
