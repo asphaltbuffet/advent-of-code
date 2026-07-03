@@ -28,7 +28,7 @@
 | [Day 20: A Regular Map](20-aRegularMap/README.md) |  ★ ★  | [Go](20-aRegularMap/go) · [Rust](20-aRegularMap/rs) · [Python](20-aRegularMap/py) |
 | [Day 21: Chronal Conversion](21-chronalConversion/README.md) |  ★ ★  | [Go](21-chronalConversion/go) · [Rust](21-chronalConversion/rs) · [Python](21-chronalConversion/py) |
 | [Day 22: Mode Maze](22-modeMaze/README.md) |  ★ ★  | [Go](22-modeMaze/go) · [Rust](22-modeMaze/rs) · [Python](22-modeMaze/py) |
-| 23                                                            |  ☆ ☆  |                                |
+| [Day 23: Experimental Emergency Teleportation](23-experimentalEmergencyTeleportation/README.md) |  ★ ★  | [Go](23-experimentalEmergencyTeleportation/go) · [Rust](23-experimentalEmergencyTeleportation/rs) · [Python](23-experimentalEmergencyTeleportation/py) |
 | 24                                                            |  ☆ ☆  |                                |
 | 25                                                            |  ☆ ☆  |                                |
 
