@@ -33,8 +33,37 @@ Solving...
 
 ## Python
 
+Workflows parse into rule lists. Part one runs each part through them from `in`
+and sums the accepted ratings. Part two recurses over the 4D range `xmas ∈
+[1,4000]`, splitting each category at a rule's threshold — the matching sub-range
+follows the target, the remainder falls through — and sums the accepted volumes.
+
 ```text
-< section intentionally left blank >
+──────────────────────────────────────────
+           ADVENT OF CODE 2023
+             Day 19: Aplenty
+──────────────────────────────────────────
+
+Solving (Python)…
+1.0:  PASS             2.070ms
+2.0:  PASS             2.024ms
+```
+
+## Rust
+
+The same evaluation and range-splitting, with ranges as `[(u64,u64); 4]` indexed
+by category and workflows borrowing their rule targets from the input. Part two's
+recursion multiplies the surviving span widths at each accepted leaf.
+
+```text
+──────────────────────────────────────────
+           ADVENT OF CODE 2023
+             Day 19: Aplenty
+──────────────────────────────────────────
+
+Solving (Rust)…
+1.0:  PASS           282.241µs
+2.0:  PASS           187.141µs
 ```
 
 ## 2023 Run Times

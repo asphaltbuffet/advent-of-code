@@ -24,7 +24,7 @@
 | [Day 16: The Floor Will Be Lava][rm16]        |  ⭐⭐   | [Go][go16] · [Rust][rs16] · [Python][py16] |
 | [Day 17: Clumsy Crucible][rm17]               |  ⭐⭐   | [Go][go17] · [Rust][rs17] · [Python][py17] |
 | [Day 18: Lavaduct Lagoon][rm18]               |  ⭐⭐   | [Go][go18] · [Rust][rs18] · [Python][py18] |
-| [Day 19: Aplenty][rm19]                       |  ⭐⭐   | [Go][go19] |
+| [Day 19: Aplenty][rm19]                       |  ⭐⭐   | [Go][go19] · [Rust][rs19] · [Python][py19] |
 | [Day 20: Pulse Propagation][rm20]             |  ⭐⭐   | [Go][go20] |
 | [Day 21: Step Counter][rm21]                  |  ⭐⭐   | [Go][go21] |
 | [Day 22: Sand Slabs][rm22]                    |  ⭐⭐   | [Go][go22] |
@@ -144,6 +144,8 @@ Day       Time   Rank  Score       Time   Rank  Score
 [py18]: 18-lavaductLagoon/py
 [rm19]: 19-aplenty/README.md
 [go19]: 19-aplenty/go
+[rs19]: 19-aplenty/rs
+[py19]: 19-aplenty/py
 [rm20]: 20-pulsePropagation/README.md
 [go20]: 20-pulsePropagation/go
 [rm21]: 21-stepCounter/README.md
