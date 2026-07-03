@@ -16,7 +16,7 @@
 | [Day 8: Memory Maneuver](08-memoryManeuver/README.md) |  ★ ★  | [Go](08-memoryManeuver/go) |
 | [Day 9: Marble Mania](09-marbleMania/README.md) |  ★ ★  | [Go](09-marbleMania/go) |
 | [Day 10: The Stars Align](10-theStarsAlign/README.md) |  ★ ★  | [Go](10-theStarsAlign/go) |
-| 11                                                            |  ☆ ☆  |                                |
+| [Day 11: Chronal Charge](11-chronalCharge/README.md) |  ★ ★  | [Go](11-chronalCharge/go) |
 | 12                                                            |  ☆ ☆  |                                |
 | 13                                                            |  ☆ ☆  |                                |
 | 14                                                            |  ☆ ☆  |                                |
