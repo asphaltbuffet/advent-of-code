@@ -22,7 +22,7 @@
 | [Day 14: Parabolic Reflector Dish][rm14]      |  ⭐⭐   | [Go][go14] · [Rust][rs14] · [Python][py14] |
 | [Day 15: Lens Library][rm15]                  |  ⭐⭐   | [Go][go15] · [Rust][rs15] · [Python][py15] |
 | [Day 16: The Floor Will Be Lava][rm16]        |  ⭐⭐   | [Go][go16] · [Rust][rs16] · [Python][py16] |
-| [Day 17: Clumsy Crucible][rm17]               |  ⭐⭐   | [Go][go17] |
+| [Day 17: Clumsy Crucible][rm17]               |  ⭐⭐   | [Go][go17] · [Rust][rs17] · [Python][py17] |
 | [Day 18: Lavaduct Lagoon][rm18]               |  ⭐⭐   | [Go][go18] |
 | [Day 19: Aplenty][rm19]                       |  ⭐⭐   | [Go][go19] |
 | [Day 20: Pulse Propagation][rm20]             |  ⭐⭐   | [Go][go20] |
@@ -136,6 +136,8 @@ Day       Time   Rank  Score       Time   Rank  Score
 [py16]: 16-theFloorWillBeLava/py
 [rm17]: 17-clumsyCrucible/README.md
 [go17]: 17-clumsyCrucible/go
+[rs17]: 17-clumsyCrucible/rs
+[py17]: 17-clumsyCrucible/py
 [rm18]: 18-lavaductLagoon/README.md
 [go18]: 18-lavaductLagoon/go
 [rm19]: 19-aplenty/README.md
