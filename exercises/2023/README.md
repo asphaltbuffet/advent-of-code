@@ -6,7 +6,7 @@
 
 | Title                                         | Stars | Solutions  |
 |-----------------------------------------------|:-----:|------------|
-| [Day 1: Trebuchet?!][rm1]                     |  ⭐⭐   | [Go][go1]  |
+| [Day 1: Trebuchet?!][rm1]                     |  ⭐⭐   | [Go][go1] · [Rust][rs1] · [Python][py1] |
 | [Day 2: Cube Conundrum][rm2]                  |  ⭐⭐   | [Go][go2]  |
 | [Day 3: Gear Ratios][rm3]                     |  ⭐⭐   | [Go][go3]  |
 | [Day 4: Scratchcards][rm4]                    |  ⭐⭐   | [Go][go4]  |
@@ -70,8 +70,10 @@ Day       Time   Rank  Score       Time   Rank  Score
 
 <!-- reference links -->
 
-[rm1]: 01-trebuchet?/README.md
-[go1]: 01-trebuchet?/go
+[rm1]: 01-trebuchet/README.md
+[go1]: 01-trebuchet/go
+[rs1]: 01-trebuchet/rs
+[py1]: 01-trebuchet/py
 [rm2]: 02-cubeConundrum/README.md
 [go2]: 02-cubeConundrum/go
 [rm3]: 03-gearRatios/README.md
