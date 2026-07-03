@@ -33,8 +33,37 @@ Solving...
 
 ## Python
 
+Rows and columns are encoded as integer bitmasks, so a reflection test becomes
+XOR: a mirror is valid when the bit differences across the folded pairs sum to
+the target. Part one wants a perfect mirror (0); part two wants exactly one
+smudge (1) — the only difference between the parts.
+
 ```text
-< section intentionally left blank >
+──────────────────────────────────────────
+           ADVENT OF CODE 2023
+        Day 13: Point of Incidence
+──────────────────────────────────────────
+
+Solving (Python)…
+1.0:  PASS             3.976ms
+2.0:  PASS             4.014ms
+```
+
+## Rust
+
+The same bitmask/XOR idea with `u32` masks and `count_ones()` summing each folded
+pair's difference. Rows and columns are filled in a single grid pass, and both
+parts share `reflection`, parameterized by the smudge count.
+
+```text
+──────────────────────────────────────────
+           ADVENT OF CODE 2023
+        Day 13: Point of Incidence
+──────────────────────────────────────────
+
+Solving (Rust)…
+1.0:  PASS           147.735µs
+2.0:  PASS           123.411µs
 ```
 
 ## 2023 Run Times
