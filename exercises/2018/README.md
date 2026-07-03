@@ -25,7 +25,7 @@
 | [Day 17: Reservoir Research](17-reservoirResearch/README.md) |  ★ ★  | [Go](17-reservoirResearch/go) · [Rust](17-reservoirResearch/rs) · [Python](17-reservoirResearch/py) |
 | [Day 18: Settlers of The North Pole](18-settlersOfTheNorthPole/README.md) |  ★ ★  | [Go](18-settlersOfTheNorthPole/go) · [Rust](18-settlersOfTheNorthPole/rs) · [Python](18-settlersOfTheNorthPole/py) |
 | [Day 19: Go With The Flow](19-goWithTheFlow/README.md) |  ★ ★  | [Go](19-goWithTheFlow/go) · [Rust](19-goWithTheFlow/rs) · [Python](19-goWithTheFlow/py) |
-| 20                                                            |  ☆ ☆  |                                |
+| [Day 20: A Regular Map](20-aRegularMap/README.md) |  ★ ★  | [Go](20-aRegularMap/go) · [Rust](20-aRegularMap/rs) · [Python](20-aRegularMap/py) |
 | 21                                                            |  ☆ ☆  |                                |
 | 22                                                            |  ☆ ☆  |                                |
 | 23                                                            |  ☆ ☆  |                                |
