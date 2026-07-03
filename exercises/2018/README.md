@@ -29,7 +29,7 @@
 | [Day 21: Chronal Conversion](21-chronalConversion/README.md) |  ★ ★  | [Go](21-chronalConversion/go) · [Rust](21-chronalConversion/rs) · [Python](21-chronalConversion/py) |
 | [Day 22: Mode Maze](22-modeMaze/README.md) |  ★ ★  | [Go](22-modeMaze/go) · [Rust](22-modeMaze/rs) · [Python](22-modeMaze/py) |
 | [Day 23: Experimental Emergency Teleportation](23-experimentalEmergencyTeleportation/README.md) |  ★ ★  | [Go](23-experimentalEmergencyTeleportation/go) · [Rust](23-experimentalEmergencyTeleportation/rs) · [Python](23-experimentalEmergencyTeleportation/py) |
-| 24                                                            |  ☆ ☆  |                                |
+| [Day 24: Immune System Simulator 20XX](24-immuneSystemSimulator20XX/README.md) |  ★ ★  | [Go](24-immuneSystemSimulator20XX/go) · [Rust](24-immuneSystemSimulator20XX/rs) · [Python](24-immuneSystemSimulator20XX/py) |
 | 25                                                            |  ☆ ☆  |                                |
 
 ## 2018 Run Times
