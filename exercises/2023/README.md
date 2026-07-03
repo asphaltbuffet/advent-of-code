@@ -14,7 +14,7 @@
 | [Day 6: Wait For It][rm6]                     |  ⭐⭐   | [Go][go6] · [Rust][rs6] · [Python][py6] |
 | [Day 7: Camel Cards][rm7]                     |  ⭐⭐   | [Go][go7] · [Rust][rs7] · [Python][py7] |
 | [Day 8: Haunted Wasteland][rm8]               |  ⭐⭐   | [Go][go8] · [Rust][rs8] · [Python][py8] |
-| [Day 9: Mirage Maintenance][rm9]              |  ⭐⭐   | [Go][go9]  |
+| [Day 9: Mirage Maintenance][rm9]              |  ⭐⭐   | [Go][go9] · [Rust][rs9] · [Python][py9] |
 | [Day 10: Pipe Maze][rm10]                     |  ⭐⭐   | [Go][go10] |
 | [Day 11: Cosmic Expansion][rm11]              |  ⭐⭐   | [Go][go11] |
 | [Day 12: Hot Springs][rm12]                   |  ⭐⭐   | [Go][go12] |
@@ -104,6 +104,8 @@ Day       Time   Rank  Score       Time   Rank  Score
 [py8]: 08-hauntedWasteland/py
 [rm9]: 09-mirageMaintenance/README.md
 [go9]: 09-mirageMaintenance/go
+[rs9]: 09-mirageMaintenance/rs
+[py9]: 09-mirageMaintenance/py
 [rm10]: 10-pipeMaze/README.md
 [go10]: 10-pipeMaze/go
 [rm11]: 11-cosmicExpansion/README.md
