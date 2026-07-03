@@ -1,0 +1,27 @@
+{
+  "id": "2018-09",
+  "title": "Marble Mania",
+  "year": 2018,
+  "day": 9,
+  "url": "https://adventofcode.com/2018/day/9",
+  "data": {
+    "inputFile": "input.txt",
+    "testCases": {
+      "one": [
+        {
+          "input": "9 players; last marble is worth 25 points",
+          "expected": "32"
+        },
+        {
+          "input": "10 players; last marble is worth 1618 points",
+          "expected": "8317"
+        }
+      ],
+      "two": []
+    },
+    "answers": {
+      "a": "400493",
+      "b": "3338341690"
+    }
+  }
+}

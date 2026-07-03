@@ -14,7 +14,7 @@
 | [Day 6: Chronal Coordinates](06-chronalCoordinates/README.md) |  ★ ★  | [Go](06-chronalCoordinates/go) |
 | [Day 7: The Sum of Its Parts](07-theSumOfItsParts/README.md) |  ★ ★  | [Go](07-theSumOfItsParts/go) |
 | [Day 8: Memory Maneuver](08-memoryManeuver/README.md) |  ★ ★  | [Go](08-memoryManeuver/go) |
-| 9                                                             |  ☆ ☆  |                                |
+| [Day 9: Marble Mania](09-marbleMania/README.md) |  ★ ★  | [Go](09-marbleMania/go) |
 | 10                                                            |  ☆ ☆  |                                |
 | 11                                                            |  ☆ ☆  |                                |
 | 12                                                            |  ☆ ☆  |                                |
