@@ -1,6 +1,18 @@
 # [Day 1: Chronal Calibration](https://adventofcode.com/2018/day/1)
 
-<!-- [Day 1: Chronal Calibration](01-chronalCalibration) -->
+<!-- These are helper text to make formatting the yearly readme consistent and easier...
+
+[Day 1: Chronal Calibration][rm1]
+[Go][go1]
+[Rust][rs1]
+[Python][py1]
+
+[rm1]: 01-chronalCalibration/README.md
+[go1]: 01-chronalCalibration/go
+[rs1]: 01-chronalCalibration/rs
+[py1]: 01-chronalCalibration/py
+
+-->
 
 ## Notes
 
@@ -24,10 +36,37 @@ Solving (Go)…
 2.0:  PASS            22.611ms
 ```
 
-## Python
+## Rust
+
+Both parts are iterator pipelines: Part One is `split_whitespace().map(parse).sum()`.
+Part Two collects the changes once, then `.cycle()`s them and uses `find_map` with a
+`HashSet`, where `!seen.insert(freq)` both records the frequency and detects the
+first repeat in a single call.
 
 ```text
-    < section intentionally left blank >
+────────────────────────────────────────
+─   2018 Day 1: Chronal Calibration    ─
+────────────────────────────────────────
+
+Solving (Rust)…
+1.0:  PASS             0.021ms
+2.0:  PASS             9.987ms
+```
+
+## Python
+
+Part One is a one-line `sum()` over parsed ints. Part Two leans on `itertools`:
+`accumulate(cycle(changes))` lazily streams the running frequency across repeated
+passes, and a `set` (seeded with `0`) returns the first value seen twice.
+
+```text
+────────────────────────────────────────
+─   2018 Day 1: Chronal Calibration    ─
+────────────────────────────────────────
+
+Solving (Python)…
+1.0:  PASS             0.264ms
+2.0:  PASS            25.170ms
 ```
 
 ## Visualization
