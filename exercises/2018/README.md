@@ -19,7 +19,7 @@
 | [Day 11: Chronal Charge](11-chronalCharge/README.md) |  ★ ★  | [Go](11-chronalCharge/go) |
 | [Day 12: Subterranean Sustainability](12-subterraneanSustainability/README.md) |  ★ ★  | [Go](12-subterraneanSustainability/go) |
 | [Day 13: Mine Cart Madness](13-mineCartMadness/README.md) |  ★ ★  | [Go](13-mineCartMadness/go) |
-| 14                                                            |  ☆ ☆  |                                |
+| [Day 14: Chocolate Charts](14-chocolateCharts/README.md) |  ★ ★  | [Go](14-chocolateCharts/go) |
 | 15                                                            |  ☆ ☆  |                                |
 | 16                                                            |  ☆ ☆  |                                |
 | 17                                                            |  ☆ ☆  |                                |
