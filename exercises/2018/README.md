@@ -22,7 +22,7 @@
 | [Day 14: Chocolate Charts](14-chocolateCharts/README.md) |  ★ ★  | [Go](14-chocolateCharts/go) |
 | [Day 15: Beverage Bandits](15-beverageBandits/README.md) |  ★ ★  | [Go](15-beverageBandits/go) |
 | [Day 16: Chronal Classification](16-chronalClassification/README.md) |  ★ ★  | [Go](16-chronalClassification/go) |
-| 17                                                            |  ☆ ☆  |                                |
+| [Day 17: Reservoir Research](17-reservoirResearch/README.md) |  ★ ★  | [Go](17-reservoirResearch/go) · [Rust](17-reservoirResearch/rs) · [Python](17-reservoirResearch/py) |
 | 18                                                            |  ☆ ☆  |                                |
 | 19                                                            |  ☆ ☆  |                                |
 | 20                                                            |  ☆ ☆  |                                |
