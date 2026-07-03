@@ -1,0 +1,28 @@
+{
+  "id": "2018-06",
+  "title": "Chronal Coordinates",
+  "year": 2018,
+  "day": 6,
+  "url": "https://adventofcode.com/2018/day/6",
+  "data": {
+    "inputFile": "input.txt",
+    "testCases": {
+      "one": [
+        {
+          "input": "1, 1\n1, 6\n8, 3\n3, 4\n5, 5\n8, 9",
+          "expected": "17"
+        }
+      ],
+      "two": [
+        {
+          "input": "1, 1\n1, 6\n8, 3\n3, 4\n5, 5\n8, 9",
+          "expected": "16"
+        }
+      ]
+    },
+    "answers": {
+      "a": "2906",
+      "b": "50530"
+    }
+  }
+}

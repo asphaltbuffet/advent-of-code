@@ -11,7 +11,7 @@
 | [Day 3: No Matter How You Slice It](03-noMatterHowYouSliceIt/README.md) |  ★ ★  | [Go](03-noMatterHowYouSliceIt/go) |
 | [Day 4: Repose Record](04-reposeRecord/README.md) |  ★ ★  | [Go](04-reposeRecord/go) |
 | [Day 5: Alchemical Reduction](05-alchemicalReduction/README.md) |  ★ ★  | [Go](05-alchemicalReduction/go) |
-| 6                                                             |  ☆ ☆  |                                |
+| [Day 6: Chronal Coordinates](06-chronalCoordinates/README.md) |  ★ ★  | [Go](06-chronalCoordinates/go) |
 | 7                                                             |  ☆ ☆  |                                |
 | 8                                                             |  ☆ ☆  |                                |
 | 9                                                             |  ☆ ☆  |                                |
