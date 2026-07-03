@@ -1,6 +1,18 @@
 # [Day 15: Beverage Bandits](https://adventofcode.com/2018/day/15)
 
-<!-- [Day 15: Beverage Bandits](15-beverageBandits) -->
+<!-- These are helper text to make formatting the yearly readme consistent and easier...
+
+[Day 15: Beverage Bandits][rm15]
+[Go][go15]
+[Rust][rs15]
+[Python][py15]
+
+[rm15]: 15-beverageBandits/README.md
+[go15]: 15-beverageBandits/go
+[rs15]: 15-beverageBandits/rs
+[py15]: 15-beverageBandits/py
+
+-->
 
 ## Notes
 
@@ -31,14 +43,46 @@ sorting.
 ────────────────────────────────────────
 
 Solving (Go)…
-1.0:  PASS            50.118ms
-2.0:  PASS           331.686ms
+1.0:  PASS            80.602ms
+2.0:  PASS           473.436ms
+```
+
+## Rust
+
+Units are a `Clone`-able struct held in a `Vec` and addressed by index throughout,
+so the borrow checker stays happy while a unit is moved and then attacks. Movement
+is a `VecDeque` BFS whose neighbor order is the reading-order directions
+(up, left, right, down); the first shortest path to reach a square therefore records
+the reading-order-minimal first step with no extra sorting. Each round re-sorts the
+units by `(y, x)`, and part two re-runs the whole fight on a fresh parse per attack
+power.
+
+```text
+────────────────────────────────────────
+─    2018 Day 15: Beverage Bandits     ─
+────────────────────────────────────────
+
+Solving (Rust)…
+1.0:  PASS            56.364ms
+2.0:  PASS           340.989ms
 ```
 
 ## Python
 
+`Unit` objects with `__slots__` live in a list re-sorted by `(y, x)` each round. The
+BFS uses `collections.deque` with the same reading-order neighbor expansion, so the
+double reading-order tie-break (destination square, then first step) falls out of
+discovery order. Part two walks the elf attack power up from 4, re-parsing the cave
+each attempt and bailing the instant an elf dies.
+
 ```text
-    < section intentionally left blank >
+────────────────────────────────────────
+─    2018 Day 15: Beverage Bandits     ─
+────────────────────────────────────────
+
+Solving (Python)…
+1.0:  PASS              0.331s
+2.0:  PASS              2.218s
 ```
 
 ## Visualization
