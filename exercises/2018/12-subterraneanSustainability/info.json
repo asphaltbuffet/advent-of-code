@@ -1,0 +1,23 @@
+{
+  "id": "2018-12",
+  "title": "Subterranean Sustainability",
+  "year": 2018,
+  "day": 12,
+  "url": "https://adventofcode.com/2018/day/12",
+  "data": {
+    "inputFile": "input.txt",
+    "testCases": {
+      "one": [
+        {
+          "input": "initial state: #..#.#..##......###...###\n\n...## => #\n..#.. => #\n.#... => #\n.#.#. => #\n.#.## => #\n.##.. => #\n.#### => #\n#.#.# => #\n#.### => #\n##.#. => #\n##.## => #\n###.. => #\n###.# => #\n####. => #",
+          "expected": "325"
+        }
+      ],
+      "two": []
+    },
+    "answers": {
+      "a": "2281",
+      "b": "2250000000120"
+    }
+  }
+}
