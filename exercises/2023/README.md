@@ -29,7 +29,7 @@
 | [Day 21: Step Counter][rm21]                  |  ⭐⭐   | [Go][go21] · [Rust][rs21] · [Python][py21] |
 | [Day 22: Sand Slabs][rm22]                    |  ⭐⭐   | [Go][go22] · [Rust][rs22] · [Python][py22] |
 | [Day 23: A Long Walk][rm23]                   |  ⭐⭐   | [Go][go23] · [Rust][rs23] · [Python][py23] |
-| [Day 24: Never Tell Me The Odds][rm24]        |  ⭐⭐   | [Go][go24] |
+| [Day 24: Never Tell Me The Odds][rm24]        |  ⭐⭐   | [Go][go24] · [Rust][rs24] · [Python][py24] |
 | [Day 25: Snowverload][rm25]                   |  ⭐⭐   | [Go][go25] |
 
 ## 2023 Run Times
@@ -164,5 +164,7 @@ Day       Time   Rank  Score       Time   Rank  Score
 [py23]: 23-aLongWalk/py
 [rm24]: 24-neverTellMeTheOdds/README.md
 [go24]: 24-neverTellMeTheOdds/go
+[rs24]: 24-neverTellMeTheOdds/rs
+[py24]: 24-neverTellMeTheOdds/py
 [rm25]: 25-snowverload/README.md
 [go25]: 25-snowverload/go
