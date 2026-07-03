@@ -34,8 +34,38 @@ Solving...
 
 ## Python
 
+Modules are dicts of kind, outputs, flip state, and conjunction memory; each
+button press drains a `deque` of pulses. Part one multiplies the low/high counts
+over 1000 presses. Part two finds the single conjunction feeding `rx` and LCMs
+the presses at which each of its inputs first sends a high pulse.
+
 ```text
-< section intentionally left blank >
+──────────────────────────────────────────
+           ADVENT OF CODE 2023
+        Day 20: Pulse Propagation
+──────────────────────────────────────────
+
+Solving (Python)…
+1.0:  PASS            14.869ms
+2.0:  PASS            62.647ms
+```
+
+## Rust
+
+The same simulation over a `HashMap` of borrowed module names and a `VecDeque`
+pulse queue; `press` reports which sources sent a high pulse into a watched
+module, which part two uses to gather the per-input periods before folding them
+with a gcd-based LCM.
+
+```text
+──────────────────────────────────────────
+           ADVENT OF CODE 2023
+        Day 20: Pulse Propagation
+──────────────────────────────────────────
+
+Solving (Rust)…
+1.0:  PASS             2.252ms
+2.0:  PASS             8.446ms
 ```
 
 ## 2023 Run Times
