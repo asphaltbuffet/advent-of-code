@@ -28,8 +28,37 @@ Solving (Go)...
 
 ## Python
 
+Rather than scan each range, generate the qualifying IDs from their structure. An
+"invalid" ID (part one) is a half repeated exactly twice, built with `str(h) * 2`;
+a "repeated" ID (part two) is a `p`-digit pattern tiled `r >= 2` times, `int(str(q)
+* r)`. A `set` folds away IDs reachable through more than one factoring.
+
 ```text
-< section intentionally left blank >
+──────────────────────────────────────────
+           ADVENT OF CODE 2025
+             Day 2: Gift Shop
+──────────────────────────────────────────
+
+Solving (Python)…
+1.0:  PASS           118.211ms
+2.0:  PASS            63.646ms
+```
+
+## Rust
+
+The same structural generation, tiling patterns arithmetically (`n = n * 10^p + q`)
+to avoid string allocation in the hot loop, with a `HashSet<u64>` for the part-two
+dedup.
+
+```text
+──────────────────────────────────────────
+           ADVENT OF CODE 2025
+             Day 2: Gift Shop
+──────────────────────────────────────────
+
+Solving (Rust)…
+1.0:  PASS           786.718µs
+2.0:  PASS           664.114µs
 ```
 
 ## 2025 Run Times
