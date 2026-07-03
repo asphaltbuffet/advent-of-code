@@ -28,6 +28,38 @@ Solving (Go)…
 2.0:  PASS           232.910µs
 ```
 
+## Python
+
+One perimeter walk accumulates the shoelace cross terms and the boundary length;
+`abs(area)//2 + perimeter//2 + 1` is the dug-out volume. Part one reads the plain
+direction/distance, part two decodes them from the hex color (five digits of
+distance, one of direction).
+
+```text
+────────────────────────────────────────
+─     2023 Day 18: Lavaduct Lagoon     ─
+────────────────────────────────────────
+Solving (Python)…
+1.0:  PASS           271.797µs
+2.0:  PASS           489.711µs
+```
+
+## Rust
+
+The same single-pass shoelace + Pick in `i64`, with a shared `lagoon` taking an
+iterator of `(direction, distance)`; part two slices the hex color and parses the
+distance with `from_str_radix`. No grid is ever materialized, so the trillion-cube
+part two is as cheap as part one.
+
+```text
+────────────────────────────────────────
+─     2023 Day 18: Lavaduct Lagoon     ─
+────────────────────────────────────────
+Solving (Rust)…
+1.0:  PASS            24.670µs
+2.0:  PASS            36.929µs
+```
+
 ## Visualization
 
 The Part One dig plan: the trench boundary (gold) enclosing the excavated lagoon
