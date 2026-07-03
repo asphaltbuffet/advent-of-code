@@ -7,7 +7,7 @@
 | Title                                         | Stars | Solutions  |
 |-----------------------------------------------|:-----:|------------|
 | [Day 1: Trebuchet?!][rm1]                     |  ⭐⭐   | [Go][go1] · [Rust][rs1] · [Python][py1] |
-| [Day 2: Cube Conundrum][rm2]                  |  ⭐⭐   | [Go][go2]  |
+| [Day 2: Cube Conundrum][rm2]                  |  ⭐⭐   | [Go][go2] · [Rust][rs2] · [Python][py2] |
 | [Day 3: Gear Ratios][rm3]                     |  ⭐⭐   | [Go][go3]  |
 | [Day 4: Scratchcards][rm4]                    |  ⭐⭐   | [Go][go4]  |
 | [Day 5: If You Give A Seed A Fertilizer][rm5] |  ⭐⭐   | [Go][go5]  |
@@ -76,6 +76,8 @@ Day       Time   Rank  Score       Time   Rank  Score
 [py1]: 01-trebuchet/py
 [rm2]: 02-cubeConundrum/README.md
 [go2]: 02-cubeConundrum/go
+[rs2]: 02-cubeConundrum/rs
+[py2]: 02-cubeConundrum/py
 [rm3]: 03-gearRatios/README.md
 [go3]: 03-gearRatios/go
 [rm4]: 04-scratchcards/README.md
