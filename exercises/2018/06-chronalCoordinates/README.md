@@ -1,6 +1,18 @@
 # [Day 6: Chronal Coordinates](https://adventofcode.com/2018/day/6)
 
-<!-- [Day 6: Chronal Coordinates](06-chronalCoordinates) -->
+<!-- These are helper text to make formatting the yearly readme consistent and easier...
+
+[Day 6: Chronal Coordinates][rm6]
+[Go][go6]
+[Rust][rs6]
+[Python][py6]
+
+[rm6]: 06-chronalCoordinates/README.md
+[go6]: 06-chronalCoordinates/go
+[rs6]: 06-chronalCoordinates/rs
+[py6]: 06-chronalCoordinates/py
+
+-->
 
 ## Notes
 
@@ -32,10 +44,45 @@ Solving (Go)…
 2.0:  PASS            70.756ms
 ```
 
-## Python
+## Rust
+
+Parsing splits each line on non-digit characters and takes the first two integers.
+The two scans are plain nested-range loops; Part Two chains the coordinate ranges
+with `flat_map` and finishes with a `filter(...).count()`. The threshold (32 for the
+worked example, 10000 otherwise) is picked from the coordinate count, and the padded
+bounding box is sized as `threshold / numPts + 1`.
 
 ```text
-    < section intentionally left blank >
+────────────────────────────────────────
+─   2018 Day 6: Chronal Coordinates    ─
+────────────────────────────────────────
+
+Solving (Rust)…
+1.0:  PASS             9.044ms
+2.0:  PASS            29.913ms
+```
+
+## Python
+
+Coordinates are pulled with a regex over each line, then the whole grid is solved
+with numpy instead of Python loops. A single broadcast builds the `(H, W, N)`
+Manhattan-distance tensor `|gx - cx| + |gy - cy|`. Part One takes `argmin` over the
+coordinate axis for ownership, masks cells whose minimum is tied (more than one
+distance equals the row min) as unowned, reads the four border edges to find the
+coordinates with unbounded regions, and `bincount`s the finite owners. Part Two
+reuses the tensor, sums over the coordinate axis, and counts cells below the
+threshold with `(total < threshold).sum()`. The threshold (32 for the example,
+10000 for the real input) is chosen by coordinate count, and the scan pads the box
+by `threshold // numPts + 1`.
+
+```text
+────────────────────────────────────────
+─   2018 Day 6: Chronal Coordinates    ─
+────────────────────────────────────────
+
+Solving (Python)…
+1.0:  PASS           167.008ms
+2.0:  PASS           576.305ms
 ```
 
 ## Visualization

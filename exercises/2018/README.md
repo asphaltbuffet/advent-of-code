@@ -11,7 +11,7 @@
 | [Day 3: No Matter How You Slice It](03-noMatterHowYouSliceIt/README.md) |  ★ ★  | [Go](03-noMatterHowYouSliceIt/go) · [Rust](03-noMatterHowYouSliceIt/rs) · [Python](03-noMatterHowYouSliceIt/py) |
 | [Day 4: Repose Record](04-reposeRecord/README.md) |  ★ ★  | [Go](04-reposeRecord/go) · [Rust](04-reposeRecord/rs) · [Python](04-reposeRecord/py) |
 | [Day 5: Alchemical Reduction](05-alchemicalReduction/README.md) |  ★ ★  | [Go](05-alchemicalReduction/go) · [Rust](05-alchemicalReduction/rs) · [Python](05-alchemicalReduction/py) |
-| [Day 6: Chronal Coordinates](06-chronalCoordinates/README.md) |  ★ ★  | [Go](06-chronalCoordinates/go) |
+| [Day 6: Chronal Coordinates](06-chronalCoordinates/README.md) |  ★ ★  | [Go](06-chronalCoordinates/go) · [Rust](06-chronalCoordinates/rs) · [Python](06-chronalCoordinates/py) |
 | [Day 7: The Sum of Its Parts](07-theSumOfItsParts/README.md) |  ★ ★  | [Go](07-theSumOfItsParts/go) |
 | [Day 8: Memory Maneuver](08-memoryManeuver/README.md) |  ★ ★  | [Go](08-memoryManeuver/go) |
 | [Day 9: Marble Mania](09-marbleMania/README.md) |  ★ ★  | [Go](09-marbleMania/go) |
