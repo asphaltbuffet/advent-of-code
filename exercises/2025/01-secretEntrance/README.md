@@ -29,8 +29,35 @@ Solving (Go)...
 
 ## Python
 
+The pointer is reduced modulo 100 each step, mirroring the physical dial. Part one
+counts moves that end resting on 0; part two counts every sweep across 0 by tallying
+the multiples of 100 the move arc covers, credited on arrival (a half-open
+convention) so a landing is counted exactly once.
+
 ```text
-< section intentionally left blank >
+────────────────────────────────────────
+─     2025 Day 1: Secret Entrance      ─
+────────────────────────────────────────
+
+Solving (Python)…
+1.0:  PASS             1.391ms
+2.0:  PASS             1.595ms
+```
+
+## Rust
+
+The same reduced-position walk, using `div_euclid`/`rem_euclid` for true floor
+division so the leftward arc is counted correctly as the pointer dips below zero
+before wrapping.
+
+```text
+────────────────────────────────────────
+─     2025 Day 1: Secret Entrance      ─
+────────────────────────────────────────
+
+Solving (Rust)…
+1.0:  PASS            71.217µs
+2.0:  PASS           109.603µs
 ```
 
 ## 2025 Run Times
