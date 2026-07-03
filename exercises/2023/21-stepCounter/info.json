@@ -7,18 +7,8 @@
   "data": {
     "inputFile": "input.txt",
     "testCases": {
-      "one": [
-        {
-          "input": "",
-          "expected": ""
-        }
-      ],
-      "two": [
-        {
-          "input": "",
-          "expected": ""
-        }
-      ]
+      "one": [],
+      "two": []
     },
     "answers": {
       "a": "3689",

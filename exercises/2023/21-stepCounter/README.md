@@ -28,6 +28,37 @@ Solving (Go)…
 2.0:  PASS              5.759s
 ```
 
+## Python
+
+Part one is a bounded set-BFS to 64 steps. Part two runs the frontier BFS on the
+tiled grid (positions wrap by modulo) to three samples one grid-width apart, then
+fits a quadratic and evaluates it at the full target. The pure-set BFS is the
+plain expression of the idea; it is correct but the slowest of the three.
+
+```text
+────────────────────────────────────────
+─      2023 Day 21: Step Counter       ─
+────────────────────────────────────────
+Solving (Python)…
+1.0:  PASS              0.078s
+2.0:  PASS             24.437s
+```
+
+## Rust
+
+The same BFS and quadratic fit over a `HashSet` frontier with `rem_euclid`
+wrapping for the infinite grid. The tighter set operations bring part two in
+under five seconds.
+
+```text
+────────────────────────────────────────
+─      2023 Day 21: Step Counter       ─
+────────────────────────────────────────
+Solving (Rust)…
+1.0:  PASS              0.025s
+2.0:  PASS              4.613s
+```
+
 ## Visualization
 
 The reachable frontier spreading across the garden over 64 steps (GIF). Each
