@@ -21,7 +21,7 @@
 | [Day 13: Mine Cart Madness](13-mineCartMadness/README.md) |  ★ ★  | [Go](13-mineCartMadness/go) |
 | [Day 14: Chocolate Charts](14-chocolateCharts/README.md) |  ★ ★  | [Go](14-chocolateCharts/go) |
 | [Day 15: Beverage Bandits](15-beverageBandits/README.md) |  ★ ★  | [Go](15-beverageBandits/go) |
-| 16                                                            |  ☆ ☆  |                                |
+| [Day 16: Chronal Classification](16-chronalClassification/README.md) |  ★ ★  | [Go](16-chronalClassification/go) |
 | 17                                                            |  ☆ ☆  |                                |
 | 18                                                            |  ☆ ☆  |                                |
 | 19                                                            |  ☆ ☆  |                                |
