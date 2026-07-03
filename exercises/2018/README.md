@@ -19,7 +19,7 @@
 | [Day 11: Chronal Charge](11-chronalCharge/README.md) |  ★ ★  | [Go](11-chronalCharge/go) · [Rust](11-chronalCharge/rs) · [Python](11-chronalCharge/py) |
 | [Day 12: Subterranean Sustainability](12-subterraneanSustainability/README.md) |  ★ ★  | [Go](12-subterraneanSustainability/go) · [Rust](12-subterraneanSustainability/rs) · [Python](12-subterraneanSustainability/py) |
 | [Day 13: Mine Cart Madness](13-mineCartMadness/README.md) |  ★ ★  | [Go](13-mineCartMadness/go) · [Rust](13-mineCartMadness/rs) · [Python](13-mineCartMadness/py) |
-| [Day 14: Chocolate Charts](14-chocolateCharts/README.md) |  ★ ★  | [Go](14-chocolateCharts/go) |
+| [Day 14: Chocolate Charts](14-chocolateCharts/README.md) |  ★ ★  | [Go](14-chocolateCharts/go) · [Rust](14-chocolateCharts/rs) · [Python](14-chocolateCharts/py) |
 | [Day 15: Beverage Bandits](15-beverageBandits/README.md) |  ★ ★  | [Go](15-beverageBandits/go) |
 | [Day 16: Chronal Classification](16-chronalClassification/README.md) |  ★ ★  | [Go](16-chronalClassification/go) |
 | [Day 17: Reservoir Research](17-reservoirResearch/README.md) |  ★ ★  | [Go](17-reservoirResearch/go) · [Rust](17-reservoirResearch/rs) · [Python](17-reservoirResearch/py) |

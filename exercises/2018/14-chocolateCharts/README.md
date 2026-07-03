@@ -1,6 +1,18 @@
 # [Day 14: Chocolate Charts](https://adventofcode.com/2018/day/14)
 
-<!-- [Day 14: Chocolate Charts](14-chocolateCharts) -->
+<!-- These are helper text to make formatting the yearly readme consistent and easier...
+
+[Day 14: Chocolate Charts][rm14]
+[Go][go14]
+[Rust][rs14]
+[Python][py14]
+
+[rm14]: 14-chocolateCharts/README.md
+[go14]: 14-chocolateCharts/go
+[rs14]: 14-chocolateCharts/rs
+[py14]: 14-chocolateCharts/py
+
+-->
 
 ## Notes
 
@@ -27,10 +39,38 @@ Solving (Go)…
 2.0:  PASS           357.976ms
 ```
 
-## Python
+## Rust
+
+A growable `Vec<u8>` of single digits with two `usize` elf indices. Part Two keeps
+a `checked` cursor and compares the target slice against the board after every
+append, so a pattern landing on either digit of a two-digit step is caught without
+re-scanning the whole board.
 
 ```text
-    < section intentionally left blank >
+────────────────────────────────────────
+─    2018 Day 14: Chocolate Charts     ─
+────────────────────────────────────────
+
+Solving (Rust)…
+1.0:  PASS             9.012ms
+2.0:  PASS           419.665ms
+```
+
+## Python
+
+A `bytearray` of single digits gives cheap appends and low memory. Part Two grows
+the board in fixed-size batches, then scans each new region (overlapping the prior
+tail) with `bytearray.find` — a C-level search — so the interpreter never slices a
+prefix per step.
+
+```text
+────────────────────────────────────────
+─    2018 Day 14: Chocolate Charts     ─
+────────────────────────────────────────
+
+Solving (Python)…
+1.0:  PASS              0.206s
+2.0:  PASS              9.193s
 ```
 
 ## Run Times
