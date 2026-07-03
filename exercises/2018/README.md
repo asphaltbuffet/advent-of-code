@@ -18,7 +18,7 @@
 | [Day 10: The Stars Align](10-theStarsAlign/README.md) |  ★ ★  | [Go](10-theStarsAlign/go) |
 | [Day 11: Chronal Charge](11-chronalCharge/README.md) |  ★ ★  | [Go](11-chronalCharge/go) |
 | [Day 12: Subterranean Sustainability](12-subterraneanSustainability/README.md) |  ★ ★  | [Go](12-subterraneanSustainability/go) |
-| 13                                                            |  ☆ ☆  |                                |
+| [Day 13: Mine Cart Madness](13-mineCartMadness/README.md) |  ★ ★  | [Go](13-mineCartMadness/go) |
 | 14                                                            |  ☆ ☆  |                                |
 | 15                                                            |  ☆ ☆  |                                |
 | 16                                                            |  ☆ ☆  |                                |
