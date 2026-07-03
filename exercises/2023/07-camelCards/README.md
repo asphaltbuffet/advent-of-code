@@ -27,8 +27,38 @@
 
 ## Python
 
+Each hand becomes a sort key `(type, card_values)`: `Counter` gives the
+count-multiset that ranks the type, and part two pops the jokers onto the most
+common card before typing while ordering `J` weakest. Sorting the keyed hands and
+weighting by rank gives the winnings.
+
 ```text
-< section intentionally left blank >
+ ───────────────────
+ ADVENT OF CODE 2023
+ Day 7: Camel Cards
+ ───────────────────
+
+Solving (Python)…
+1.0:  PASS             4.956ms
+2.0:  PASS             4.925ms
+```
+
+## Rust
+
+The same key `(type_rank, [card_rank; 5])`, but leaning on Rust's derived tuple
+ordering — one `sort_by` ranks every hand. A small count array yields the type;
+jokers are folded onto the largest group for typing and mapped to strength 0 for
+tiebreaks.
+
+```text
+ ───────────────────
+ ADVENT OF CODE 2023
+ Day 7: Camel Cards
+ ───────────────────
+
+Solving (Rust)…
+1.0:  PASS           193.682µs
+2.0:  PASS           180.492µs
 ```
 
 ## 2023 Run Times
