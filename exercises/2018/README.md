@@ -13,7 +13,7 @@
 | [Day 5: Alchemical Reduction](05-alchemicalReduction/README.md) |  ★ ★  | [Go](05-alchemicalReduction/go) |
 | [Day 6: Chronal Coordinates](06-chronalCoordinates/README.md) |  ★ ★  | [Go](06-chronalCoordinates/go) |
 | [Day 7: The Sum of Its Parts](07-theSumOfItsParts/README.md) |  ★ ★  | [Go](07-theSumOfItsParts/go) |
-| 8                                                             |  ☆ ☆  |                                |
+| [Day 8: Memory Maneuver](08-memoryManeuver/README.md) |  ★ ★  | [Go](08-memoryManeuver/go) |
 | 9                                                             |  ☆ ☆  |                                |
 | 10                                                            |  ☆ ☆  |                                |
 | 11                                                            |  ☆ ☆  |                                |

@@ -1,0 +1,28 @@
+{
+  "id": "2018-08",
+  "title": "Memory Maneuver",
+  "year": 2018,
+  "day": 8,
+  "url": "https://adventofcode.com/2018/day/8",
+  "data": {
+    "inputFile": "input.txt",
+    "testCases": {
+      "one": [
+        {
+          "input": "2 3 0 3 10 11 12 1 1 0 1 99 2 1 1 2",
+          "expected": "138"
+        }
+      ],
+      "two": [
+        {
+          "input": "2 3 0 3 10 11 12 1 1 0 1 99 2 1 1 2",
+          "expected": "66"
+        }
+      ]
+    },
+    "answers": {
+      "a": "45865",
+      "b": "22608"
+    }
+  }
+}
