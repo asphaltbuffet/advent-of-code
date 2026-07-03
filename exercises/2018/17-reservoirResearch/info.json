@@ -1,0 +1,28 @@
+{
+  "id": "2018-17",
+  "title": "Reservoir Research",
+  "year": 2018,
+  "day": 17,
+  "url": "https://adventofcode.com/2018/day/17",
+  "data": {
+    "inputFile": "input.txt",
+    "testCases": {
+      "one": [
+        {
+          "input": "x=495, y=2..7\ny=7, x=495..501\nx=501, y=3..7\nx=498, y=2..4\nx=506, y=1..2\nx=498, y=10..13\nx=504, y=10..13\ny=13, x=498..504",
+          "expected": "57"
+        }
+      ],
+      "two": [
+        {
+          "input": "x=495, y=2..7\ny=7, x=495..501\nx=501, y=3..7\nx=498, y=2..4\nx=506, y=1..2\nx=498, y=10..13\nx=504, y=10..13\ny=13, x=498..504",
+          "expected": "29"
+        }
+      ]
+    },
+    "answers": {
+      "a": "29802",
+      "b": "24660"
+    }
+  }
+}
