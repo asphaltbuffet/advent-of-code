@@ -26,7 +26,7 @@
 | [Day 18: Settlers of The North Pole](18-settlersOfTheNorthPole/README.md) |  ★ ★  | [Go](18-settlersOfTheNorthPole/go) · [Rust](18-settlersOfTheNorthPole/rs) · [Python](18-settlersOfTheNorthPole/py) |
 | [Day 19: Go With The Flow](19-goWithTheFlow/README.md) |  ★ ★  | [Go](19-goWithTheFlow/go) · [Rust](19-goWithTheFlow/rs) · [Python](19-goWithTheFlow/py) |
 | [Day 20: A Regular Map](20-aRegularMap/README.md) |  ★ ★  | [Go](20-aRegularMap/go) · [Rust](20-aRegularMap/rs) · [Python](20-aRegularMap/py) |
-| 21                                                            |  ☆ ☆  |                                |
+| [Day 21: Chronal Conversion](21-chronalConversion/README.md) |  ★ ★  | [Go](21-chronalConversion/go) · [Rust](21-chronalConversion/rs) · [Python](21-chronalConversion/py) |
 | 22                                                            |  ☆ ☆  |                                |
 | 23                                                            |  ☆ ☆  |                                |
 | 24                                                            |  ☆ ☆  |                                |
