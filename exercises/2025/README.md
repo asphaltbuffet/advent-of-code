@@ -13,7 +13,7 @@
 | [Day 5: Cafeteria][rm5]             |  ⭐⭐ | [Go][go5] · [Rust][rs5] · [Python][py5] |
 | [Day 6: Trash Compactor][rm6]       |  ⭐⭐ | [Go][go6] · [Rust][rs6] · [Python][py6] |
 | [Day 7: Laboratories][rm7]          |  ⭐⭐ | [Go][go7] · [Rust][rs7] · [Python][py7] |
-| [Day 8: Playground][rm8]            |  ⭐⭐ | [Go][go8] |
+| [Day 8: Playground][rm8]            |  ⭐⭐ | [Go][go8] · [Rust][rs8] · [Python][py8] |
 | [Day 9: Movie Theater][rm9]         |  ⭐⭐ | [Go][go9] |
 | [Day 10: Factory][rm10]             |  ⭐⭐ | [Go][go10]|
 | [Day 11: Reactor][rm11]             |  ⭐⭐ | [Go][go11]|
@@ -73,6 +73,8 @@ Day   -Part 1-   -Part 2-
 [py7]: 07-laboratories/py
 [rm8]: 08-playground/README.md
 [go8]: 08-playground/go
+[rs8]: 08-playground/rs
+[py8]: 08-playground/py
 [rm9]: 09-movieTheater/README.md
 [go9]: 09-movieTheater/go
 [rm10]: 10-factory/README.md
