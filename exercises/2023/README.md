@@ -17,7 +17,7 @@
 | [Day 9: Mirage Maintenance][rm9]              |  ⭐⭐   | [Go][go9] · [Rust][rs9] · [Python][py9] |
 | [Day 10: Pipe Maze][rm10]                     |  ⭐⭐   | [Go][go10] · [Rust][rs10] · [Python][py10] |
 | [Day 11: Cosmic Expansion][rm11]              |  ⭐⭐   | [Go][go11] · [Rust][rs11] · [Python][py11] |
-| [Day 12: Hot Springs][rm12]                   |  ⭐⭐   | [Go][go12] |
+| [Day 12: Hot Springs][rm12]                   |  ⭐⭐   | [Go][go12] · [Rust][rs12] · [Python][py12] |
 | [Day 13: Point of Incidence][rm13]            |  ⭐⭐   | [Go][go13] |
 | [Day 14: Parabolic Reflector Dish][rm14]      |  ⭐⭐   | [Go][go14] |
 | [Day 15: Lens Library][rm15]                  |  ⭐⭐   | [Go][go15] |
@@ -116,6 +116,8 @@ Day       Time   Rank  Score       Time   Rank  Score
 [py11]: 11-cosmicExpansion/py
 [rm12]: 12-hotSprings/README.md
 [go12]: 12-hotSprings/go
+[rs12]: 12-hotSprings/rs
+[py12]: 12-hotSprings/py
 [rm13]: 13-pointOfIncidence/README.md
 [go13]: 13-pointOfIncidence/go
 [rm14]: 14-parabolicReflectorDish/README.md
