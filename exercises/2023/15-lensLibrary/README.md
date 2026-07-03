@@ -33,8 +33,36 @@ Solving...
 
 ## Python
 
+HASH is a `functools.reduce` fold. Part two uses a list of 256 dicts, one per
+box: because a `dict` preserves insertion order, `=` updates a lens in place and
+`-` pops it, matching the required slot semantics without a manual linked list.
+
 ```text
-< section intentionally left blank >
+──────────────────────────────────────────
+           ADVENT OF CODE 2023
+           Day 15: Lens Library
+──────────────────────────────────────────
+
+Solving (Python)…
+1.0:  PASS             3.695ms
+2.0:  PASS             4.080ms
+```
+
+## Rust
+
+HASH is a byte `fold`. Each box is a `Vec<(&str, u8)>` borrowing labels from the
+input; `position`/`find` locate a lens to remove or update in place, preserving
+order, and the focusing power falls out of a `flat_map` over the boxes.
+
+```text
+──────────────────────────────────────────
+           ADVENT OF CODE 2023
+           Day 15: Lens Library
+──────────────────────────────────────────
+
+Solving (Rust)…
+1.0:  PASS            99.030µs
+2.0:  PASS           232.362µs
 ```
 
 ## 2023 Run Times
