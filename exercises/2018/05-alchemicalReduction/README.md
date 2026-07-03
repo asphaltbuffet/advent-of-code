@@ -1,6 +1,18 @@
 # [Day 5: Alchemical Reduction](https://adventofcode.com/2018/day/5)
 
-<!-- [Day 5: Alchemical Reduction](05-alchemicalReduction) -->
+<!-- These are helper text to make formatting the yearly readme consistent and easier...
+
+[Day 5: Alchemical Reduction][rm5]
+[Go][go5]
+[Rust][rs5]
+[Python][py5]
+
+[rm5]: 05-alchemicalReduction/README.md
+[go5]: 05-alchemicalReduction/go
+[rs5]: 05-alchemicalReduction/rs
+[py5]: 05-alchemicalReduction/py
+
+-->
 
 ## Notes
 
@@ -30,10 +42,37 @@ Solving (Go)…
 2.0:  PASS             8.007ms
 ```
 
-## Python
+## Rust
+
+A `Vec<u8>` stack over the input bytes. Units react when they share a letter but
+differ in case, expressed as `top != unit && top.eq_ignore_ascii_case(&unit)`, and
+Part Two folds `(b'a'..=b'z')` through the same `react` with a `skip` byte and takes
+the `min`.
 
 ```text
-    < section intentionally left blank >
+────────────────────────────────────────
+─   2018 Day 5: Alchemical Reduction   ─
+────────────────────────────────────────
+
+Solving (Rust)…
+1.0:  PASS             0.371ms
+2.0:  PASS             8.020ms
+```
+
+## Python
+
+A list as a stack; the reaction test is `stack[-1] != unit and stack[-1] ==
+unit.swapcase()`. Part Two is a one-line `min` over `string.ascii_lowercase`, each
+letter passed as a `skip` to the shared `react` helper.
+
+```text
+────────────────────────────────────────
+─   2018 Day 5: Alchemical Reduction   ─
+────────────────────────────────────────
+
+Solving (Python)…
+1.0:  PASS            10.985ms
+2.0:  PASS           401.779ms
 ```
 
 ## Visualization
