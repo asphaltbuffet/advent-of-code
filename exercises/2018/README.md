@@ -30,7 +30,7 @@
 | [Day 22: Mode Maze](22-modeMaze/README.md) |  ★ ★  | [Go](22-modeMaze/go) · [Rust](22-modeMaze/rs) · [Python](22-modeMaze/py) |
 | [Day 23: Experimental Emergency Teleportation](23-experimentalEmergencyTeleportation/README.md) |  ★ ★  | [Go](23-experimentalEmergencyTeleportation/go) · [Rust](23-experimentalEmergencyTeleportation/rs) · [Python](23-experimentalEmergencyTeleportation/py) |
 | [Day 24: Immune System Simulator 20XX](24-immuneSystemSimulator20XX/README.md) |  ★ ★  | [Go](24-immuneSystemSimulator20XX/go) · [Rust](24-immuneSystemSimulator20XX/rs) · [Python](24-immuneSystemSimulator20XX/py) |
-| 25                                                            |  ☆ ☆  |                                |
+| [Day 25: Four-Dimensional Adventure](25-four-DimensionalAdventure/README.md) |  ★ ★  | [Go](25-four-DimensionalAdventure/go) |
 
 ## 2018 Run Times
 
