@@ -1,6 +1,18 @@
 # [Day 3: No Matter How You Slice It](https://adventofcode.com/2018/day/3)
 
-<!-- [Day 3: No Matter How You Slice It](03-noMatterHowYouSliceIt) -->
+<!-- These are helper text to make formatting the yearly readme consistent and easier...
+
+[Day 3: No Matter How You Slice It][rm3]
+[Go][go3]
+[Rust][rs3]
+[Python][py3]
+
+[rm3]: 03-noMatterHowYouSliceIt/README.md
+[go3]: 03-noMatterHowYouSliceIt/go
+[rs3]: 03-noMatterHowYouSliceIt/rs
+[py3]: 03-noMatterHowYouSliceIt/py
+
+-->
 
 ## Notes
 
@@ -28,10 +40,37 @@ Solving (Go)…
 2.0:  PASS            63.028ms
 ```
 
-## Python
+## Rust
+
+The claim is a plain struct and coverage is a flat `vec![0u16; 1000 * 1000]`
+grid indexed by `y * SIDE + x`, avoiding hashing. Both parts read as iterator
+chains: Part One `filter(|&&n| n >= 2).count()`, and Part Two `find`s the claim
+whose cells are all covered exactly once with nested `all`.
 
 ```text
-    < section intentionally left blank >
+────────────────────────────────────────
+─2018 Day 3: No Matter How You Slice It─
+────────────────────────────────────────
+
+Solving (Rust)…
+1.0:  PASS            54.099ms
+2.0:  PASS             4.934ms
+```
+
+## Python
+
+A regex scans the five integers per line and `collections.Counter.update` tallies
+each claim's cells in one call. Part One counts values `>= 2`; Part Two returns the
+first claim whose cells are all `== 1`, tested with a generator `all(...)`.
+
+```text
+────────────────────────────────────────
+─2018 Day 3: No Matter How You Slice It─
+────────────────────────────────────────
+
+Solving (Python)…
+1.0:  PASS              1.394s
+2.0:  PASS              0.990s
 ```
 
 ## Visualization
