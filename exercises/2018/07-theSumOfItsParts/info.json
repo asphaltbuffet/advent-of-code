@@ -1,0 +1,28 @@
+{
+  "id": "2018-07",
+  "title": "The Sum of Its Parts",
+  "year": 2018,
+  "day": 7,
+  "url": "https://adventofcode.com/2018/day/7",
+  "data": {
+    "inputFile": "input.txt",
+    "testCases": {
+      "one": [
+        {
+          "input": "Step C must be finished before step A can begin.\nStep C must be finished before step F can begin.\nStep A must be finished before step B can begin.\nStep A must be finished before step D can begin.\nStep B must be finished before step E can begin.\nStep D must be finished before step E can begin.\nStep F must be finished before step E can begin.",
+          "expected": "CABDFE"
+        }
+      ],
+      "two": [
+        {
+          "input": "Step C must be finished before step A can begin.\nStep C must be finished before step F can begin.\nStep A must be finished before step B can begin.\nStep A must be finished before step D can begin.\nStep B must be finished before step E can begin.\nStep D must be finished before step E can begin.\nStep F must be finished before step E can begin.",
+          "expected": "15"
+        }
+      ]
+    },
+    "answers": {
+      "a": "CQSWKZFJONPBEUMXADLYIGVRHT",
+      "b": "914"
+    }
+  }
+}
