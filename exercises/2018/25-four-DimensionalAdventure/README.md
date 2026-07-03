@@ -4,9 +4,13 @@
 
 [Day 25: Four-Dimensional Adventure][rm25]
 [Go][go25]
+[Rust][rs25]
+[Python][py25]
 
 [rm25]: 25-four-DimensionalAdventure/README.md
 [go25]: 25-four-DimensionalAdventure/go
+[rs25]: 25-four-DimensionalAdventure/rs
+[py25]: 25-four-DimensionalAdventure/py
 
 -->
 
@@ -34,6 +38,43 @@ straightforward connected-components problem.
 Solving (Go)…
 1.0:  PASS             5.909ms
 2.0:  PASS             0.000ms
+```
+
+## Rust
+
+Points are `[i32; 4]` arrays in a `Vec`, and a `Vec<usize>` holds the union-find
+parents. Every pair within Manhattan distance 3 is unioned with path compression,
+and the answer is the number of distinct roots. Part Two is the finale, so
+`part_two` just returns the closing message.
+
+```text
+────────────────────────────────────────
+─    2018 Day 25: Four-Dimensional     ─
+─              Adventure               ─
+────────────────────────────────────────
+
+Solving (Rust)…
+1.0:  PASS             3.053ms
+2.0:  NEW              0.000ms
+      Merry Christmas!
+```
+
+## Python
+
+The same disjoint-set idea with a plain `list` of parents and a nested `find` doing
+path compression; points are integer tuples parsed by scanning every signed integer
+per line. Part Two is the finale and simply returns `Merry Christmas!`.
+
+```text
+────────────────────────────────────────
+─    2018 Day 25: Four-Dimensional     ─
+─              Adventure               ─
+────────────────────────────────────────
+
+Solving (Python)…
+1.0:  PASS              1.475s
+2.0:  NEW               0.000s
+      Merry Christmas!
 ```
 
 ## Visualization
