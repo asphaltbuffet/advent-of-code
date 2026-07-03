@@ -10,7 +10,7 @@
 | [Day 2: Gift Shop][rm2]             |  ⭐⭐ | [Go][go2] · [Rust][rs2] · [Python][py2] |
 | [Day 3: Lobby][rm3]                 |  ⭐⭐ | [Go][go3] · [Rust][rs3] · [Python][py3] |
 | [Day 4: Printing Department][rm4]   |  ⭐⭐ | [Go][go4] · [Rust][rs4] · [Python][py4] |
-| [Day 5: Cafeteria][rm5]             |  ⭐⭐ | [Go][go5] |
+| [Day 5: Cafeteria][rm5]             |  ⭐⭐ | [Go][go5] · [Rust][rs5] · [Python][py5] |
 | [Day 6: Trash Compactor][rm6]       |  ⭐⭐ | [Go][go6] |
 | [Day 7: Laboratories][rm7]          |  ⭐⭐ | [Go][go7] |
 | [Day 8: Playground][rm8]            |  ⭐⭐ | [Go][go8] |
@@ -61,6 +61,8 @@ Day   -Part 1-   -Part 2-
 [py4]: 04-printingDepartment/py
 [rm5]: 05-cafeteria/README.md
 [go5]: 05-cafeteria/go
+[rs5]: 05-cafeteria/rs
+[py5]: 05-cafeteria/py
 [rm6]: 06-trashCompactor/README.md
 [go6]: 06-trashCompactor/go
 [rm7]: 07-laboratories/README.md

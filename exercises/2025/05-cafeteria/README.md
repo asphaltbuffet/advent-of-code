@@ -31,8 +31,36 @@ Solving (Go)...
 
 ## Python
 
+Sort the inventory ranges and coalesce overlaps (a one-unit gap keeps ranges
+separate). Part one tests each ingredient ID for membership; part two sums the
+merged widths.
+
 ```text
-< section intentionally left blank >
+──────────────────────────────────────────
+           ADVENT OF CODE 2025
+             Day 5: Cafeteria
+──────────────────────────────────────────
+
+Solving (Python)…
+1.0:  PASS             4.187ms
+2.0:  PASS             0.338ms
+```
+
+## Rust
+
+The same interval merge. Since the merged ranges are sorted and disjoint, part one
+uses `partition_point` to binary-search the one range that could contain each ID,
+rather than scanning every range.
+
+```text
+──────────────────────────────────────────
+           ADVENT OF CODE 2025
+             Day 5: Cafeteria
+──────────────────────────────────────────
+
+Solving (Rust)…
+1.0:  PASS           100.279µs
+2.0:  PASS            53.753µs
 ```
 
 ## 2025 Run Times
