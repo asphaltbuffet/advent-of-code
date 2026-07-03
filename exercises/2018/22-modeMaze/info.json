@@ -1,0 +1,28 @@
+{
+  "id": "2018-22",
+  "title": "Mode Maze",
+  "year": 2018,
+  "day": 22,
+  "url": "https://adventofcode.com/2018/day/22",
+  "data": {
+    "inputFile": "input.txt",
+    "testCases": {
+      "one": [
+        {
+          "input": "depth: 510\ntarget: 10,10",
+          "expected": "114"
+        }
+      ],
+      "two": [
+        {
+          "input": "depth: 510\ntarget: 10,10",
+          "expected": "45"
+        }
+      ]
+    },
+    "answers": {
+      "a": "9899",
+      "b": "1051"
+    }
+  }
+}
