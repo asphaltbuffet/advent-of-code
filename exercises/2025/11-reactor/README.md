@@ -31,8 +31,36 @@ Solving (Go)...
 
 ## Python
 
+Both parts count paths through ordered waypoints. A path is valid when it visits
+each required waypoint in sequence and ends at the last. `functools.cache` memoizes
+on (node, remaining waypoints); part two picks the waypoint order by reachability.
+
 ```text
-< section intentionally left blank >
+──────────────────────────────────────────
+           ADVENT OF CODE 2025
+             Day 11: Reactor
+──────────────────────────────────────────
+
+Solving (Python)…
+1.0:  PASS             0.480ms
+2.0:  PASS             2.176ms
+```
+
+## Rust
+
+The same ordered-waypoint count over interned node indices. Since the remaining
+waypoints are always a suffix, the memo keys on (node, next waypoint index) rather
+than hashing a slice.
+
+```text
+──────────────────────────────────────────
+           ADVENT OF CODE 2025
+             Day 11: Reactor
+──────────────────────────────────────────
+
+Solving (Rust)…
+1.0:  PASS           193.552µs
+2.0:  PASS           353.420µs
 ```
 
 ## 2025 Run Times

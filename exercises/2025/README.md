@@ -16,7 +16,7 @@
 | [Day 8: Playground][rm8]            |  ⭐⭐ | [Go][go8] · [Rust][rs8] · [Python][py8] |
 | [Day 9: Movie Theater][rm9]         |  ⭐⭐ | [Go][go9] · [Rust][rs9] · [Python][py9] |
 | [Day 10: Factory][rm10]             |  ⭐⭐ | [Go][go10] · [Rust][rs10] · [Python][py10] |
-| [Day 11: Reactor][rm11]             |  ⭐⭐ | [Go][go11]|
+| [Day 11: Reactor][rm11]             |  ⭐⭐ | [Go][go11] · [Rust][rs11] · [Python][py11] |
 | [Day 12: Christmas Tree Farm][rm12] |  ⭐⭐ | [Go][go12]|
 
 ## 2025 Run Times
@@ -85,5 +85,7 @@ Day   -Part 1-   -Part 2-
 [py10]: 10-factory/py
 [rm11]: 11-reactor/README.md
 [go11]: 11-reactor/go
+[rs11]: 11-reactor/rs
+[py11]: 11-reactor/py
 [rm12]: 12-christmasTreeFarm/README.md
 [go12]: 12-christmasTreeFarm/go
