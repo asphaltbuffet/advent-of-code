@@ -12,7 +12,7 @@
 | [Day 4: Repose Record](04-reposeRecord/README.md) |  ★ ★  | [Go](04-reposeRecord/go) |
 | [Day 5: Alchemical Reduction](05-alchemicalReduction/README.md) |  ★ ★  | [Go](05-alchemicalReduction/go) |
 | [Day 6: Chronal Coordinates](06-chronalCoordinates/README.md) |  ★ ★  | [Go](06-chronalCoordinates/go) |
-| 7                                                             |  ☆ ☆  |                                |
+| [Day 7: The Sum of Its Parts](07-theSumOfItsParts/README.md) |  ★ ★  | [Go](07-theSumOfItsParts/go) |
 | 8                                                             |  ☆ ☆  |                                |
 | 9                                                             |  ☆ ☆  |                                |
 | 10                                                            |  ☆ ☆  |                                |
