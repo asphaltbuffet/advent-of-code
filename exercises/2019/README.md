@@ -23,7 +23,7 @@
 | [Day 15: Oxygen System][rm_15]                    |  ★ ★  | [Go][go_15] |
 | [Day 16: Flawed Frequency Transmission][rm_16]   |  ★ ★  | [Go][go_16] |
 | [Day 17: Set and Forget][rm_17]                   |  ★ ★  | [Go][go_17] |
-| 18                                                |  ☆ ☆  |                            |
+| [Day 18: Many-Worlds Interpretation][rm_18]       |  ★ ★  | [Go][go_18] |
 | 19                                                |  ☆ ☆  |                            |
 | 20                                                |  ☆ ☆  |                            |
 | 21                                                |  ☆ ☆  |                            |
@@ -97,3 +97,6 @@ Day       Time    Rank  Score       Time    Rank  Score
 
 [rm_17]: 17-setAndForget/README.md
 [go_17]: 17-setAndForget/go
+
+[rm_18]: 18-many-WorldsInterpretation/README.md
+[go_18]: 18-many-WorldsInterpretation/go

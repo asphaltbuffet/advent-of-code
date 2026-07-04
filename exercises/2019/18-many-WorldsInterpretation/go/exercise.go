@@ -8,6 +8,37 @@ import (
 	"github.com/asphaltbuffet/advent-of-code/internal/common"
 )
 
+// robotState encodes 4 robot positions (as node indices, int8) plus keyMask for the visited map.
+type robotState struct {
+	robots  [4]int8
+	keyMask uint32
+}
+
+// dijkState4 is a state for the 4-robot Dijkstra search.
+type dijkState4 struct {
+	cost    int
+	robots  [4]int8
+	keyMask uint32
+}
+
+// pq4 is a min-heap of dijkState4 ordered by cost.
+type pq4 struct{ items []dijkState4 }
+
+func (h *pq4) Len() int           { return len(h.items) }
+func (h *pq4) Less(i, j int) bool { return h.items[i].cost < h.items[j].cost }
+func (h *pq4) Swap(i, j int)      { h.items[i], h.items[j] = h.items[j], h.items[i] }
+
+func (h *pq4) Push(x any) {
+	h.items = append(h.items, x.(dijkState4)) //nolint:errcheck // heap.Interface contract
+}
+
+func (h *pq4) Pop() any {
+	n := len(h.items)
+	x := h.items[n-1]
+	h.items = h.items[:n-1]
+	return x
+}
+
 // Exercise for Advent of Code 2019 day 18.
 type Exercise struct {
 	common.BaseExercise
@@ -25,8 +56,15 @@ func (e Exercise) One(instr string) (any, error) {
 }
 
 // Two returns the answer to the second part of the exercise.
-func (e Exercise) Two(_ string) (any, error) {
-	return nil, errors.New("part 2 not implemented")
+// Splits the maze into 4 quadrants (transforming the map if needed) and uses
+// Dijkstra with state = ([4]robot positions, keysMask) to find the minimum steps.
+func (e Exercise) Two(instr string) (any, error) {
+	steps, err := collectAllKeysFourRobots(instr)
+	if err != nil {
+		return nil, err
+	}
+
+	return steps, nil
 }
 
 // edge represents a connection between two nodes in the key graph.
@@ -259,4 +297,184 @@ func dijkstraKeys(graph [][]edge, activeKeys []int, allKeys uint32, startNode in
 	}
 
 	return 0, errors.New("no solution found")
+}
+
+// transformToFourRobots replaces the 3x3 area around the single '@' with the
+// four-robot pattern required by Part Two.
+func transformToFourRobots(cells []byte, center, width int) {
+	// center → wall
+	cells[center] = '#'
+	// cardinal neighbors → walls
+	cells[center-width] = '#'
+	cells[center+width] = '#'
+	cells[center-1] = '#'
+	cells[center+1] = '#'
+	// diagonal neighbors → robots
+	cells[center-width-1] = '@'
+	cells[center-width+1] = '@'
+	cells[center+width-1] = '@'
+	cells[center+width+1] = '@'
+}
+
+// parseMazeFour parses the maze and returns a mazeGrid plus 4 start positions.
+// If the input has a single '@', the map is transformed; if it already has 4 '@', they are used as-is.
+func parseMazeFour(instr string) (mazeGrid, [4]int, error) {
+	lines := strings.Split(strings.TrimRight(instr, "\n"), "\n")
+	if len(lines) == 0 {
+		return mazeGrid{}, [4]int{}, errors.New("empty input")
+	}
+
+	width := len(lines[0])
+	cells := make([]byte, len(lines)*width)
+	mg := mazeGrid{cells: cells, width: width, startPos: -1}
+
+	for i := range mg.keyPos {
+		mg.keyPos[i] = -1
+	}
+
+	var startPositions [4]int
+	numStarts := 0
+
+	for y, line := range lines {
+		for x := 0; x < len(line) && x < width; x++ {
+			c := line[x]
+			pos := y*width + x
+			cells[pos] = c
+
+			switch {
+			case c == '@':
+				if numStarts < 4 {
+					startPositions[numStarts] = pos
+					numStarts++
+				}
+
+				mg.startPos = pos
+			case c >= 'a' && c <= 'z':
+				mg.keyPos[c-'a'] = pos
+				mg.numKeys++
+			}
+		}
+	}
+
+	// Single start: apply the 3x3 transformation.
+	if numStarts == 1 {
+		center := mg.startPos
+		transformToFourRobots(cells, center, width)
+		startPositions[0] = center - width - 1
+		startPositions[1] = center - width + 1
+		startPositions[2] = center + width - 1
+		startPositions[3] = center + width + 1
+		numStarts = 4
+	}
+
+	if numStarts != 4 {
+		return mazeGrid{}, [4]int{}, errors.New("expected 1 or 4 start positions")
+	}
+
+	return mg, startPositions, nil
+}
+
+// buildGraphFour builds the key graph for Part Two: numKeys+4 nodes total
+// (indices 0..numKeys-1 are keys, numKeys..numKeys+3 are the 4 robot starts).
+func buildGraphFour(mg mazeGrid, activeKeys []int, compactOf [26]int, startPositions [4]int) [][]edge {
+	numKeys := len(activeKeys)
+	graph := make([][]edge, numKeys+4)
+
+	for i, pos := range startPositions {
+		graph[numKeys+i] = bfsEdges(pos, mg, compactOf)
+	}
+
+	for ci, ki := range activeKeys {
+		graph[ci] = bfsEdges(mg.keyPos[ki], mg, compactOf)
+	}
+
+	return graph
+}
+
+// dijkstraFourRobots runs Dijkstra with 4-robot state.
+//
+//nolint:gocognit // 4-robot Dijkstra; complexity is inherent to the algorithm
+func dijkstraFourRobots(graph [][]edge, activeKeys []int, allKeys uint32, startNodes [4]int) (int, error) {
+	numKeys := len(activeKeys)
+
+	initRobots := [4]int8{
+		int8(startNodes[0]),
+		int8(startNodes[1]),
+		int8(startNodes[2]),
+		int8(startNodes[3]),
+	}
+
+	best := make(map[robotState]int)
+	h := &pq4{items: []dijkState4{{cost: 0, robots: initRobots, keyMask: 0}}}
+	heap.Init(h)
+
+	for h.Len() > 0 {
+		cur := heap.Pop(h).(dijkState4) //nolint:errcheck // heap.Interface contract
+
+		if cur.keyMask == allKeys {
+			return cur.cost, nil
+		}
+
+		rs := robotState{robots: cur.robots, keyMask: cur.keyMask}
+		if prev, ok := best[rs]; ok && prev <= cur.cost {
+			continue
+		}
+
+		best[rs] = cur.cost
+
+		// Try moving each robot to each reachable key.
+		for r := range cur.robots {
+			node := int(cur.robots[r])
+
+			for _, e := range graph[node] {
+				// Check we have all required door-keys.
+				if cur.keyMask&e.reqKeys != e.reqKeys {
+					continue
+				}
+
+				ki := activeKeys[e.to]
+
+				// Skip already-collected keys.
+				if cur.keyMask&(1<<uint(ki)) != 0 {
+					continue
+				}
+
+				newMask := cur.keyMask | (1 << uint(ki))
+				newCost := cur.cost + e.dist
+				newRobots := cur.robots
+				newRobots[r] = int8(e.to)
+
+				// Validate int8 range (node indices: 0..numKeys+3).
+				if e.to >= numKeys+4 {
+					continue
+				}
+
+				nrs := robotState{robots: newRobots, keyMask: newMask}
+				if prev, ok := best[nrs]; ok && prev <= newCost {
+					continue
+				}
+
+				heap.Push(h, dijkState4{cost: newCost, robots: newRobots, keyMask: newMask})
+			}
+		}
+	}
+
+	return 0, errors.New("no solution found")
+}
+
+func collectAllKeysFourRobots(instr string) (int, error) {
+	mg, startPositions, err := parseMazeFour(instr)
+	if err != nil {
+		return 0, err
+	}
+
+	activeKeys, compactOf := buildKeyIndex(mg.keyPos, mg.numKeys)
+	graph := buildGraphFour(mg, activeKeys, compactOf, startPositions)
+
+	// Start node indices: numKeys, numKeys+1, numKeys+2, numKeys+3
+	numKeys := len(activeKeys)
+	startNodes := [4]int{numKeys, numKeys + 1, numKeys + 2, numKeys + 3}
+	allKeys := uint32((1 << mg.numKeys) - 1)
+
+	return dijkstraFourRobots(graph, activeKeys, allKeys, startNodes)
 }
