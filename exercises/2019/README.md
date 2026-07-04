@@ -16,7 +16,7 @@
 | [Day 8: Space Image Format][rm_8]                 |  ★ ★  | [Go][go_8] |
 | [Day 9: Sensor Boost][rm_9]                       |  ★ ★  | [Go][go_9] |
 | [Day 10: Monitoring Station][rm_10]               |  ★ ★  | [Go][go_10] |
-| 11                                                |  ☆ ☆  |                            |
+| [Day 11: Space Police][rm_11]                     |  ★ ★  | [Go][go_11] |
 | 12                                                |  ☆ ☆  |                            |
 | 13                                                |  ☆ ☆  |                            |
 | 14                                                |  ☆ ☆  |                            |
@@ -76,3 +76,6 @@ Day       Time    Rank  Score       Time    Rank  Score
 
 [rm_10]: 10-monitoringStation/README.md
 [go_10]: 10-monitoringStation/go
+
+[rm_11]: 11-spacePolice/README.md
+[go_11]: 11-spacePolice/go
