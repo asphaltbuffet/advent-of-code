@@ -20,7 +20,7 @@
 | [Day 12: The N-Body Problem][rm_12]               |  ★ ★  | [Go][go_12] |
 | [Day 13: Care Package][rm_13]                     |  ★ ★  | [Go][go_13] |
 | [Day 14: Space Stoichiometry][rm_14]              |  ★ ★  | [Go][go_14] |
-| 15                                                |  ☆ ☆  |                            |
+| [Day 15: Oxygen System][rm_15]                    |  ★ ★  | [Go][go_15] |
 | 16                                                |  ☆ ☆  |                            |
 | 17                                                |  ☆ ☆  |                            |
 | 18                                                |  ☆ ☆  |                            |
@@ -88,3 +88,6 @@ Day       Time    Rank  Score       Time    Rank  Score
 
 [rm_14]: 14-spaceStoichiometry/README.md
 [go_14]: 14-spaceStoichiometry/go
+
+[rm_15]: 15-oxygenSystem/README.md
+[go_15]: 15-oxygenSystem/go
