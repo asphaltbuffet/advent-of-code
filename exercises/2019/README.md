@@ -8,7 +8,7 @@
 |---------------------------------------------------|:-----:|----------------------------|
 | [Day 1: The Tyranny Of The Rocket Equation][rm_1] |  ★ ★  | [Go][go_1], [Python][py_1], [Rust][rs_1] |
 | [Day 2: 1202 Program Alarm][rm_2]                 |  ★ ★  | [Go][go_2] |
-| 3                                                 |  ☆ ☆  |                            |
+| [Day 3: Crossed Wires][rm_3]                      |  ★ ★  | [Go][go_3] |
 | 4                                                 |  ☆ ☆  |                            |
 | 5                                                 |  ☆ ☆  |                            |
 | 6                                                 |  ☆ ☆  |                            |
@@ -52,3 +52,6 @@ Day       Time    Rank  Score       Time    Rank  Score
 
 [rm_2]: 02-1202ProgramAlarm/README.md
 [go_2]: 02-1202ProgramAlarm/go
+
+[rm_3]: 03-crossedWires/README.md
+[go_3]: 03-crossedWires/go
