@@ -1,0 +1,23 @@
+{
+  "id": "2019-18",
+  "title": "Many-Worlds Interpretation",
+  "year": 2019,
+  "day": 18,
+  "url": "https://adventofcode.com/2019/day/18",
+  "data": {
+    "inputFile": "input.txt",
+    "testCases": {
+      "one": [
+        {
+          "input": "########################\n#...............b.C.D.f#\n#.######################\n#.....@.a.B.c.d.A.e.F.g#\n########################",
+          "expected": "132"
+        }
+      ],
+      "two": []
+    },
+    "answers": {
+      "a": "4954",
+      "b": ""
+    }
+  }
+}
