@@ -22,7 +22,7 @@
 | [Day 14: Space Stoichiometry][rm_14]              |  ★ ★  | [Go][go_14] |
 | [Day 15: Oxygen System][rm_15]                    |  ★ ★  | [Go][go_15] |
 | [Day 16: Flawed Frequency Transmission][rm_16]   |  ★ ★  | [Go][go_16] |
-| 17                                                |  ☆ ☆  |                            |
+| [Day 17: Set and Forget][rm_17]                   |  ★ ★  | [Go][go_17] |
 | 18                                                |  ☆ ☆  |                            |
 | 19                                                |  ☆ ☆  |                            |
 | 20                                                |  ☆ ☆  |                            |
@@ -94,3 +94,6 @@ Day       Time    Rank  Score       Time    Rank  Score
 
 [rm_16]: 16-flawedFrequencyTransmission/README.md
 [go_16]: 16-flawedFrequencyTransmission/go
+
+[rm_17]: 17-setAndForget/README.md
+[go_17]: 17-setAndForget/go
