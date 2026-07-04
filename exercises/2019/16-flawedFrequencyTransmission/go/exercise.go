@@ -16,9 +16,9 @@ var basePattern = [4]int{0, 1, 0, -1}
 func fft(signal []int) []int {
 	n := len(signal)
 	out := make([]int, n)
-	for i := 0; i < n; i++ {
+	for i := range n {
 		sum := 0
-		for j := 0; j < n; j++ {
+		for j := range n {
 			p := basePattern[((j+1)/(i+1))%4]
 			sum += signal[j] * p
 		}
@@ -38,12 +38,12 @@ func (e Exercise) One(instr string) (any, error) {
 		signal[i] = int(b - '0')
 	}
 
-	for phase := 0; phase < 100; phase++ {
+	for range 100 {
 		signal = fft(signal)
 	}
 
 	result := make([]byte, 8)
-	for i := 0; i < 8; i++ {
+	for i := range 8 {
 		result[i] = byte(signal[i]) + '0'
 	}
 	return string(result), nil
@@ -56,7 +56,7 @@ func (e Exercise) Two(instr string) (any, error) {
 
 	// Parse offset from first 7 digits
 	offset := 0
-	for i := 0; i < 7; i++ {
+	for i := range 7 {
 		offset = offset*10 + int(s[i]-'0')
 	}
 
@@ -65,19 +65,19 @@ func (e Exercise) Two(instr string) (any, error) {
 
 	// Build suffix slice: digits from offset to end of repeated signal
 	suffix := make([]int, suffixLen)
-	for i := 0; i < suffixLen; i++ {
+	for i := range suffixLen {
 		suffix[i] = int(s[(offset+i)%n] - '0')
 	}
 
 	// 100 phases: suffix sum right-to-left, mod 10
-	for phase := 0; phase < 100; phase++ {
+	for range 100 {
 		for i := suffixLen - 2; i >= 0; i-- {
 			suffix[i] = (suffix[i] + suffix[i+1]) % 10
 		}
 	}
 
 	result := make([]byte, 8)
-	for i := 0; i < 8; i++ {
+	for i := range 8 {
 		result[i] = byte(suffix[i]) + '0'
 	}
 	return string(result), nil
