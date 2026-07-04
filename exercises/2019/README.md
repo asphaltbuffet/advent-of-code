@@ -21,7 +21,7 @@
 | [Day 13: Care Package][rm_13]                     |  ★ ★  | [Go][go_13] |
 | [Day 14: Space Stoichiometry][rm_14]              |  ★ ★  | [Go][go_14] |
 | [Day 15: Oxygen System][rm_15]                    |  ★ ★  | [Go][go_15] |
-| 16                                                |  ☆ ☆  |                            |
+| [Day 16: Flawed Frequency Transmission][rm_16]   |  ★ ★  | [Go][go_16] |
 | 17                                                |  ☆ ☆  |                            |
 | 18                                                |  ☆ ☆  |                            |
 | 19                                                |  ☆ ☆  |                            |
@@ -91,3 +91,6 @@ Day       Time    Rank  Score       Time    Rank  Score
 
 [rm_15]: 15-oxygenSystem/README.md
 [go_15]: 15-oxygenSystem/go
+
+[rm_16]: 16-flawedFrequencyTransmission/README.md
+[go_16]: 16-flawedFrequencyTransmission/go
