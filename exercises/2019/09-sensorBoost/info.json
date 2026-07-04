@@ -1,0 +1,18 @@
+{
+  "id": "2019-09",
+  "title": "Sensor Boost",
+  "year": 2019,
+  "day": 9,
+  "url": "https://adventofcode.com/2019/day/9",
+  "data": {
+    "inputFile": "input.txt",
+    "testCases": {
+      "one": [],
+      "two": []
+    },
+    "answers": {
+      "a": "3429606717",
+      "b": "33679"
+    }
+  }
+}
