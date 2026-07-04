@@ -1,6 +1,7 @@
 package exercises
 
 import (
+	"maps"
 	"strconv"
 	"strings"
 
@@ -122,9 +123,7 @@ func intcode(m mem, in <-chan int, out chan<- int) {
 func query(prog mem, x, y int) int {
 	// Copy the program for a fresh run.
 	m := make(mem, len(prog))
-	for k, v := range prog {
-		m[k] = v
-	}
+	maps.Copy(m, prog)
 
 	in := make(chan int, 2)
 	out := make(chan int, 1)
@@ -144,8 +143,8 @@ func (e Exercise) One(instr string) (any, error) {
 
 	count := 0
 
-	for y := 0; y < 50; y++ {
-		for x := 0; x < 50; x++ {
+	for y := range 50 {
+		for x := range 50 {
 			count += query(prog, x, y)
 		}
 	}
