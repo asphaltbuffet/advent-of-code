@@ -27,7 +27,7 @@
 | [Day 19: Tractor Beam][rm_19]                     |  ★ ★  | [Go][go19] |
 | [Day 20: Donut Maze][rm_20]                       |  ★ ★  | [Go][go20] |
 | [Day 21: Springdroid Adventure][rm21]             |  ★ ★  | [Go][go21] |
-| 22                                                |  ☆ ☆  |                            |
+| [Day 22: Slam Shuffle][rm22]                      |  ★ ★  | [Go][go22] |
 | 23                                                |  ☆ ☆  |                            |
 | 24                                                |  ☆ ☆  |                            |
 | 25                                                |  ☆ ☆  |                            |
@@ -109,3 +109,6 @@ Day       Time    Rank  Score       Time    Rank  Score
 
 [rm21]: 21-springdroidAdventure/README.md
 [go21]: 21-springdroidAdventure/go
+
+[rm22]: 22-slamShuffle/README.md
+[go22]: 22-slamShuffle/go/exercise.go
