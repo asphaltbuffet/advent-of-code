@@ -6,7 +6,7 @@
 
 | Exercise                                          | Stars | Solutions                  |
 |---------------------------------------------------|:-----:|----------------------------|
-| [Day 1: The Tyranny Of The Rocket Equation][rm_1] |  ★ ★  | [Go][go_1], [Python][py_1] |
+| [Day 1: The Tyranny Of The Rocket Equation][rm_1] |  ★ ★  | [Go][go_1], [Python][py_1], [Rust][rs_1] |
 | 2                                                 |  ☆ ☆  |                            |
 | 3                                                 |  ☆ ☆  |                            |
 | 4                                                 |  ☆ ☆  |                            |
@@ -48,3 +48,4 @@ Day       Time    Rank  Score       Time    Rank  Score
 [rm_1]: 01-theTyrannyOfTheRocketEquation/README.md
 [go_1]: 01-theTyrannyOfTheRocketEquation/go
 [py_1]: 01-theTyrannyOfTheRocketEquation/py
+[rs_1]: 01-theTyrannyOfTheRocketEquation/rs

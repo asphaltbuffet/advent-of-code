@@ -42,6 +42,31 @@ Part 1: 3437969 in 28.371811 µs
 Part 2: 5154075 in 139.474869 µs
 ```
 
+## Rust
+
+Each part folds over the parsed masses with iterator adapters. Part two uses a small recursive helper, `fuel_cost`, that accumulates the fuel-of-fuel chain until the result drops to zero or below.
+
+```text
+2019-1 The Tyranny Of The Rocket Equation (Rust)
+
+Testing (Rust)…
+1.0:  PASS             0.385µs
+1.1:  PASS             0.220µs
+1.2:  PASS             0.378µs
+1.3:  PASS             0.437µs
+1.4:  PASS             0.429µs
+2.0:  PASS             0.229µs
+2.1:  PASS             0.430µs
+2.2:  PASS             0.274µs
+2.3:  PASS             0.284µs
+
+Solving (Rust)…
+1.0:  PASS             5.361µs
+      3437969
+2.0:  PASS             4.863µs
+      5154075
+```
+
 ## 2019 Run Times
 
 ![2019 exercise run-time graphs](../run-times.png)

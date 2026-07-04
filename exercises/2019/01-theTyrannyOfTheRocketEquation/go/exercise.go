@@ -17,7 +17,7 @@ type Exercise struct {
 func (c Exercise) One(instr string) (any, error) {
 	sum := 0
 
-	for _, mass := range strings.Split(instr, "\n") {
+	for mass := range strings.SplitSeq(instr, "\n") {
 		m, err := strconv.Atoi(mass)
 		if err != nil {
 			return nil, err
@@ -34,7 +34,7 @@ func (c Exercise) One(instr string) (any, error) {
 func (c Exercise) Two(instr string) (any, error) {
 	sum := 0
 
-	for _, mass := range strings.Split(instr, "\n") {
+	for mass := range strings.SplitSeq(instr, "\n") {
 		m, err := strconv.Atoi(mass)
 		if err != nil {
 			return nil, err
