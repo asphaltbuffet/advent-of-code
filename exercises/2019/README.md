@@ -11,7 +11,7 @@
 | [Day 3: Crossed Wires][rm_3]                      |  ★ ★  | [Go][go_3] |
 | [Day 4: Secure Container][rm_4]                   |  ★ ★  | [Go][go_4] |
 | [Day 5: Sunny with a Chance of Asteroids][rm_5]  |  ★ ★  | [Go][go_5] |
-| 6                                                 |  ☆ ☆  |                            |
+| [Day 6: Universal Orbit Map][rm_6]                |  ★ ★  | [Go][go_6] |
 | 7                                                 |  ☆ ☆  |                            |
 | 8                                                 |  ☆ ☆  |                            |
 | 9                                                 |  ☆ ☆  |                            |
@@ -61,3 +61,6 @@ Day       Time    Rank  Score       Time    Rank  Score
 
 [rm_5]: 05-sunnyWithAChanceOfAsteroids/README.md
 [go_5]: 05-sunnyWithAChanceOfAsteroids/go
+
+[rm_6]: 06-universalOrbitMap/README.md
+[go_6]: 06-universalOrbitMap/go
