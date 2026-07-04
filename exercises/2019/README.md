@@ -15,7 +15,7 @@
 | [Day 7: Amplification Circuit][rm_7]              |  ★ ★  | [Go][go_7] |
 | [Day 8: Space Image Format][rm_8]                 |  ★ ★  | [Go][go_8] |
 | [Day 9: Sensor Boost][rm_9]                       |  ★ ★  | [Go][go_9] |
-| 10                                                |  ☆ ☆  |                            |
+| [Day 10: Monitoring Station][rm_10]               |  ★ ★  | [Go][go_10] |
 | 11                                                |  ☆ ☆  |                            |
 | 12                                                |  ☆ ☆  |                            |
 | 13                                                |  ☆ ☆  |                            |
@@ -73,3 +73,6 @@ Day       Time    Rank  Score       Time    Rank  Score
 
 [rm_9]: 09-sensorBoost/README.md
 [go_9]: 09-sensorBoost/go
+
+[rm_10]: 10-monitoringStation/README.md
+[go_10]: 10-monitoringStation/go
