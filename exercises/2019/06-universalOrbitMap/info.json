@@ -1,0 +1,28 @@
+{
+  "id": "2019-06",
+  "title": "Universal Orbit Map",
+  "year": 2019,
+  "day": 6,
+  "url": "https://adventofcode.com/2019/day/6",
+  "data": {
+    "inputFile": "input.txt",
+    "testCases": {
+      "one": [
+        {
+          "input": "COM)B\nB)C\nC)D\nD)E\nE)F\nB)G\nG)H\nD)I\nE)J\nJ)K\nK)L",
+          "expected": "42"
+        }
+      ],
+      "two": [
+        {
+          "input": "COM)B\nB)C\nC)D\nD)E\nE)F\nB)G\nG)H\nD)I\nE)J\nJ)K\nK)L\nK)YOU\nI)SAN",
+          "expected": "4"
+        }
+      ]
+    },
+    "answers": {
+      "a": "186597",
+      "b": "412"
+    }
+  }
+}
