@@ -26,7 +26,7 @@
 | [Day 18: Many-Worlds Interpretation][rm_18]       |  ★ ★  | [Go][go_18] |
 | [Day 19: Tractor Beam][rm_19]                     |  ★ ★  | [Go][go19] |
 | [Day 20: Donut Maze][rm_20]                       |  ★ ★  | [Go][go20] |
-| 21                                                |  ☆ ☆  |                            |
+| [Day 21: Springdroid Adventure][rm21]             |  ★ ★  | [Go][go21] |
 | 22                                                |  ☆ ☆  |                            |
 | 23                                                |  ☆ ☆  |                            |
 | 24                                                |  ☆ ☆  |                            |
@@ -106,3 +106,6 @@ Day       Time    Rank  Score       Time    Rank  Score
 
 [rm_20]: 20-donutMaze/README.md
 [go20]: 20-donutMaze/go
+
+[rm21]: 21-springdroidAdventure/README.md
+[go21]: 21-springdroidAdventure/go
