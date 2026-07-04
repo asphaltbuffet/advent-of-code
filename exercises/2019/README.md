@@ -13,7 +13,7 @@
 | [Day 5: Sunny with a Chance of Asteroids][rm_5]  |  ★ ★  | [Go][go_5] |
 | [Day 6: Universal Orbit Map][rm_6]                |  ★ ★  | [Go][go_6] |
 | [Day 7: Amplification Circuit][rm_7]              |  ★ ★  | [Go][go_7] |
-| 8                                                 |  ☆ ☆  |                            |
+| [Day 8: Space Image Format][rm_8]                 |  ★ ★  | [Go][go_8] |
 | 9                                                 |  ☆ ☆  |                            |
 | 10                                                |  ☆ ☆  |                            |
 | 11                                                |  ☆ ☆  |                            |
@@ -67,3 +67,6 @@ Day       Time    Rank  Score       Time    Rank  Score
 
 [rm_7]: 07-amplificationCircuit/README.md
 [go_7]: 07-amplificationCircuit/go
+
+[rm_8]: 08-spaceImageFormat/README.md
+[go_8]: 08-spaceImageFormat/go
