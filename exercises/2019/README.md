@@ -28,7 +28,7 @@
 | [Day 20: Donut Maze][rm_20]                       |  ★ ★  | [Go][go20] |
 | [Day 21: Springdroid Adventure][rm21]             |  ★ ★  | [Go][go21] |
 | [Day 22: Slam Shuffle][rm22]                      |  ★ ★  | [Go][go22] |
-| 23                                                |  ☆ ☆  |                            |
+| [Day 23: Category Six][rm23]                      |  ★ ★  | [Go][go23] |
 | 24                                                |  ☆ ☆  |                            |
 | 25                                                |  ☆ ☆  |                            |
 
@@ -112,3 +112,6 @@ Day       Time    Rank  Score       Time    Rank  Score
 
 [rm22]: 22-slamShuffle/README.md
 [go22]: 22-slamShuffle/go/exercise.go
+
+[rm23]: 23-categorySix/README.md
+[go23]: 23-categorySix/go/exercise.go
