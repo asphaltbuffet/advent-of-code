@@ -1,0 +1,23 @@
+{
+  "id": "2019-14",
+  "title": "Space Stoichiometry",
+  "year": 2019,
+  "day": 14,
+  "url": "https://adventofcode.com/2019/day/14",
+  "data": {
+    "inputFile": "input.txt",
+    "testCases": {
+      "one": [
+        {
+          "input": "10 ORE => 10 A\n1 ORE => 1 B\n7 A, 1 B => 1 C\n7 A, 1 C => 1 D\n7 A, 1 D => 1 E\n7 A, 1 E => 1 FUEL",
+          "expected": "31"
+        }
+      ],
+      "two": []
+    },
+    "answers": {
+      "a": "",
+      "b": ""
+    }
+  }
+}
