@@ -25,7 +25,7 @@
 | [Day 17: Set and Forget][rm_17]                   |  ★ ★  | [Go][go_17] |
 | [Day 18: Many-Worlds Interpretation][rm_18]       |  ★ ★  | [Go][go_18] |
 | [Day 19: Tractor Beam][rm_19]                     |  ★ ★  | [Go][go19] |
-| 20                                                |  ☆ ☆  |                            |
+| [Day 20: Donut Maze][rm_20]                       |  ★ ★  | [Go][go20] |
 | 21                                                |  ☆ ☆  |                            |
 | 22                                                |  ☆ ☆  |                            |
 | 23                                                |  ☆ ☆  |                            |
@@ -103,3 +103,6 @@ Day       Time    Rank  Score       Time    Rank  Score
 
 [rm_19]: 19-tractorBeam/README.md
 [go19]: 19-tractorBeam/go
+
+[rm_20]: 20-donutMaze/README.md
+[go20]: 20-donutMaze/go
