@@ -1,0 +1,18 @@
+{
+  "id": "2019-13",
+  "title": "Care Package",
+  "year": 2019,
+  "day": 13,
+  "url": "https://adventofcode.com/2019/day/13",
+  "data": {
+    "inputFile": "input.txt",
+    "testCases": {
+      "one": [],
+      "two": []
+    },
+    "answers": {
+      "a": "193",
+      "b": "10547"
+    }
+  }
+}

@@ -18,7 +18,7 @@
 | [Day 10: Monitoring Station][rm_10]               |  ★ ★  | [Go][go_10] |
 | [Day 11: Space Police][rm_11]                     |  ★ ★  | [Go][go_11] |
 | [Day 12: The N-Body Problem][rm_12]               |  ★ ★  | [Go][go_12] |
-| 13                                                |  ☆ ☆  |                            |
+| [Day 13: Care Package][rm_13]                     |  ★ ★  | [Go][go_13] |
 | 14                                                |  ☆ ☆  |                            |
 | 15                                                |  ☆ ☆  |                            |
 | 16                                                |  ☆ ☆  |                            |
@@ -82,3 +82,6 @@ Day       Time    Rank  Score       Time    Rank  Score
 
 [rm_12]: 12-theN-BodyProblem/README.md
 [go_12]: 12-theN-BodyProblem/go/exercise.go
+
+[rm_13]: 13-carePackage/README.md
+[go_13]: 13-carePackage/go
