@@ -10,7 +10,7 @@
 | [Day 2: 1202 Program Alarm][rm_2]                 |  ★ ★  | [Go][go_2] |
 | [Day 3: Crossed Wires][rm_3]                      |  ★ ★  | [Go][go_3] |
 | [Day 4: Secure Container][rm_4]                   |  ★ ★  | [Go][go_4] |
-| 5                                                 |  ☆ ☆  |                            |
+| [Day 5: Sunny with a Chance of Asteroids][rm_5]  |  ★ ★  | [Go][go_5] |
 | 6                                                 |  ☆ ☆  |                            |
 | 7                                                 |  ☆ ☆  |                            |
 | 8                                                 |  ☆ ☆  |                            |
@@ -58,3 +58,6 @@ Day       Time    Rank  Score       Time    Rank  Score
 
 [rm_4]: 04-secureContainer/README.md
 [go_4]: 04-secureContainer/go
+
+[rm_5]: 05-sunnyWithAChanceOfAsteroids/README.md
+[go_5]: 05-sunnyWithAChanceOfAsteroids/go
