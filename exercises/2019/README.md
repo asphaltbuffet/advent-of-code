@@ -24,7 +24,7 @@
 | [Day 16: Flawed Frequency Transmission][rm_16]   |  ★ ★  | [Go][go_16] |
 | [Day 17: Set and Forget][rm_17]                   |  ★ ★  | [Go][go_17] |
 | [Day 18: Many-Worlds Interpretation][rm_18]       |  ★ ★  | [Go][go_18] |
-| 19                                                |  ☆ ☆  |                            |
+| [Day 19: Tractor Beam][rm_19]                     |  ★ ★  | [Go][go19] |
 | 20                                                |  ☆ ☆  |                            |
 | 21                                                |  ☆ ☆  |                            |
 | 22                                                |  ☆ ☆  |                            |
@@ -100,3 +100,6 @@ Day       Time    Rank  Score       Time    Rank  Score
 
 [rm_18]: 18-many-WorldsInterpretation/README.md
 [go_18]: 18-many-WorldsInterpretation/go
+
+[rm_19]: 19-tractorBeam/README.md
+[go19]: 19-tractorBeam/go
