@@ -12,7 +12,7 @@
 | [Day 4: Secure Container][rm_4]                   |  ★ ★  | [Go][go_4] |
 | [Day 5: Sunny with a Chance of Asteroids][rm_5]  |  ★ ★  | [Go][go_5] |
 | [Day 6: Universal Orbit Map][rm_6]                |  ★ ★  | [Go][go_6] |
-| 7                                                 |  ☆ ☆  |                            |
+| [Day 7: Amplification Circuit][rm_7]              |  ★ ★  | [Go][go_7] |
 | 8                                                 |  ☆ ☆  |                            |
 | 9                                                 |  ☆ ☆  |                            |
 | 10                                                |  ☆ ☆  |                            |
@@ -64,3 +64,6 @@ Day       Time    Rank  Score       Time    Rank  Score
 
 [rm_6]: 06-universalOrbitMap/README.md
 [go_6]: 06-universalOrbitMap/go
+
+[rm_7]: 07-amplificationCircuit/README.md
+[go_7]: 07-amplificationCircuit/go
