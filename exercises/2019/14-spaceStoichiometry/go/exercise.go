@@ -1,7 +1,6 @@
 package exercises
 
 import (
-	"errors"
 	"strconv"
 	"strings"
 
@@ -98,6 +97,23 @@ func (e Exercise) One(instr string) (any, error) {
 }
 
 // Two returns the answer to the second part of the exercise.
-func (e Exercise) Two(_ string) (any, error) {
-	return nil, errors.New("part 2 not implemented")
+func (e Exercise) Two(input string) (any, error) {
+	reactions := parseReactions(input)
+
+	const totalOre = 1_000_000_000_000
+
+	costPerFuel := oreForFuel(reactions, 1)
+	lo := totalOre / costPerFuel
+	hi := lo * 2
+
+	for lo < hi {
+		mid := (lo + hi + 1) / 2
+		if oreForFuel(reactions, mid) <= totalOre {
+			lo = mid
+		} else {
+			hi = mid - 1
+		}
+	}
+
+	return lo, nil
 }
