@@ -19,7 +19,7 @@
 | [Day 11: Space Police][rm_11]                     |  ★ ★  | [Go][go_11] |
 | [Day 12: The N-Body Problem][rm_12]               |  ★ ★  | [Go][go_12] |
 | [Day 13: Care Package][rm_13]                     |  ★ ★  | [Go][go_13] |
-| 14                                                |  ☆ ☆  |                            |
+| [Day 14: Space Stoichiometry][rm_14]              |  ★ ★  | [Go][go_14] |
 | 15                                                |  ☆ ☆  |                            |
 | 16                                                |  ☆ ☆  |                            |
 | 17                                                |  ☆ ☆  |                            |
@@ -85,3 +85,6 @@ Day       Time    Rank  Score       Time    Rank  Score
 
 [rm_13]: 13-carePackage/README.md
 [go_13]: 13-carePackage/go
+
+[rm_14]: 14-spaceStoichiometry/README.md
+[go_14]: 14-spaceStoichiometry/go
