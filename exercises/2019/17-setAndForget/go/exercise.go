@@ -1,6 +1,7 @@
 package exercises
 
 import (
+	"errors"
 	"strconv"
 	"strings"
 
@@ -170,6 +171,39 @@ func (e Exercise) One(instr string) (any, error) {
 
 // walkPath builds the full movement path from the scaffold grid.
 // Returns a slice of tokens like ["R","8","L","4","R","8",...].
+// robotStart finds the robot's initial position and direction in the grid.
+func robotStart(grid []string) (int, int, int) {
+	var rx, ry, dir int
+	for y, row := range grid {
+		for x := range len(row) {
+			switch row[x] {
+			case '^':
+				rx, ry, dir = x, y, 0
+			case '>':
+				rx, ry, dir = x, y, 1
+			case 'v':
+				rx, ry, dir = x, y, 2
+			case '<':
+				rx, ry, dir = x, y, 3
+			}
+		}
+	}
+	return rx, ry, dir
+}
+
+// chooseTurn returns the new direction and token ("L"/"R") if a turn is possible, else ok=false.
+func chooseTurn(dir, rx, ry int, dx, dy [4]int, scaffold func(int, int) bool) (int, string, bool) {
+	turnLeft := (dir + 3) % 4
+	if scaffold(rx+dx[turnLeft], ry+dy[turnLeft]) {
+		return turnLeft, "L", true
+	}
+	turnRight := (dir + 1) % 4
+	if scaffold(rx+dx[turnRight], ry+dy[turnRight]) {
+		return turnRight, "R", true
+	}
+	return 0, "", false
+}
+
 func walkPath(grid []string) []string {
 	rows := len(grid)
 	if rows == 0 {
@@ -182,77 +216,35 @@ func walkPath(grid []string) []string {
 	dx := [4]int{0, 1, 0, -1}
 	dy := [4]int{-1, 0, 1, 0}
 
-	// Find robot start position and direction.
-	var rx, ry, dir int
-
-	for y := 0; y < rows; y++ {
-		for x := 0; x < len(grid[y]); x++ {
-			switch grid[y][x] {
-			case '^':
-				rx, ry, dir = x, y, 0
-			case '>':
-				rx, ry, dir = x, y, 1
-			case 'v':
-				rx, ry, dir = x, y, 2
-			case '<':
-				rx, ry, dir = x, y, 3
-			}
-		}
-	}
+	rx, ry, dir := robotStart(grid)
 
 	scaffold := func(x, y int) bool {
 		if y < 0 || y >= rows || x < 0 || x >= cols {
 			return false
 		}
-
 		c := grid[y][x]
-
 		return c == '#' || c == '^' || c == 'v' || c == '<' || c == '>'
 	}
 
 	var tokens []string
 
 	for {
-		// Try turning left (dir-1) or right (dir+1).
-		turnLeft := (dir + 3) % 4
-		turnRight := (dir + 1) % 4
-
-		var turnDir int
-		var turnToken string
-
-		nx, ny := rx+dx[turnLeft], ry+dy[turnLeft]
-		if scaffold(nx, ny) {
-			turnDir = turnLeft
-			turnToken = "L"
-		} else {
-			nx, ny = rx+dx[turnRight], ry+dy[turnRight]
-			if scaffold(nx, ny) {
-				turnDir = turnRight
-				turnToken = "R"
-			} else {
-				break // No valid turn — end of path.
-			}
+		newDir, token, ok := chooseTurn(dir, rx, ry, dx, dy, scaffold)
+		if !ok {
+			break
 		}
+		dir = newDir
+		tokens = append(tokens, token)
 
-		_ = nx
-		_ = ny
-
-		dir = turnDir
-		tokens = append(tokens, turnToken)
-
-		// Walk forward as far as possible.
 		steps := 0
-
 		for {
-			nx2, ny2 := rx+dx[dir], ry+dy[dir]
-			if !scaffold(nx2, ny2) {
+			nx, ny := rx+dx[dir], ry+dy[dir]
+			if !scaffold(nx, ny) {
 				break
 			}
-
-			rx, ry = nx2, ny2
+			rx, ry = nx, ny
 			steps++
 		}
-
 		tokens = append(tokens, strconv.Itoa(steps))
 	}
 
@@ -261,129 +253,120 @@ func walkPath(grid []string) []string {
 
 // compress attempts to split tokens into a main routine + 3 functions (A, B, C),
 // each ≤ 20 chars when comma-joined. Returns (main, A, B, C, ok).
-func compress(tokens []string) (main, a, b, c []string, ok bool) {
-	fits := func(toks []string) bool {
-		return len(strings.Join(toks, ",")) <= 20
+// tryBC searches for valid B and C functions given a sequence already partially replaced with A.
+func tryBC(afterA []string) ([]string, []string, []string, bool) {
+	bStart := firstUnassigned(afterA)
+	if bStart == -1 {
+		return nil, nil, nil, false
 	}
 
-	// Replace all occurrences of pattern in seq with label.
-	replaceAll := func(seq, pattern []string, label string) []string {
-		var result []string
-		i := 0
+	bPrefix := prefixTokens(afterA, bStart)
 
-		for i < len(seq) {
-			if i+len(pattern) <= len(seq) {
-				match := true
+	for bLen := 2; bLen <= len(bPrefix); bLen += 2 {
+		bFunc := bPrefix[:bLen]
+		if !routeFits(bFunc) {
+			break
+		}
 
-				for j, t := range pattern {
-					if seq[i+j] != t {
-						match = false
-						break
-					}
+		afterB := replaceLabel(afterA, bFunc, "B")
+		mainSeq, cFunc, found := tryC(afterB)
+		if found {
+			return mainSeq, bFunc, cFunc, true
+		}
+	}
+
+	return nil, nil, nil, false
+}
+
+func tryC(afterB []string) ([]string, []string, bool) {
+	cStart := firstUnassigned(afterB)
+	if cStart == -1 {
+		return nil, nil, false
+	}
+
+	cPrefix := prefixTokens(afterB, cStart)
+
+	for cLen := 2; cLen <= len(cPrefix); cLen += 2 {
+		cFunc := cPrefix[:cLen]
+		if !routeFits(cFunc) {
+			break
+		}
+
+		afterC := replaceLabel(afterB, cFunc, "C")
+		if onlyLabels(afterC) && routeFits(afterC) {
+			return afterC, cFunc, true
+		}
+	}
+
+	return nil, nil, false
+}
+
+func routeFits(toks []string) bool {
+	return len(strings.Join(toks, ",")) <= 20
+}
+
+func replaceLabel(seq, pattern []string, label string) []string {
+	var result []string
+	i := 0
+	for i < len(seq) {
+		if i+len(pattern) <= len(seq) {
+			match := true
+			for j, t := range pattern {
+				if seq[i+j] != t {
+					match = false
+					break
 				}
-
-				if match {
-					result = append(result, label)
-					i += len(pattern)
-
-					continue
-				}
 			}
-
-			result = append(result, seq[i])
-			i++
-		}
-
-		return result
-	}
-
-	// Find first non-label token index.
-	firstUnassigned := func(seq []string) int {
-		for i, t := range seq {
-			if t != "A" && t != "B" && t != "C" {
-				return i
+			if match {
+				result = append(result, label)
+				i += len(pattern)
+				continue
 			}
 		}
-
-		return -1
+		result = append(result, seq[i])
+		i++
 	}
+	return result
+}
 
-	// Extract contiguous non-label prefix starting at idx.
-	prefixTokens := func(seq []string, idx int) []string {
-		var toks []string
-
-		for i := idx; i < len(seq) && seq[i] != "A" && seq[i] != "B" && seq[i] != "C"; i++ {
-			toks = append(toks, seq[i])
+func firstUnassigned(seq []string) int {
+	for i, t := range seq {
+		if t != "A" && t != "B" && t != "C" {
+			return i
 		}
-
-		return toks
 	}
+	return -1
+}
 
-	// Verify main route only contains labels.
-	onlyLabels := func(seq []string) bool {
-		for _, t := range seq {
-			if t != "A" && t != "B" && t != "C" {
-				return false
-			}
+func prefixTokens(seq []string, idx int) []string {
+	var toks []string
+	for i := idx; i < len(seq) && seq[i] != "A" && seq[i] != "B" && seq[i] != "C"; i++ {
+		toks = append(toks, seq[i])
+	}
+	return toks
+}
+
+func onlyLabels(seq []string) bool {
+	for _, t := range seq {
+		if t != "A" && t != "B" && t != "C" {
+			return false
 		}
-
-		return true
 	}
+	return true
+}
 
-	// Try all valid A lengths.
+func compress(tokens []string) ([]string, []string, []string, []string, bool) {
 	basePrefix := prefixTokens(tokens, 0)
 
 	for aLen := 2; aLen <= len(basePrefix); aLen += 2 {
 		aFunc := basePrefix[:aLen]
-		if !fits(aFunc) {
+		if !routeFits(aFunc) {
 			break
 		}
-
-		afterA := replaceAll(tokens, aFunc, "A")
-
-		// Try all valid B lengths.
-		bStart := firstUnassigned(afterA)
-		if bStart == -1 {
-			continue
-		}
-
-		bPrefix := prefixTokens(afterA, bStart)
-
-		for bLen := 2; bLen <= len(bPrefix); bLen += 2 {
-			bFunc := bPrefix[:bLen]
-			if !fits(bFunc) {
-				break
-			}
-
-			afterB := replaceAll(afterA, bFunc, "B")
-
-			// Try all valid C lengths.
-			cStart := firstUnassigned(afterB)
-			if cStart == -1 {
-				// No unassigned tokens — C is empty, not valid.
-				continue
-			}
-
-			cPrefix := prefixTokens(afterB, cStart)
-
-			for cLen := 2; cLen <= len(cPrefix); cLen += 2 {
-				cFunc := cPrefix[:cLen]
-				if !fits(cFunc) {
-					break
-				}
-
-				afterC := replaceAll(afterB, cFunc, "C")
-
-				if !onlyLabels(afterC) {
-					continue
-				}
-
-				if !fits(afterC) {
-					continue
-				}
-
-				return afterC, aFunc, bFunc, cFunc, true
-			}
+		afterA := replaceLabel(tokens, aFunc, "A")
+		mainSeq, bFunc, cFunc, found := tryBC(afterA)
+		if found {
+			return mainSeq, aFunc, bFunc, cFunc, true
 		}
 	}
 
@@ -401,7 +384,7 @@ func (e Exercise) Two(instr string) (any, error) {
 
 	mainRoute, aFunc, bFunc, cFunc, ok := compress(tokens)
 	if !ok {
-		return nil, nil
+		return nil, errors.New("no valid compression found")
 	}
 
 	// Build ASCII input.
