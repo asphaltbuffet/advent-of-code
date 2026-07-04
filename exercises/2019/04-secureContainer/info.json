@@ -1,0 +1,18 @@
+{
+  "id": "2019-04",
+  "title": "Secure Container",
+  "year": 2019,
+  "day": 4,
+  "url": "https://adventofcode.com/2019/day/4",
+  "data": {
+    "inputFile": "input.txt",
+    "testCases": {
+      "one": [],
+      "two": []
+    },
+    "answers": {
+      "a": "1764",
+      "b": "1196"
+    }
+  }
+}
