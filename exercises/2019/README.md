@@ -17,7 +17,7 @@
 | [Day 9: Sensor Boost][rm_9]                       |  ★ ★  | [Go][go_9] |
 | [Day 10: Monitoring Station][rm_10]               |  ★ ★  | [Go][go_10] |
 | [Day 11: Space Police][rm_11]                     |  ★ ★  | [Go][go_11] |
-| 12                                                |  ☆ ☆  |                            |
+| [Day 12: The N-Body Problem][rm_12]               |  ★ ★  | [Go][go_12] |
 | 13                                                |  ☆ ☆  |                            |
 | 14                                                |  ☆ ☆  |                            |
 | 15                                                |  ☆ ☆  |                            |
@@ -79,3 +79,6 @@ Day       Time    Rank  Score       Time    Rank  Score
 
 [rm_11]: 11-spacePolice/README.md
 [go_11]: 11-spacePolice/go
+
+[rm_12]: 12-theN-BodyProblem/README.md
+[go_12]: 12-theN-BodyProblem/go/exercise.go

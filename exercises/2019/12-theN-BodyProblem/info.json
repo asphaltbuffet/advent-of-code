@@ -1,0 +1,28 @@
+{
+  "id": "2019-12",
+  "title": "The N-Body Problem",
+  "year": 2019,
+  "day": 12,
+  "url": "https://adventofcode.com/2019/day/12",
+  "data": {
+    "inputFile": "input.txt",
+    "testCases": {
+      "one": [
+        {
+          "input": "Steps: 10\n<x=-1, y=0, z=2>\n<x=2, y=-10, z=-7>\n<x=4, y=-8, z=8>\n<x=3, y=5, z=-1>",
+          "expected": "179"
+        }
+      ],
+      "two": [
+        {
+          "input": "<x=-1, y=0, z=2>\n<x=2, y=-10, z=-7>\n<x=4, y=-8, z=8>\n<x=3, y=5, z=-1>",
+          "expected": "2772"
+        }
+      ]
+    },
+    "answers": {
+      "a": "8960",
+      "b": "314917503970904"
+    }
+  }
+}

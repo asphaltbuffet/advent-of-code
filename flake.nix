@@ -53,6 +53,7 @@
             elf.packages.${system}.default
 
             go
+            golangci-lint
             (python3.withPackages (ps: [ps.numpy]))
             gfortran
             (lua5_2.withPackages (ps: [ps.dkjson]))
