@@ -7,7 +7,7 @@
 | Exercise                                          | Stars | Solutions                  |
 |---------------------------------------------------|:-----:|----------------------------|
 | [Day 1: The Tyranny Of The Rocket Equation][rm_1] |  ★ ★  | [Go][go_1], [Python][py_1], [Rust][rs_1] |
-| 2                                                 |  ☆ ☆  |                            |
+| [Day 2: 1202 Program Alarm][rm_2]                 |  ★ ★  | [Go][go_2] |
 | 3                                                 |  ☆ ☆  |                            |
 | 4                                                 |  ☆ ☆  |                            |
 | 5                                                 |  ☆ ☆  |                            |
@@ -49,3 +49,6 @@ Day       Time    Rank  Score       Time    Rank  Score
 [go_1]: 01-theTyrannyOfTheRocketEquation/go
 [py_1]: 01-theTyrannyOfTheRocketEquation/py
 [rs_1]: 01-theTyrannyOfTheRocketEquation/rs
+
+[rm_2]: 02-1202ProgramAlarm/README.md
+[go_2]: 02-1202ProgramAlarm/go
