@@ -14,7 +14,7 @@ type Exercise struct {
 
 func parseProgram(instr string) [][]string {
 	var prog [][]string
-	for _, line := range strings.Split(strings.TrimSpace(instr), "\n") {
+	for line := range strings.SplitSeq(strings.TrimSpace(instr), "\n") {
 		if line = strings.TrimSpace(line); line != "" {
 			prog = append(prog, strings.Fields(line))
 		}

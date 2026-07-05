@@ -13,7 +13,8 @@ type Exercise struct {
 
 // process scans the stream once and returns the total group score and the count
 // of non-cancelled characters inside garbage.
-func process(stream string) (score, garbage int) {
+func process(stream string) (int, int) {
+	var garbage, score int
 	depth := 0
 	inGarbage := false
 

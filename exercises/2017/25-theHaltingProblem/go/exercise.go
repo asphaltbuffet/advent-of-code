@@ -49,7 +49,7 @@ func parseBlueprint(instr string) (string, int, map[string]rule) {
 		nexts := reNext.FindAllStringSubmatch(block, -1)
 
 		var r rule
-		for k := 0; k < 2; k++ {
+		for k := range 2 {
 			w, _ := strconv.Atoi(writes[k][1])
 			mv := 1
 			if moves[k][1] == "left" {
@@ -68,7 +68,7 @@ func (e Exercise) One(instr string) (any, error) {
 
 	tape := map[int]int{}
 	cursor := 0
-	for i := 0; i < steps; i++ {
+	for range steps {
 		cur := tape[cursor]
 		act := rules[state].on[cur]
 		tape[cursor] = act.write
@@ -84,6 +84,6 @@ func (e Exercise) One(instr string) (any, error) {
 }
 
 // Two has no puzzle: day 25 completes the year once every other star is earned.
-func (e Exercise) Two(instr string) (any, error) {
+func (e Exercise) Two(_ string) (any, error) {
 	return "Merry Christmas!", nil
 }

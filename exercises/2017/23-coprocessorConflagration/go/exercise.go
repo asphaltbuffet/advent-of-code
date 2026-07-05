@@ -12,9 +12,14 @@ type Exercise struct {
 	common.BaseExercise
 }
 
+const (
+	opSub = "sub"
+	opJnz = "jnz"
+)
+
 func parseProgram(instr string) [][]string {
 	var prog [][]string
-	for _, line := range strings.Split(strings.TrimSpace(instr), "\n") {
+	for line := range strings.SplitSeq(strings.TrimSpace(instr), "\n") {
 		if line = strings.TrimSpace(line); line != "" {
 			prog = append(prog, strings.Fields(line))
 		}
@@ -39,12 +44,12 @@ func (e Exercise) One(instr string) (any, error) {
 		switch op[0] {
 		case "set":
 			regs[op[1]] = val(op[2])
-		case "sub":
+		case opSub:
 			regs[op[1]] -= val(op[2])
 		case "mul":
 			regs[op[1]] *= val(op[2])
 			muls++
-		case "jnz":
+		case opJnz:
 			if val(op[1]) != 0 {
 				ip += val(op[2])
 				continue
@@ -83,11 +88,11 @@ func (e Exercise) Two(instr string) (any, error) {
 		switch op[0] {
 		case "set":
 			regs[op[1]] = val(op[2])
-		case "sub":
+		case opSub:
 			regs[op[1]] -= val(op[2])
 		case "mul":
 			regs[op[1]] *= val(op[2])
-		case "jnz":
+		case opJnz:
 			if val(op[1]) != 0 {
 				ip += val(op[2])
 				continue
@@ -114,7 +119,7 @@ func (e Exercise) Two(instr string) (any, error) {
 func loopStep(prog [][]string) int {
 	step := 17
 	for _, op := range prog {
-		if op[0] == "sub" && op[1] == "b" {
+		if op[0] == opSub && op[1] == "b" {
 			if n, err := strconv.Atoi(op[2]); err == nil && n < 0 {
 				step = -n
 			}

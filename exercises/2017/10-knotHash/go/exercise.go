@@ -22,7 +22,7 @@ func knotRounds(n int, lengths []int, rounds int) []int {
 		list[i] = i
 	}
 	pos, skip := 0, 0
-	for r := 0; r < rounds; r++ {
+	for range rounds {
 		for _, l := range lengths {
 			for i, j := 0, l-1; i < j; i, j = i+1, j-1 {
 				a, b := (pos+i)%n, (pos+j)%n
@@ -42,7 +42,7 @@ func (e Exercise) One(instr string) (any, error) {
 	instr = strings.TrimSpace(instr)
 
 	var lengths []int
-	for _, f := range strings.Split(instr, ",") {
+	for f := range strings.SplitSeq(instr, ",") {
 		n, _ := strconv.Atoi(strings.TrimSpace(f))
 		lengths = append(lengths, n)
 	}
@@ -74,9 +74,9 @@ func KnotHash(input string) string {
 	sparse := knotRounds(256, lengths, 64)
 
 	var sb strings.Builder
-	for block := 0; block < 16; block++ {
+	for block := range 16 {
 		x := 0
-		for i := 0; i < 16; i++ {
+		for i := range 16 {
 			x ^= sparse[block*16+i]
 		}
 		fmt.Fprintf(&sb, "%02x", x)

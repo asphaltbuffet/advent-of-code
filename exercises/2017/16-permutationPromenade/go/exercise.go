@@ -1,6 +1,7 @@
 package exercises
 
 import (
+	"bytes"
 	"strconv"
 	"strings"
 
@@ -37,8 +38,8 @@ func dance(line []byte, moves []string) {
 			b, _ := strconv.Atoi(ab[1])
 			line[a], line[b] = line[b], line[a]
 		case 'p':
-			a := strings.IndexByte(string(line), m[1])
-			b := strings.IndexByte(string(line), m[3])
+			a := bytes.IndexByte(line, m[1])
+			b := bytes.IndexByte(line, m[3])
 			line[a], line[b] = line[b], line[a]
 		}
 	}
