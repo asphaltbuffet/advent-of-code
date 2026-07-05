@@ -33,7 +33,7 @@ func startValues(instr string) (uint64, uint64) {
 func (e Exercise) One(instr string) (any, error) {
 	a, b := startValues(instr)
 	matches := 0
-	for i := 0; i < 40_000_000; i++ {
+	for range 40_000_000 {
 		a = a * factorA % modulus
 		b = b * factorB % modulus
 		if a&0xffff == b&0xffff {
@@ -48,7 +48,7 @@ func (e Exercise) One(instr string) (any, error) {
 func (e Exercise) Two(instr string) (any, error) {
 	a, b := startValues(instr)
 	matches := 0
-	for i := 0; i < 5_000_000; i++ {
+	for range 5_000_000 {
 		for {
 			a = a * factorA % modulus
 			if a&3 == 0 {

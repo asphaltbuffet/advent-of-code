@@ -17,7 +17,7 @@ type Exercise struct {
 // space-separated examples.
 func parseRows(instr string) [][]int {
 	var rows [][]int
-	for _, line := range strings.Split(strings.TrimSpace(instr), "\n") {
+	for line := range strings.SplitSeq(strings.TrimSpace(instr), "\n") {
 		fields := strings.Fields(line)
 		if len(fields) == 0 {
 			continue
@@ -54,7 +54,7 @@ func (e Exercise) One(instr string) (any, error) {
 func (e Exercise) Two(instr string) (any, error) {
 	sum := 0
 	for _, row := range parseRows(instr) {
-		for i := 0; i < len(row); i++ {
+		for i := range row {
 			for j := i + 1; j < len(row); j++ {
 				a, b := row[i], row[j]
 				if a < b {

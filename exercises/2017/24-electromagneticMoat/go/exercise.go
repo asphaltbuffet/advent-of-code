@@ -16,7 +16,7 @@ type component struct{ a, b int }
 
 func parseComponents(instr string) []component {
 	var comps []component
-	for _, line := range strings.Split(strings.TrimSpace(instr), "\n") {
+	for line := range strings.SplitSeq(strings.TrimSpace(instr), "\n") {
 		line = strings.TrimSpace(line)
 		if line == "" {
 			continue
@@ -33,7 +33,6 @@ func parseComponents(instr string) []component {
 // and the strongest among the longest.
 func build(comps []component, used []bool, port, strength, length int,
 	bestStr *int, bestLen *[2]int) {
-
 	// Record this bridge (the empty bridge scores 0, which never wins).
 	if strength > *bestStr {
 		*bestStr = strength

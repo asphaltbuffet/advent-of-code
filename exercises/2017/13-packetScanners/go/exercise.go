@@ -17,7 +17,7 @@ type layer struct{ depth, rng int }
 // parseLayers reads "depth: range" lines into layers.
 func parseLayers(instr string) []layer {
 	var layers []layer
-	for _, line := range strings.Split(strings.TrimSpace(instr), "\n") {
+	for line := range strings.SplitSeq(strings.TrimSpace(instr), "\n") {
 		line = strings.TrimSpace(line)
 		if line == "" {
 			continue

@@ -24,7 +24,8 @@ func parseBanks(instr string) []int {
 // reallocate runs the redistribution routine until a configuration repeats. It
 // returns the number of cycles to reach that repeat and the loop size (cycles
 // since the repeated configuration was first seen).
-func reallocate(banks []int) (cycles, loop int) {
+func reallocate(banks []int) (int, int) {
+	var cycles int
 	state := make([]int, len(banks))
 	copy(state, banks)
 
@@ -37,14 +38,14 @@ func reallocate(banks []int) (cycles, loop int) {
 		seen[key] = cycles
 
 		// Pick the fullest bank (lowest index wins ties), then spread it.
-		max, idx := state[0], 0
+		m, idx := state[0], 0
 		for i, v := range state {
-			if v > max {
-				max, idx = v, i
+			if v > m {
+				m, idx = v, i
 			}
 		}
 		state[idx] = 0
-		for i := 1; i <= max; i++ {
+		for i := 1; i <= m; i++ {
 			state[(idx+i)%len(state)]++
 		}
 		cycles++

@@ -1,7 +1,7 @@
 package exercises
 
 import (
-	"sort"
+	"slices"
 	"strings"
 
 	"github.com/asphaltbuffet/advent-of-code/internal/common"
@@ -16,7 +16,7 @@ type Exercise struct {
 // word so that repeated keys mark an invalid passphrase.
 func countValid(instr string, key func(string) string) int {
 	valid := 0
-	for _, line := range strings.Split(strings.TrimSpace(instr), "\n") {
+	for line := range strings.SplitSeq(strings.TrimSpace(instr), "\n") {
 		words := strings.Fields(line)
 		if len(words) == 0 {
 			continue
@@ -48,7 +48,7 @@ func (e Exercise) One(instr string) (any, error) {
 func (e Exercise) Two(instr string) (any, error) {
 	return countValid(instr, func(w string) string {
 		b := []byte(w)
-		sort.Slice(b, func(i, j int) bool { return b[i] < b[j] })
+		slices.Sort(b)
 		return string(b)
 	}), nil
 }

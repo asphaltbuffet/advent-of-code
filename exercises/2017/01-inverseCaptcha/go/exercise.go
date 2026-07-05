@@ -18,8 +18,9 @@ func (c Exercise) One(instr string) (any, error) {
 	r := parse(instr)
 
 	sum := 0
+	rLen := r.Len()
 
-	for i := 0; i < r.Len(); i++ {
+	for range rLen {
 		v, _ := r.Value.(int)
 		n, _ := r.Next().Value.(int)
 
@@ -41,8 +42,9 @@ func (c Exercise) Two(instr string) (any, error) {
 	r := parse(instr)
 
 	sum := 0
+	rLen := r.Len()
 
-	for i := 0; i < r.Len(); i++ {
+	for range rLen {
 		v, _ := r.Value.(int)
 		n, _ := r.Move(r.Len() / 2).Value.(int)
 

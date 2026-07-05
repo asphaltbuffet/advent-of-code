@@ -12,30 +12,31 @@ type Exercise struct {
 	common.BaseExercise
 }
 
+func holds(a int, op string, b int) bool {
+	switch op {
+	case ">":
+		return a > b
+	case "<":
+		return a < b
+	case ">=":
+		return a >= b
+	case "<=":
+		return a <= b
+	case "==":
+		return a == b
+	case "!=":
+		return a != b
+	}
+	return false
+}
+
 // run executes the instructions and returns the largest final register value
 // and the highest value held in any register at any point.
-func run(instr string) (final, peak int) {
+func run(instr string) (int, int) {
+	var final, peak int
 	regs := map[string]int{}
 
-	holds := func(a int, op string, b int) bool {
-		switch op {
-		case ">":
-			return a > b
-		case "<":
-			return a < b
-		case ">=":
-			return a >= b
-		case "<=":
-			return a <= b
-		case "==":
-			return a == b
-		case "!=":
-			return a != b
-		}
-		return false
-	}
-
-	for _, line := range strings.Split(strings.TrimSpace(instr), "\n") {
+	for line := range strings.SplitSeq(strings.TrimSpace(instr), "\n") {
 		f := strings.Fields(line)
 		if len(f) < 7 {
 			continue
