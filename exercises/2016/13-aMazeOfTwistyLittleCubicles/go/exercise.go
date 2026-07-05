@@ -33,11 +33,12 @@ var steps4 = [4]point{{0, 1}, {0, -1}, {1, 0}, {-1, 0}}
 
 // bfs explores from (1,1), returning steps-to-target (or -1) and the count of
 // distinct cells reachable within maxSteps.
-func bfs(fav, targetX, targetY, maxSteps int) (toTarget, reachable int) {
+func bfs(fav, targetX, targetY, maxSteps int) (int, int) {
 	start := point{1, 1}
 	dist := map[point]int{start: 0}
 	queue := []point{start}
-	toTarget = -1
+	toTarget := -1
+
 	for len(queue) > 0 {
 		cur := queue[0]
 		queue = queue[1:]
@@ -188,8 +189,8 @@ func (e Exercise) Vis(instr string, outdir string) error {
 		}
 	}
 
-	for y := 0; y < h; y++ {
-		for x := 0; x < w; x++ {
+	for y := range h {
+		for x := range w {
 			p := point{x, y}
 			switch {
 			case !isOpen(x, y, fav):

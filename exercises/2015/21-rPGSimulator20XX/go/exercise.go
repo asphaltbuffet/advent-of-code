@@ -25,8 +25,10 @@ var armors = []item{{0, 0, 0}, {13, 0, 1}, {31, 0, 2}, {53, 0, 3}, {75, 0, 4}, {
 var rings = []item{{25, 1, 0}, {50, 2, 0}, {100, 3, 0}, {20, 0, 1}, {40, 0, 2}, {80, 0, 3}}
 
 // parseBoss reads the boss's HP, damage, and armor from the input.
-func parseBoss(instr string) (hp, dmg, arm int) {
-	for _, line := range strings.Split(strings.TrimSpace(instr), "\n") {
+func parseBoss(instr string) (int, int, int) {
+	var hp, dmg, arm int
+
+	for line := range strings.SplitSeq(strings.TrimSpace(instr), "\n") {
 		_, val, _ := strings.Cut(line, ": ")
 		n, _ := strconv.Atoi(strings.TrimSpace(val))
 		switch {
@@ -38,7 +40,7 @@ func parseBoss(instr string) (hp, dmg, arm int) {
 			arm = n
 		}
 	}
-	return
+	return hp, dmg, arm
 }
 
 // playerWins reports whether the player (100 HP, attacking first) defeats the
@@ -51,13 +53,6 @@ func playerWins(pDmg, pArm, bHP, bDmg, bArm int) bool {
 }
 
 func ceilDiv(a, b int) int { return (a + b - 1) / b }
-
-func max(a, b int) int {
-	if a > b {
-		return a
-	}
-	return b
-}
 
 // loadouts yields every legal equipment combination: exactly one weapon, zero
 // or one armor, and zero/one/two distinct rings, as (cost, damage, armor).

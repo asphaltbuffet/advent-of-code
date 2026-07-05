@@ -32,7 +32,7 @@ func (h *hasher) at(i int) string {
 	}
 	sum := md5.Sum([]byte(h.salt + strconv.Itoa(i)))
 	s := hex.EncodeToString(sum[:])
-	for k := 0; k < h.stretch; k++ {
+	for range h.stretch {
 		sum = md5.Sum([]byte(s))
 		s = hex.EncodeToString(sum[:])
 	}
@@ -43,7 +43,7 @@ func (h *hasher) at(i int) string {
 // tripletChar returns the character of the first three-in-a-row run, or 0.
 func tripletChar(s string) byte {
 	for i := 0; i+2 < len(s); i++ {
-		if s[i] == s[i+1] && s[i] == s[i+2] {
+		if s[i] == s[i+1] && s[i+1] == s[i+2] {
 			return s[i]
 		}
 	}

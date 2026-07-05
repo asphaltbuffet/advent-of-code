@@ -18,7 +18,7 @@ type Exercise struct {
 // real input.
 func seed(ops []string) string {
 	for _, op := range ops {
-		for _, f := range strings.Fields(op) {
+		for f := range strings.FieldsSeq(op) {
 			if len(f) == 1 && f[0] >= 'f' && f[0] <= 'z' {
 				return "abcdefgh"
 			}
@@ -94,7 +94,7 @@ func scramble(pw string, ops []string) string {
 
 func parseOps(instr string) []string {
 	var ops []string
-	for _, line := range strings.Split(strings.TrimSpace(instr), "\n") {
+	for line := range strings.SplitSeq(strings.TrimSpace(instr), "\n") {
 		if line = strings.TrimSpace(line); line != "" {
 			ops = append(ops, line)
 		}

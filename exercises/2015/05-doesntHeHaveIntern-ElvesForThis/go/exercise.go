@@ -15,7 +15,7 @@ type Exercise struct {
 func (e Exercise) One(instr string) (any, error) {
 	count := 0
 
-	for _, line := range strings.Split(instr, "\n") {
+	for line := range strings.SplitSeq(instr, "\n") {
 		h := hasVowels(line)
 		d := hasDoubles(line)
 		b := hasBad(line)
@@ -32,7 +32,7 @@ func (e Exercise) One(instr string) (any, error) {
 func (e Exercise) Two(instr string) (any, error) {
 	count := 0
 
-	for _, line := range strings.Split(instr, "\n") {
+	for line := range strings.SplitSeq(instr, "\n") {
 		p := hasPair(line)
 		s := hasSeparated(line)
 
@@ -55,7 +55,7 @@ func hasVowels(s string) bool {
 }
 
 func hasDoubles(s string) bool {
-	for i := 0; i < len(s)-1; i++ {
+	for i := range len(s) - 1 {
 		if s[i] == s[i+1] {
 			return true
 		}
@@ -75,7 +75,7 @@ func hasBad(s string) bool {
 }
 
 func hasPair(s string) bool {
-	for i := 0; i < len(s)-2; i++ {
+	for i := range len(s) - 2 {
 		if strings.Count(s, s[i:i+2]) > 1 {
 			return true
 		}
@@ -85,7 +85,7 @@ func hasPair(s string) bool {
 }
 
 func hasSeparated(s string) bool {
-	for i := 0; i < len(s)-2; i++ {
+	for i := range len(s) - 2 {
 		if s[i] == s[i+2] {
 			return true
 		}

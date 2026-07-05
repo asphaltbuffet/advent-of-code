@@ -18,7 +18,8 @@ func target(instr string) int {
 	return n
 }
 
-// One: elf n gives 10*n presents to every multiple of n, so house h receives
+// One is the solution for part one.
+// elf n gives 10*n presents to every multiple of n, so house h receives
 // 10 * (sum of divisors of h). A sieve adds each elf's gift to its multiples;
 // return the lowest house meeting the target. The bound target/10 suffices
 // because house h alone (elf h) already delivers 10*h there.
@@ -41,7 +42,8 @@ func (e Exercise) One(instr string) (any, error) {
 	return -1, nil
 }
 
-// Two: each elf gives 11*n presents but visits only its first 50 houses.
+// Two is the solution for part two.
+// each elf gives 11*n presents but visits only its first 50 houses.
 func (e Exercise) Two(instr string) (any, error) {
 	t := target(instr)
 	limit := t/10 + 1

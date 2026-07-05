@@ -16,7 +16,7 @@ type Exercise struct {
 // returns the final value of register a.
 func run(instr string, regs map[string]int) int {
 	var program [][]string
-	for _, line := range strings.Split(strings.TrimSpace(instr), "\n") {
+	for line := range strings.SplitSeq(strings.TrimSpace(instr), "\n") {
 		program = append(program, strings.Fields(line))
 	}
 

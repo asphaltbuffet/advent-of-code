@@ -34,7 +34,7 @@ func fill(seed []byte, size int) []byte {
 func checksum(data []byte) string {
 	for len(data)%2 == 0 {
 		next := make([]byte, len(data)/2)
-		for i := 0; i < len(next); i++ {
+		for i := range next {
 			if data[2*i] == data[2*i+1] {
 				next[i] = '1'
 			} else {

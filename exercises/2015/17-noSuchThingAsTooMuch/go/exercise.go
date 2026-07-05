@@ -17,7 +17,7 @@ type Exercise struct {
 // it is inferred: the 5-container AoC example fills 25 liters, the real 150.
 func parse(instr string) ([]int, int) {
 	var sizes []int
-	for _, line := range strings.Fields(instr) {
+	for line := range strings.FieldsSeq(instr) {
 		n, _ := strconv.Atoi(line)
 		sizes = append(sizes, n)
 	}
@@ -36,7 +36,7 @@ func parse(instr string) ([]int, int) {
 func sizeCounts(sizes []int, target int) []int {
 	counts := make([]int, len(sizes)+1)
 
-	for mask := 0; mask < (1 << len(sizes)); mask++ {
+	for mask := range 1 << len(sizes) {
 		sum := 0
 		for i, s := range sizes {
 			if mask&(1<<i) != 0 {

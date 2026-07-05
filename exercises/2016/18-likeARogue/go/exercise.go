@@ -34,7 +34,7 @@ func countSafe(first string, rows int) int {
 		return l != r
 	}
 
-	for r := 0; r < rows; r++ {
+	for r := range rows {
 		for _, t := range row {
 			if t == '.' {
 				safe++
@@ -44,7 +44,7 @@ func countSafe(first string, rows int) int {
 			break
 		}
 		next := make([]byte, width)
-		for i := 0; i < width; i++ {
+		for i := range width {
 			if trap(row, i) {
 				next[i] = '^'
 			} else {
@@ -90,15 +90,16 @@ func (e Exercise) Vis(instr string, outdir string) error {
 	bg := color.RGBA{0x08, 0x0a, 0x10, 0xff}
 	trapC := color.RGBA{0x1a, 0x20, 0x34, 0xff} // traps: dark
 	safeC := color.RGBA{0x8a, 0xe6, 0x9a, 0xff} // safe: bright green
-	for y := 0; y < img.Bounds().Dy(); y++ {
-		for x := 0; x < img.Bounds().Dx(); x++ {
+	ih, iw := img.Bounds().Dy(), img.Bounds().Dx()
+	for y := range ih {
+		for x := range iw {
 			img.SetRGBA(x, y, bg)
 		}
 	}
 
 	row := []byte(first)
-	for r := 0; r < rows; r++ {
-		for c := 0; c < width; c++ {
+	for r := range rows {
+		for c := range width {
 			col := trapC
 			if row[c] == '.' {
 				col = safeC
@@ -121,12 +122,12 @@ func (e Exercise) Vis(instr string, outdir string) error {
 	return png.Encode(f, img)
 }
 
-// rowsFor returns the row count: 10 for the example first row, else `real`.
-func rowsFor(first string, real int) int {
-	if first == ".^^.^.^^^^" {
+// rowsFor returns the row count: 10 for the example first row, else `rc`.
+func rowsFor(s string, rc int) int {
+	if s == ".^^.^.^^^^" {
 		return 10
 	}
-	return real
+	return rc
 }
 
 // One returns the answer to the first part of the exercise.

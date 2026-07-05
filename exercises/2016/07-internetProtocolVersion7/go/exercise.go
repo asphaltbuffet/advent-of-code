@@ -1,6 +1,7 @@
 package exercises
 
 import (
+	"slices"
 	"strings"
 
 	"github.com/asphaltbuffet/advent-of-code/internal/common"
@@ -13,7 +14,8 @@ type Exercise struct {
 
 // segments splits an IPv7 address into supernet (outside brackets) and hypernet
 // (inside brackets) sequences. Splitting on '[' and ']' alternates the two.
-func segments(ip string) (supernets, hypernets []string) {
+func segments(ip string) ([]string, []string) {
+	var supernets, hypernets []string
 	depth := 0
 	var cur strings.Builder
 	flush := func() {
@@ -26,7 +28,7 @@ func segments(ip string) (supernets, hypernets []string) {
 			cur.Reset()
 		}
 	}
-	for i := 0; i < len(ip); i++ {
+	for i := range len(ip) {
 		switch ip[i] {
 		case '[':
 			flush()
@@ -66,7 +68,7 @@ func abas(s string) []string {
 // One returns the answer to the first part of the exercise.
 func (e Exercise) One(instr string) (any, error) {
 	count := 0
-	for _, ip := range strings.Fields(instr) {
+	for ip := range strings.FieldsSeq(instr) {
 		super, hyper := segments(ip)
 		tls := false
 		for _, s := range super {
@@ -74,11 +76,8 @@ func (e Exercise) One(instr string) (any, error) {
 				tls = true
 			}
 		}
-		for _, h := range hyper {
-			if hasABBA(h) {
-				tls = false
-				break
-			}
+		if slices.ContainsFunc(hyper, hasABBA) {
+			tls = false
 		}
 		if tls {
 			count++
@@ -90,7 +89,7 @@ func (e Exercise) One(instr string) (any, error) {
 // Two returns the answer to the second part of the exercise.
 func (e Exercise) Two(instr string) (any, error) {
 	count := 0
-	for _, ip := range strings.Fields(instr) {
+	for ip := range strings.FieldsSeq(instr) {
 		super, hyper := segments(ip)
 		ssl := false
 		for _, s := range super {

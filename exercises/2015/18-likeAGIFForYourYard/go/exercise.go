@@ -24,7 +24,7 @@ type grid [][]bool
 // corners); the real 100x100 input runs 100 for both.
 func parse(instr string) grid {
 	var g grid
-	for _, line := range strings.Fields(instr) {
+	for line := range strings.FieldsSeq(instr) {
 		row := make([]bool, len(line))
 		for i, c := range line {
 			row[i] = c == '#'
@@ -105,7 +105,7 @@ func run(g grid, steps int, stuck bool) int {
 	if stuck {
 		g.stickCorners()
 	}
-	for i := 0; i < steps; i++ {
+	for range steps {
 		g = g.step()
 		if stuck {
 			g.stickCorners()
@@ -139,14 +139,14 @@ func (g grid) frame(palette color.Palette) *image.Paletted {
 	h, w := len(g), len(g[0])
 	img := image.NewPaletted(image.Rect(0, 0, w*cellPx, h*cellPx), palette)
 
-	for r := 0; r < h; r++ {
-		for c := 0; c < len(g[r]); c++ {
+	for r := range h {
+		for c := range len(g[r]) {
 			idx := uint8(0)
 			if g[r][c] {
 				idx = 1
 			}
-			for py := 0; py < cellPx; py++ {
-				for px := 0; px < cellPx; px++ {
+			for py := range cellPx {
+				for px := range cellPx {
 					img.SetColorIndex(c*cellPx+px, r*cellPx+py, idx)
 				}
 			}
@@ -176,7 +176,7 @@ func (e Exercise) Vis(instr string, outdir string) error {
 	// Capture the initial state (corners already stuck), then each generation.
 	g.stickCorners()
 	appendFrame()
-	for i := 0; i < steps; i++ {
+	for range steps {
 		g = g.step()
 		g.stickCorners()
 		appendFrame()

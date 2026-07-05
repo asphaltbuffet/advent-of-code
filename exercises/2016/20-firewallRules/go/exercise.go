@@ -18,7 +18,7 @@ type ipRange struct{ lo, hi int }
 // parseRanges reads "lo-hi" blocked ranges, sorted ascending by lo.
 func parseRanges(instr string) []ipRange {
 	var ranges []ipRange
-	for _, line := range strings.Fields(instr) {
+	for line := range strings.FieldsSeq(instr) {
 		parts := strings.SplitN(line, "-", 2)
 		lo, _ := strconv.Atoi(parts[0])
 		hi, _ := strconv.Atoi(parts[1])
@@ -58,7 +58,7 @@ func (e Exercise) One(instr string) (any, error) {
 // not covered by any blocked range.
 func (e Exercise) Two(instr string) (any, error) {
 	ranges := parseRanges(instr)
-	max := maxIP(ranges)
+	m := maxIP(ranges)
 
 	allowed := 0
 	next := 0 // lowest IP not yet accounted for
@@ -70,8 +70,8 @@ func (e Exercise) Two(instr string) (any, error) {
 			next = r.hi + 1
 		}
 	}
-	if next <= max {
-		allowed += max - next + 1
+	if next <= m {
+		allowed += m - next + 1
 	}
 	return allowed, nil
 }

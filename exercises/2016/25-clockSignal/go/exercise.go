@@ -72,7 +72,7 @@ func emitsClock(program [][]string, seed int) bool {
 // One finds the lowest positive seed for register a that yields the clock.
 func (e Exercise) One(instr string) (any, error) {
 	var program [][]string
-	for _, line := range strings.Split(strings.TrimSpace(instr), "\n") {
+	for line := range strings.SplitSeq(strings.TrimSpace(instr), "\n") {
 		program = append(program, strings.Fields(line))
 	}
 	for seed := 1; ; seed++ {
@@ -83,6 +83,6 @@ func (e Exercise) One(instr string) (any, error) {
 }
 
 // Two has no puzzle: day 25 completes the year once every other star is earned.
-func (e Exercise) Two(instr string) (any, error) {
+func (e Exercise) Two(_ string) (any, error) {
 	return "Merry Christmas!", nil
 }

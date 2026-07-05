@@ -64,11 +64,11 @@ func search(s state, hard bool, best *int) {
 		cast func(*state)
 	}
 	spells := []spell{
-		{53, func(n *state) { n.bhp -= 4 }},                       // Magic Missile
-		{73, func(n *state) { n.bhp -= 2; n.php += 2 }},           // Drain
-		{113, func(n *state) { n.shield = 6 }},                    // Shield
-		{173, func(n *state) { n.poison = 6 }},                    // Poison
-		{229, func(n *state) { n.recharge = 5 }},                  // Recharge
+		{53, func(n *state) { n.bhp -= 4 }},             // Magic Missile
+		{73, func(n *state) { n.bhp -= 2; n.php += 2 }}, // Drain
+		{113, func(n *state) { n.shield = 6 }},          // Shield
+		{173, func(n *state) { n.poison = 6 }},          // Poison
+		{229, func(n *state) { n.recharge = 5 }},        // Recharge
 	}
 
 	for _, sp := range spells {
@@ -115,10 +115,7 @@ func search(s state, hard bool, best *int) {
 		if next.shield > 0 {
 			armor = 7
 		}
-		hit := next.bdmg - armor
-		if hit < 1 {
-			hit = 1
-		}
+		hit := max(next.bdmg-armor, 1)
 		next.php -= hit
 		if next.php <= 0 {
 			continue // player died
@@ -129,8 +126,10 @@ func search(s state, hard bool, best *int) {
 }
 
 // parseBoss reads the boss's hit points and damage.
-func parseBoss(instr string) (hp, dmg int) {
-	for _, line := range strings.Split(strings.TrimSpace(instr), "\n") {
+func parseBoss(instr string) (int, int) {
+	var hp, dmg int
+
+	for line := range strings.SplitSeq(strings.TrimSpace(instr), "\n") {
 		_, val, _ := strings.Cut(line, ": ")
 		n, _ := strconv.Atoi(strings.TrimSpace(val))
 		if strings.HasPrefix(line, "Hit Points") {
@@ -139,7 +138,7 @@ func parseBoss(instr string) (hp, dmg int) {
 			dmg = n
 		}
 	}
-	return
+	return hp, dmg
 }
 
 func solve(instr string, hard bool) int {

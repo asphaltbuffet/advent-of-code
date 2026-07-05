@@ -19,7 +19,7 @@ var re = regexp.MustCompile(`\\x[0-9a-f]{2}`)
 func (e Exercise) One(instr string) (any, error) {
 	sum := 0
 
-	for _, line := range strings.Split(instr, "\n") {
+	for line := range strings.SplitSeq(instr, "\n") {
 		ol := len(line)
 		s := line
 
@@ -37,7 +37,7 @@ func (e Exercise) One(instr string) (any, error) {
 func (e Exercise) Two(instr string) (any, error) {
 	sum := 0
 
-	for _, line := range strings.Split(instr, "\n") {
+	for line := range strings.SplitSeq(instr, "\n") {
 		sum += len(fmt.Sprintf("%q", line)) - len(line)
 	}
 

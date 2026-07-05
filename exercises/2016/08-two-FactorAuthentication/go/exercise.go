@@ -30,7 +30,7 @@ func run(instr string) *screen {
 	for r := range s.px {
 		s.px[r] = make([]bool, w)
 	}
-	for _, line := range strings.Split(strings.TrimSpace(instr), "\n") {
+	for line := range strings.SplitSeq(strings.TrimSpace(instr), "\n") {
 		f := strings.Fields(line)
 		switch {
 		case f[0] == "rect":
@@ -53,7 +53,7 @@ func run(instr string) *screen {
 // screenSize returns 7x3 for the example, 50x6 for the real display, based on
 // the largest indices the instructions reference.
 func screenSize(instr string) (int, int) {
-	for _, line := range strings.Split(strings.TrimSpace(instr), "\n") {
+	for line := range strings.SplitSeq(strings.TrimSpace(instr), "\n") {
 		f := strings.Fields(line)
 		if f[0] == "rect" {
 			var a, b int
@@ -83,7 +83,7 @@ func (s *screen) rect(a, b int) {
 func (s *screen) rotateRow(y, by int) {
 	by %= s.w
 	row := make([]bool, s.w)
-	for c := 0; c < s.w; c++ {
+	for c := range s.w {
 		row[(c+by)%s.w] = s.px[y][c]
 	}
 	s.px[y] = row
@@ -92,10 +92,10 @@ func (s *screen) rotateRow(y, by int) {
 func (s *screen) rotateCol(x, by int) {
 	by %= s.h
 	col := make([]bool, s.h)
-	for r := 0; r < s.h; r++ {
+	for r := range s.h {
 		col[(r+by)%s.h] = s.px[r][x]
 	}
-	for r := 0; r < s.h; r++ {
+	for r := range s.h {
 		s.px[r][x] = col[r]
 	}
 }
@@ -115,8 +115,8 @@ func (s *screen) lit() int {
 // render returns the screen as text with '#' lit and '.' unlit.
 func (s *screen) render() string {
 	var b strings.Builder
-	for r := 0; r < s.h; r++ {
-		for c := 0; c < s.w; c++ {
+	for r := range s.h {
+		for c := range s.w {
 			if s.px[r][c] {
 				b.WriteByte('#')
 			} else {
@@ -150,14 +150,15 @@ func (e Exercise) Vis(instr string, outdir string) error {
 	bg := color.RGBA{0x0a, 0x12, 0x0a, 0xff}
 	off := color.RGBA{0x14, 0x22, 0x14, 0xff}
 	on := color.RGBA{0x5c, 0xff, 0x7a, 0xff}
-	for y := 0; y < img.Bounds().Dy(); y++ {
-		for x := 0; x < img.Bounds().Dx(); x++ {
+	h, w := img.Bounds().Dy(), img.Bounds().Dx()
+	for y := range h {
+		for x := range w {
 			img.SetRGBA(x, y, bg)
 		}
 	}
 
-	for r := 0; r < s.h; r++ {
-		for c := 0; c < s.w; c++ {
+	for r := range s.h {
+		for c := range s.w {
 			col := off
 			if s.px[r][c] {
 				col = on
@@ -193,7 +194,7 @@ func atoiAfter(s, prefix string) int {
 
 func atoi(s string) int {
 	n := 0
-	for i := 0; i < len(s); i++ {
+	for i := range len(s) {
 		if s[i] >= '0' && s[i] <= '9' {
 			n = n*10 + int(s[i]-'0')
 		}
@@ -221,7 +222,7 @@ func ocr(s *screen) string {
 	var msg strings.Builder
 	for k := 0; k*5 < s.w; k++ {
 		var g strings.Builder
-		for r := 0; r < s.h; r++ {
+		for r := range s.h {
 			for c := k * 5; c < k*5+5; c++ {
 				if s.px[r][c] {
 					g.WriteByte('#')

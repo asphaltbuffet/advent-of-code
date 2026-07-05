@@ -30,7 +30,7 @@ func decode(instr string, mostCommon bool) string {
 	}
 
 	var msg strings.Builder
-	for c := 0; c < width; c++ {
+	for c := range width {
 		var best byte
 		bestN := -1
 		for ch, n := range counts[c] {

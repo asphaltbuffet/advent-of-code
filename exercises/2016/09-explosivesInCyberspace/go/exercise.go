@@ -25,19 +25,19 @@ func decompressedLen(s string, recursive bool) int {
 			continue
 		}
 		// Parse marker (AxB).
-		close := strings.IndexByte(s[i:], ')') + i
-		marker := s[i+1 : close]
+		closeIdx := strings.IndexByte(s[i:], ')') + i
+		marker := s[i+1 : closeIdx]
 		x := strings.SplitN(marker, "x", 2)
 		take, _ := strconv.Atoi(x[0])
 		reps, _ := strconv.Atoi(x[1])
 
-		section := s[close+1 : close+1+take]
+		section := s[closeIdx+1 : closeIdx+1+take]
 		if recursive {
 			total += reps * decompressedLen(section, true)
 		} else {
 			total += reps * take
 		}
-		i = close + 1 + take
+		i = closeIdx + 1 + take
 	}
 	return total
 }

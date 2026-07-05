@@ -14,9 +14,8 @@ type Exercise struct {
 }
 
 // One returns the answer to the first part of the exercise.
-// answer:
 func (e Exercise) One(instr string) (any, error) {
-	var i int64 = 0
+	var i int64
 
 	k := []byte(instr)
 
@@ -33,9 +32,8 @@ func (e Exercise) One(instr string) (any, error) {
 }
 
 // Two returns the answer to the second part of the exercise.
-// answer:
 func (e Exercise) Two(instr string) (any, error) {
-	var i int64 = 0
+	var i int64
 
 	k := []byte(instr)
 

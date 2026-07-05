@@ -1,6 +1,7 @@
 package exercises
 
 import (
+	"slices"
 	"strings"
 
 	"github.com/asphaltbuffet/advent-of-code/internal/common"
@@ -14,7 +15,7 @@ type Exercise struct {
 // increment advances the password by one, treating it as a base-26 odometer
 // over 'a'..'z' with carry from the rightmost character.
 func increment(p []byte) {
-	for i := len(p) - 1; i >= 0; i-- {
+	for i := range slices.Backward(p) {
 		if p[i] == 'z' {
 			p[i] = 'a'
 			continue
