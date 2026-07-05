@@ -50,7 +50,7 @@ func simulate(instr string, targetA, targetB int) factory {
 		}
 	}
 
-	for _, line := range strings.Split(strings.TrimSpace(instr), "\n") {
+	for line := range strings.SplitSeq(strings.TrimSpace(instr), "\n") {
 		w := strings.Fields(line)
 		if w[0] == "value" {
 			val, _ := strconv.Atoi(w[1])
@@ -100,7 +100,7 @@ func toInt(s string) int {
 // 5 & 2 for the small example (which has no value above 5).
 func targets(instr string) (int, int) {
 	maxVal := 0
-	for _, line := range strings.Split(instr, "\n") {
+	for line := range strings.SplitSeq(instr, "\n") {
 		w := strings.Fields(line)
 		if len(w) >= 2 && w[0] == "value" {
 			if v := toInt(w[1]); v > maxVal {

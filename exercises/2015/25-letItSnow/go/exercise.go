@@ -19,7 +19,7 @@ const (
 
 // parseRowCol pulls the row and column from the puzzle's prose by extracting
 // the two integers it contains.
-func parseRowCol(instr string) (row, col int) {
+func parseRowCol(instr string) (int, int) {
 	var nums []int
 	cur := ""
 	for _, r := range instr {

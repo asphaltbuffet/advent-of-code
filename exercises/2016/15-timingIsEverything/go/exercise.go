@@ -23,7 +23,7 @@ var numRe = regexp.MustCompile(`\d+`)
 // position count and starting position are needed.
 func parseDiscs(instr string) []disc {
 	var discs []disc
-	for _, line := range strings.Split(strings.TrimSpace(instr), "\n") {
+	for line := range strings.SplitSeq(strings.TrimSpace(instr), "\n") {
 		n := numRe.FindAllString(line, -1)
 		if len(n) < 4 {
 			continue

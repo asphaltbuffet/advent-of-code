@@ -25,7 +25,7 @@ type node struct {
 // header lines.
 func parseNodes(instr string) []node {
 	var nodes []node
-	for _, line := range strings.Split(strings.TrimSpace(instr), "\n") {
+	for line := range strings.SplitSeq(strings.TrimSpace(instr), "\n") {
 		if !strings.HasPrefix(strings.TrimSpace(line), "/dev/grid/") {
 			continue
 		}
@@ -92,10 +92,10 @@ func (e Exercise) Two(instr string) (any, error) {
 	// any node's capacity, so their data can never move).
 	var empty node
 	wall := map[[2]int]bool{}
-	cap := map[[2]int]int{}
+	nodeCap := map[[2]int]int{}
 	minSize := 1 << 30
 	for _, n := range nodes {
-		cap[[2]int{n.x, n.y}] = n.size
+		nodeCap[[2]int{n.x, n.y}] = n.size
 		if n.size < minSize {
 			minSize = n.size
 		}
@@ -109,17 +109,17 @@ func (e Exercise) Two(instr string) (any, error) {
 		}
 	}
 
-	goal := [2]int{maxX, 0}     // current goal-data location
+	goal := [2]int{maxX, 0}       // current goal-data location
 	target := [2]int{maxX - 1, 0} // move empty here, just left of the goal
 
-	walk := bfs([2]int{empty.x, empty.y}, target, wall, cap)
+	walk := bfs([2]int{empty.x, empty.y}, target, wall, nodeCap)
 	// 1 step to slide goal into the empty's spot, then 5 per remaining column.
 	return walk + 1 + 5*(goal[0]-1), nil
 }
 
 // bfs returns the fewest moves for the empty node to travel from start to dst,
 // stepping between adjacent in-grid nodes that are not walls.
-func bfs(start, dst [2]int, wall map[[2]int]bool, cap map[[2]int]int) int {
+func bfs(start, dst [2]int, wall map[[2]int]bool, nodeCap map[[2]int]int) int {
 	type item struct {
 		p [2]int
 		d int
@@ -135,7 +135,7 @@ func bfs(start, dst [2]int, wall map[[2]int]bool, cap map[[2]int]int) int {
 		}
 		for _, d := range dirs {
 			np := [2]int{cur.p[0] + d[0], cur.p[1] + d[1]}
-			if _, ok := cap[np]; !ok || wall[np] || seen[np] {
+			if _, ok := nodeCap[np]; !ok || wall[np] || seen[np] {
 				continue
 			}
 			seen[np] = true
@@ -147,7 +147,7 @@ func bfs(start, dst [2]int, wall map[[2]int]bool, cap map[[2]int]int) int {
 
 // bfsPath returns the sequence of cells the empty node visits travelling from
 // start to dst, inclusive of both ends, or nil if unreachable.
-func bfsPath(start, dst [2]int, wall map[[2]int]bool, cap map[[2]int]int) [][2]int {
+func bfsPath(start, dst [2]int, wall map[[2]int]bool, nodeCap map[[2]int]int) [][2]int {
 	prev := map[[2]int][2]int{}
 	seen := map[[2]int]bool{start: true}
 	queue := [][2]int{start}
@@ -167,7 +167,7 @@ func bfsPath(start, dst [2]int, wall map[[2]int]bool, cap map[[2]int]int) [][2]i
 		}
 		for _, d := range dirs {
 			np := [2]int{cur[0] + d[0], cur[1] + d[1]}
-			if _, ok := cap[np]; !ok || wall[np] || seen[np] {
+			if _, ok := nodeCap[np]; !ok || wall[np] || seen[np] {
 				continue
 			}
 			seen[np] = true
@@ -181,9 +181,15 @@ func bfsPath(start, dst [2]int, wall map[[2]int]bool, cap map[[2]int]int) [][2]i
 // Vis renders the storage grid as a sliding puzzle: the impassable wall band,
 // the empty node, the goal data, and the route the empty node walks to reach
 // the cell beside the goal.
-func (e Exercise) Vis(instr, outdir string) error {
-	nodes := parseNodes(instr)
+type visData struct {
+	w, h    int
+	empty   [2]int
+	goal    [2]int
+	wall    map[[2]int]bool
+	pathSet map[[2]int]bool
+}
 
+func buildVisData(nodes []node) visData {
 	maxX, maxY := 0, 0
 	for _, n := range nodes {
 		if n.x > maxX {
@@ -196,10 +202,10 @@ func (e Exercise) Vis(instr, outdir string) error {
 
 	var empty [2]int
 	wall := map[[2]int]bool{}
-	cap := map[[2]int]int{}
+	nodeCap := map[[2]int]int{}
 	minSize := 1 << 30
 	for _, n := range nodes {
-		cap[[2]int{n.x, n.y}] = n.size
+		nodeCap[[2]int{n.x, n.y}] = n.size
 		if n.size < minSize {
 			minSize = n.size
 		}
@@ -215,16 +221,28 @@ func (e Exercise) Vis(instr, outdir string) error {
 
 	goal := [2]int{maxX, 0}
 	target := [2]int{maxX - 1, 0}
-	path := bfsPath(empty, target, wall, cap)
+	path := bfsPath(empty, target, wall, nodeCap)
 	pathSet := map[[2]int]bool{}
 	for _, p := range path {
 		pathSet[p] = true
 	}
 
-	w, h := maxX+1, maxY+1
+	return visData{
+		w: maxX + 1, h: maxY + 1,
+		empty:   empty,
+		goal:    goal,
+		wall:    wall,
+		pathSet: pathSet,
+	}
+}
+
+// Vis renders the grid with walls, the empty-node path, and key positions.
+func (e Exercise) Vis(instr, outdir string) error {
+	vd := buildVisData(parseNodes(instr))
+
 	const cell = 18
 	const pad = 12
-	img := image.NewRGBA(image.Rect(0, 0, w*cell+2*pad, h*cell+2*pad))
+	img := image.NewRGBA(image.Rect(0, 0, vd.w*cell+2*pad, vd.h*cell+2*pad))
 
 	bg := color.RGBA{0x12, 0x14, 0x20, 0xff}
 	open := color.RGBA{0x26, 0x2c, 0x3e, 0xff}
@@ -243,28 +261,28 @@ func (e Exercise) Vis(instr, outdir string) error {
 		}
 	}
 
-	// Background fill.
-	for y := 0; y < img.Bounds().Dy(); y++ {
-		for x := 0; x < img.Bounds().Dx(); x++ {
+	ih, iw := img.Bounds().Dy(), img.Bounds().Dx()
+	for y := range ih {
+		for x := range iw {
 			img.SetRGBA(x, y, bg)
 		}
 	}
 
-	for y := 0; y < h; y++ {
-		for x := 0; x < w; x++ {
+	for y := range vd.h {
+		for x := range vd.w {
 			p := [2]int{x, y}
 			switch {
-			case wall[p]:
+			case vd.wall[p]:
 				fill(x, y, wallC)
-			case pathSet[p]:
+			case vd.pathSet[p]:
 				fill(x, y, pathC)
 			default:
 				fill(x, y, open)
 			}
 		}
 	}
-	fill(empty[0], empty[1], emptyC)
-	fill(goal[0], goal[1], goalC)
+	fill(vd.empty[0], vd.empty[1], emptyC)
+	fill(vd.goal[0], vd.goal[1], goalC)
 	fill(0, 0, originC)
 
 	f, err := os.Create(filepath.Join(outdir, "grid-computing.png"))

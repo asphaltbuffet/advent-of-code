@@ -34,7 +34,7 @@ func openDoors(passcode, path string) [4]bool {
 	sum := md5.Sum([]byte(passcode + path))
 	h := hex.EncodeToString(sum[:])
 	var doors [4]bool
-	for i := 0; i < 4; i++ {
+	for i := range 4 {
 		doors[i] = h[i] >= 'b' && h[i] <= 'f'
 	}
 	return doors
@@ -42,11 +42,15 @@ func openDoors(passcode, path string) [4]bool {
 
 // search walks every path to the vault, returning the shortest and the length
 // of the longest.
-func search(passcode string) (shortest string, longest int) {
+func search(passcode string) (string, int) {
+	var shortest string
+	var longest int
+
 	type node struct {
 		x, y int
 		path string
 	}
+
 	queue := []node{{0, 0, ""}}
 	for len(queue) > 0 {
 		cur := queue[0]

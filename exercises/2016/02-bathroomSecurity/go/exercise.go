@@ -42,8 +42,8 @@ func solve(instr string, pad []string) string {
 	}
 
 	var code strings.Builder
-	for _, line := range strings.Fields(instr) {
-		for i := 0; i < len(line); i++ {
+	for line := range strings.FieldsSeq(instr) {
+		for i := range len(line) {
 			nr, nc := r, c
 			switch line[i] {
 			case 'U':

@@ -78,10 +78,10 @@ func bfsFrom(grid []string, src point, targets map[int]point) map[int]int {
 func distMatrix(grid []string, targets map[int]point) [][]int {
 	n := len(targets)
 	m := make([][]int, n)
-	for i := 0; i < n; i++ {
+	for i := range n {
 		m[i] = make([]int, n)
 		row := bfsFrom(grid, targets[i], targets)
-		for j := 0; j < n; j++ {
+		for j := range n {
 			m[i][j] = row[j]
 		}
 	}
@@ -146,6 +146,17 @@ func (e Exercise) Two(instr string) (any, error) {
 
 // bfsPath reconstructs the shortest path (inclusive of both ends) between two
 // grid points, avoiding walls.
+func reconstructPath(prev map[point]point, src, dst point) []point {
+	var path []point
+	for p := dst; ; p = prev[p] {
+		path = append([]point{p}, path...)
+		if p == src {
+			break
+		}
+	}
+	return path
+}
+
 func bfsPath(grid []string, src, dst point) []point {
 	prev := map[point]point{}
 	dist := map[point]int{src: 0}
@@ -155,14 +166,7 @@ func bfsPath(grid []string, src, dst point) []point {
 		cur := queue[0]
 		queue = queue[1:]
 		if cur == dst {
-			var path []point
-			for p := dst; ; p = prev[p] {
-				path = append([]point{p}, path...)
-				if p == src {
-					break
-				}
-			}
-			return path
+			return reconstructPath(prev, src, dst)
 		}
 		for _, d := range dirs {
 			np := point{cur.r + d.r, cur.c + d.c}
@@ -185,11 +189,20 @@ func bfsPath(grid []string, src, dst point) []point {
 
 // Vis renders the maze, the numbered targets, and the optimal collection route
 // (returning to 0, as in Part Two).
-func (e Exercise) Vis(instr, outdir string) error {
-	grid, targets := parseMaze(instr)
-	_, order := tsp(distMatrix(grid, targets), true)
+func cellColor(grid []string, route map[point]bool, r, c int, wallC, routeC, open color.RGBA) color.RGBA {
+	p := point{r, c}
+	switch {
+	case grid[r][c] == '#':
+		return wallC
+	case route[p]:
+		return routeC
+	default:
+		return open
+	}
+}
 
-	// Stitch the full route: 0 -> order... -> 0.
+func buildRoute(grid []string, targets map[int]point) map[point]bool {
+	_, order := tsp(distMatrix(grid, targets), true)
 	stops := append([]int{0}, order...)
 	stops = append(stops, 0)
 	route := map[point]bool{}
@@ -198,6 +211,14 @@ func (e Exercise) Vis(instr, outdir string) error {
 			route[p] = true
 		}
 	}
+	return route
+}
+
+// Vis renders the maze with the optimal route and target positions highlighted.
+// Vis renders the maze with the optimal route and target positions highlighted.
+func (e Exercise) Vis(instr, outdir string) error {
+	grid, targets := parseMaze(instr)
+	route := buildRoute(grid, targets)
 
 	rows := len(grid)
 	cols := 0
@@ -212,7 +233,7 @@ func (e Exercise) Vis(instr, outdir string) error {
 	img := image.NewRGBA(image.Rect(0, 0, cols*cell+2*pad, rows*cell+2*pad))
 
 	bg := color.RGBA{0x12, 0x14, 0x20, 0xff}
-	wall := color.RGBA{0x2a, 0x30, 0x44, 0xff}
+	wallC := color.RGBA{0x2a, 0x30, 0x44, 0xff}
 	open := color.RGBA{0x1a, 0x1e, 0x2e, 0xff}
 	routeC := color.RGBA{0x2f, 0x8a, 0x86, 0xff}
 	startC := color.RGBA{0xff, 0x44, 0x55, 0xff}
@@ -226,37 +247,26 @@ func (e Exercise) Vis(instr, outdir string) error {
 			}
 		}
 	}
-	for y := 0; y < img.Bounds().Dy(); y++ {
-		for x := 0; x < img.Bounds().Dx(); x++ {
+
+	ih, iw := img.Bounds().Dy(), img.Bounds().Dx()
+	for y := range ih {
+		for x := range iw {
 			img.SetRGBA(x, y, bg)
 		}
 	}
 
-	targetAt := map[point]int{}
-	for d, p := range targets {
-		targetAt[p] = d
-	}
-
-	for r := 0; r < rows; r++ {
-		for c := 0; c < len(grid[r]); c++ {
-			p := point{r, c}
-			switch {
-			case grid[r][c] == '#':
-				fill(c, r, wall)
-			case route[p]:
-				fill(c, r, routeC)
-			default:
-				fill(c, r, open)
-			}
+	for r := range rows {
+		for c := range len(grid[r]) {
+			fill(c, r, cellColor(grid, route, r, c, wallC, routeC, open))
 		}
 	}
 	// Draw targets on top: 0 red, the rest gold.
-	for p, d := range targetAt {
+	for d, p := range targets {
+		col := targetC
 		if d == 0 {
-			fill(p.c, p.r, startC)
-		} else {
-			fill(p.c, p.r, targetC)
+			col = startC
 		}
+		fill(p.c, p.r, col)
 	}
 
 	f, err := os.Create(filepath.Join(outdir, "air-duct-spelunking.png"))

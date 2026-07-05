@@ -1,7 +1,7 @@
 package exercises
 
 import (
-	"fmt"
+	"errors"
 	"strings"
 
 	"github.com/asphaltbuffet/advent-of-code/internal/common"
@@ -41,5 +41,5 @@ func (c Exercise) Two(instr string) (any, error) {
 		}
 	}
 
-	return 0, fmt.Errorf("santa never enters the basement")
+	return 0, errors.New("santa never enters the basement")
 }

@@ -23,7 +23,7 @@ type ingredient struct {
 func parse(instr string) []ingredient {
 	var is []ingredient
 
-	for _, line := range strings.Split(strings.TrimSpace(instr), "\n") {
+	for line := range strings.SplitSeq(strings.TrimSpace(instr), "\n") {
 		nums := numbers(line)
 		is = append(is, ingredient{nums[0], nums[1], nums[2], nums[3], nums[4]})
 	}
@@ -34,7 +34,7 @@ func parse(instr string) []ingredient {
 // numbers extracts the signed integers from a line, ignoring punctuation.
 func numbers(line string) []int {
 	fields := strings.FieldsFunc(line, func(r rune) bool {
-		return !(r == '-' || (r >= '0' && r <= '9'))
+		return (r != '-' && (r < '0' || r > '9'))
 	})
 
 	var out []int
@@ -52,15 +52,15 @@ func numbers(line string) []int {
 // when calorieGoal >= 0 only recipes hitting that calorie count are scored.
 func best(is []ingredient, calorieGoal int) int {
 	amounts := make([]int, len(is))
-	max := 0
+	m := 0
 
 	var rec func(i, remaining int)
 	rec = func(i, remaining int) {
 		// Last ingredient takes whatever teaspoons are left.
 		if i == len(is)-1 {
 			amounts[i] = remaining
-			if s := score(is, amounts, calorieGoal); s > max {
-				max = s
+			if s := score(is, amounts, calorieGoal); s > m {
+				m = s
 			}
 			return
 		}
@@ -71,7 +71,7 @@ func best(is []ingredient, calorieGoal int) int {
 	}
 	rec(0, teaspoons)
 
-	return max
+	return m
 }
 
 // score multiplies the per-property totals (negatives clamped to 0). If

@@ -21,14 +21,14 @@ func (e Exercise) One(instr string) (any, error) {
 	distances, _ := parse(instr)
 	paths := calcPaths(distances)
 
-	min := math.MaxInt32
+	m := math.MaxInt32
 	for _, v := range paths {
-		if v < min {
-			min = v
+		if v < m {
+			m = v
 		}
 	}
 
-	return min, nil
+	return m, nil
 }
 
 // Two returns the answer to the second part of the exercise.
@@ -36,14 +36,14 @@ func (e Exercise) Two(instr string) (any, error) {
 	distances, _ := parse(instr)
 	paths := calcPaths(distances)
 
-	max := 0
+	m := 0
 	for _, v := range paths {
-		if v > max {
-			max = v
+		if v > m {
+			m = v
 		}
 	}
 
-	return max, nil
+	return m, nil
 }
 
 func getUniquePaths(pp []string) [][]string {
@@ -93,7 +93,7 @@ func calcPaths(distances map[string]map[string]int) map[string]int {
 		sum := 0
 		valid := true
 
-		for i := 0; i < len(path)-1; i++ {
+		for i := range len(path) - 1 {
 			if d, ok := distances[path[i]][path[i+1]]; ok {
 				sum += d
 			} else {
@@ -117,7 +117,7 @@ func parse(instr string) (map[string]map[string]int, error) {
 	distances := map[string]map[string]int{}
 	re := regexp.MustCompile(`^(.+) to (.+) = (\d+)$`)
 
-	for _, line := range strings.Split(instr, "\n") {
+	for line := range strings.SplitSeq(instr, "\n") {
 		var (
 			c1, c2 string
 			dist   int

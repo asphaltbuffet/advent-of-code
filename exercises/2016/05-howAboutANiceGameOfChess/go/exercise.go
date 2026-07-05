@@ -17,7 +17,7 @@ const hexDigits = "0123456789abcdef"
 
 // interesting reports whether h has five leading zero hex digits, returning the
 // 6th and 7th hex nibbles (used as char / position depending on the part).
-func interesting(h [16]byte) (sixth, seventh byte, ok bool) {
+func interesting(h [16]byte) (byte, byte, bool) {
 	if h[0] == 0 && h[1] == 0 && h[2]>>4 == 0 {
 		return h[2] & 0x0f, h[3] >> 4, true
 	}

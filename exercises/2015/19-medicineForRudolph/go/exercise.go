@@ -1,7 +1,7 @@
 package exercises
 
 import (
-	"math/rand"
+	"math/rand/v2"
 	"strings"
 
 	"github.com/asphaltbuffet/advent-of-code/internal/common"
@@ -19,7 +19,7 @@ func parse(instr string) ([]rule, string) {
 	blocks := strings.SplitN(strings.ReplaceAll(instr, "\r\n", "\n"), "\n\n", 2)
 
 	var rules []rule
-	for _, line := range strings.Split(strings.TrimSpace(blocks[0]), "\n") {
+	for line := range strings.SplitSeq(strings.TrimSpace(blocks[0]), "\n") {
 		parts := strings.Split(line, " => ")
 		rules = append(rules, rule{parts[0], parts[1]})
 	}
@@ -51,7 +51,7 @@ func (e Exercise) One(instr string) (any, error) {
 // example grammar and the real Rn/Ar/Y grammar.
 func (e Exercise) Two(instr string) (any, error) {
 	rules, mol := parse(instr)
-	rng := rand.New(rand.NewSource(1))
+	rng := rand.New(rand.NewPCG(1, 0))
 
 	for {
 		cur := mol

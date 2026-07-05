@@ -15,7 +15,7 @@ type Exercise struct {
 // parse reads the package weights.
 func parse(instr string) []int {
 	var ws []int
-	for _, f := range strings.Fields(instr) {
+	for f := range strings.FieldsSeq(instr) {
 		n, _ := strconv.Atoi(f)
 		ws = append(ws, n)
 	}
@@ -60,12 +60,12 @@ func minQE(weights []int, groups int) int64 {
 	return -1
 }
 
-// One: split into 3 equal groups; lowest QE of the smallest first group.
+// One split into 3 equal groups; lowest QE of the smallest first group.
 func (e Exercise) One(instr string) (any, error) {
 	return minQE(parse(instr), 3), nil
 }
 
-// Two: split into 4 equal groups.
+// Two split into 4 equal groups.
 func (e Exercise) Two(instr string) (any, error) {
 	return minQE(parse(instr), 4), nil
 }

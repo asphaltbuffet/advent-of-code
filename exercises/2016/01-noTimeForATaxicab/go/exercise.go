@@ -1,6 +1,7 @@
 package exercises
 
 import (
+	"errors"
 	"fmt"
 	"strconv"
 	"strings"
@@ -32,7 +33,7 @@ type point struct {
 func (c Exercise) One(instr string) (any, error) {
 	position := point{h: north, x: 0, y: 0}
 
-	for _, i := range strings.Split(instr, ", ") {
+	for i := range strings.SplitSeq(instr, ", ") {
 		switch {
 		case strings.HasPrefix(i, "L"):
 			switch position.h {
@@ -92,7 +93,7 @@ func (c Exercise) Two(instr string) (any, error) {
 	position := point{h: north, x: 0, y: 0}
 	visited := make(map[string]bool)
 
-	for _, i := range strings.Split(instr, ", ") {
+	for i := range strings.SplitSeq(instr, ", ") {
 		switch {
 		case strings.HasPrefix(i, "L"):
 			switch position.h {
@@ -123,7 +124,7 @@ func (c Exercise) Two(instr string) (any, error) {
 			return nil, fmt.Errorf("reading movement magnitude: %w", err)
 		}
 
-		for j := 0; j < distance; j++ {
+		for range distance {
 			switch position.h {
 			case north:
 				position.y++
@@ -144,5 +145,5 @@ func (c Exercise) Two(instr string) (any, error) {
 		}
 	}
 
-	return nil, fmt.Errorf("no location visited twice")
+	return nil, errors.New("no location visited twice")
 }

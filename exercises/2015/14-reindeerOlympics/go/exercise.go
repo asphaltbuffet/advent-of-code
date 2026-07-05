@@ -21,7 +21,7 @@ type reindeer struct {
 func parse(instr string) ([]reindeer, int) {
 	var rs []reindeer
 
-	for _, line := range strings.Split(strings.TrimSpace(instr), "\n") {
+	for line := range strings.SplitSeq(strings.TrimSpace(instr), "\n") {
 		f := strings.Fields(line)
 		// <name> can fly <speed> km/s for <fly> seconds, ... rest for <rest> ...
 		speed, _ := strconv.Atoi(f[3])

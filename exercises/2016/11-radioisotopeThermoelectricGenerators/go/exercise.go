@@ -2,6 +2,7 @@ package exercises
 
 import (
 	"regexp"
+	"slices"
 	"sort"
 	"strings"
 
@@ -33,7 +34,7 @@ var floorWords = map[string]int{"first": 0, "second": 1, "third": 2, "fourth": 3
 func parse(instr string, extra int) state {
 	gens := map[string]int{}
 	chips := map[string]int{}
-	for _, line := range strings.Split(strings.TrimSpace(instr), "\n") {
+	for line := range strings.SplitSeq(strings.TrimSpace(instr), "\n") {
 		fields := strings.Fields(line)
 		floor := floorWords[fields[1]]
 		for _, m := range genRe.FindAllStringSubmatch(line, -1) {
@@ -49,7 +50,7 @@ func parse(instr string, extra int) state {
 		st.gens = append(st.gens, gf)
 		st.chips = append(st.chips, chips[el])
 	}
-	for i := 0; i < extra; i++ {
+	for range extra {
 		st.gens = append(st.gens, 0)
 		st.chips = append(st.chips, 0)
 	}
@@ -58,14 +59,8 @@ func parse(instr string, extra int) state {
 
 // valid reports whether no chip is fried on any floor.
 func (s state) valid() bool {
-	for f := 0; f < 4; f++ {
-		hasGen := false
-		for _, gf := range s.gens {
-			if gf == f {
-				hasGen = true
-				break
-			}
-		}
+	for f := range 4 {
+		hasGen := slices.Contains(s.gens, f)
 		if !hasGen {
 			continue
 		}
@@ -141,15 +136,48 @@ func (s state) clone() state {
 	return state{elevator: s.elevator, gens: g, chips: c}
 }
 
-func (s *state) move(it item, floor int) {
+func (s state) move(it item, floor int) state {
 	if it.gen {
 		s.gens[it.idx] = floor
 	} else {
 		s.chips[it.idx] = floor
 	}
+	return s
 }
 
 // solve returns the minimum elevator steps to gather everything on floor 4.
+func candidateLoads(items []item) [][]item {
+	var loads [][]item
+	for i := range items {
+		loads = append(loads, []item{items[i]})
+		for j := i + 1; j < len(items); j++ {
+			loads = append(loads, []item{items[i], items[j]})
+		}
+	}
+	return loads
+}
+
+func tryMove(cur state, nf int, loads [][]item, seen map[string]bool) []state {
+	var out []state
+	for _, load := range loads {
+		ns := cur.clone()
+		ns.elevator = nf
+		for _, it := range load {
+			ns = ns.move(it, nf)
+		}
+		if !ns.valid() {
+			continue
+		}
+		k := ns.key()
+		if seen[k] {
+			continue
+		}
+		seen[k] = true
+		out = append(out, ns)
+	}
+	return out
+}
+
 func solve(start state) int {
 	seen := map[string]bool{start.key(): true}
 	type node struct {
@@ -163,34 +191,13 @@ func solve(start state) int {
 		if cur.s.done() {
 			return cur.steps
 		}
-		items := cur.s.itemsOn()
-		// Candidate loads: each single item, and each pair.
-		var loads [][]item
-		for i := range items {
-			loads = append(loads, []item{items[i]})
-			for j := i + 1; j < len(items); j++ {
-				loads = append(loads, []item{items[i], items[j]})
-			}
-		}
+		loads := candidateLoads(cur.s.itemsOn())
 		for _, dir := range []int{1, -1} {
 			nf := cur.s.elevator + dir
 			if nf < 0 || nf > 3 {
 				continue
 			}
-			for _, load := range loads {
-				ns := cur.s.clone()
-				ns.elevator = nf
-				for _, it := range load {
-					ns.move(it, nf)
-				}
-				if !ns.valid() {
-					continue
-				}
-				k := ns.key()
-				if seen[k] {
-					continue
-				}
-				seen[k] = true
+			for _, ns := range tryMove(cur.s, nf, loads, seen) {
 				queue = append(queue, node{ns, cur.steps + 1})
 			}
 		}

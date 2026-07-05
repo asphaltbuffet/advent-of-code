@@ -48,7 +48,7 @@ func (e Exercise) Two(instr string) (any, error) {
 	count := 0
 	// Each block is 9 numbers (3 rows x 3 cols); columns are (0,3,6) etc.
 	for i := 0; i+8 < len(nums); i += 9 {
-		for col := 0; col < 3; col++ {
+		for col := range 3 {
 			if valid(nums[i+col], nums[i+col+3], nums[i+col+6]) {
 				count++
 			}

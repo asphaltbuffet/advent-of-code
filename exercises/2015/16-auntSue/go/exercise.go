@@ -23,11 +23,11 @@ var target = map[string]int{
 func parse(instr string) []map[string]int {
 	var sues []map[string]int
 
-	for _, line := range strings.Split(strings.TrimSpace(instr), "\n") {
+	for line := range strings.SplitSeq(strings.TrimSpace(instr), "\n") {
 		// Drop the "Sue N:" prefix; the slice index gives the number.
 		_, rest, _ := strings.Cut(line, ": ")
 		obs := map[string]int{}
-		for _, pair := range strings.Split(rest, ", ") {
+		for pair := range strings.SplitSeq(rest, ", ") {
 			k, v, _ := strings.Cut(pair, ": ")
 			n, _ := strconv.Atoi(v)
 			obs[k] = n
@@ -57,16 +57,14 @@ func find(sues []map[string]int, ok func(compound string, got int) bool) int {
 	return -1
 }
 
-// One: every observed compound must equal the target exactly.
+// One returns the answer to the first part of the exercise.
 func (e Exercise) One(instr string) (any, error) {
 	return find(parse(instr), func(k string, got int) bool {
 		return got == target[k]
 	}), nil
 }
 
-// Two: the readings are imprecise. cats/trees are "greater than" the target
-// (observed must exceed it); pomeranians/goldfish are "fewer than"; all other
-// compounds still compare exactly.
+// Two returns the answer to the second part of the exercise.
 func (e Exercise) Two(instr string) (any, error) {
 	return find(parse(instr), func(k string, got int) bool {
 		switch k {

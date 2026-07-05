@@ -12,11 +12,49 @@ type Exercise struct {
 	common.BaseExercise
 }
 
+const (
+	cpy string = "cpy"
+	inc string = "inc"
+	dec string = "dec"
+	jnz string = "jnz"
+)
+
 // run executes the assembunny program (with the day-23 tgl instruction) from
 // the given initial registers and returns the final value of register a.
+// execOp executes one instruction, returning the new ip.
+// Returns -1 for jnz taken (caller adds the offset), or 0 for normal advance.
+func execOp(op []string, program [][]string, regs map[string]int, ip int,
+	isReg func(string) bool, value func(string) int,
+) int {
+	switch op[0] {
+	case cpy:
+		if isReg(op[2]) {
+			regs[op[2]] = value(op[1])
+		}
+	case inc:
+		if isReg(op[1]) {
+			regs[op[1]]++
+		}
+	case dec:
+		if isReg(op[1]) {
+			regs[op[1]]--
+		}
+	case jnz:
+		if value(op[1]) != 0 {
+			return ip + value(op[2])
+		}
+	case "tgl":
+		t := ip + value(op[1])
+		if t >= 0 && t < len(program) {
+			toggle(program[t])
+		}
+	}
+	return ip + 1
+}
+
 func run(instr string, regs map[string]int) int {
 	var program [][]string
-	for _, line := range strings.Split(strings.TrimSpace(instr), "\n") {
+	for line := range strings.SplitSeq(strings.TrimSpace(instr), "\n") {
 		program = append(program, strings.Fields(line))
 	}
 
@@ -46,33 +84,7 @@ func run(instr string, regs map[string]int) int {
 			ip += 6
 			continue
 		}
-
-		op := program[ip]
-		switch op[0] {
-		case "cpy":
-			if isReg(op[2]) { // skip toggled-invalid copies into a literal
-				regs[op[2]] = value(op[1])
-			}
-		case "inc":
-			if isReg(op[1]) {
-				regs[op[1]]++
-			}
-		case "dec":
-			if isReg(op[1]) {
-				regs[op[1]]--
-			}
-		case "jnz":
-			if value(op[1]) != 0 {
-				ip += value(op[2])
-				continue
-			}
-		case "tgl":
-			t := ip + value(op[1])
-			if t >= 0 && t < len(program) {
-				toggle(program[t])
-			}
-		}
-		ip++
+		ip = execOp(program[ip], program, regs, ip, isReg, value)
 	}
 	return regs["a"]
 }
@@ -81,16 +93,16 @@ func run(instr string, regs map[string]int) int {
 func toggle(op []string) {
 	switch len(op) {
 	case 2:
-		if op[0] == "inc" {
-			op[0] = "dec"
+		if op[0] == inc {
+			op[0] = dec
 		} else {
-			op[0] = "inc"
+			op[0] = inc
 		}
 	case 3:
-		if op[0] == "jnz" {
-			op[0] = "cpy"
+		if op[0] == jnz {
+			op[0] = cpy
 		} else {
-			op[0] = "jnz"
+			op[0] = jnz
 		}
 	}
 }
@@ -99,12 +111,12 @@ func toggle(op []string) {
 // idiom that toggling never alters in this input.
 func mulPattern(p [][]string) bool {
 	return len(p) == 6 &&
-		p[0][0] == "cpy" &&
-		p[1][0] == "inc" &&
-		p[2][0] == "dec" && p[2][1] == p[0][2] &&
-		p[3][0] == "jnz" && p[3][1] == p[0][2] && p[3][2] == "-2" &&
-		p[4][0] == "dec" &&
-		p[5][0] == "jnz" && p[5][1] == p[4][1] && p[5][2] == "-5"
+		p[0][0] == cpy &&
+		p[1][0] == inc &&
+		p[2][0] == dec && p[2][1] == p[0][2] &&
+		p[3][0] == jnz && p[3][1] == p[0][2] && p[3][2] == "-2" &&
+		p[4][0] == dec &&
+		p[5][0] == jnz && p[5][1] == p[4][1] && p[5][2] == "-5"
 }
 
 // One runs the program with register a initialised to 7 eggs.

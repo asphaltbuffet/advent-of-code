@@ -23,9 +23,9 @@ func (e Exercise) One(instr string) (any, error) {
 		b := dim[1] * dim[2]
 		c := dim[2] * dim[0]
 
-		min := min(a, b, c)
+		m := min(a, b, c)
 
-		total += 2*(a+b+c) + min
+		total += 2*(a+b+c) + m
 	}
 
 	return total, nil
@@ -51,7 +51,7 @@ func (e Exercise) Two(instr string) (any, error) {
 func parse(instr string) [][3]int {
 	var dims [][3]int
 
-	for _, line := range strings.Split(instr, "\n") {
+	for line := range strings.SplitSeq(instr, "\n") {
 		var (
 			a int
 			b int

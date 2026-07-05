@@ -102,7 +102,7 @@ type coord struct {
 
 func parse(s string) []action {
 	out := []action{}
-	for _, line := range strings.Split(s, "\n") {
+	for line := range strings.SplitSeq(s, "\n") {
 		var x1, y1, x2, y2 int
 		var a string
 

@@ -17,7 +17,7 @@ type Exercise struct {
 func parse(instr string) (map[string]map[string]int, []string) {
 	h := map[string]map[string]int{}
 
-	for _, line := range strings.Split(strings.TrimSpace(instr), "\n") {
+	for line := range strings.SplitSeq(strings.TrimSpace(instr), "\n") {
 		f := strings.Fields(strings.TrimSuffix(line, "."))
 		// f: <A> would <gain|lose> <N> happiness units by sitting next to <B>
 		a, b := f[0], f[10]
@@ -50,7 +50,7 @@ func bestHappiness(h map[string]map[string]int, people []string) int {
 		seating := append([]string{people[0]}, order...)
 		total := 0
 		n := len(seating)
-		for i := 0; i < n; i++ {
+		for i := range n {
 			a := seating[i]
 			b := seating[(i+1)%n]
 			total += h[a][b] + h[b][a]

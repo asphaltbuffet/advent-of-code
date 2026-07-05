@@ -25,7 +25,7 @@ type instr23 struct {
 func parse(input string) []instr23 {
 	var prog []instr23
 
-	for _, line := range strings.Split(strings.TrimSpace(input), "\n") {
+	for line := range strings.SplitSeq(strings.TrimSpace(input), "\n") {
 		fields := strings.Fields(strings.ReplaceAll(line, ",", ""))
 		ins := instr23{op: fields[0]}
 		switch fields[0] {
