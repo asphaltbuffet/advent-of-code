@@ -1,0 +1,18 @@
+{
+  "id": "2019-25",
+  "title": "Cryostasis",
+  "year": 2019,
+  "day": 25,
+  "url": "https://adventofcode.com/2019/day/25",
+  "data": {
+    "inputFile": "input.txt",
+    "testCases": {
+      "one": [],
+      "two": []
+    },
+    "answers": {
+      "a": "33624080",
+      "b": ""
+    }
+  }
+}

@@ -30,7 +30,7 @@
 | [Day 22: Slam Shuffle][rm22]                      |  ★ ★  | [Go][go22] |
 | [Day 23: Category Six][rm23]                      |  ★ ★  | [Go][go23] |
 | [Day 24: Planet of Discord][rm24]                 |  ★ ★  | [Go][go24] |
-| 25                                                |  ☆ ☆  |                            |
+| [Day 25: Cryostasis][rm25]                        |  ★ ★  | [Go][go25] |
 
 
 ## 2019 Run Times
@@ -118,3 +118,6 @@ Day       Time    Rank  Score       Time    Rank  Score
 
 [rm24]: 24-planetOfDiscord/README.md
 [go24]: 24-planetOfDiscord/go/exercise.go
+
+[rm25]: 25-cryostasis/README.md
+[go25]: 25-cryostasis/go
