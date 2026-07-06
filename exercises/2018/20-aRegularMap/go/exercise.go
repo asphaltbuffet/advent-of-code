@@ -48,7 +48,7 @@ func walk(instr string) map[point]int {
 	var stack []point // saved positions at each open paren
 	pos := point{0, 0}
 
-	for i := 0; i < len(route); i++ {
+	for i := range len(route) {
 		switch route[i] {
 		case '(':
 			stack = append(stack, pos)

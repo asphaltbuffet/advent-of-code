@@ -74,17 +74,8 @@ const margin = 50
 // region's type. Start at (0,0) with the torch; reach the target with the torch.
 func fastestRescue(c *cave) int {
 	w, h := c.tx+margin, c.ty+margin
+	region := buildRegionMap(c, w, h)
 
-	// Precompute region types over the padded grid.
-	region := make([][]int, h+1)
-	for y := 0; y <= h; y++ {
-		region[y] = make([]int, w+1)
-		for x := 0; x <= w; x++ {
-			region[y][x] = c.erosion(x, y) % 3
-		}
-	}
-
-	// Flat distance array indexed by (y*(w+1)+x)*3 + tool.
 	idx := func(x, y, tool int) int { return (y*(w+1)+x)*3 + tool }
 	dist := make([]int, (w+1)*(h+1)*3)
 	for i := range dist {
@@ -95,30 +86,14 @@ func fastestRescue(c *cave) int {
 
 	pq := &priorityQueue{{x: 0, y: 0, tool: torch, cost: 0}}
 	for pq.Len() > 0 {
-		cur := heap.Pop(pq).(item)
+		cur := heap.Pop(pq).(item) //nolint:errcheck // heap.Interface contract
 		if cur.cost > dist[idx(cur.x, cur.y, cur.tool)] {
 			continue
 		}
 		if idx(cur.x, cur.y, cur.tool) == goal {
 			return cur.cost
 		}
-
-		// Switch to the other tool allowed in this region (7 minutes).
-		for tool := 0; tool < 3; tool++ {
-			if tool != region[cur.y][cur.x] && tool != cur.tool {
-				relax(dist, pq, idx, cur.x, cur.y, tool, cur.cost+7)
-			}
-		}
-		// Move to an adjacent region keeping the current tool (1 minute).
-		for _, d := range [4][2]int{{1, 0}, {-1, 0}, {0, 1}, {0, -1}} {
-			nx, ny := cur.x+d[0], cur.y+d[1]
-			if nx < 0 || ny < 0 || nx > w || ny > h {
-				continue
-			}
-			if region[ny][nx] != cur.tool {
-				relax(dist, pq, idx, nx, ny, cur.tool, cur.cost+1)
-			}
-		}
+		relaxNeighbors(dist, pq, idx, region, cur, w, h)
 	}
 	return -1
 }
@@ -130,14 +105,46 @@ func relax(dist []int, pq *priorityQueue, idx func(x, y, tool int) int, x, y, to
 	}
 }
 
+func buildRegionMap(c *cave, w, h int) [][]int {
+	region := make([][]int, h+1)
+	for y := 0; y <= h; y++ {
+		region[y] = make([]int, w+1)
+		for x := 0; x <= w; x++ {
+			region[y][x] = c.erosion(x, y) % 3
+		}
+	}
+	return region
+}
+
+func relaxNeighbors(dist []int, pq *priorityQueue, idx func(x, y, tool int) int, region [][]int, cur item, w, h int) {
+	for tool := range 3 {
+		if tool != region[cur.y][cur.x] && tool != cur.tool {
+			relax(dist, pq, idx, cur.x, cur.y, tool, cur.cost+7)
+		}
+	}
+	for _, d := range [4][2]int{{1, 0}, {-1, 0}, {0, 1}, {0, -1}} {
+		nx, ny := cur.x+d[0], cur.y+d[1]
+		if nx < 0 || ny < 0 || nx > w || ny > h {
+			continue
+		}
+		if region[ny][nx] != cur.tool {
+			relax(dist, pq, idx, nx, ny, cur.tool, cur.cost+1)
+		}
+	}
+}
+
 // parse reads the depth and target coordinates.
 func parse(instr string) *cave {
 	var depth, tx, ty int
-	for _, line := range strings.Split(strings.TrimSpace(instr), "\n") {
+	for line := range strings.SplitSeq(strings.TrimSpace(instr), "\n") {
 		if strings.HasPrefix(line, "depth:") {
-			fmt.Sscanf(line, "depth: %d", &depth)
+			if _, err := fmt.Sscanf(line, "depth: %d", &depth); err != nil {
+				return nil
+			}
 		} else if strings.HasPrefix(line, "target:") {
-			fmt.Sscanf(line, "target: %d,%d", &tx, &ty)
+			if _, err := fmt.Sscanf(line, "target: %d,%d", &tx, &ty); err != nil {
+				return nil
+			}
 		}
 	}
 	return &cave{depth: depth, tx: tx, ty: ty, erosionCache: map[[2]int]int{}}
@@ -151,10 +158,12 @@ type item struct {
 
 type priorityQueue []item
 
-func (pq priorityQueue) Len() int           { return len(pq) }
-func (pq priorityQueue) Less(i, j int) bool { return pq[i].cost < pq[j].cost }
-func (pq priorityQueue) Swap(i, j int)      { pq[i], pq[j] = pq[j], pq[i] }
-func (pq *priorityQueue) Push(x any)        { *pq = append(*pq, x.(item)) }
+func (pq *priorityQueue) Len() int           { return len(*pq) }
+func (pq *priorityQueue) Less(i, j int) bool { return (*pq)[i].cost < (*pq)[j].cost }
+func (pq *priorityQueue) Swap(i, j int)      { (*pq)[i], (*pq)[j] = (*pq)[j], (*pq)[i] }
+func (pq *priorityQueue) Push(x any) {
+	*pq = append(*pq, x.(item)) //nolint:errcheck // heap.Interface contract
+}
 func (pq *priorityQueue) Pop() any {
 	old := *pq
 	n := len(old)

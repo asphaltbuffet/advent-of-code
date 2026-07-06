@@ -34,8 +34,8 @@ func (e Exercise) Vis(instr, outdir string) error {
 	h := 2*(maxY-minY) + 3
 	img := image.NewRGBA(image.Rect(0, 0, w, h))
 	wall := color.RGBA{12, 12, 16, 255}
-	for y := 0; y < h; y++ {
-		for x := 0; x < w; x++ {
+	for y := range h {
+		for x := range w {
 			img.Set(x, y, wall)
 		}
 	}
@@ -89,7 +89,7 @@ func walkWithDoors(instr string) (map[point]int, map[door]struct{}) {
 	var stack []point
 	pos := point{0, 0}
 
-	for i := 0; i < len(route); i++ {
+	for i := range len(route) {
 		switch route[i] {
 		case '(':
 			stack = append(stack, pos)

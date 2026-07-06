@@ -22,7 +22,7 @@ var intRe = regexp.MustCompile(`-?\d+`)
 func parse(instr string) ([]point, error) {
 	var pts []point
 
-	for _, line := range strings.Split(strings.TrimSpace(instr), "\n") {
+	for line := range strings.SplitSeq(strings.TrimSpace(instr), "\n") {
 		line = strings.TrimSpace(line)
 		if line == "" {
 			continue
@@ -48,10 +48,24 @@ func abs(n int) int {
 	return n
 }
 
+func nearestPoint(pts []point, x, y int) (int, bool) {
+	best, bestIdx, tie := 1<<30, -1, false
+	for i, p := range pts {
+		d := abs(p.x-x) + abs(p.y-y)
+		switch {
+		case d < best:
+			best, bestIdx, tie = d, i, false
+		case d == best:
+			tie = true
+		}
+	}
+	return bestIdx, tie
+}
+
 // bounds returns the min/max x and y over the coordinates.
-func bounds(pts []point) (minX, minY, maxX, maxY int) {
-	minX, minY = pts[0].x, pts[0].y
-	maxX, maxY = pts[0].x, pts[0].y
+func bounds(pts []point) (int, int, int, int) {
+	minX, minY := pts[0].x, pts[0].y
+	maxX, maxY := pts[0].x, pts[0].y
 	for _, p := range pts {
 		if p.x < minX {
 			minX = p.x
@@ -66,7 +80,7 @@ func bounds(pts []point) (minX, minY, maxX, maxY int) {
 			maxY = p.y
 		}
 	}
-	return
+	return minX, minY, maxX, maxY
 }
 
 // One returns the answer to the first part of the exercise.
@@ -82,21 +96,9 @@ func (e Exercise) One(instr string) (any, error) {
 	area := make([]int, len(pts))
 	infinite := make([]bool, len(pts))
 
-	// For each cell in the bounding box, find its unique nearest coordinate
-	// (ties leave the cell unowned). A coordinate owning any edge cell claims an
-	// unbounded region, so it is disqualified from the finite-area contest.
 	for y := minY; y <= maxY; y++ {
 		for x := minX; x <= maxX; x++ {
-			best, bestIdx, tie := 1<<30, -1, false
-			for i, p := range pts {
-				d := abs(p.x-x) + abs(p.y-y)
-				switch {
-				case d < best:
-					best, bestIdx, tie = d, i, false
-				case d == best:
-					tie = true
-				}
-			}
+			bestIdx, tie := nearestPoint(pts, x, y)
 			if tie || bestIdx < 0 {
 				continue
 			}

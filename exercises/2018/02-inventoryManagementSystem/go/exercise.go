@@ -1,7 +1,7 @@
 package exercises
 
 import (
-	"fmt"
+	"errors"
 	"strings"
 
 	"github.com/asphaltbuffet/advent-of-code/internal/common"
@@ -17,7 +17,7 @@ type Exercise struct {
 func (e Exercise) One(instr string) (any, error) {
 	twos, threes := 0, 0
 
-	for _, id := range strings.Fields(instr) {
+	for id := range strings.FieldsSeq(instr) {
 		var counts [26]int
 		for _, ch := range id {
 			if ch >= 'a' && ch <= 'z' {
@@ -51,7 +51,7 @@ func (e Exercise) One(instr string) (any, error) {
 func (e Exercise) Two(instr string) (any, error) {
 	ids := strings.Fields(instr)
 
-	for i := 0; i < len(ids); i++ {
+	for i := range ids {
 		for j := i + 1; j < len(ids); j++ {
 			a, b := ids[i], ids[j]
 			if len(a) != len(b) {
@@ -72,5 +72,5 @@ func (e Exercise) Two(instr string) (any, error) {
 		}
 	}
 
-	return nil, fmt.Errorf("no pair differing by a single character")
+	return nil, errors.New("no pair differing by a single character")
 }

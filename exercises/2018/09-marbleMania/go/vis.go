@@ -1,6 +1,7 @@
 package exercises
 
 import (
+	"errors"
 	"fmt"
 	"image"
 	"image/color"
@@ -34,7 +35,7 @@ func (e Exercise) Vis(instr, outdir string) error {
 		}
 	}
 	if best == 0 {
-		return fmt.Errorf("no scoring players to visualize")
+		return errors.New("no scoring players to visualize")
 	}
 
 	const (
@@ -50,28 +51,18 @@ func (e Exercise) Vis(instr, outdir string) error {
 		barW = 600/players + 1
 		plotW = players * (barW + barGap)
 	}
-	W := leftPad*2 + plotW
-	H := topPad + plotH + botPad
+	imgW := leftPad*2 + plotW
+	imgH := topPad + plotH + botPad
 
-	img := image.NewRGBA(image.Rect(0, 0, W, H))
+	img := image.NewRGBA(image.Rect(0, 0, imgW, imgH))
 
 	bg := color.RGBA{0x0c, 0x0f, 0x14, 0xff}
-	dim := color.RGBA{0x3a, 0x52, 0x66, 0xff}  // ordinary player
-	win := color.RGBA{0x86, 0xc8, 0xf0, 0xff}  // winning player (bright)
+	dim := color.RGBA{0x3a, 0x52, 0x66, 0xff} // ordinary player
+	win := color.RGBA{0x86, 0xc8, 0xf0, 0xff} // winning player (bright)
 	axis := color.RGBA{0x55, 0x5c, 0x66, 0xff}
 	white := color.RGBA{0xf0, 0xf4, 0xfa, 0xff}
 
-	fill := func(x0, y0, x1, y1 int, c color.RGBA) {
-		for y := y0; y < y1; y++ {
-			for x := x0; x < x1; x++ {
-				if x >= 0 && y >= 0 && x < W && y < H {
-					img.SetRGBA(x, y, c)
-				}
-			}
-		}
-	}
-
-	fill(0, 0, W, H, bg)
+	fillRect9(img, 0, 0, imgW, imgH, imgW, imgH, bg)
 
 	baseY := topPad + plotH
 	for i, s := range scores {
@@ -81,20 +72,17 @@ func (e Exercise) Vis(instr, outdir string) error {
 		if i == winner {
 			c = win
 		}
-		fill(x0, baseY-h, x0+barW, baseY, c)
+		fillRect9(img, x0, baseY-h, x0+barW, baseY, imgW, imgH, c)
 	}
 
-	// Baseline.
-	fill(leftPad, baseY, leftPad+plotW, baseY+1, axis)
-
+	fillRect9(img, leftPad, baseY, leftPad+plotW, baseY+1, imgW, imgH, axis)
 	drawText9(img, fmt.Sprintf("Part One scores by player (%d players)", players), leftPad, 16, white)
 
-	// Point at the winner.
 	wx := leftPad + winner*(barW+barGap)
 	lbl := fmt.Sprintf("winner: player %d = %d", winner, best)
 	lx := wx + 6
-	if w := 7 * len(lbl); lx+w > W-4 {
-		lx = W - 4 - w
+	if w := 7 * len(lbl); lx+w > imgW-4 {
+		lx = imgW - 4 - w
 	}
 	drawText9(img, lbl, lx, topPad+14, win)
 
@@ -105,6 +93,16 @@ func (e Exercise) Vis(instr, outdir string) error {
 	defer f.Close()
 
 	return png.Encode(f, img)
+}
+
+func fillRect9(img *image.RGBA, x0, y0, x1, y1, imgW, imgH int, c color.RGBA) {
+	for y := y0; y < y1; y++ {
+		for x := x0; x < x1; x++ {
+			if x >= 0 && y >= 0 && x < imgW && y < imgH {
+				img.SetRGBA(x, y, c)
+			}
+		}
+	}
 }
 
 func drawText9(img *image.RGBA, s string, x, y int, c color.RGBA) {

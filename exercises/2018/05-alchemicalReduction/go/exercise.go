@@ -19,7 +19,7 @@ type Exercise struct {
 func react(polymer string, skip byte) int {
 	stack := make([]byte, 0, len(polymer))
 
-	for i := 0; i < len(polymer); i++ {
+	for i := range len(polymer) {
 		u := polymer[i]
 		if skip != 0 && u|0x20 == skip {
 			continue

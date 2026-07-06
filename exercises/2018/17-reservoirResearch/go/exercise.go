@@ -26,7 +26,6 @@ func (e Exercise) Two(instr string) (any, error) {
 	return g.count(false), nil
 }
 
-
 // Tile states in the scan.
 const (
 	sand    = 0 // untouched
@@ -50,7 +49,7 @@ func simulate(instr string) *grid {
 	minX, maxX := math.MaxInt, math.MinInt
 	minY, maxY := math.MaxInt, math.MinInt
 
-	for _, line := range strings.Split(strings.TrimSpace(instr), "\n") {
+	for line := range strings.SplitSeq(strings.TrimSpace(instr), "\n") {
 		if line == "" {
 			continue
 		}
@@ -97,7 +96,7 @@ func simulate(instr string) *grid {
 	return g
 }
 
-func (g *grid) at(x, y int) byte    { return g.tiles[y][x-g.minX] }
+func (g *grid) at(x, y int) byte     { return g.tiles[y][x-g.minX] }
 func (g *grid) set(x, y int, b byte) { g.tiles[y][x-g.minX] = b }
 
 // isFloor reports whether the tile below (x, y) can hold water: clay or settled.

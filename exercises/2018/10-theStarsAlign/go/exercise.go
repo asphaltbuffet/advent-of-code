@@ -25,7 +25,7 @@ type star struct {
 func parse(instr string) ([]star, error) {
 	var stars []star
 
-	for _, line := range strings.Split(strings.TrimSpace(instr), "\n") {
+	for line := range strings.SplitSeq(strings.TrimSpace(instr), "\n") {
 		line = strings.TrimSpace(line)
 		if line == "" {
 			continue

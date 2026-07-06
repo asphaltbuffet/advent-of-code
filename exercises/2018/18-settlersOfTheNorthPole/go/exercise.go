@@ -20,7 +20,7 @@ const (
 // One returns the answer to the first part of the exercise.
 func (e Exercise) One(instr string) (any, error) {
 	grid := parse(instr)
-	for i := 0; i < 10; i++ {
+	for range 10 {
 		grid = step(grid)
 	}
 	return resourceValue(grid), nil
@@ -34,12 +34,12 @@ func (e Exercise) Two(instr string) (any, error) {
 	// The state settles into a cycle; record the minute each state was first seen,
 	// then fast-forward the remaining minutes modulo the cycle length.
 	seen := map[string]int{}
-	for minute := 0; minute < target; minute++ {
+	for minute := range target {
 		key := string(bytesOf(grid))
 		if first, ok := seen[key]; ok {
 			period := minute - first
 			remaining := (target - minute) % period
-			for i := 0; i < remaining; i++ {
+			for range remaining {
 				grid = step(grid)
 			}
 			return resourceValue(grid), nil
@@ -73,37 +73,18 @@ func bytesOf(grid [][]byte) []byte {
 func step(grid [][]byte) [][]byte {
 	h, w := len(grid), len(grid[0])
 	next := make([][]byte, h)
-	for y := 0; y < h; y++ {
+	for y := range h {
 		next[y] = make([]byte, w)
-		for x := 0; x < w; x++ {
-			t, l := neighbors(grid, x, y)
-			switch grid[y][x] {
-			case open:
-				if t >= 3 {
-					next[y][x] = trees
-				} else {
-					next[y][x] = open
-				}
-			case trees:
-				if l >= 3 {
-					next[y][x] = lumberyard
-				} else {
-					next[y][x] = trees
-				}
-			case lumberyard:
-				if l >= 1 && t >= 1 {
-					next[y][x] = lumberyard
-				} else {
-					next[y][x] = open
-				}
-			}
+		for x := range w {
+			next[y][x] = nextCell(grid, x, y)
 		}
 	}
 	return next
 }
 
 // neighbors counts adjacent trees and lumberyards around (x, y).
-func neighbors(grid [][]byte, x, y int) (treeCount, lumberCount int) {
+func neighbors(grid [][]byte, x, y int) (int, int) {
+	var treeCount, lumberCount int
 	h, w := len(grid), len(grid[0])
 	for dy := -1; dy <= 1; dy++ {
 		for dx := -1; dx <= 1; dx++ {
@@ -123,6 +104,26 @@ func neighbors(grid [][]byte, x, y int) (treeCount, lumberCount int) {
 		}
 	}
 	return treeCount, lumberCount
+}
+
+func nextCell(grid [][]byte, x, y int) byte {
+	t, l := neighbors(grid, x, y)
+	switch grid[y][x] {
+	case open:
+		if t >= 3 {
+			return trees
+		}
+	case trees:
+		if l >= 3 {
+			return lumberyard
+		}
+	case lumberyard:
+		if l >= 1 && t >= 1 {
+			return lumberyard
+		}
+		return open
+	}
+	return grid[y][x]
 }
 
 // resourceValue is the number of wooded acres times the number of lumberyards.

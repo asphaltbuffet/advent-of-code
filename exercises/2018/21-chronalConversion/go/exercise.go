@@ -78,7 +78,7 @@ func haltValues(p program, yield func(int) bool) {
 // loopConstants extracts the two magic numbers that drive the running value: the
 // seed it is reset to each round (the `seti` into the compared register) and the
 // multiplier (the `muli` on that register).
-func loopConstants(p program) (seed, mult int) {
+func loopConstants(p program) (int, int) {
 	// The value register is whichever operand of the `eqrr … 0` isn't register 0.
 	valReg := -1
 	for _, in := range p.instr {
@@ -90,6 +90,7 @@ func loopConstants(p program) (seed, mult int) {
 			}
 		}
 	}
+	seed, mult := 0, 0
 	for _, in := range p.instr {
 		switch {
 		case in.op == "seti" && in.c == valReg && in.a > seed:
