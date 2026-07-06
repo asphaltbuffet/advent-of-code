@@ -16,14 +16,14 @@ type Exercise struct {
 var intRe = regexp.MustCompile(`\d+`)
 
 // parse reads the player count and the last marble's worth.
-func parse(instr string) (players, last int, err error) {
+func parse(instr string) (int, int, error) {
 	nums := intRe.FindAllString(instr, -1)
 	if len(nums) != 2 {
 		return 0, 0, fmt.Errorf("expected 2 numbers, got %d in %q", len(nums), instr)
 	}
 
-	players, _ = strconv.Atoi(nums[0])
-	last, _ = strconv.Atoi(nums[1])
+	players, _ := strconv.Atoi(nums[0])
+	last, _ := strconv.Atoi(nums[1])
 
 	return players, last, nil
 }
@@ -61,7 +61,7 @@ func playGame(players, last int) []int {
 		if m%23 == 0 {
 			// Scoring move: take the marble seven counter-clockwise, add both it
 			// and the current marble value to the active player's score.
-			for i := 0; i < 7; i++ {
+			for range 7 {
 				current = current.prev
 			}
 			scores[m%players] += m + current.value

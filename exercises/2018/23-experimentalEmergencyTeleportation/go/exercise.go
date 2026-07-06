@@ -64,7 +64,7 @@ func (e Exercise) Two(instr string) (any, error) {
 	heap.Push(pq, newCube(bots, -size, -size, -size, 2*size))
 
 	for pq.Len() > 0 {
-		c := heap.Pop(pq).(cube)
+		c := heap.Pop(pq).(cube) //nolint:errcheck // heap.Interface contract
 		if c.size == 1 {
 			// Best-first order guarantees this is the winning point.
 			return c.distToOrigin, nil
@@ -137,18 +137,20 @@ func parse(instr string) []bot {
 // then smallest — so the first size-1 cube popped is the optimal point.
 type cubeQueue []cube
 
-func (q cubeQueue) Len() int { return len(q) }
-func (q cubeQueue) Less(i, j int) bool {
-	if q[i].inRange != q[j].inRange {
-		return q[i].inRange > q[j].inRange
+func (q *cubeQueue) Len() int { return len(*q) }
+func (q *cubeQueue) Less(i, j int) bool {
+	if (*q)[i].inRange != (*q)[j].inRange {
+		return (*q)[i].inRange > (*q)[j].inRange
 	}
-	if q[i].distToOrigin != q[j].distToOrigin {
-		return q[i].distToOrigin < q[j].distToOrigin
+	if (*q)[i].distToOrigin != (*q)[j].distToOrigin {
+		return (*q)[i].distToOrigin < (*q)[j].distToOrigin
 	}
-	return q[i].size < q[j].size
+	return (*q)[i].size < (*q)[j].size
 }
-func (q cubeQueue) Swap(i, j int) { q[i], q[j] = q[j], q[i] }
-func (q *cubeQueue) Push(x any)   { *q = append(*q, x.(cube)) }
+func (q *cubeQueue) Swap(i, j int) { (*q)[i], (*q)[j] = (*q)[j], (*q)[i] }
+func (q *cubeQueue) Push(x any) {
+	*q = append(*q, x.(cube)) //nolint:errcheck // heap.Interface contract
+}
 func (q *cubeQueue) Pop() any {
 	old := *q
 	n := len(old)

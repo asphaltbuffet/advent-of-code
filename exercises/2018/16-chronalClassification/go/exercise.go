@@ -33,8 +33,8 @@ var operations = []struct {
 	{"bani", func(r regs, a, b int) int { return r[a] & b }},
 	{"borr", func(r regs, a, b int) int { return r[a] | r[b] }},
 	{"bori", func(r regs, a, b int) int { return r[a] | b }},
-	{"setr", func(r regs, a, b int) int { return r[a] }},
-	{"seti", func(r regs, a, b int) int { return a }},
+	{"setr", func(r regs, a, _ int) int { return r[a] }},
+	{"seti", func(_ regs, a, _ int) int { return a }},
 	{"gtir", func(r regs, a, b int) int { return boolToInt(a > r[b]) }},
 	{"gtri", func(r regs, a, b int) int { return boolToInt(r[a] > b) }},
 	{"gtrr", func(r regs, a, b int) int { return boolToInt(r[a] > r[b]) }},
@@ -54,6 +54,55 @@ func boolToInt(b bool) int {
 func apply(fn func(regs, int, int) int, r regs, ins instruction) regs {
 	r[ins[3]] = fn(r, ins[1], ins[2])
 	return r
+}
+
+func buildCandidates(samples []sample) []map[int]bool {
+	candidates := make([]map[int]bool, 16)
+	for i := range candidates {
+		candidates[i] = map[int]bool{}
+		for op := range operations {
+			candidates[i][op] = true
+		}
+	}
+	for _, s := range samples {
+		opcode := s.ins[0]
+		valid := map[int]bool{}
+		for _, op := range s.matches() {
+			valid[op] = true
+		}
+		for op := range candidates[opcode] {
+			if !valid[op] {
+				delete(candidates[opcode], op)
+			}
+		}
+	}
+	return candidates
+}
+
+func resolveOpcodes(samples []sample) []int {
+	candidates := buildCandidates(samples)
+	opFor := make([]int, 16)
+	assigned := make([]bool, 16)
+	for done := 0; done < 16; {
+		for opcode := range 16 {
+			if assigned[opcode] || len(candidates[opcode]) != 1 {
+				continue
+			}
+			var op int
+			for o := range candidates[opcode] {
+				op = o
+			}
+			opFor[opcode] = op
+			assigned[opcode] = true
+			done++
+			for other := range 16 {
+				if other != opcode {
+					delete(candidates[other], op)
+				}
+			}
+		}
+	}
+	return opFor
 }
 
 // sample is one Before/instruction/After observation.
@@ -79,7 +128,7 @@ func parse(instr string) ([]sample, []instruction) {
 	blocks := strings.SplitN(strings.ReplaceAll(instr, "\r\n", "\n"), "\n\n\n", 2)
 
 	var samples []sample
-	for _, blk := range strings.Split(strings.TrimSpace(blocks[0]), "\n\n") {
+	for blk := range strings.SplitSeq(strings.TrimSpace(blocks[0]), "\n\n") {
 		lines := strings.Split(strings.TrimSpace(blk), "\n")
 		if len(lines) < 3 {
 			continue
@@ -93,7 +142,7 @@ func parse(instr string) ([]sample, []instruction) {
 
 	var program []instruction
 	if len(blocks) > 1 {
-		for _, line := range strings.Split(strings.TrimSpace(blocks[1]), "\n") {
+		for line := range strings.SplitSeq(strings.TrimSpace(blocks[1]), "\n") {
 			if line = strings.TrimSpace(line); line == "" {
 				continue
 			}
@@ -137,54 +186,8 @@ func (e Exercise) One(instr string) (any, error) {
 // Answer: 582
 func (e Exercise) Two(instr string) (any, error) {
 	samples, program := parse(instr)
+	opFor := resolveOpcodes(samples)
 
-	// Each opcode number's candidates are the operations consistent with every
-	// sample that uses it.
-	candidates := make([]map[int]bool, 16)
-	for i := range candidates {
-		candidates[i] = map[int]bool{}
-		for op := range operations {
-			candidates[i][op] = true
-		}
-	}
-	for _, s := range samples {
-		opcode := s.ins[0]
-		valid := map[int]bool{}
-		for _, op := range s.matches() {
-			valid[op] = true
-		}
-		for op := range candidates[opcode] {
-			if !valid[op] {
-				delete(candidates[opcode], op)
-			}
-		}
-	}
-
-	// Resolve by elimination: whenever an opcode has a single candidate, assign it
-	// and remove that operation from all other opcodes.
-	opFor := make([]int, 16)
-	assigned := make([]bool, 16)
-	for done := 0; done < 16; {
-		for opcode := 0; opcode < 16; opcode++ {
-			if assigned[opcode] || len(candidates[opcode]) != 1 {
-				continue
-			}
-			var op int
-			for o := range candidates[opcode] {
-				op = o
-			}
-			opFor[opcode] = op
-			assigned[opcode] = true
-			done++
-			for other := 0; other < 16; other++ {
-				if other != opcode {
-					delete(candidates[other], op)
-				}
-			}
-		}
-	}
-
-	// Run the program with the resolved opcode mapping.
 	var r regs
 	for _, ins := range program {
 		r = apply(operations[opFor[ins[0]]].fn, r, ins)

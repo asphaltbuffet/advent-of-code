@@ -1,6 +1,7 @@
 package exercises
 
 import (
+	"errors"
 	"fmt"
 	"strings"
 
@@ -19,7 +20,7 @@ type state map[int]bool
 func parse(instr string) (state, map[string]bool, error) {
 	lines := strings.Split(strings.TrimSpace(instr), "\n")
 	if len(lines) == 0 {
-		return nil, nil, fmt.Errorf("empty input")
+		return nil, nil, errors.New("empty input")
 	}
 
 	pots := state{}
@@ -50,8 +51,9 @@ func parse(instr string) (state, map[string]bool, error) {
 }
 
 // bounds returns the lowest and highest planted pot indices.
-func bounds(pots state) (lo, hi int) {
+func bounds(pots state) (int, int) {
 	first := true
+	lo, hi := 0, 0
 	for i := range pots {
 		if first || i < lo {
 			lo = i
@@ -119,7 +121,7 @@ func (e Exercise) One(instr string) (any, error) {
 		return nil, err
 	}
 
-	for gen := 0; gen < 20; gen++ {
+	for range 20 {
 		pots = step(pots, rules)
 	}
 
@@ -143,11 +145,11 @@ func (e Exercise) Two(instr string) (any, error) {
 		gen, lo int
 	}{}
 
-	for gen := 0; gen < target; gen++ {
+	for gen := range target {
 		sh, lo := shape(pots)
 		if prev, ok := seen[sh]; ok {
-			drift := lo - prev.lo         // indices shifted per (gen - prev.gen)
-			period := gen - prev.gen      // generations for that shift
+			drift := lo - prev.lo    // indices shifted per (gen - prev.gen)
+			period := gen - prev.gen // generations for that shift
 			remaining := target - gen
 			count := len(pots)
 			return sumIndices(pots) + remaining*count*drift/period, nil

@@ -12,8 +12,8 @@ import (
 // Region shades, tiered by brightness so terrain reads in grayscale:
 // rocky darkest, wet mid, narrow brightest.
 var regionColor = [3]color.RGBA{
-	{40, 44, 52, 255},   // rocky
-	{72, 110, 150, 255}, // wet
+	{40, 44, 52, 255},    // rocky
+	{72, 110, 150, 255},  // wet
 	{150, 176, 210, 255}, // narrow
 }
 
@@ -44,7 +44,7 @@ func (e Exercise) Vis(instr, outdir string) error {
 	}
 	const pad = 20
 	minY = max(minY-pad, 0)
-	maxY = maxY + pad
+	maxY += pad
 	minX, maxX := 0, c.tx+pad
 
 	w := maxX - minX + 1
@@ -98,13 +98,7 @@ func markBlock(img *image.RGBA, x, y int, col color.RGBA) {
 // same-cell tool switches collapse to one point).
 func rescuePath(c *cave) [][2]int {
 	w, h := c.tx+margin, c.ty+margin
-	region := make([][]int, h+1)
-	for y := 0; y <= h; y++ {
-		region[y] = make([]int, w+1)
-		for x := 0; x <= w; x++ {
-			region[y][x] = c.erosion(x, y) % 3
-		}
-	}
+	region := buildRegionMap(c, w, h)
 
 	idx := func(x, y, tool int) int { return (y*(w+1)+x)*3 + tool }
 	dist := make([]int, (w+1)*(h+1)*3)
@@ -119,7 +113,7 @@ func rescuePath(c *cave) [][2]int {
 	pq := &priorityQueue{{x: 0, y: 0, tool: torch, cost: 0}}
 	found := false
 	for pq.Len() > 0 {
-		cur := heap.Pop(pq).(item)
+		cur := heap.Pop(pq).(item) //nolint:errcheck // heap.Interface contract
 		ci := idx(cur.x, cur.y, cur.tool)
 		if cur.cost > dist[ci] {
 			continue
@@ -128,34 +122,12 @@ func rescuePath(c *cave) [][2]int {
 			found = true
 			break
 		}
-		relaxP := func(nx, ny, tool, nd int) {
-			ni := idx(nx, ny, tool)
-			if nd < dist[ni] {
-				dist[ni] = nd
-				prev[ni] = ci
-				heap.Push(pq, item{x: nx, y: ny, tool: tool, cost: nd})
-			}
-		}
-		for tool := 0; tool < 3; tool++ {
-			if tool != region[cur.y][cur.x] && tool != cur.tool {
-				relaxP(cur.x, cur.y, tool, cur.cost+7)
-			}
-		}
-		for _, d := range [4][2]int{{1, 0}, {-1, 0}, {0, 1}, {0, -1}} {
-			nx, ny := cur.x+d[0], cur.y+d[1]
-			if nx < 0 || ny < 0 || nx > w || ny > h {
-				continue
-			}
-			if region[ny][nx] != cur.tool {
-				relaxP(nx, ny, cur.tool, cur.cost+1)
-			}
-		}
+		relaxWithPrev(dist, prev, pq, idx, region, cur, ci, w, h)
 	}
 	if !found {
 		return nil
 	}
 
-	// Walk predecessors back from the goal, collecting distinct cells.
 	var path [][2]int
 	seen := map[[2]int]bool{}
 	for i := goal; i != -1; i = prev[i] {
@@ -167,4 +139,31 @@ func rescuePath(c *cave) [][2]int {
 		}
 	}
 	return path
+}
+
+func relaxWithPrev(
+	dist, prev []int, pq *priorityQueue, idx func(x, y, tool int) int, region [][]int, cur item, ci, w, h int,
+) {
+	doRelax := func(nx, ny, tool, nd int) {
+		ni := idx(nx, ny, tool)
+		if nd < dist[ni] {
+			dist[ni] = nd
+			prev[ni] = ci
+			heap.Push(pq, item{x: nx, y: ny, tool: tool, cost: nd})
+		}
+	}
+	for tool := range 3 {
+		if tool != region[cur.y][cur.x] && tool != cur.tool {
+			doRelax(cur.x, cur.y, tool, cur.cost+7)
+		}
+	}
+	for _, d := range [4][2]int{{1, 0}, {-1, 0}, {0, 1}, {0, -1}} {
+		nx, ny := cur.x+d[0], cur.y+d[1]
+		if nx < 0 || ny < 0 || nx > w || ny > h {
+			continue
+		}
+		if region[ny][nx] != cur.tool {
+			doRelax(nx, ny, cur.tool, cur.cost+1)
+		}
+	}
 }

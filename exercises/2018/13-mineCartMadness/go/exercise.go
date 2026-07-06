@@ -31,7 +31,7 @@ func parse(instr string) ([][]byte, []*cart) {
 
 	for y, line := range lines {
 		grid[y] = []byte(line)
-		for x := 0; x < len(grid[y]); x++ {
+		for x := range len(grid[y]) {
 			var dx, dy int
 			var under byte
 			switch grid[y][x] {
@@ -88,46 +88,54 @@ func (c *cart) advance(grid [][]byte) {
 // remains (part two), returning that location as "x,y".
 func simulate(grid [][]byte, carts []*cart, lastStanding bool) string {
 	for {
-		sort.Slice(carts, func(i, j int) bool {
-			if carts[i].y != carts[j].y {
-				return carts[i].y < carts[j].y
-			}
-			return carts[i].x < carts[j].x
-		})
-
+		sortCarts(carts)
 		for _, c := range carts {
 			if c.dead {
 				continue
 			}
-
 			c.advance(grid)
-
-			// Check for a collision with any live cart at the new position.
-			for _, other := range carts {
-				if other == c || other.dead || other.x != c.x || other.y != c.y {
-					continue
-				}
+			if crash := findCollision(carts, c); crash != nil {
 				if !lastStanding {
 					return fmt.Sprintf("%d,%d", c.x, c.y)
 				}
-				c.dead, other.dead = true, true
-				break
+				c.dead, crash.dead = true, true
 			}
 		}
-
 		if lastStanding {
-			live := carts[:0]
-			for _, c := range carts {
-				if !c.dead {
-					live = append(live, c)
-				}
-			}
-			carts = live
+			carts = aliveCarts(carts)
 			if len(carts) == 1 {
 				return fmt.Sprintf("%d,%d", carts[0].x, carts[0].y)
 			}
 		}
 	}
+}
+
+func findCollision(carts []*cart, c *cart) *cart {
+	for _, other := range carts {
+		if other != c && !other.dead && other.x == c.x && other.y == c.y {
+			return other
+		}
+	}
+	return nil
+}
+
+func aliveCarts(carts []*cart) []*cart {
+	live := carts[:0]
+	for _, c := range carts {
+		if !c.dead {
+			live = append(live, c)
+		}
+	}
+	return live
+}
+
+func sortCarts(carts []*cart) {
+	sort.Slice(carts, func(i, j int) bool {
+		if carts[i].y != carts[j].y {
+			return carts[i].y < carts[j].y
+		}
+		return carts[i].x < carts[j].x
+	})
 }
 
 // One returns the answer to the first part of the exercise.

@@ -66,13 +66,11 @@ func (e Exercise) Two(instr string) (any, error) {
 // fight runs the battle to completion and returns the winning army (0 immune, 1
 // infection, -1 stalemate) and its remaining units. A round that kills no units is
 // a stalemate; the immune system has not won, so it is reported as infection.
-func fight(groups []*group) (winner, units int) {
+func fight(groups []*group) (int, int) {
 	for {
-		alive := 0
 		byArmy := [2]int{}
 		for _, g := range groups {
 			if g.units > 0 {
-				alive++
 				byArmy[g.army] += g.units
 			}
 		}
@@ -92,42 +90,8 @@ func fight(groups []*group) (winner, units int) {
 // round performs one target-selection + attack phase and returns the total units
 // killed (0 signals a stalemate).
 func round(groups []*group) int {
-	// --- Target selection ---
-	selectors := livingGroups(groups)
-	sort.Slice(selectors, func(i, j int) bool {
-		a, b := selectors[i], selectors[j]
-		if a.effectivePower() != b.effectivePower() {
-			return a.effectivePower() > b.effectivePower()
-		}
-		return a.initiative > b.initiative
-	})
+	targets := selectTargets(groups)
 
-	targets := map[*group]*group{}
-	chosen := map[*group]bool{}
-	for _, atk := range selectors {
-		var best *group
-		bestDmg := 0
-		for _, def := range livingGroups(groups) {
-			if def.army == atk.army || chosen[def] {
-				continue
-			}
-			dmg := atk.damageTo(def)
-			if dmg == 0 {
-				continue
-			}
-			if best == nil || dmg > bestDmg ||
-				(dmg == bestDmg && def.effectivePower() > best.effectivePower()) ||
-				(dmg == bestDmg && def.effectivePower() == best.effectivePower() && def.initiative > best.initiative) {
-				best, bestDmg = def, dmg
-			}
-		}
-		if best != nil {
-			targets[atk] = best
-			chosen[best] = true
-		}
-	}
-
-	// --- Attack, in decreasing initiative order ---
 	attackers := livingGroups(groups)
 	sort.Slice(attackers, func(i, j int) bool {
 		return attackers[i].initiative > attackers[j].initiative
@@ -142,10 +106,7 @@ func round(groups []*group) int {
 		if !ok {
 			continue
 		}
-		dead := atk.damageTo(def) / def.hp
-		if dead > def.units {
-			dead = def.units
-		}
+		dead := min(atk.damageTo(def)/def.hp, def.units)
 		def.units -= dead
 		killed += dead
 	}
@@ -162,14 +123,57 @@ func livingGroups(groups []*group) []*group {
 	return out
 }
 
+func selectTargets(groups []*group) map[*group]*group {
+	selectors := livingGroups(groups)
+	sort.Slice(selectors, func(i, j int) bool {
+		a, b := selectors[i], selectors[j]
+		if a.effectivePower() != b.effectivePower() {
+			return a.effectivePower() > b.effectivePower()
+		}
+		return a.initiative > b.initiative
+	})
+
+	targets := map[*group]*group{}
+	chosen := map[*group]bool{}
+	for _, atk := range selectors {
+		best := chooseBestTarget(atk, livingGroups(groups), chosen)
+		if best != nil {
+			targets[atk] = best
+			chosen[best] = true
+		}
+	}
+	return targets
+}
+
+func chooseBestTarget(atk *group, defenders []*group, chosen map[*group]bool) *group {
+	var best *group
+	bestDmg := 0
+	for _, def := range defenders {
+		if def.army == atk.army || chosen[def] {
+			continue
+		}
+		dmg := atk.damageTo(def)
+		if dmg == 0 {
+			continue
+		}
+		if best == nil || dmg > bestDmg ||
+			(dmg == bestDmg && def.effectivePower() > best.effectivePower()) ||
+			(dmg == bestDmg && def.effectivePower() == best.effectivePower() && def.initiative > best.initiative) {
+			best, bestDmg = def, dmg
+		}
+	}
+	return best
+}
+
 var lineRe = regexp.MustCompile(
-	`(\d+) units each with (\d+) hit points (?:\((.*?)\) )?with an attack that does (\d+) (\w+) damage at initiative (\d+)`)
+	`(\d+) units each with (\d+) hit points (?:\((.*?)\) )?with an attack that does (\d+) (\w+) damage at initiative (\d+)`,
+)
 
 // parse reads both armies into a flat slice of groups.
 func parse(instr string) []*group {
 	var groups []*group
 	army := 0
-	for _, line := range strings.Split(strings.TrimSpace(instr), "\n") {
+	for line := range strings.SplitSeq(strings.TrimSpace(instr), "\n") {
 		line = strings.TrimSpace(line)
 		switch {
 		case line == "":
@@ -192,14 +196,14 @@ func parse(instr string) []*group {
 			weak:       map[string]bool{},
 			immune:     map[string]bool{},
 		}
-		for _, clause := range strings.Split(m[3], "; ") {
+		for clause := range strings.SplitSeq(m[3], "; ") {
 			clause = strings.TrimSpace(clause)
-			if types, ok := strings.CutPrefix(clause, "weak to "); ok {
-				for _, t := range strings.Split(types, ", ") {
+			if weakTypes, okWeak := strings.CutPrefix(clause, "weak to "); okWeak {
+				for t := range strings.SplitSeq(weakTypes, ", ") {
 					g.weak[t] = true
 				}
-			} else if types, ok := strings.CutPrefix(clause, "immune to "); ok {
-				for _, t := range strings.Split(types, ", ") {
+			} else if immuneTypes, okImmune := strings.CutPrefix(clause, "immune to "); okImmune {
+				for t := range strings.SplitSeq(immuneTypes, ", ") {
 					g.immune[t] = true
 				}
 			}

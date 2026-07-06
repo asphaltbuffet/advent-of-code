@@ -64,55 +64,59 @@ func (e Exercise) Vis(instr, outdir string) error {
 func visWater(sb *strings.Builder, g *grid, minCol, maxCol, oy int) {
 	h := g.maxY - g.minY + 1
 	w := maxCol - minCol + 1
-	// water[y'][x'] holds the tile type (or sand) in cropped coordinates.
 	done := make([][]bool, h)
 	for i := range done {
 		done[i] = make([]bool, w)
 	}
-	isWater := func(t byte) bool { return t == flowing || t == settled }
 
-	for yy := 0; yy < h; yy++ {
+	for yy := range h {
 		row := g.tiles[oy+yy]
-		for xx := 0; xx < w; xx++ {
+		for xx := range w {
 			if done[yy][xx] {
 				continue
 			}
 			t := row[minCol+xx]
-			if !isWater(t) {
+			if t != flowing && t != settled {
 				continue
 			}
-			// Extend right while the same type and not yet covered.
-			rw := 1
-			for xx+rw < w && !done[yy][xx+rw] && row[minCol+xx+rw] == t {
-				rw++
-			}
-			// Extend down while every cell of that width matches.
-			rh := 1
-			for yy+rh < h {
-				ry := g.tiles[oy+yy+rh]
-				ok := true
-				for k := 0; k < rw; k++ {
-					if done[yy+rh][xx+k] || ry[minCol+xx+k] != t {
-						ok = false
-						break
-					}
-				}
-				if !ok {
-					break
-				}
-				rh++
-			}
-			for dy := 0; dy < rh; dy++ {
-				for dx := 0; dx < rw; dx++ {
-					done[yy+dy][xx+dx] = true
-				}
-			}
+			rw, rh := extendWaterRect(g, done, row, minCol, xx, yy, w, h, oy, t)
+			markDone(done, xx, yy, rw, rh)
 			fill := visFlowing
 			if t == settled {
 				fill = visSettled
 			}
-			fmt.Fprintf(sb, `<rect x="%d" y="%d" width="%d" height="%d" fill="%s"/>`,
-				xx, yy, rw, rh, fill)
+			fmt.Fprintf(sb, `<rect x="%d" y="%d" width="%d" height="%d" fill="%s"/>`, xx, yy, rw, rh, fill)
+		}
+	}
+}
+
+func extendWaterRect(g *grid, done [][]bool, row []byte, minCol, xx, yy, w, h, oy int, t byte) (int, int) {
+	rw := 1
+	for xx+rw < w && !done[yy][xx+rw] && row[minCol+xx+rw] == t {
+		rw++
+	}
+	rh := 1
+	for yy+rh < h {
+		ry := g.tiles[oy+yy+rh]
+		ok := true
+		for k := range rw {
+			if done[yy+rh][xx+k] || ry[minCol+xx+k] != t {
+				ok = false
+				break
+			}
+		}
+		if !ok {
+			break
+		}
+		rh++
+	}
+	return rw, rh
+}
+
+func markDone(done [][]bool, xx, yy, rw, rh int) {
+	for dy := range rh {
+		for dx := range rw {
+			done[yy+dy][xx+dx] = true
 		}
 	}
 }
@@ -123,7 +127,7 @@ func visWater(sb *strings.Builder, g *grid, minCol, maxCol, oy int) {
 // crispEdges snap all shapes to the pixel grid, so nothing anti-aliases.
 func visClayLines(sb *strings.Builder, instr string, ox, oy int) {
 	re := regexp.MustCompile(`-?\d+`)
-	for _, line := range strings.Split(strings.TrimSpace(instr), "\n") {
+	for line := range strings.SplitSeq(strings.TrimSpace(instr), "\n") {
 		if line == "" {
 			continue
 		}

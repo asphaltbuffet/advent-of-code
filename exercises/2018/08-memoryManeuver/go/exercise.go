@@ -1,7 +1,7 @@
 package exercises
 
 import (
-	"fmt"
+	"errors"
 	"regexp"
 	"strconv"
 
@@ -27,17 +27,18 @@ func parse(instr string) []int {
 
 // metaSum reads one node starting at nums[i], returning the summed metadata of
 // that node and its whole subtree along with the index just past the node.
-func metaSum(nums []int, i int) (sum, next int) {
+func metaSum(nums []int, i int) (int, int) {
 	children, meta := nums[i], nums[i+1]
 	i += 2
 
-	for c := 0; c < children; c++ {
+	sum := 0
+	for range children {
 		var s int
 		s, i = metaSum(nums, i)
 		sum += s
 	}
 
-	for m := 0; m < meta; m++ {
+	for range meta {
 		sum += nums[i]
 		i++
 	}
@@ -49,16 +50,17 @@ func metaSum(nums []int, i int) (sum, next int) {
 // index just past the node. A leaf's value is the sum of its metadata; a node
 // with children sums the values of the children its metadata entries reference
 // (1-based, out-of-range references skipped, repeats counted).
-func nodeValue(nums []int, i int) (value, next int) {
+func nodeValue(nums []int, i int) (int, int) {
 	children, meta := nums[i], nums[i+1]
 	i += 2
 
+	value := 0
 	childValues := make([]int, children)
-	for c := 0; c < children; c++ {
+	for c := range children {
 		childValues[c], i = nodeValue(nums, i)
 	}
 
-	for m := 0; m < meta; m++ {
+	for range meta {
 		ref := nums[i]
 		i++
 
@@ -77,7 +79,7 @@ func nodeValue(nums []int, i int) (value, next int) {
 func (e Exercise) One(instr string) (any, error) {
 	nums := parse(instr)
 	if len(nums) < 2 {
-		return nil, fmt.Errorf("input too short")
+		return nil, errors.New("input too short")
 	}
 
 	sum, _ := metaSum(nums, 0)
@@ -90,7 +92,7 @@ func (e Exercise) One(instr string) (any, error) {
 func (e Exercise) Two(instr string) (any, error) {
 	nums := parse(instr)
 	if len(nums) < 2 {
-		return nil, fmt.Errorf("input too short")
+		return nil, errors.New("input too short")
 	}
 
 	value, _ := nodeValue(nums, 0)

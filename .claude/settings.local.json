@@ -13,7 +13,9 @@
       "WebFetch(domain:adventofcode.com)",
       "mcp__plugin_claude-code-home-manager_serena__find_symbol",
       "Bash(elf benchmark *)",
-      "Bash(elf analyze *)"
+      "Bash(elf analyze *)",
+      "Bash(golangci-lint run *)",
+      "mcp__plugin_claude-code-home-manager_serena__insert_after_symbol"
     ]
   }
 }

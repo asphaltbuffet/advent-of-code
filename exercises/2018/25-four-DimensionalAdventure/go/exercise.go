@@ -17,7 +17,7 @@ type point [4]int
 
 func manhattan(a, b point) int {
 	d := 0
-	for i := 0; i < 4; i++ {
+	for i := range 4 {
 		x := a[i] - b[i]
 		if x < 0 {
 			x = -x
@@ -36,10 +36,9 @@ func (e Exercise) One(instr string) (any, error) {
 	for i := range parent {
 		parent[i] = i
 	}
-	var find func(int) int
-	find = func(x int) int {
+	find := func(x int) int {
 		for parent[x] != x {
-			parent[x] = parent[parent[x]] // path compression
+			parent[x] = parent[parent[x]]
 			x = parent[x]
 		}
 		return x
@@ -62,7 +61,7 @@ func (e Exercise) One(instr string) (any, error) {
 }
 
 // Two is the day 25 finale: there is no second puzzle, only the closing message.
-func (e Exercise) Two(instr string) (any, error) {
+func (e Exercise) Two(_ string) (any, error) {
 	return "Merry Christmas!", nil
 }
 
@@ -70,7 +69,7 @@ func (e Exercise) Two(instr string) (any, error) {
 func parse(instr string) []point {
 	re := regexp.MustCompile(`-?\d+`)
 	var pts []point
-	for _, line := range strings.Split(strings.TrimSpace(instr), "\n") {
+	for line := range strings.SplitSeq(strings.TrimSpace(instr), "\n") {
 		nums := re.FindAllString(line, -1)
 		if len(nums) != 4 {
 			continue

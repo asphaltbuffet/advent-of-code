@@ -1,9 +1,10 @@
 package exercises
 
 import (
+	"errors"
 	"fmt"
 	"math"
-	"math/rand"
+	"math/rand/v2"
 	"os"
 	"path/filepath"
 	"sort"
@@ -39,16 +40,110 @@ func (e Exercise) Vis(instr, outdir string) error {
 	pts := parse(instr)
 	n := len(pts)
 	if n == 0 {
-		return fmt.Errorf("no points to visualize")
+		return errors.New("no points to visualize")
 	}
 
-	// Union-find over distance-3 links: reuse the Part One relation to both label
-	// constellations (for color) and collect edges (for the layout's attraction).
+	edges, nodeColor := buildConstellationGraph(pts, n)
+	xs, ys := layout(n, edges)
+
+	const (
+		size    = 1400.0
+		margin  = 40.0
+		radius  = 1.5
+		edgeCol = "#2e2e38"
+	)
+	sb := renderConstellationSVG(xs, ys, edges, nodeColor, size, margin, radius, edgeCol)
+	return os.WriteFile(filepath.Join(outdir, "four-dimensional-adventure.svg"), []byte(sb), 0o600)
+}
+
+// layout runs a Fruchterman-Reingold force simulation: every node repels every
+// other (spreading separate constellations apart) while edges act as springs
+// (pulling each constellation's members together). Positions are returned once the
+// per-iteration displacement (temperature) has cooled to near zero.
+// visEdge is a distance-3 link between two point indices.
+type visEdge struct{ a, b int }
+
+func layout(n int, edges []visEdge) ([]float64, []float64) {
+	rng := rand.New(rand.NewPCG(2018, 0)) // fixed seed → reproducible SVG
+	xs := make([]float64, n)
+	ys := make([]float64, n)
+	for i := range n {
+		a := 2 * math.Pi * rng.Float64()
+		r := math.Sqrt(rng.Float64())
+		xs[i] = r * math.Cos(a)
+		ys[i] = r * math.Sin(a)
+	}
+
+	const (
+		k       = 0.032
+		gravity = 0.02
+		iters   = 400
+	)
+	temp := 0.15
+	cool := temp / float64(iters+1)
+	dx := make([]float64, n)
+	dy := make([]float64, n)
+
+	for range iters {
+		frIteration(xs, ys, dx, dy, edges, n, k, gravity, temp)
+		temp -= cool
+	}
+	return xs, ys
+}
+
+func frIteration(xs, ys, dx, dy []float64, edges []visEdge, n int, k, gravity, temp float64) {
+	for i := range dx {
+		dx[i], dy[i] = 0, 0
+	}
+	for i := range n {
+		for j := i + 1; j < n; j++ {
+			ddx, ddy := xs[i]-xs[j], ys[i]-ys[j]
+			dist := math.Hypot(ddx, ddy)
+			if dist < 1e-4 {
+				dist = 1e-4
+			}
+			force := k * k / dist
+			ux, uy := ddx/dist, ddy/dist
+			dx[i] += ux * force
+			dy[i] += uy * force
+			dx[j] -= ux * force
+			dy[j] -= uy * force
+		}
+	}
+	for _, e := range edges {
+		ddx, ddy := xs[e.a]-xs[e.b], ys[e.a]-ys[e.b]
+		dist := math.Hypot(ddx, ddy)
+		if dist < 1e-4 {
+			dist = 1e-4
+		}
+		force := dist * dist / k
+		ux, uy := ddx/dist, ddy/dist
+		dx[e.a] -= ux * force
+		dy[e.a] -= uy * force
+		dx[e.b] += ux * force
+		dy[e.b] += uy * force
+	}
+	for i := range n {
+		dx[i] -= xs[i] * gravity
+		dy[i] -= ys[i] * gravity
+	}
+	for i := range n {
+		d := math.Hypot(dx[i], dy[i])
+		if d < 1e-9 {
+			continue
+		}
+		step := math.Min(d, temp)
+		xs[i] += dx[i] / d * step
+		ys[i] += dy[i] / d * step
+	}
+}
+
+func buildConstellationGraph(pts []point, n int) ([]visEdge, []string) {
 	parent := make([]int, n)
 	for i := range parent {
 		parent[i] = i
 	}
-	var find func(int) int
+	var find func(x int) int //nolint:staticcheck // recursive closure must be pre-declared to call itself
 	find = func(x int) int {
 		for parent[x] != x {
 			parent[x] = parent[parent[x]]
@@ -67,7 +162,6 @@ func (e Exercise) Vis(instr, outdir string) error {
 		}
 	}
 
-	// Rank constellations by size so the biggest get colors and the rest go gray.
 	members := map[int][]int{}
 	for i := range pts {
 		r := find(i)
@@ -81,27 +175,25 @@ func (e Exercise) Vis(instr, outdir string) error {
 		if len(members[roots[a]]) != len(members[roots[b]]) {
 			return len(members[roots[a]]) > len(members[roots[b]])
 		}
-		return roots[a] < roots[b] // stable tiebreak for reproducible colors
+		return roots[a] < roots[b]
 	})
-	color := make([]string, n) // per-point fill
+
+	nodeColor := make([]string, n)
 	for rank, r := range roots {
 		c := visGray
 		if rank < len(visPalette) {
 			c = visPalette[rank]
 		}
 		for _, i := range members[r] {
-			color[i] = c
+			nodeColor[i] = c
 		}
 	}
+	return edges, nodeColor
+}
 
-	xs, ys := layout(n, edges)
-
-	const (
-		size    = 1400.0 // SVG viewport (square)
-		margin  = 40.0
-		radius  = 1.5 // node dot radius
-		edgeCol = "#2e2e38"
-	)
+func renderConstellationSVG(
+	xs, ys []float64, edges []visEdge, nodeColor []string, size, margin, radius float64, edgeCol string,
+) string {
 	minX, maxX, minY, maxY := xs[0], xs[0], ys[0], ys[0]
 	for i := range xs {
 		minX, maxX = math.Min(minX, xs[i]), math.Max(maxX, xs[i])
@@ -112,123 +204,25 @@ func (e Exercise) Vis(instr, outdir string) error {
 	if span == 0 {
 		span = 1
 	}
-	scale := (size - 2*margin) / span
-	// Center the (possibly non-square) point cloud in the square viewport.
-	offX := margin + (size-2*margin-spanX*scale)/2
-	offY := margin + (size-2*margin-spanY*scale)/2
-	px := func(i int) float64 { return offX + (xs[i]-minX)*scale }
-	py := func(i int) float64 { return offY + (ys[i]-minY)*scale }
+	sc := (size - 2*margin) / span
+	offX := margin + (size-2*margin-spanX*sc)/2
+	offY := margin + (size-2*margin-spanY*sc)/2
+	px := func(i int) float64 { return offX + (xs[i]-minX)*sc }
+	py := func(i int) float64 { return offY + (ys[i]-minY)*sc }
 
 	var sb strings.Builder
 	fmt.Fprintf(&sb, `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 %.0f %.0f">`, size, size)
 	fmt.Fprintf(&sb, `<rect width="%.0f" height="%.0f" fill="%s"/>`, size, size, visBG)
-
-	// Edges first, underneath the nodes, as one faint path.
 	sb.WriteString(`<g stroke="` + edgeCol + `" stroke-width="0.5">`)
 	for _, e := range edges {
 		fmt.Fprintf(&sb, `<line x1="%.1f" y1="%.1f" x2="%.1f" y2="%.1f"/>`,
 			px(e.a), py(e.a), px(e.b), py(e.b))
 	}
 	sb.WriteString(`</g>`)
-
-	// Nodes on top.
-	for i := range pts {
+	for i := range xs {
 		fmt.Fprintf(&sb, `<circle cx="%.1f" cy="%.1f" r="%.1f" fill="%s"/>`,
-			px(i), py(i), radius, color[i])
+			px(i), py(i), radius, nodeColor[i])
 	}
-
 	sb.WriteString(`</svg>`)
-	return os.WriteFile(filepath.Join(outdir, "four-dimensional-adventure.svg"),
-		[]byte(sb.String()), 0o600)
-}
-
-// layout runs a Fruchterman-Reingold force simulation: every node repels every
-// other (spreading separate constellations apart) while edges act as springs
-// (pulling each constellation's members together). Positions are returned once the
-// per-iteration displacement (temperature) has cooled to near zero.
-// visEdge is a distance-3 link between two point indices.
-type visEdge struct{ a, b int }
-
-func layout(n int, edges []visEdge) (xs, ys []float64) {
-	rng := rand.New(rand.NewSource(2018)) // fixed seed → reproducible SVG
-	xs = make([]float64, n)
-	ys = make([]float64, n)
-	// Seed inside a disk (not on its rim) so disconnected constellations start
-	// intermixed rather than frozen on a ring, and no two nodes coincide (a
-	// zero-distance pair would blow up the repulsion divide).
-	for i := 0; i < n; i++ {
-		a := 2 * math.Pi * rng.Float64()
-		r := math.Sqrt(rng.Float64()) // uniform over the disk
-		xs[i] = r * math.Cos(a)
-		ys[i] = r * math.Sin(a)
-	}
-
-	// Fixed ideal edge length: independent of n, so the giant constellation keeps
-	// legible internal spacing instead of collapsing to a dense ball as n grows.
-	const k = 0.032
-	// gravity pulls every node gently toward the origin so the many small,
-	// edgeless constellations drift inward and pack around the core rather than
-	// being flung out by repulsion and left stranded.
-	const gravity = 0.02
-	const iters = 400
-	temp := 0.15                    // initial max step per node
-	cool := temp / float64(iters+1) // linear cooldown
-	dx := make([]float64, n)
-	dy := make([]float64, n)
-
-	for it := 0; it < iters; it++ {
-		for i := range dx {
-			dx[i], dy[i] = 0, 0
-		}
-		// Repulsion: all pairs. O(n^2) but n~1500 is cheap for a one-shot render.
-		for i := 0; i < n; i++ {
-			for j := i + 1; j < n; j++ {
-				ddx := xs[i] - xs[j]
-				ddy := ys[i] - ys[j]
-				dist := math.Hypot(ddx, ddy)
-				if dist < 1e-4 {
-					dist = 1e-4
-				}
-				force := k * k / dist // FR repulsive force
-				ux, uy := ddx/dist, ddy/dist
-				dx[i] += ux * force
-				dy[i] += uy * force
-				dx[j] -= ux * force
-				dy[j] -= uy * force
-			}
-		}
-		// Attraction along edges.
-		for _, e := range edges {
-			ddx := xs[e.a] - xs[e.b]
-			ddy := ys[e.a] - ys[e.b]
-			dist := math.Hypot(ddx, ddy)
-			if dist < 1e-4 {
-				dist = 1e-4
-			}
-			force := dist * dist / k // FR attractive force
-			ux, uy := ddx/dist, ddy/dist
-			dx[e.a] -= ux * force
-			dy[e.a] -= uy * force
-			dx[e.b] += ux * force
-			dy[e.b] += uy * force
-		}
-		// Gravity toward the origin, proportional to distance (a soft spring to
-		// center), keeping disconnected constellations from drifting away.
-		for i := 0; i < n; i++ {
-			dx[i] -= xs[i] * gravity
-			dy[i] -= ys[i] * gravity
-		}
-		// Apply displacement, capped at the current temperature.
-		for i := 0; i < n; i++ {
-			d := math.Hypot(dx[i], dy[i])
-			if d < 1e-9 {
-				continue
-			}
-			step := math.Min(d, temp)
-			xs[i] += dx[i] / d * step
-			ys[i] += dy[i] / d * step
-		}
-		temp -= cool
-	}
-	return xs, ys
+	return sb.String()
 }

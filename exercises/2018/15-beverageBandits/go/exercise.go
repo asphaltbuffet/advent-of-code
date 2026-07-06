@@ -32,7 +32,7 @@ func parseCave(instr string) ([][]byte, []*unit) {
 
 	for y, line := range lines {
 		grid[y] = []byte(line)
-		for x := 0; x < len(grid[y]); x++ {
+		for x := range len(grid[y]) {
 			if c := grid[y][x]; c == 'E' || c == 'G' {
 				units = append(units, &unit{x: x, y: y, kind: c, hp: 200, alive: true})
 				grid[y][x] = '.'
@@ -63,64 +63,12 @@ func occupied(units []*unit) map[point]*unit {
 // completed rounds × remaining total HP.
 func combat(instr string, elfAP int, stopOnElfDeath bool) int {
 	grid, units := parseCave(instr)
-
 	rounds := 0
 	for {
-		sort.Slice(units, func(i, j int) bool {
-			if units[i].y != units[j].y {
-				return units[i].y < units[j].y
-			}
-			return units[i].x < units[j].x
-		})
-
-		for _, u := range units {
-			if !u.alive {
-				continue
-			}
-
-			// Any enemies left? If not, combat ends mid-round.
-			enemiesExist := false
-			for _, e := range units {
-				if e.alive && e.kind != u.kind {
-					enemiesExist = true
-					break
-				}
-			}
-			if !enemiesExist {
-				total := 0
-				for _, e := range units {
-					if e.alive {
-						total += e.hp
-					}
-				}
-				return rounds * total
-			}
-
-			occ := occupied(units)
-
-			// Move unless already adjacent to an enemy.
-			if adjacentEnemy(units, u.x, u.y, u.kind) == nil {
-				if fx, fy, ok := stepToward(grid, occ, units, u); ok {
-					u.x, u.y = fx, fy
-				}
-			}
-
-			// Attack the weakest adjacent enemy (reading order breaks HP ties).
-			if target := adjacentEnemy(units, u.x, u.y, u.kind); target != nil {
-				ap := 3
-				if u.kind == 'E' {
-					ap = elfAP
-				}
-				target.hp -= ap
-				if target.hp <= 0 {
-					target.alive = false
-					if stopOnElfDeath && target.kind == 'E' {
-						return -1
-					}
-				}
-			}
+		sortUnits(units)
+		if done, result := combatRound(grid, units, elfAP, stopOnElfDeath, rounds); done {
+			return result
 		}
-
 		rounds++
 	}
 }
@@ -147,26 +95,11 @@ func adjacentEnemy(units []*unit, x, y int, kind byte) *unit {
 // range of an enemy, with all ties broken by reading order. It returns the step
 // and whether a move is possible.
 func stepToward(grid [][]byte, occ map[point]*unit, units []*unit, u *unit) (int, int, bool) {
-	// In-range squares: open floor adjacent to a live enemy.
-	inRange := map[point]bool{}
-	for _, e := range units {
-		if !e.alive || e.kind == u.kind {
-			continue
-		}
-		for _, dir := range readingDirs {
-			nx, ny := e.x+dir[0], e.y+dir[1]
-			if open(grid, occ, nx, ny) {
-				inRange[point{nx, ny}] = true
-			}
-		}
-	}
+	inRange := reachableTargets(grid, occ, units, u)
 	if len(inRange) == 0 {
 		return 0, 0, false
 	}
 
-	// BFS from the unit, recording distance and the reading-order-first initial
-	// step to reach each square. Expanding neighbors in reading order guarantees
-	// the first step recorded is the reading-order-minimal one.
 	start := point{u.x, u.y}
 	dist := map[point]int{start: 0}
 	firstStep := map[point]point{}
@@ -187,27 +120,9 @@ func stepToward(grid [][]byte, occ map[point]*unit, units []*unit, u *unit) (int
 			if !found {
 				found, bestDist, chosen = true, dist[cur], cur
 			}
-			// keep scanning this distance layer; reading-order BFS discovery order
-			// means the first in-range square found is already the best target
 		}
 
-		for _, dir := range readingDirs {
-			nx, ny := cur.x+dir[0], cur.y+dir[1]
-			np := point{nx, ny}
-			if !open(grid, occ, nx, ny) {
-				continue
-			}
-			if _, seen := dist[np]; seen {
-				continue
-			}
-			dist[np] = dist[cur] + 1
-			if cur == start {
-				firstStep[np] = np
-			} else {
-				firstStep[np] = firstStep[cur]
-			}
-			queue = append(queue, np)
-		}
+		queue = expandNeighbors(queue, cur, start, grid, occ, dist, firstStep)
 	}
 
 	if !found {
@@ -227,6 +142,113 @@ func open(grid [][]byte, occ map[point]*unit, x, y int) bool {
 	}
 	_, taken := occ[point{x, y}]
 	return !taken
+}
+
+func anyEnemyAlive(units []*unit, kind byte) bool {
+	for _, e := range units {
+		if e.alive && e.kind != kind {
+			return true
+		}
+	}
+	return false
+}
+
+func sumHP(units []*unit) int {
+	total := 0
+	for _, e := range units {
+		if e.alive {
+			total += e.hp
+		}
+	}
+	return total
+}
+
+func reachableTargets(grid [][]byte, occ map[point]*unit, units []*unit, u *unit) map[point]bool {
+	inRange := map[point]bool{}
+	for _, e := range units {
+		if !e.alive || e.kind == u.kind {
+			continue
+		}
+		for _, dir := range readingDirs {
+			nx, ny := e.x+dir[0], e.y+dir[1]
+			if open(grid, occ, nx, ny) {
+				inRange[point{nx, ny}] = true
+			}
+		}
+	}
+	return inRange
+}
+
+func expandNeighbors(
+	queue []point, cur, start point, grid [][]byte, occ map[point]*unit, dist map[point]int, firstStep map[point]point,
+) []point {
+	for _, dir := range readingDirs {
+		nx, ny := cur.x+dir[0], cur.y+dir[1]
+		np := point{nx, ny}
+		if !open(grid, occ, nx, ny) {
+			continue
+		}
+		if _, seen := dist[np]; seen {
+			continue
+		}
+		dist[np] = dist[cur] + 1
+		if cur == start {
+			firstStep[np] = np
+		} else {
+			firstStep[np] = firstStep[cur]
+		}
+		queue = append(queue, np)
+	}
+	return queue
+}
+
+func sortUnits(units []*unit) {
+	sort.Slice(units, func(i, j int) bool {
+		if units[i].y != units[j].y {
+			return units[i].y < units[j].y
+		}
+		return units[i].x < units[j].x
+	})
+}
+
+func combatRound(grid [][]byte, units []*unit, elfAP int, stopOnElfDeath bool, rounds int) (bool, int) {
+	for _, u := range units {
+		if !u.alive {
+			continue
+		}
+		if !anyEnemyAlive(units, u.kind) {
+			return true, rounds * sumHP(units)
+		}
+		occ := occupied(units)
+		if adjacentEnemy(units, u.x, u.y, u.kind) == nil {
+			if fx, fy, ok := stepToward(grid, occ, units, u); ok {
+				u.x, u.y = fx, fy
+			}
+		}
+		if done, result := attackTarget(units, u, elfAP, stopOnElfDeath); done {
+			return true, result
+		}
+	}
+	return false, 0
+}
+
+func attackTarget(units []*unit, u *unit, elfAP int, stopOnElfDeath bool) (bool, int) {
+	target := adjacentEnemy(units, u.x, u.y, u.kind)
+	if target == nil {
+		return false, 0
+	}
+	ap := 3
+	if u.kind == 'E' {
+		ap = elfAP
+	}
+	target.hp -= ap
+	if target.hp <= 0 {
+		target.alive = false
+		if stopOnElfDeath && target.kind == 'E' {
+			return true, -1
+		}
+	}
+	return false, 0
 }
 
 // One returns the answer to the first part of the exercise.

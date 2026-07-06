@@ -1,6 +1,7 @@
 package exercises
 
 import (
+	"errors"
 	"fmt"
 	"image"
 	"image/color"
@@ -23,11 +24,42 @@ func (e Exercise) Vis(instr, outdir string) error {
 		return err
 	}
 	if len(stars) == 0 {
-		return fmt.Errorf("no stars to visualize")
+		return errors.New("no stars to visualize")
 	}
 
 	t := converge(stars)
+	minX, minY, maxX, maxY := starBounds(stars, t)
 
+	gw, gh := maxX-minX+1, maxY-minY+1
+	const (
+		scale  = 10
+		margin = 20
+		topPad = 26
+	)
+	imgW := gw*scale + 2*margin
+	imgH := gh*scale + 2*margin + topPad
+
+	img := image.NewRGBA(image.Rect(0, 0, imgW, imgH))
+
+	bg := color.RGBA{0x0a, 0x0c, 0x12, 0xff}
+	starC := color.RGBA{0xdf, 0xe8, 0xf6, 0xff}
+	glow := color.RGBA{0x5a, 0x74, 0x9a, 0xff}
+	white := color.RGBA{0xf0, 0xf4, 0xfa, 0xff}
+
+	fillRect10(img, 0, 0, imgW, imgH, imgW, imgH, bg)
+	drawStars10(img, stars, t, minX, minY, scale, margin, topPad, imgW, imgH, glow, starC)
+	drawText10(img, fmt.Sprintf("the stars align at t=%d", t), margin, 18, white)
+
+	f, err := os.Create(filepath.Join(outdir, "the-stars-align.png"))
+	if err != nil {
+		return err
+	}
+	defer f.Close()
+
+	return png.Encode(f, img)
+}
+
+func starBounds(stars []star, t int) (int, int, int, int) {
 	minX, minY := 1<<62, 1<<62
 	maxX, maxY := -(1 << 62), -(1 << 62)
 	for _, s := range stars {
@@ -45,52 +77,28 @@ func (e Exercise) Vis(instr, outdir string) error {
 			maxY = y
 		}
 	}
+	return minX, minY, maxX, maxY
+}
 
-	gw, gh := maxX-minX+1, maxY-minY+1
-	const (
-		scale  = 10 // pixels per star cell
-		margin = 20
-		topPad = 26
-	)
-	W := gw*scale + 2*margin
-	H := gh*scale + 2*margin + topPad
-
-	img := image.NewRGBA(image.Rect(0, 0, W, H))
-
-	bg := color.RGBA{0x0a, 0x0c, 0x12, 0xff}
-	star := color.RGBA{0xdf, 0xe8, 0xf6, 0xff} // near-white light
-	glow := color.RGBA{0x5a, 0x74, 0x9a, 0xff} // dim halo for depth
-	white := color.RGBA{0xf0, 0xf4, 0xfa, 0xff}
-
-	fill := func(x0, y0, x1, y1 int, c color.RGBA) {
-		for y := y0; y < y1; y++ {
-			for x := x0; x < x1; x++ {
-				if x >= 0 && y >= 0 && x < W && y < H {
-					img.SetRGBA(x, y, c)
-				}
+func fillRect10(img *image.RGBA, x0, y0, x1, y1, imgW, imgH int, c color.RGBA) {
+	for y := y0; y < y1; y++ {
+		for x := x0; x < x1; x++ {
+			if x >= 0 && y >= 0 && x < imgW && y < imgH {
+				img.SetRGBA(x, y, c)
 			}
 		}
 	}
+}
 
-	fill(0, 0, W, H, bg)
-
+func drawStars10(
+	img *image.RGBA, stars []star, t, minX, minY, scale, margin, topPad, imgW, imgH int, glow, starC color.RGBA,
+) {
 	for _, s := range stars {
 		gx := (s.x + s.vx*t - minX) * scale
 		gy := (s.y+s.vy*t-minY)*scale + topPad
-		// a soft halo then a solid core, both in cool tones that stay legible in gray
-		fill(margin+gx-1, margin+gy-1, margin+gx+scale+1, margin+gy+scale+1, glow)
-		fill(margin+gx, margin+gy, margin+gx+scale-1, margin+gy+scale-1, star)
+		fillRect10(img, margin+gx-1, margin+gy-1, margin+gx+scale+1, margin+gy+scale+1, imgW, imgH, glow)
+		fillRect10(img, margin+gx, margin+gy, margin+gx+scale-1, margin+gy+scale-1, imgW, imgH, starC)
 	}
-
-	drawText10(img, fmt.Sprintf("the stars align at t=%d", t), margin, 18, white)
-
-	f, err := os.Create(filepath.Join(outdir, "the-stars-align.png"))
-	if err != nil {
-		return err
-	}
-	defer f.Close()
-
-	return png.Encode(f, img)
 }
 
 func drawText10(img *image.RGBA, s string, x, y int, c color.RGBA) {

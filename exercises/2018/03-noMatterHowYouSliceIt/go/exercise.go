@@ -1,6 +1,7 @@
 package exercises
 
 import (
+	"errors"
 	"fmt"
 	"regexp"
 	"strconv"
@@ -125,5 +126,5 @@ func (e Exercise) Two(instr string) (any, error) {
 		}
 	}
 
-	return nil, fmt.Errorf("no non-overlapping claim found")
+	return nil, errors.New("no non-overlapping claim found")
 }

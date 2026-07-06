@@ -1,6 +1,7 @@
 package exercises
 
 import (
+	"errors"
 	"fmt"
 	"image"
 	"image/color"
@@ -26,7 +27,7 @@ func (e Exercise) Vis(instr, outdir string) error {
 		return err
 	}
 	if len(pts) == 0 {
-		return fmt.Errorf("no coordinates to visualize")
+		return errors.New("no coordinates to visualize")
 	}
 
 	threshold := 10000
@@ -37,113 +38,17 @@ func (e Exercise) Vis(instr, outdir string) error {
 	minX, minY, maxX, maxY := bounds(pts)
 	const border = 12
 	x0, y0 := minX-border, minY-border
-	W := (maxX - minX) + 2*border + 1
-	H := (maxY - minY) + 2*border + 1
+	imgW := (maxX - minX) + 2*border + 1
+	imgH := (maxY - minY) + 2*border + 1
 
-	// Owner index per cell (-1 = tie/unowned), plus totals for the safe region.
-	owner := make([]int, W*H)
-	safe := make([]bool, W*H)
-	area := make([]int, len(pts))
-	infinite := make([]bool, len(pts))
+	owner, safe, largestIdx, largest := buildVoronoi(pts, imgW, imgH, x0, y0, minX, minY, maxX, maxY, threshold)
 
-	for gy := 0; gy < H; gy++ {
-		for gx := 0; gx < W; gx++ {
-			wx, wy := x0+gx, y0+gy
-			best, bestIdx, tie, total := 1<<30, -1, false, 0
-			for i, p := range pts {
-				d := abs(p.x-wx) + abs(p.y-wy)
-				total += d
-				switch {
-				case d < best:
-					best, bestIdx, tie = d, i, false
-				case d == best:
-					tie = true
-				}
-			}
-			idx := gy*W + gx
-			if tie {
-				owner[idx] = -1
-			} else {
-				owner[idx] = bestIdx
-				// only count area within the true bounding box (matches Part One)
-				if wx >= minX && wx <= maxX && wy >= minY && wy <= maxY {
-					area[bestIdx]++
-					if wx == minX || wx == maxX || wy == minY || wy == maxY {
-						infinite[bestIdx] = true
-					}
-				}
-			}
-			safe[idx] = total < threshold
-		}
-	}
+	img := image.NewRGBA(image.Rect(0, 0, imgW, imgH))
+	drawVoronoiMap(img, owner, imgW, imgH, largestIdx)
 
-	// Largest finite territory (Part One).
-	largestIdx, largest := -1, -1
-	for i, a := range area {
-		if !infinite[i] && a > largest {
-			largest, largestIdx = a, i
-		}
-	}
+	contour := color.RGBA{0xF0, 0xE4, 0x42, 0xff}
+	drawSafeContour(img, safe, imgW, imgH, contour)
 
-	img := image.NewRGBA(image.Rect(0, 0, W, H))
-
-	// The per-owner partition is drawn as a muted backdrop: a single dim blue
-	// fill with thin dark boundaries between territories, so the Voronoi shape is
-	// legible without a rainbow that would collapse in grayscale. The two answers
-	// carry the brightness: the largest finite territory is filled bright, the
-	// tie cells stay darkest, and the safe-region contour (below) is brightest.
-	fillDim := color.RGBA{0x22, 0x33, 0x47, 0xff}      // ordinary territory
-	fillWin := color.RGBA{0x86, 0xb8, 0xe0, 0xff}      // largest finite (Part One)
-	boundary := color.RGBA{0x11, 0x16, 0x1d, 0xff}     // between territories
-	tie := color.RGBA{0x08, 0x0a, 0x0e, 0xff}          // contested (darkest)
-
-	ownerAt := func(gx, gy int) int {
-		if gx < 0 || gy < 0 || gx >= W || gy >= H {
-			return -2
-		}
-		return owner[gy*W+gx]
-	}
-	for gy := 0; gy < H; gy++ {
-		for gx := 0; gx < W; gx++ {
-			o := owner[gy*W+gx]
-			var c color.RGBA
-			switch {
-			case o < 0:
-				c = tie
-			case o == largestIdx:
-				c = fillWin
-			default:
-				c = fillDim
-			}
-			// darken cells on an owner boundary to trace the Voronoi edges
-			if o >= 0 && (ownerAt(gx+1, gy) != o || ownerAt(gx, gy+1) != o) {
-				c = boundary
-			}
-			img.SetRGBA(gx, gy, c)
-		}
-	}
-
-	// Outline the safe region (Part Two): draw a bright contour where a safe cell
-	// borders a non-safe one.
-	contour := color.RGBA{0xF0, 0xE4, 0x42, 0xff} // yellow
-	at := func(gx, gy int) bool {
-		if gx < 0 || gy < 0 || gx >= W || gy >= H {
-			return false
-		}
-		return safe[gy*W+gx]
-	}
-	for gy := 0; gy < H; gy++ {
-		for gx := 0; gx < W; gx++ {
-			if !at(gx, gy) {
-				continue
-			}
-			if !at(gx-1, gy) || !at(gx+1, gy) || !at(gx, gy-1) || !at(gx, gy+1) {
-				img.SetRGBA(gx, gy, contour)
-			}
-		}
-	}
-
-	// Mark coordinate seeds with a small white cross.
 	white := color.RGBA{0xf0, 0xf4, 0xfa, 0xff}
 	for _, p := range pts {
 		cx, cy := p.x-x0, p.y-y0
@@ -158,8 +63,8 @@ func (e Exercise) Vis(instr, outdir string) error {
 		p := pts[largestIdx]
 		lbl := fmt.Sprintf("largest finite = %d", largest)
 		lx := p.x - x0 + 4
-		if w := 7 * len(lbl); lx+w > W-2 {
-			lx = W - 2 - w
+		if w := 7 * len(lbl); lx+w > imgW-2 {
+			lx = imgW - 2 - w
 		}
 		if lx < 2 {
 			lx = 2
@@ -170,7 +75,7 @@ func (e Exercise) Vis(instr, outdir string) error {
 		}
 		drawText(img, lbl, lx, ly, white)
 	}
-	drawText(img, fmt.Sprintf("safe region (total<%d)", threshold), 4, H-6, contour)
+	drawText(img, fmt.Sprintf("safe region (total<%d)", threshold), 4, imgH-6, contour)
 
 	f, err := os.Create(filepath.Join(outdir, "chronal-coordinates.png"))
 	if err != nil {
@@ -179,6 +84,108 @@ func (e Exercise) Vis(instr, outdir string) error {
 	defer f.Close()
 
 	return png.Encode(f, img)
+}
+
+func classifyCell(pts []point, wx, wy int) (int, int, bool) {
+	best, bestIdx, total := 1<<30, -1, 0
+	tie := false
+	for i, p := range pts {
+		d := abs(p.x-wx) + abs(p.y-wy)
+		total += d
+		switch {
+		case d < best:
+			best, bestIdx, tie = d, i, false
+		case d == best:
+			tie = true
+		}
+	}
+	return bestIdx, total, tie
+}
+
+func buildVoronoi(pts []point, imgW, imgH, x0, y0, minX, minY, maxX, maxY, threshold int) ([]int, []bool, int, int) {
+	owner := make([]int, imgW*imgH)
+	safe := make([]bool, imgW*imgH)
+	area := make([]int, len(pts))
+	infinite := make([]bool, len(pts))
+
+	for gy := range imgH {
+		for gx := range imgW {
+			wx, wy := x0+gx, y0+gy
+			bestIdx, total, tie := classifyCell(pts, wx, wy)
+			idx := gy*imgW + gx
+			if tie {
+				owner[idx] = -1
+			} else {
+				owner[idx] = bestIdx
+				if wx >= minX && wx <= maxX && wy >= minY && wy <= maxY {
+					area[bestIdx]++
+					if wx == minX || wx == maxX || wy == minY || wy == maxY {
+						infinite[bestIdx] = true
+					}
+				}
+			}
+			safe[idx] = total < threshold
+		}
+	}
+
+	largestIdx, largest := -1, -1
+	for i, a := range area {
+		if !infinite[i] && a > largest {
+			largest, largestIdx = a, i
+		}
+	}
+	return owner, safe, largestIdx, largest
+}
+
+func drawVoronoiMap(img *image.RGBA, owner []int, imgW, imgH, largestIdx int) {
+	fillDim := color.RGBA{0x22, 0x33, 0x47, 0xff}
+	fillWin := color.RGBA{0x86, 0xb8, 0xe0, 0xff}
+	boundary := color.RGBA{0x11, 0x16, 0x1d, 0xff}
+	tieC := color.RGBA{0x08, 0x0a, 0x0e, 0xff}
+
+	ownerAt := func(gx, gy int) int {
+		if gx < 0 || gy < 0 || gx >= imgW || gy >= imgH {
+			return -2
+		}
+		return owner[gy*imgW+gx]
+	}
+	for gy := range imgH {
+		for gx := range imgW {
+			o := owner[gy*imgW+gx]
+			var c color.RGBA
+			switch {
+			case o < 0:
+				c = tieC
+			case o == largestIdx:
+				c = fillWin
+			default:
+				c = fillDim
+			}
+			if o >= 0 && (ownerAt(gx+1, gy) != o || ownerAt(gx, gy+1) != o) {
+				c = boundary
+			}
+			img.SetRGBA(gx, gy, c)
+		}
+	}
+}
+
+func drawSafeContour(img *image.RGBA, safe []bool, imgW, imgH int, contour color.RGBA) {
+	safeAt := func(gx, gy int) bool {
+		if gx < 0 || gy < 0 || gx >= imgW || gy >= imgH {
+			return false
+		}
+		return safe[gy*imgW+gx]
+	}
+	for gy := range imgH {
+		for gx := range imgW {
+			if !safeAt(gx, gy) {
+				continue
+			}
+			if !safeAt(gx-1, gy) || !safeAt(gx+1, gy) || !safeAt(gx, gy-1) || !safeAt(gx, gy+1) {
+				img.SetRGBA(gx, gy, contour)
+			}
+		}
+	}
 }
 
 func drawText(img *image.RGBA, s string, x, y int, c color.RGBA) {

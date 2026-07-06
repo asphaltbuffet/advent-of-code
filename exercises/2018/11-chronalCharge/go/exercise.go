@@ -46,8 +46,8 @@ func squareSum(sat [][]int, x, y, size int) int {
 }
 
 // best finds the top-left corner of the highest-power square of the given size.
-func best(sat [][]int, size int) (bx, by, sum int) {
-	sum = -1 << 62
+func best(sat [][]int, size int) (int, int, int) {
+	bx, by, sum := 0, 0, -1<<62
 	for y := 1; y <= gridSize-size+1; y++ {
 		for x := 1; x <= gridSize-size+1; x++ {
 			if s := squareSum(sat, x, y, size); s > sum {

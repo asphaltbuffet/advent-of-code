@@ -1,6 +1,7 @@
 package exercises
 
 import (
+	"errors"
 	"fmt"
 	"image"
 	"image/color"
@@ -26,7 +27,7 @@ func (e Exercise) Vis(instr, outdir string) error {
 		return err
 	}
 	if len(claims) == 0 {
-		return fmt.Errorf("no claims to visualize")
+		return errors.New("no claims to visualize")
 	}
 
 	// Fabric extent (with a small margin) and the max coverage seen.
@@ -40,7 +41,7 @@ func (e Exercise) Vis(instr, outdir string) error {
 		}
 	}
 	const margin = 8
-	W, H := maxX+margin, maxY+margin
+	imgW, imgH := maxX+margin, maxY+margin
 
 	cover := coverage(claims)
 	maxCov := 1
@@ -50,63 +51,15 @@ func (e Exercise) Vis(instr, outdir string) error {
 		}
 	}
 
-	// Find the intact claim (Part Two) for the outline/label.
-	var intact *claim
-	for i := range claims {
-		c := &claims[i]
-		ok := true
-		for x := c.left; x < c.left+c.width && ok; x++ {
-			for y := c.top; y < c.top+c.height; y++ {
-				if cover[[2]int{x, y}] > 1 {
-					ok = false
-					break
-				}
-			}
-		}
-		if ok {
-			intact = c
-			break
-		}
-	}
+	intact := findIntactClaim(claims, cover)
 
-	img := image.NewRGBA(image.Rect(0, 0, W, H))
+	img := image.NewRGBA(image.Rect(0, 0, imgW, imgH))
 	bg := color.RGBA{0x11, 0x14, 0x18, 0xff}
-	for i := 0; i < W*H; i++ {
+	for i := range imgW * imgH {
 		img.Pix[i*4], img.Pix[i*4+1], img.Pix[i*4+2], img.Pix[i*4+3] = bg.R, bg.G, bg.B, bg.A
 	}
 
-	// Sequential dark->light ramp: single claim is dim blue, overlaps brighten
-	// toward near-white. Brightness alone carries coverage, so grayscale works.
-	shade := func(n int) color.RGBA {
-		if n <= 0 {
-			return bg
-		}
-		if n == 1 {
-			return color.RGBA{0x1c, 0x3a, 0x5e, 0xff} // dim blue: uncontested
-		}
-		// map 2..maxCov onto a brightening ramp
-		denom := float64(maxCov - 1)
-		if denom <= 0 {
-			denom = 1
-		}
-		t := float64(n-1) / denom
-		if t > 1 {
-			t = 1
-		}
-		// from mid blue (#2166AC-ish) to bright yellow-white for hottest overlap
-		r := uint8(0x33 + t*(0xF0-0x33))
-		g := uint8(0x66 + t*(0xE4-0x66))
-		b := uint8(0xAC + t*(0x42-0xAC))
-		return color.RGBA{r, g, b, 0xff}
-	}
-
-	for pos, n := range cover {
-		x, y := pos[0], pos[1]
-		if x < 0 || y < 0 || x >= W || y >= H {
-			continue
-		}
-		img.SetRGBA(x, y, shade(n))
-	}
+	paintCoverage(img, cover, bg, maxCov, imgW, imgH)
 
 	// Frame the intact claim in vermilion and label it.
 	if intact != nil {
@@ -133,6 +86,56 @@ func (e Exercise) Vis(instr, outdir string) error {
 	defer f.Close()
 
 	return png.Encode(f, img)
+}
+
+func coverageShade(n, maxCov int, bg color.RGBA) color.RGBA {
+	if n <= 0 {
+		return bg
+	}
+	if n == 1 {
+		return color.RGBA{0x1c, 0x3a, 0x5e, 0xff}
+	}
+	denom := float64(maxCov - 1)
+	if denom <= 0 {
+		denom = 1
+	}
+	t := float64(n-1) / denom
+	if t > 1 {
+		t = 1
+	}
+	r := uint8(0x33 + t*(0xF0-0x33))
+	g := uint8(0x66 + t*(0xE4-0x66))
+	b := uint8(0xAC + t*(0x42-0xAC))
+	return color.RGBA{r, g, b, 0xff}
+}
+
+func paintCoverage(img *image.RGBA, cover map[[2]int]int, bg color.RGBA, maxCov, imgW, imgH int) {
+	for pos, n := range cover {
+		x, y := pos[0], pos[1]
+		if x < 0 || y < 0 || x >= imgW || y >= imgH {
+			continue
+		}
+		img.SetRGBA(x, y, coverageShade(n, maxCov, bg))
+	}
+}
+
+func findIntactClaim(claims []claim, cover map[[2]int]int) *claim {
+	for i := range claims {
+		c := &claims[i]
+		intact := true
+		for x := c.left; x < c.left+c.width && intact; x++ {
+			for y := c.top; y < c.top+c.height; y++ {
+				if cover[[2]int{x, y}] > 1 {
+					intact = false
+					break
+				}
+			}
+		}
+		if intact {
+			return c
+		}
+	}
+	return nil
 }
 
 // drawRect strokes a 1px rectangle border in col.
