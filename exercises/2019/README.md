@@ -29,7 +29,7 @@
 | [Day 21: Springdroid Adventure][rm21]             |  ★ ★  | [Go][go21] |
 | [Day 22: Slam Shuffle][rm22]                      |  ★ ★  | [Go][go22] |
 | [Day 23: Category Six][rm23]                      |  ★ ★  | [Go][go23] |
-| 24                                                |  ☆ ☆  |                            |
+| [Day 24: Planet of Discord][rm24]                 |  ★ ★  | [Go][go24] |
 | 25                                                |  ☆ ☆  |                            |
 
 
@@ -115,3 +115,6 @@ Day       Time    Rank  Score       Time    Rank  Score
 
 [rm23]: 23-categorySix/README.md
 [go23]: 23-categorySix/go/exercise.go
+
+[rm24]: 24-planetOfDiscord/README.md
+[go24]: 24-planetOfDiscord/go/exercise.go
