@@ -35,5 +35,5 @@ require (
 	github.com/caarlos0/log v0.6.2
 	github.com/dominikbraun/graph v0.23.0
 	github.com/kettek/apng v0.0.0-20220823221153-ff692776a607
-	golang.org/x/image v0.36.0
+	golang.org/x/image v0.41.0
 )
