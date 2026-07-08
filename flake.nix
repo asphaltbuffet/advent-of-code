@@ -58,11 +58,15 @@
             gfortran
             (lua5_2.withPackages (ps: [ps.dkjson]))
 
+            dotnet-sdk_8
+
             rustToolchain
             fenix.packages.${system}.rust-analyzer
           ];
 
           CGO_ENABLED = "0";
+          DOTNET_CLI_TELEMETRY_OPTOUT = "1";
+          DOTNET_NOLOGO = "1";
         };
       }
     );
