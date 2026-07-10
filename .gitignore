@@ -226,3 +226,14 @@ elf.toml
 
 **/ben.answers.toml
 .direnv/
+
+# Project Euler: keep answers private (Euler asks you not to share solutions).
+# Ignore everything under euler/, then re-include the directory structure and
+# the files safe to publish: README.md and the .age ciphertext. Language dirs
+# (go/, py/, …) need no mention — any new one's plaintext is ignored, its
+# .age committed, automatically.
+euler/**
+!euler/**/
+!euler/**/README.md
+!euler/**/input.txt
+!euler/**/*.age
