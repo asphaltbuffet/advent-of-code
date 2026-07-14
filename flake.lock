@@ -10,16 +10,16 @@
         "nur": "nur"
       },
       "locked": {
-        "lastModified": 1783981420,
-        "narHash": "sha256-qQ+ut3nd0mnmbWsf9sEmE4HBWuktxeKvai9MdnV0kF4=",
+        "lastModified": 1784088763,
+        "narHash": "sha256-zryfF6Cl2QVT7pwJwe/l6HqDqiEtzDCqcDDrstqXIz8=",
         "owner": "asphaltbuffet",
         "repo": "elf",
-        "rev": "cdefb240484aa4975750ded6bb718ac25046fa6f",
+        "rev": "bd5f2a6ed86e4a7efdc16b96fff4c667ff17fd49",
         "type": "github"
       },
       "original": {
         "owner": "asphaltbuffet",
-        "ref": "v0.6.1",
+        "ref": "v0.6.3",
         "repo": "elf",
         "type": "github"
       }
